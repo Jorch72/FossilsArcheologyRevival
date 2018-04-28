@@ -176,7 +176,7 @@ public class ServerProxy implements IGuiHandler {
         MinecraftForge.EVENT_BUS.register(new FossilPickupItemEvent());
         MinecraftForge.EVENT_BUS.register(new FossilBonemealEvent());
         MinecraftForge.EVENT_BUS.register(new FossilLivingEvent());
-        MinecraftForge.TERRAIN_GEN_BUS.register(new FAWorldGenerator());
+        GameRegistry.registerWorldGenerator(new FAWorldGenerator(), 0);
         FossilFoodMappings.register();
     }
 
