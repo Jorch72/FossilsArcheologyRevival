@@ -29,7 +29,7 @@ archivesBaseName = "fossilsarcheology"
 sourceCompatibility = targetCompatibility = "1.8"
 
 minecraft {
-    version = "1.12.2-14.23.2.2654"
+    version = "1.12.2-14.23.3.2655"
     runDir = "minecraft"
     mappings = "snapshot_20180331"
 }
