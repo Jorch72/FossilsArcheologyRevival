@@ -176,7 +176,6 @@ public class ServerProxy implements IGuiHandler {
 		MinecraftForge.EVENT_BUS.register(new FossilBonemealEvent());
 		MinecraftForge.EVENT_BUS.register(new FossilLivingEvent());
 		GameRegistry.registerWorldGenerator(new FAWorldGenerator(), 0);
-		FossilFoodMappings.register();
 	}
 
 	public void calculateChainBuffer(EntityFishBase entity) {
@@ -188,7 +187,7 @@ public class ServerProxy implements IGuiHandler {
 	}
 
 	public void onPostInit() {
-
+		FossilFoodMappings.register();
 	}
 
 	@Override

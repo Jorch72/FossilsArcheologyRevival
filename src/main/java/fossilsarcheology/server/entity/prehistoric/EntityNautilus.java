@@ -120,7 +120,7 @@ public class EntityNautilus extends EntityFishBase {
 			return true;
 		}
 		/*if (entity instanceof EntityPrehistoric) {
-	        return ((EntityPrehistoric) entity).type.diet.getFearIndex() >= 2;
+		    return ((EntityPrehistoric) entity).type.diet.getFearIndex() >= 2;
         }*/
 		return entity.width >= 1.2;
 	}
