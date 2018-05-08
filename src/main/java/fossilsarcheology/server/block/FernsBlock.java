@@ -32,7 +32,7 @@ public class FernsBlock extends BlockBush implements DefaultRenderedItem {
         super(Material.PLANTS);
         this.setTickRandomly(true);
         this.disableStats();
-        this.setUnlocalizedName("fernBlock");
+        this.setUnlocalizedName("fern_block");
         this.setHardness(0.0F);
         this.setSoundType(SoundType.PLANT);
         this.setCreativeTab(null);
