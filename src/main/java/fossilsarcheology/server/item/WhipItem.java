@@ -46,7 +46,7 @@ public class WhipItem extends ItemCarrotOnAStick implements DefaultRenderedItem 
 			player.swingArm(hand);
 			player.getRidingEntity().playSound(FASoundRegistry.WHIP, 1.0F, 1.0F);
 		} else {
-	        /*
+		    /*
 			 * if (!W.isRemote) { W.spawnEntityInWorld(new
 			 * EntityWhipAttachment(W, P)); }
 			 */

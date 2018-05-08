@@ -11,7 +11,7 @@ public class FARecipeRegistry {
 
 	public static void register(RegistryEvent.Register<IRecipe> event) {
 	    /*
-        GameRegistry.addRecipe(new ItemStack(FABlockRegistry.SKULL_LANTERN, 1), "X", "Y", 'X', FABlockRegistry.SKULL_BLOCK, 'Y', Blocks.TORCH);
+	    GameRegistry.addRecipe(new ItemStack(FABlockRegistry.SKULL_LANTERN, 1), "X", "Y", 'X', FABlockRegistry.SKULL_BLOCK, 'Y', Blocks.TORCH);
         GameRegistry.addRecipe(new ItemStack(Items.DYE, 5, 15), "X", 'X', FABlockRegistry.SKULL_BLOCK);
         GameRegistry.addRecipe(new ItemStack(Items.DYE, 5, 15), "X", 'X', FABlockRegistry.SKULL_LANTERN);
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(FABlockRegistry.ANALYZER, 1), "XYX", "XWX", 'X', "ingotIron", 'Y', "artifact", 'W', "fossil"));

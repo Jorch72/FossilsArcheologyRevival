@@ -15,7 +15,7 @@ public class FABlockTab extends CreativeTabs {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ItemStack getTabIconItem() {
-		return new ItemStack(FABlockRegistry.WORKTABLE_IDLE);
+		return new ItemStack(FABlockRegistry.WORKTABLE_ACTIVE);
 	}
 
 	@Override
