@@ -17,18 +17,18 @@ public class TileEntityVaseRenderer extends TileEntitySpecialRenderer {
 
     private static final ResourceLocation damaged_volute = new ResourceLocation("fossil:textures/blocks/vases/vase_damaged_volute.png");
     private static final ResourceLocation restored_volute = new ResourceLocation("fossil:textures/blocks/vases/vase_restored_volute.png");
-    private static final ResourceLocation redFigure_volute = new ResourceLocation("fossil:textures/blocks/vases/vase_redFigure_volute.png");
-    private static final ResourceLocation blackFigure_volute = new ResourceLocation("fossil:textures/blocks/vases/vase_blackFigure_volute.png");
+    private static final ResourceLocation redFigure_volute = new ResourceLocation("fossil:textures/blocks/vases/vase_red_figure_volute.png");
+    private static final ResourceLocation blackFigure_volute = new ResourceLocation("fossil:textures/blocks/vases/vase_black_figure_volute.png");
     private static final ResourceLocation porcelain_volute = new ResourceLocation("fossil:textures/blocks/vases/vase_porcelain_volute.png");
     private static final ResourceLocation damaged_amphora = new ResourceLocation("fossil:textures/blocks/vases/vase_damaged_amphora.png");
     private static final ResourceLocation restored_amphora = new ResourceLocation("fossil:textures/blocks/vases/vase_restored_amphora.png");
-    private static final ResourceLocation redFigure_amphora = new ResourceLocation("fossil:textures/blocks/vases/vase_redFigure_amphora.png");
-    private static final ResourceLocation blackFigure_amphora = new ResourceLocation("fossil:textures/blocks/vases/vase_blackFigure_amphora.png");
+    private static final ResourceLocation redFigure_amphora = new ResourceLocation("fossil:textures/blocks/vases/vase_red_figure_amphora.png");
+    private static final ResourceLocation blackFigure_amphora = new ResourceLocation("fossil:textures/blocks/vases/vase_black_figure_amphora.png");
     private static final ResourceLocation porcelain_amphora = new ResourceLocation("fossil:textures/blocks/vases/vase_porcelain_amphora.png");
     private static final ResourceLocation damaged_kylix = new ResourceLocation("fossil:textures/blocks/vases/vase_damaged_kylix.png");
     private static final ResourceLocation restored_kylix = new ResourceLocation("fossil:textures/blocks/vases/vase_restored_kylix.png");
-    private static final ResourceLocation redFigure_kylix = new ResourceLocation("fossil:textures/blocks/vases/vase_redFigure_kylix.png");
-    private static final ResourceLocation blackFigure_kylix = new ResourceLocation("fossil:textures/blocks/vases/vase_blackFigure_kylix.png");
+    private static final ResourceLocation redFigure_kylix = new ResourceLocation("fossil:textures/blocks/vases/vase_red_figure_kylix.png");
+    private static final ResourceLocation blackFigure_kylix = new ResourceLocation("fossil:textures/blocks/vases/vase_black_figure_kylix.png");
     private static final ResourceLocation porcelain_kylix = new ResourceLocation("fossil:textures/blocks/vases/vase_porcelain_kylix.png");
     public static final ModelVaseVolute VOLUTE_MODEL = new ModelVaseVolute();
     public static final ModelVaseAmphora AMPHORA_MODEL = new ModelVaseAmphora();
