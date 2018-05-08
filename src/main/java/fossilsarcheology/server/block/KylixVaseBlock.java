@@ -5,7 +5,6 @@ import fossilsarcheology.server.block.entity.TileEntityKylix;
 import fossilsarcheology.server.tab.FATabRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
-import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -31,150 +30,149 @@ import java.util.List;
 
 public class KylixVaseBlock extends BlockContainer implements BlockEntity, IBlockItem {
 
-    public static final PropertyEnum<KylixVaseBlock.EnumType> VARIANT = PropertyEnum.<KylixVaseBlock.EnumType>create("variant", KylixVaseBlock.EnumType.class);
+	public static final PropertyEnum<KylixVaseBlock.EnumType> VARIANT = PropertyEnum.<KylixVaseBlock.EnumType>create("variant", KylixVaseBlock.EnumType.class);
 
-    protected KylixVaseBlock() {
-        super(Material.ROCK);
-        this.setCreativeTab(FATabRegistry.BLOCKS);
-        this.setUnlocalizedName("vaseKylix");
-        this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumType.DAMAGED_KYLIX));
-    }
+	protected KylixVaseBlock() {
+		super(Material.ROCK);
+		this.setCreativeTab(FATabRegistry.BLOCKS);
+		this.setUnlocalizedName("vaseKylix");
+		this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumType.DAMAGED_KYLIX));
+	}
 
-    public int damageDropped(IBlockState state) {
-        return ((KylixVaseBlock.EnumType)state.getValue(VARIANT)).getMetadata();
-    }
+	public int damageDropped(IBlockState state) {
+		return ((KylixVaseBlock.EnumType) state.getValue(VARIANT)).getMetadata();
+	}
 
-    public boolean isFullCube(IBlockState state) {
-        return false;
-    }
+	public boolean isFullCube(IBlockState state) {
+		return false;
+	}
 
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-        int l = MathHelper.floor((double) (placer.rotationYaw * 4.0F / 360.0F) + 1.5D) & 3;
-        TileEntity tileentity = worldIn.getTileEntity(pos);
-        ((TileEntityKylix) tileentity).setVaseType(stack.getItemDamage());
-        ((TileEntityKylix) tileentity).setVaseRotation(l);
-    }
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+		int l = MathHelper.floor((double) (placer.rotationYaw * 4.0F / 360.0F) + 1.5D) & 3;
+		TileEntity tileentity = worldIn.getTileEntity(pos);
+		((TileEntityKylix) tileentity).setVaseType(stack.getItemDamage());
+		((TileEntityKylix) tileentity).setVaseRotation(l);
+	}
 
-    @SideOnly(Side.CLIENT)
-    public void getSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> list) {
-        for (KylixVaseBlock.EnumType type : KylixVaseBlock.EnumType.values()) {
-            list.add(new ItemStack(itemIn, 1, type.getMetadata()));
-        }
-    }
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> list) {
+		for (KylixVaseBlock.EnumType type : KylixVaseBlock.EnumType.values()) {
+			list.add(new ItemStack(itemIn, 1, type.getMetadata()));
+		}
+	}
 
-    @SideOnly(Side.CLIENT)
-    public BlockRenderLayer getBlockLayer() {
-        return BlockRenderLayer.CUTOUT;
-    }
+	@SideOnly(Side.CLIENT)
+	public BlockRenderLayer getBlockLayer() {
+		return BlockRenderLayer.CUTOUT;
+	}
 
-    @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
-        return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
-    }
+	@Override
+	public EnumBlockRenderType getRenderType(IBlockState state) {
+		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
+	}
 
-    public boolean isOpaqueCube(IBlockState state) {
-        return false;
-    }
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
+	}
 
-    public IBlockState getStateFromMeta(int meta) {
-        return this.getDefaultState().withProperty(VARIANT, KylixVaseBlock.EnumType.byMetadata(meta));
-    }
+	public IBlockState getStateFromMeta(int meta) {
+		return this.getDefaultState().withProperty(VARIANT, KylixVaseBlock.EnumType.byMetadata(meta));
+	}
 
-    public int getMetaFromState(IBlockState state) {
-        return ((KylixVaseBlock.EnumType)state.getValue(VARIANT)).getMetadata();
-    }
+	public int getMetaFromState(IBlockState state) {
+		return ((KylixVaseBlock.EnumType) state.getValue(VARIANT)).getMetadata();
+	}
 
-    protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, new IProperty[] {VARIANT});
-    }
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, new IProperty[]{VARIANT});
+	}
 
-    @Override
-    public Class<? extends TileEntity> getEntity() {
-        return TileEntityKylix.class;
-    }
+	@Override
+	public Class<? extends TileEntity> getEntity() {
+		return TileEntityKylix.class;
+	}
 
-    @Override
-    public ItemBlock getItemBlock(Block block) {
-        return new KylixBlockItem(block);
-    }
+	@Override
+	public ItemBlock getItemBlock(Block block) {
+		return new KylixBlockItem(block);
+	}
 
-    class KylixBlockItem extends ItemBlock {
-        public KylixBlockItem(Block block) {
-            super(block);
-        }
+	@Override
+	public TileEntity createNewTileEntity(World worldIn, int meta) {
+		return new TileEntityKylix();
+	}
 
-        @Override
-        public String getUnlocalizedName(ItemStack itemstack) {
-            return getUnlocalizedName() + "." + EnumType.byMetadata(itemstack.getItemDamage()).getName();
-        }
+	public static enum EnumType implements IStringSerializable {
+		DAMAGED_KYLIX(0, "damaged_kylix"),
+		RESTORED_KYLIX(1, "restored_kylix"),
+		REDFIGURE_KYLIX(2, "redfigure_kylix"),
+		BLACKFIGURE_KYLIX(3, "blackfigure_kylix"),
+		PORCELAIN_KYLIX(4, "porcelain_kylix");
 
-        public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-            if (tab == FATabRegistry.BLOCKS) {
-                for(int i = 0; i < 4; i++){
-                    items.add(new ItemStack(this, 1, i));
-                }
-            }
-        }
+		private static final KylixVaseBlock.EnumType[] META_LOOKUP = new KylixVaseBlock.EnumType[values().length];
 
-    }
+		static {
+			for (KylixVaseBlock.EnumType blockplanks$enumtype : values()) {
+				META_LOOKUP[blockplanks$enumtype.getMetadata()] = blockplanks$enumtype;
+			}
+		}
 
-    @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TileEntityKylix();
-    }
+		private final int meta;
+		private final String name;
+		private final String unlocalizedName;
 
-    public static enum EnumType implements IStringSerializable
-    {
-        DAMAGED_KYLIX(0, "damaged_kylix"),
-        RESTORED_KYLIX(1, "restored_kylix"),
-        REDFIGURE_KYLIX(2, "redfigure_kylix"),
-        BLACKFIGURE_KYLIX(3, "blackfigure_kylix"),
-        PORCELAIN_KYLIX(4, "porcelain_kylix");
+		private EnumType(int metaIn, String nameIn) {
+			this(metaIn, nameIn, nameIn);
+		}
 
-        private static final KylixVaseBlock.EnumType[] META_LOOKUP = new KylixVaseBlock.EnumType[values().length];
-        private final int meta;
-        private final String name;
-        private final String unlocalizedName;
+		private EnumType(int metaIn, String nameIn, String unlocalizedNameIn) {
+			this.meta = metaIn;
+			this.name = nameIn;
+			this.unlocalizedName = unlocalizedNameIn;
+		}
 
-        private EnumType(int metaIn, String nameIn) {
-            this(metaIn, nameIn, nameIn);
-        }
+		public static KylixVaseBlock.EnumType byMetadata(int meta) {
+			if (meta < 0 || meta >= META_LOOKUP.length) {
+				meta = 0;
+			}
 
-        private EnumType(int metaIn, String nameIn, String unlocalizedNameIn) {
-            this.meta = metaIn;
-            this.name = nameIn;
-            this.unlocalizedName = unlocalizedNameIn;
-        }
+			return META_LOOKUP[meta];
+		}
 
-        public int getMetadata() {
-            return this.meta;
-        }
+		public int getMetadata() {
+			return this.meta;
+		}
 
+		public String toString() {
+			return this.name;
+		}
 
-        public String toString() {
-            return this.name;
-        }
+		public String getName() {
+			return this.name;
+		}
 
-        public static KylixVaseBlock.EnumType byMetadata(int meta) {
-            if (meta < 0 || meta >= META_LOOKUP.length) {
-                meta = 0;
-            }
+		public String getUnlocalizedName() {
+			return this.unlocalizedName;
+		}
+	}
 
-            return META_LOOKUP[meta];
-        }
+	class KylixBlockItem extends ItemBlock {
+		public KylixBlockItem(Block block) {
+			super(block);
+		}
 
-        public String getName() {
-            return this.name;
-        }
+		@Override
+		public String getUnlocalizedName(ItemStack itemstack) {
+			return getUnlocalizedName() + "." + EnumType.byMetadata(itemstack.getItemDamage()).getName();
+		}
 
-        public String getUnlocalizedName() {
-            return this.unlocalizedName;
-        }
+		public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
+			if (tab == FATabRegistry.BLOCKS) {
+				for (int i = 0; i < 4; i++) {
+					items.add(new ItemStack(this, 1, i));
+				}
+			}
+		}
 
-        static {
-            for (KylixVaseBlock.EnumType blockplanks$enumtype : values()) {
-                META_LOOKUP[blockplanks$enumtype.getMetadata()] = blockplanks$enumtype;
-            }
-        }
-    }
+	}
 }

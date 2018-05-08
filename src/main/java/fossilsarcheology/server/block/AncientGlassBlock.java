@@ -6,11 +6,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -20,33 +17,33 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class AncientGlassBlock extends BlockBreakable implements DefaultRenderedItem {
 
-    public static final PropertyBool CONNECTED_DOWN = PropertyBool.create("connected_down");
-    public static final PropertyBool CONNECTED_UP = PropertyBool.create("connected_up");
-    public static final PropertyBool CONNECTED_NORTH = PropertyBool.create("connected_north");
-    public static final PropertyBool CONNECTED_SOUTH = PropertyBool.create("connected_south");
-    public static final PropertyBool CONNECTED_WEST = PropertyBool.create("connected_west");
-    public static final PropertyBool CONNECTED_EAST = PropertyBool.create("connected_east");
+	public static final PropertyBool CONNECTED_DOWN = PropertyBool.create("connected_down");
+	public static final PropertyBool CONNECTED_UP = PropertyBool.create("connected_up");
+	public static final PropertyBool CONNECTED_NORTH = PropertyBool.create("connected_north");
+	public static final PropertyBool CONNECTED_SOUTH = PropertyBool.create("connected_south");
+	public static final PropertyBool CONNECTED_WEST = PropertyBool.create("connected_west");
+	public static final PropertyBool CONNECTED_EAST = PropertyBool.create("connected_east");
 
-    public AncientGlassBlock() {
-        super(Material.GLASS, true);
-        this.setLightOpacity(1);
-        this.setUnlocalizedName("ancient_glass");
-        this.setSoundType(SoundType.GLASS);
-        this.setHardness(1F);
-        this.setCreativeTab(FATabRegistry.BLOCKS);
-        //this.setDefaultState(this.blockState.getBaseState().withProperty(CONNECTED_DOWN, Boolean.FALSE).withProperty(CONNECTED_EAST, Boolean.FALSE).withProperty(CONNECTED_NORTH, Boolean.FALSE).withProperty(CONNECTED_SOUTH, Boolean.FALSE).withProperty(CONNECTED_UP, Boolean.FALSE).withProperty(CONNECTED_WEST, Boolean.FALSE));
-    }
+	public AncientGlassBlock() {
+		super(Material.GLASS, true);
+		this.setLightOpacity(1);
+		this.setUnlocalizedName("ancient_glass");
+		this.setSoundType(SoundType.GLASS);
+		this.setHardness(1F);
+		this.setCreativeTab(FATabRegistry.BLOCKS);
+		//this.setDefaultState(this.blockState.getBaseState().withProperty(CONNECTED_DOWN, Boolean.FALSE).withProperty(CONNECTED_EAST, Boolean.FALSE).withProperty(CONNECTED_NORTH, Boolean.FALSE).withProperty(CONNECTED_SOUTH, Boolean.FALSE).withProperty(CONNECTED_UP, Boolean.FALSE).withProperty(CONNECTED_WEST, Boolean.FALSE));
+	}
 
-    @SideOnly(Side.CLIENT)
-    public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
-        IBlockState iblockstate = blockAccess.getBlockState(pos.offset(side));
-        Block block = iblockstate.getBlock();
-        if (blockState != iblockstate) {
-            return true;
-        }else {
-            return false;
-        }
-    }
+	@SideOnly(Side.CLIENT)
+	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+		IBlockState iblockstate = blockAccess.getBlockState(pos.offset(side));
+		Block block = iblockstate.getBlock();
+		if (blockState != iblockstate) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
    /* @Override
     protected BlockStateContainer createBlockState () {
@@ -69,12 +66,12 @@ public class AncientGlassBlock extends BlockBreakable implements DefaultRendered
     }
     */
 
-    @SideOnly(Side.CLIENT)
-    public BlockRenderLayer getBlockLayer() {
-        return BlockRenderLayer.TRANSLUCENT;
-    }
+	@SideOnly(Side.CLIENT)
+	public BlockRenderLayer getBlockLayer() {
+		return BlockRenderLayer.TRANSLUCENT;
+	}
 
-    public boolean isFullCube(IBlockState state) {
-        return false;
-    }
+	public boolean isFullCube(IBlockState state) {
+		return false;
+	}
 }

@@ -28,151 +28,150 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class AmphoraVaseBlock extends BlockContainer implements BlockEntity, IBlockItem{
-    public static final PropertyEnum<AmphoraVaseBlock.EnumType> VARIANT = PropertyEnum.<AmphoraVaseBlock.EnumType>create("variant", AmphoraVaseBlock.EnumType.class);
+public class AmphoraVaseBlock extends BlockContainer implements BlockEntity, IBlockItem {
+	public static final PropertyEnum<AmphoraVaseBlock.EnumType> VARIANT = PropertyEnum.<AmphoraVaseBlock.EnumType>create("variant", AmphoraVaseBlock.EnumType.class);
 
-    protected AmphoraVaseBlock() {
-        super(Material.ROCK);
-        this.setCreativeTab(FATabRegistry.BLOCKS);
-        this.setUnlocalizedName("vaseAmphora");
-        this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumType.DAMAGED_AMPHORA));
-    }
+	protected AmphoraVaseBlock() {
+		super(Material.ROCK);
+		this.setCreativeTab(FATabRegistry.BLOCKS);
+		this.setUnlocalizedName("vaseAmphora");
+		this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumType.DAMAGED_AMPHORA));
+	}
 
-    public int damageDropped(IBlockState state) {
-        return ((AmphoraVaseBlock.EnumType)state.getValue(VARIANT)).getMetadata();
-    }
+	public int damageDropped(IBlockState state) {
+		return ((AmphoraVaseBlock.EnumType) state.getValue(VARIANT)).getMetadata();
+	}
 
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-        int l = MathHelper.floor((double) (placer.rotationYaw * 4.0F / 360.0F) + 1.5D) & 3;
-        TileEntity tileentity = worldIn.getTileEntity(pos);
-        ((TileEntityAmphora) tileentity).setVaseType(stack.getItemDamage());
-        ((TileEntityAmphora) tileentity).setVaseRotation(l);
-    }
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+		int l = MathHelper.floor((double) (placer.rotationYaw * 4.0F / 360.0F) + 1.5D) & 3;
+		TileEntity tileentity = worldIn.getTileEntity(pos);
+		((TileEntityAmphora) tileentity).setVaseType(stack.getItemDamage());
+		((TileEntityAmphora) tileentity).setVaseRotation(l);
+	}
 
-    @SideOnly(Side.CLIENT)
-    public void getSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> list) {
-        for (AmphoraVaseBlock.EnumType type : AmphoraVaseBlock.EnumType.values()) {
-            list.add(new ItemStack(itemIn, 1, type.getMetadata()));
-        }
-    }
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> list) {
+		for (AmphoraVaseBlock.EnumType type : AmphoraVaseBlock.EnumType.values()) {
+			list.add(new ItemStack(itemIn, 1, type.getMetadata()));
+		}
+	}
 
-    public IBlockState getStateFromMeta(int meta) {
-        return this.getDefaultState().withProperty(VARIANT, AmphoraVaseBlock.EnumType.byMetadata(meta));
-    }
+	public IBlockState getStateFromMeta(int meta) {
+		return this.getDefaultState().withProperty(VARIANT, AmphoraVaseBlock.EnumType.byMetadata(meta));
+	}
 
-    public int getMetaFromState(IBlockState state) {
-        return ((AmphoraVaseBlock.EnumType)state.getValue(VARIANT)).getMetadata();
-    }
+	public int getMetaFromState(IBlockState state) {
+		return ((AmphoraVaseBlock.EnumType) state.getValue(VARIANT)).getMetadata();
+	}
 
-    protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, new IProperty[] {VARIANT});
-    }
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, new IProperty[]{VARIANT});
+	}
 
-    public boolean isFullCube(IBlockState state) {
-        return false;
-    }
+	public boolean isFullCube(IBlockState state) {
+		return false;
+	}
 
-    @Override
-    public ItemBlock getItemBlock(Block block) {
-        return new AmphoraBlockItem(block);
-    }
+	@Override
+	public ItemBlock getItemBlock(Block block) {
+		return new AmphoraBlockItem(block);
+	}
 
-    @Override
-    public Class<? extends TileEntity> getEntity() {
-        return TileEntityAmphora.class;
-    }
+	@Override
+	public Class<? extends TileEntity> getEntity() {
+		return TileEntityAmphora.class;
+	}
 
-    class AmphoraBlockItem extends ItemBlock {
-        public AmphoraBlockItem(Block block) {
-            super(block);
-        }
+	@SideOnly(Side.CLIENT)
+	public BlockRenderLayer getBlockLayer() {
+		return BlockRenderLayer.CUTOUT;
+	}
 
-        @Override
-        public String getUnlocalizedName(ItemStack itemstack) {
-            return getUnlocalizedName() + "." + EnumType.byMetadata(itemstack.getItemDamage()).getName();
-        }
+	@Override
+	public EnumBlockRenderType getRenderType(IBlockState state) {
+		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
+	}
 
-        public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-            if (tab == FATabRegistry.BLOCKS) {
-                for(int i = 0; i < 4; i++){
-                    items.add(new ItemStack(this, 1, i));
-                }
-            }
-        }
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
+	}
 
-    }
+	@Override
+	public TileEntity createNewTileEntity(World worldIn, int meta) {
+		return new TileEntityAmphora();
+	}
 
-    @SideOnly(Side.CLIENT)
-    public BlockRenderLayer getBlockLayer() {
-        return BlockRenderLayer.CUTOUT;
-    }
+	public static enum EnumType implements IStringSerializable {
+		DAMAGED_AMPHORA(0, "damaged_amphora"),
+		RESTORED_AMPHORA(1, "restored_amphora"),
+		REDFIGURE_AMPHORA(2, "redfigure_amphora"),
+		BLACKFIGURE_AMPHORA(3, "blackfigure_amphora"),
 
-    @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
-        return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
-    }
+		PORCELAIN_AMPHORA(4, "porcelain_amphora");
+		private static final AmphoraVaseBlock.EnumType[] META_LOOKUP = new AmphoraVaseBlock.EnumType[values().length];
 
-    public boolean isOpaqueCube(IBlockState state) {
-        return false;
-    }
+		static {
+			for (AmphoraVaseBlock.EnumType blockplanks$enumtype : values()) {
+				META_LOOKUP[blockplanks$enumtype.getMetadata()] = blockplanks$enumtype;
+			}
+		}
 
-    @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TileEntityAmphora();
-    }
+		private final int meta;
+		private final String name;
+		private final String unlocalizedName;
 
-    public static enum EnumType implements IStringSerializable
-    {
-        DAMAGED_AMPHORA(0, "damaged_amphora"),
-        RESTORED_AMPHORA(1, "restored_amphora"),
-        REDFIGURE_AMPHORA(2, "redfigure_amphora"),
-        BLACKFIGURE_AMPHORA(3, "blackfigure_amphora"),
+		private EnumType(int metaIn, String nameIn) {
+			this(metaIn, nameIn, nameIn);
+		}
 
-        PORCELAIN_AMPHORA(4, "porcelain_amphora");
-        private static final AmphoraVaseBlock.EnumType[] META_LOOKUP = new AmphoraVaseBlock.EnumType[values().length];
-        private final int meta;
-        private final String name;
-        private final String unlocalizedName;
+		private EnumType(int metaIn, String nameIn, String unlocalizedNameIn) {
+			this.meta = metaIn;
+			this.name = nameIn;
+			this.unlocalizedName = unlocalizedNameIn;
+		}
 
-        private EnumType(int metaIn, String nameIn) {
-            this(metaIn, nameIn, nameIn);
-        }
+		public static AmphoraVaseBlock.EnumType byMetadata(int meta) {
+			if (meta < 0 || meta >= META_LOOKUP.length) {
+				meta = 0;
+			}
 
-        private EnumType(int metaIn, String nameIn, String unlocalizedNameIn) {
-            this.meta = metaIn;
-            this.name = nameIn;
-            this.unlocalizedName = unlocalizedNameIn;
-        }
+			return META_LOOKUP[meta];
+		}
 
-        public int getMetadata() {
-            return this.meta;
-        }
+		public int getMetadata() {
+			return this.meta;
+		}
 
+		public String toString() {
+			return this.name;
+		}
 
-        public String toString() {
-            return this.name;
-        }
+		public String getName() {
+			return this.name;
+		}
 
-        public static AmphoraVaseBlock.EnumType byMetadata(int meta) {
-            if (meta < 0 || meta >= META_LOOKUP.length) {
-                meta = 0;
-            }
+		public String getUnlocalizedName() {
+			return this.unlocalizedName;
+		}
+	}
 
-            return META_LOOKUP[meta];
-        }
+	class AmphoraBlockItem extends ItemBlock {
+		public AmphoraBlockItem(Block block) {
+			super(block);
+		}
 
-        public String getName() {
-            return this.name;
-        }
+		@Override
+		public String getUnlocalizedName(ItemStack itemstack) {
+			return getUnlocalizedName() + "." + EnumType.byMetadata(itemstack.getItemDamage()).getName();
+		}
 
-        public String getUnlocalizedName() {
-            return this.unlocalizedName;
-        }
+		public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
+			if (tab == FATabRegistry.BLOCKS) {
+				for (int i = 0; i < 4; i++) {
+					items.add(new ItemStack(this, 1, i));
+				}
+			}
+		}
 
-        static {
-            for (AmphoraVaseBlock.EnumType blockplanks$enumtype : values()) {
-                META_LOOKUP[blockplanks$enumtype.getMetadata()] = blockplanks$enumtype;
-            }
-        }
-    }
+	}
 }

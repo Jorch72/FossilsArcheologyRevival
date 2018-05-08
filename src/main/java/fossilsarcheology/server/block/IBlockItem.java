@@ -4,5 +4,5 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 
 public interface IBlockItem {
-    public ItemBlock getItemBlock(Block block);
+	public ItemBlock getItemBlock(Block block);
 }
