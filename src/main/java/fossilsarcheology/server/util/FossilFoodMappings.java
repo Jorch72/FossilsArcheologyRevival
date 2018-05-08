@@ -278,6 +278,11 @@ public class FossilFoodMappings {
 		FoodMappings.INSTANCE.addPlant("floatingWaterHyacinth", 7);
 		FoodMappings.INSTANCE.addPlant("flowerThistle", 6);
 		FoodMappings.INSTANCE.addPlant("cropVine", 6);
+		FoodMappings.INSTANCE.addPlant("cropIronberry", 10);
+		FoodMappings.INSTANCE.addPlant("cropWildberry", 6);
+		FoodMappings.INSTANCE.addPlant("cropGrape", 8);
+		FoodMappings.INSTANCE.addPlant("cropPepper", 8);
+		FoodMappings.INSTANCE.addPlant("cropChilipepper", 8);
 		FoodMappings.INSTANCE.addMeat("listAllmeatcooked", 60);
 		FoodMappings.INSTANCE.addMeat("listAllmeatraw", 40);
 		FoodMappings.INSTANCE.addMeat("foodOffal", 10);
@@ -292,6 +297,7 @@ public class FossilFoodMappings {
 		FoodMappings.INSTANCE.addMeat("listAllbeefraw", 40);
 		FoodMappings.INSTANCE.addMeat("listAllbeefcooked", 60);
 		FoodMappings.INSTANCE.addMeat("foodRabbitraw", 10);
+		FoodMappings.INSTANCE.addMeat("nuggetMeat", 8);
 		FoodMappings.INSTANCE.addMeat("foodRabbitcooked", 15);
 		FoodMappings.INSTANCE.addMeat("listAllturkeyraw", 15);
 		FoodMappings.INSTANCE.addMeat("listAllturkeycooked", 20);
@@ -300,5 +306,6 @@ public class FossilFoodMappings {
 		FoodMappings.INSTANCE.addMeat("foodFrograw", 15);
 		FoodMappings.INSTANCE.addMeat("foodFrogcooked", 25);
 		FoodMappings.INSTANCE.addEgg("listAllegg", 7);
+		FoodMappings.INSTANCE.addEgg("egg", 7);
 	}
 }
