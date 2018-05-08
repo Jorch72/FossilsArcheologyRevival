@@ -23,8 +23,8 @@ public class SkullBlock extends BlockHorizontal implements DefaultRenderedItem {
         this.isActive = isActive;
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         this.setCreativeTab(FATabRegistry.BLOCKS);
-        this.setUnlocalizedName(isActive ? "skullLantern" : "skullBlock");
-        this.setRegistryName(isActive ? "skullLantern" : "skullBlock");
+        this.setUnlocalizedName(isActive ? "skull_lantern" : "skull_block");
+        this.setRegistryName(isActive ? "skull_lantern" : "skull_block");
     }
 
     public IBlockState withRotation(IBlockState state, Rotation rot) {
