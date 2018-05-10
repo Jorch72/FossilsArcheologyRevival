@@ -1,6 +1,7 @@
 package fossilsarcheology.server.recipe;
 
 import fossilsarcheology.server.item.FAItemRegistry;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
@@ -105,5 +106,6 @@ public class FARecipeRegistry {
     */
 		FAItemRegistry.ANCIENT_HELMET_MATERIAL.setRepairItem(new ItemStack(FAItemRegistry.SCARAB_GEM));
 		FAItemRegistry.SCARAB_MATERIAL.setRepairItem(new ItemStack(FAItemRegistry.SCARAB_GEM));
+		FAItemRegistry.BONE.setRepairItem(new ItemStack(Items.BONE));
 	}
 }
