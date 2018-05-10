@@ -172,6 +172,7 @@ tile.sifter.name=Sifter
 tile.sifterActive.name=Sifter
 tile.bubble_blower.name=Bubble Blower
 tile.feeder.name=Feeder
+tile.feederActive.name=Feeder
 tile.iced_stone.name=Iced Stone
 tile.strong_glass.name=Strong Glass
 tile.ancient_glass.name=Ancient Glass
