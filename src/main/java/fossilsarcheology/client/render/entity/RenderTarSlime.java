@@ -1,5 +1,6 @@
 package fossilsarcheology.client.render.entity;
 
+import fossilsarcheology.Revival;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.RenderSlime;
 import net.minecraft.entity.monster.EntitySlime;
@@ -13,6 +14,6 @@ public class RenderTarSlime extends RenderSlime {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntitySlime entity) {
-		return new ResourceLocation("fossil:textures/model/tar_slime.png");
+		return new ResourceLocation(Revival.MODID, "textures/model/tar_slime.png");
 	}
 }

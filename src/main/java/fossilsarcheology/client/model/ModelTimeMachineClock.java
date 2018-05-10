@@ -2,9 +2,9 @@ package fossilsarcheology.client.model;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
-import org.lwjgl.opengl.GL11;
 
 public class ModelTimeMachineClock extends ModelBase {
 	ModelRenderer H = (new ModelRenderer(this, 0, 5)).setTextureSize(64, 32);
@@ -58,27 +58,27 @@ public class ModelTimeMachineClock extends ModelBase {
 		this.C31.mirror = true;
 	}
 
-	public void renderItem(float var7, float worldTime) {
-		this.axie.render(var7);
-		this.C.render(var7);
-		GL11.glPushMatrix();
-		GL11.glRotatef(worldTime * -1F, 0, 0, 1);
-		this.H.render(var7);
-		GL11.glPopMatrix();
-		GL11.glPushMatrix();
-		GL11.glRotatef(worldTime * 1F, 0, 0, 1);
-		this.M.render(var7);
-		GL11.glPopMatrix();
-		GL11.glPushMatrix();
-		GL11.glRotatef(worldTime, 0, 0, 1);
-		this.C21.render(var7);
-		this.C31.render(var7);
-		GL11.glPopMatrix();
-		GL11.glPushMatrix();
-		GL11.glRotatef(-1 * worldTime, 0, 0, 1);
-		this.C2.render(var7);
-		this.C3.render(var7);
-		GL11.glPopMatrix();
+	public void renderItem(float scale, float worldTime) {
+		this.axie.render(scale);
+		this.C.render(scale);
+		GlStateManager.pushMatrix();
+		GlStateManager.rotate(worldTime * -1F, 0, 0, 1);
+		this.H.render(scale);
+		GlStateManager.popMatrix();
+		GlStateManager.pushMatrix();
+		GlStateManager.rotate(worldTime * 1F, 0, 0, 1);
+		this.M.render(scale);
+		GlStateManager.popMatrix();
+		GlStateManager.pushMatrix();
+		GlStateManager.rotate(worldTime, 0, 0, 1);
+		this.C21.render(scale);
+		this.C31.render(scale);
+		GlStateManager.popMatrix();
+		GlStateManager.pushMatrix();
+		GlStateManager.rotate(-1 * worldTime, 0, 0, 1);
+		this.C2.render(scale);
+		this.C3.render(scale);
+		GlStateManager.popMatrix();
 	}
 
 	@Override

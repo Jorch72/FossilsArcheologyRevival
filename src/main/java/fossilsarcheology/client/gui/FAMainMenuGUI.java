@@ -9,6 +9,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiLabel;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.renderer.BufferBuilder;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
@@ -29,7 +30,7 @@ import java.util.Random;
 @SideOnly(Side.CLIENT)
 public class FAMainMenuGUI extends GuiMainMenu {
 	public static final int LAYER_COUNT = 2;
-	public static final ResourceLocation splash = new ResourceLocation("fossil:splashes.txt");
+	public static final ResourceLocation splash = new ResourceLocation(Revival.MODID, "splashes.txt");
 	private ResourceLocation[] layerTextures = new ResourceLocation[FAMainMenuGUI.LAYER_COUNT];
 	private int layerTick;
 	private int backAdd;
@@ -73,11 +74,11 @@ public class FAMainMenuGUI extends GuiMainMenu {
 	}
 
 	@Override
-	public void drawCenteredString(FontRenderer fontRenderer, String sting, int x, int y, int color) {
-		if (sting.equals(splashText)) {
-			fontRenderer.drawStringWithShadow(sting, x - fontRenderer.getStringWidth(sting) / 2, y, 0XF1E961);
+	public void drawCenteredString(FontRenderer fontRenderer, String string, int x, int y, int color) {
+		if (string.equals(this.splashText)) {
+			fontRenderer.drawStringWithShadow(string, x - fontRenderer.getStringWidth(string) / 2, y, 0xF1E961);
 		} else {
-			fontRenderer.drawStringWithShadow(sting, x - fontRenderer.getStringWidth(sting) / 2, y, color);
+			fontRenderer.drawStringWithShadow(string, x - fontRenderer.getStringWidth(string) / 2, y, color);
 		}
 	}
 
@@ -99,34 +100,34 @@ public class FAMainMenuGUI extends GuiMainMenu {
 
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-		GL11.glEnable(GL11.GL_TEXTURE_2D);
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		GL11.glEnable(GL11.GL_BLEND);
+		GlStateManager.enableTexture2D();
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		GlStateManager.enableBlend();
 		for (int i = 0; i < this.layerTextures.length; i++) {
 			ResourceLocation layerTexture = this.layerTextures[i];
 			this.mc.getTextureManager().bindTexture(layerTexture);
-			drawTexturedModalRect(0, 0, (i == 1 ? this.backAdd : this.frontAdd) + ((this.layerTick + partialTicks) / (float) (this.layerTextures.length - i)) + (float) (i + 1) + 2048 * i / 4.0F, 0, this.width, this.height, 2048 / (this.layerTextures.length - i) * (this.height / 128.0F), this.height, this.zLevel);
+			this.drawTexturedModalRect(0, 0, (i == 1 ? this.backAdd : this.frontAdd) + ((this.layerTick + partialTicks) / (float) (this.layerTextures.length - i)) + (float) (i + 1) + 2048 * i / 4.0F, 0, this.width, this.height, 2048 / (this.layerTextures.length - i) * (this.height / 128.0F), this.height, this.zLevel);
 			// Gui.drawRect(0, 0, this.width, this.height, 0x50000000);
-			GL11.glEnable(GL11.GL_TEXTURE_2D);
-			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-			GL11.glEnable(GL11.GL_BLEND);
+			GlStateManager.enableTexture2D();
+			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+			GlStateManager.enableBlend();
 		}
 
 		this.fontRenderer.drawStringWithShadow("Fossils & Archeology Revival " + ChatFormatting.RED + Revival.RELEASE_TYPE.getBranding(), 2, this.height - 10, 0xFFFFFFFF);
 
-		GL11.glPushMatrix();
-		GL11.glTranslatef(0.0F, MathHelper.sin(((float) this.layerTick + partialTicks) / 16.0F) * 4.0F, 0.0F);
+		GlStateManager.pushMatrix();
+		GlStateManager.translate(0.0F, MathHelper.sin(((float) this.layerTick + partialTicks) / 16.0F) * 4.0F, 0.0F);
 		this.mc.getTextureManager().bindTexture(GuiMainMenu.MINECRAFT_TITLE_TEXTURES);
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		this.drawTexturedModalRect(this.width / 2 - 274 / 2, 30, 0, 0, 155, 44);
 		this.drawTexturedModalRect(this.width / 2 - 274 / 2 + 155, 30, 0, 45, 155, 44);
-		GL11.glTranslatef((float) (this.width / 2 + 90), 70.0F, 0.0F);
-		GL11.glRotatef(-20.0F, 0.0F, 0.0F, 1.0F);
+		GlStateManager.translate((float) (this.width / 2 + 90), 70.0F, 0.0F);
+		GlStateManager.rotate(-20.0F, 0.0F, 0.0F, 1.0F);
 		float f1 = 1.8F - MathHelper.abs(MathHelper.sin((float) (Minecraft.getSystemTime() % 1000L) / 1000.0F * (float) Math.PI * 2.0F) * 0.1F);
 		f1 = f1 * 100.0F / (float) (this.fontRenderer.getStringWidth(this.splashText) + 32);
-		GL11.glScalef(f1, f1, f1);
+		GlStateManager.scale(f1, f1, f1);
 		this.drawCenteredString(this.fontRenderer, this.splashText, 0, -8, 0xFFFFFF);
-		GL11.glPopMatrix();
+		GlStateManager.popMatrix();
 
 		ForgeHooksClient.renderMainMenu(this, this.fontRenderer, this.width, this.height, "");
 		String s1 = "Copyright Mojang AB. Do not distribute!";
@@ -145,12 +146,12 @@ public class FAMainMenuGUI extends GuiMainMenu {
 		float f = 1.0F / (float) textureWidth;
 		float f1 = 1.0F / (float) textureHeight;
 		Tessellator tessellator = Tessellator.getInstance();
-		BufferBuilder vertexbuffer = tessellator.getBuffer();
-		vertexbuffer.begin(7, DefaultVertexFormats.POSITION_TEX);
-		vertexbuffer.pos((double) x, (double) (y + height), zLevel).tex((double) (u * f), (double) ((v + (float) height) * f1)).endVertex();
-		vertexbuffer.pos((double) (x + width), (double) (y + height), zLevel).tex((double) ((u + (float) width) * f), (double) ((v + (float) height) * f1)).endVertex();
-		vertexbuffer.pos((double) (x + width), (double) y, zLevel).tex((double) ((u + (float) width) * f), (double) (v * f1)).endVertex();
-		vertexbuffer.pos((double) x, (double) y, zLevel).tex((double) (u * f), (double) (v * f1)).endVertex();
+		BufferBuilder builder = tessellator.getBuffer();
+		builder.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
+		builder.pos(x, y + height, zLevel).tex(u * f, (v + (float) height) * f1).endVertex();
+		builder.pos(x + width, y + height, zLevel).tex((u + (float) width) * f, (v + (float) height) * f1).endVertex();
+		builder.pos(x + width, y, zLevel).tex((u + (float) width) * f, v * f1).endVertex();
+		builder.pos(x, y, zLevel).tex(u * f, v * f1).endVertex();
 		tessellator.draw();
 	}
 }

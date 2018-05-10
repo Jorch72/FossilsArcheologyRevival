@@ -1,5 +1,6 @@
 package fossilsarcheology.client.render.entity;
 
+import fossilsarcheology.Revival;
 import fossilsarcheology.server.entity.monster.EntitySentryPigman;
 import net.minecraft.client.model.ModelZombie;
 import net.minecraft.client.renderer.entity.RenderBiped;
@@ -14,7 +15,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderSentryPigman extends RenderBiped {
-	private static final ResourceLocation skeletonTextures = new ResourceLocation("fossil:textures/model/sentryPigman.png");
+	private static final ResourceLocation skeletonTextures = new ResourceLocation(Revival.MODID, "textures/model/sentryPigman.png");
 
 	public RenderSentryPigman(RenderManager renderManagerIn) {
 		super(renderManagerIn, new ModelZombie(), 0.5F);

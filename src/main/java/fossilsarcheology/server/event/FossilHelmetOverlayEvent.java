@@ -1,5 +1,6 @@
 package fossilsarcheology.server.event;
 
+import fossilsarcheology.Revival;
 import fossilsarcheology.server.item.FAItemRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -16,8 +17,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class FossilHelmetOverlayEvent {
 
-	private static final ResourceLocation ANCIENT_HELMET = new ResourceLocation("fossil:textures/gui/ancienthelmetblur.png");
-	private static final ResourceLocation SKULL_HELMET = new ResourceLocation("fossil:textures/gui/skullhelmetblur.png");
+	private static final ResourceLocation ANCIENT_HELMET = new ResourceLocation(Revival.MODID, "textures/gui/ancienthelmetblur.png");
+	private static final ResourceLocation SKULL_HELMET = new ResourceLocation(Revival.MODID, "textures/gui/skullhelmetblur.png");
 	private Minecraft mc;
 
 	public FossilHelmetOverlayEvent() {

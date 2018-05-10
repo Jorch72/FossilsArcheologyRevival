@@ -60,7 +60,7 @@ public class RenderingHandler {
 		RenderingRegistry.registerEntityRenderingHandler(EntityAnubite.class, new RenderAnubite(MINECRAFT.getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntitySentryPigman.class, new RenderSentryPigman(MINECRAFT.getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityTarSlime.class, new RenderTarSlime(MINECRAFT.getRenderManager()));
-		RenderingRegistry.registerEntityRenderingHandler(EntityAnu.class, new RenderPigBoss(MINECRAFT.getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityAnu.class, new RenderAnu(MINECRAFT.getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityDinosaurEgg.class, new RenderDinoEgg(MINECRAFT.getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityBirdEgg.class, new RenderBirdEgg(MINECRAFT.getRenderManager(), MINECRAFT.getRenderItem()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityToyBall.class, new RenderToyBall(MINECRAFT.getRenderManager()));
@@ -78,7 +78,7 @@ public class RenderingHandler {
 		RenderingRegistry.registerEntityRenderingHandler(EntityBrachiosaurus.class, new RenderPrehistoric(new ModelBrachiosaurus()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityMammoth.class, new RenderPrehistoric(new ModelMammoth()));
 		RenderingRegistry.registerEntityRenderingHandler(EntitySpinosaurus.class, new RenderPrehistoric(new ModelSpinosaurus()));
-		RenderingRegistry.registerEntityRenderingHandler(EntityCompsognathus.class, new RenderGlowingPrehistoric(new ModelCompsognathus(), new ResourceLocation("fossil:textures/mob/compsognathus/compsognathus_overlay.png")));
+		RenderingRegistry.registerEntityRenderingHandler(EntityCompsognathus.class, new RenderGlowingPrehistoric(new ModelCompsognathus(), new ResourceLocation(Revival.MODID, "textures/mob/compsognathus/compsognathus_overlay.png")));
 		RenderingRegistry.registerEntityRenderingHandler(EntityDodo.class, new RenderPrehistoric(new ModelDodo()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityAnkylosaurus.class, new RenderPrehistoric(new ModelAnkylosaurus()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityPachycephalosaurus.class, new RenderPrehistoric(new ModelPachycephalosaurus()));

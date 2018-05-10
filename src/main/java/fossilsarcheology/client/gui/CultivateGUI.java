@@ -1,20 +1,21 @@
 package fossilsarcheology.client.gui;
 
+import fossilsarcheology.Revival;
 import fossilsarcheology.server.block.entity.TileEntityCultivate;
 import fossilsarcheology.server.container.CultivateContainer;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
-import org.lwjgl.opengl.GL11;
 
 public class CultivateGUI extends GuiContainer {
-	private static final ResourceLocation loc = new ResourceLocation("fossil:textures/gui/cultivate.png");
+	private static final ResourceLocation loc = new ResourceLocation(Revival.MODID, "textures/gui/cultivate.png");
 	private TileEntityCultivate cultivateInventory;
 
 	public CultivateGUI(InventoryPlayer playerInventory, TileEntityCultivate tile) {
 		super(new CultivateContainer(playerInventory, tile));
-		this.cultivateInventory = (TileEntityCultivate) tile;
+		this.cultivateInventory = tile;
 	}
 
 	@Override
@@ -27,7 +28,7 @@ public class CultivateGUI extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		mc.getTextureManager().bindTexture(loc);
 		int drawX = (this.width - this.xSize) / 2;
 		int drawY = (this.height - this.ySize) / 2;

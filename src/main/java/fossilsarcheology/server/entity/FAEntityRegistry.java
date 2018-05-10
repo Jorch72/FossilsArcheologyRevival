@@ -78,10 +78,10 @@ public class FAEntityRegistry {
 	}
 
 	public static void registerEntity(Class<? extends Entity> entityClass, String name, int id) {
-		EntityRegistry.registerModEntity(new ResourceLocation("fossil:" + name), entityClass, name, id, Revival.INSTANCE, 64, 1, true);
+		EntityRegistry.registerModEntity(new ResourceLocation(Revival.MODID, "" + name), entityClass, name, id, Revival.INSTANCE, 64, 1, true);
 	}
 
 	public static void registerSpawnable(Class<? extends Entity> entityClass, String name, int id, int mainColor, int subColor) {
-		EntityRegistry.registerModEntity(new ResourceLocation("fossil:" + name), entityClass, name, id, Revival.INSTANCE, 64, 1, true, mainColor, subColor);
+		EntityRegistry.registerModEntity(new ResourceLocation(Revival.MODID, "" + name), entityClass, name, id, Revival.INSTANCE, 64, 1, true, mainColor, subColor);
 	}
 }

@@ -1,32 +1,34 @@
 package fossilsarcheology.client.gui;
 
+import fossilsarcheology.Revival;
 import fossilsarcheology.server.block.entity.TileEntityWorktable;
 import fossilsarcheology.server.container.WorktableContainer;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
-import org.lwjgl.opengl.GL11;
 
 public class WorktableGUI extends GuiContainer {
-	private static final ResourceLocation loc = new ResourceLocation("fossil:textures/gui/workbench.png");
+	private static final ResourceLocation loc = new ResourceLocation(Revival.MODID, "textures/gui/workbench.png");
 	private TileEntityWorktable tile;
 
 	public WorktableGUI(InventoryPlayer playerInventory, TileEntityWorktable tile) {
 		super(new WorktableContainer(playerInventory, tile));
-		this.tile = (TileEntityWorktable) tile;
+		this.tile = tile;
 	}
 
-	protected void drawGuiContainerForegroundLayer() {
+	@Override
+	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 		String customName = this.tile.getName();
-		this.fontRenderer.drawString(I18n.format(customName), 30, 6, 4210752);
-		this.fontRenderer.drawString(I18n.format("container.inventory"), 8, this.ySize - 96 + 2, 4210752);
+		this.fontRenderer.drawString(I18n.format(customName), 30, 6, 0x404040);
+		this.fontRenderer.drawString(I18n.format("container.inventory"), 8, this.ySize - 96 + 2, 0x404040);
 	}
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		mc.getTextureManager().bindTexture(loc);
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		this.mc.getTextureManager().bindTexture(loc);
 		int centerX = (this.width - this.xSize) / 2;
 		int centerY = (this.height - this.ySize) / 2;
 		this.drawTexturedModalRect(centerX, centerY, 0, 0, this.xSize, this.ySize);
