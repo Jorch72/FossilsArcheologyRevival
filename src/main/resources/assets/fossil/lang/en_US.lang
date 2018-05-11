@@ -103,6 +103,7 @@ tile.volcanic_brick.name=Volcanic Brick
 tile.volcanic_rock.name=Volcanic Rock
 
 tile.analyzer.name=Analyzer
+tile.analyzer_active.name=Analyzer
 
 # Entities
 
@@ -165,11 +166,11 @@ entity.fossil.toyscratchingpost.name=Scratching Post
 tile.skull_block.name=Skull Block
 tile.skull_lantern.name=Skull Lantern
 tile.cultivate.name=Culture Vat
-tile.cultivateActive.name=Culture Vat
+tile.cultivate_active.name=Culture Vat
 tile.worktable.name=Archeology Workbench
-tile.worktableActive.name=Archeology Workbench
+tile.worktable_active.name=Archeology Workbench
 tile.sifter.name=Sifter
-tile.sifterActive.name=Sifter
+tile.sifter_active.name=Sifter
 tile.bubble_blower.name=Bubble Blower
 tile.feeder.name=Feeder
 tile.feederActive.name=Feeder

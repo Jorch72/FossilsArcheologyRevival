@@ -39,7 +39,7 @@ public class SifterBlock extends BlockContainer implements DefaultRenderedItem, 
 		this.setSoundType(SoundType.METAL);
 		this.isActive = isActive;
 		if (isActive) {
-			setUnlocalizedName("sifterActive");
+			setUnlocalizedName("sifter_active");
 		} else {
 			setUnlocalizedName("sifter");
 			setCreativeTab(FATabRegistry.BLOCKS);
