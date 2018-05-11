@@ -7,8 +7,8 @@
   ],
   "key": {
     "Z": {
-      "item": "minecraft:leather",
-      "data": 0
+      "type": "forge:ore_dict",
+      "ore": "leather"
     },
     "Y": {
       "item": "minecraft:redstone",

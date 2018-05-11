@@ -2,16 +2,16 @@
   "type": "forge:ore_shapeless",
   "ingredients": [
     {
-      "item": "minecraft:bucket",
+      "item": "minecraft:book",
       "data": 0
     },
     {
-      "item": "minecraft:chicken",
+      "item": "fossil:biofossil",
       "data": 0
     }
   ],
   "result": {
-    "item": "fossil:raw_chicken_soup",
+    "item": "fossil:dinopedia",
     "data": 0,
     "count": 1
   }
