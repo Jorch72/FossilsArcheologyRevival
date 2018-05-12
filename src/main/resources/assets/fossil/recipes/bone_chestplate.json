@@ -17,7 +17,7 @@
     "S": {
       "type": "forge:ore_dict",
       "ore": "dinosaurVertebrae"
-    }		
+    }
   },
   "result": {
     "item": "fossil:skull_chestplate",
