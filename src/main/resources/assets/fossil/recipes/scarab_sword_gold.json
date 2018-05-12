@@ -3,7 +3,7 @@
   "ingredients": [
     {
       "item": "minecraft:golden_sword",
-      "data": 32767
+      "data": 0
     },
     {
       "item": "fossil:scarab_gem",
