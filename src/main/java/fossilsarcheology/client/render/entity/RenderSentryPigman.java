@@ -7,15 +7,13 @@ import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
 import net.minecraft.client.renderer.entity.layers.LayerHeldItem;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class RenderSentryPigman extends RenderBiped {
-	private static final ResourceLocation skeletonTextures = new ResourceLocation(Revival.MODID, "textures/model/sentryPigman.png");
+public class RenderSentryPigman extends RenderBiped<EntitySentryPigman> {
+	private static final ResourceLocation TEXTURE = new ResourceLocation(Revival.MODID, "textures/model/sentry_pigman.png");
 
 	public RenderSentryPigman(RenderManager renderManagerIn) {
 		super(renderManagerIn, new ModelZombie(), 0.5F);
@@ -29,17 +27,8 @@ public class RenderSentryPigman extends RenderBiped {
 		});
 	}
 
+	@Override
 	protected ResourceLocation getEntityTexture(EntitySentryPigman mob) {
-		return skeletonTextures;
-	}
-
-	@Override
-	protected ResourceLocation getEntityTexture(EntityLiving mob) {
-		return this.getEntityTexture((EntitySentryPigman) mob);
-	}
-
-	@Override
-	protected ResourceLocation getEntityTexture(Entity mob) {
-		return this.getEntityTexture((EntitySentryPigman) mob);
+		return TEXTURE;
 	}
 }

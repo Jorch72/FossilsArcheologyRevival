@@ -119,5 +119,10 @@ public abstract class VaseBlock extends BlockContainer implements BlockEntity, I
                 }
             }
         }
+
+        @Override
+        public int getMetadata(int damage) {
+            return damage;
+        }
     }
 }
