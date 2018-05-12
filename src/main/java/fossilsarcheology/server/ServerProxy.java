@@ -164,7 +164,6 @@ public class ServerProxy implements IGuiHandler {
 		NetworkRegistry.INSTANCE.registerGuiHandler(Revival.INSTANCE, this);
 		FAFluidRegistry.register();
 		FAEntityRegistry.register();
-		FAOreDictRegistry.register();
 		FAWorldRegistry.register();
 
 
@@ -176,6 +175,7 @@ public class ServerProxy implements IGuiHandler {
 		MinecraftForge.EVENT_BUS.register(new FossilBonemealEvent());
 		MinecraftForge.EVENT_BUS.register(new FossilLivingEvent());
 		GameRegistry.registerWorldGenerator(new FAWorldGenerator(), 0);
+		FAOreDictRegistry.init();
 	}
 
 	public void calculateChainBuffer(EntityFishBase entity) {

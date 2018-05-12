@@ -5,6 +5,7 @@ import fossilsarcheology.server.block.FABlockRegistry;
 import fossilsarcheology.server.config.FossilConfig;
 import fossilsarcheology.server.item.FAItemRegistry;
 import fossilsarcheology.server.message.*;
+import fossilsarcheology.server.recipe.FAOreDictRegistry;
 import fossilsarcheology.server.util.ReleaseType;
 import net.ilexiconn.llibrary.server.config.Config;
 import net.ilexiconn.llibrary.server.network.NetworkWrapper;
@@ -53,6 +54,7 @@ public class Revival {
 		RevivalAspectRegistry.register();
 		PROXY.onInit();
 		FABlockRegistry.init();
+		FAOreDictRegistry.init();
 	}
 
 	@Mod.EventHandler

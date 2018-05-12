@@ -9,7 +9,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class FAOreDictRegistry {
 
-	public static void register() {
+	public static void init() {
 		OreDictionary.registerOre("plankWood", new ItemStack(FABlockRegistry.PALM_PLANKS));
 		OreDictionary.registerOre("plankWood", new ItemStack(FABlockRegistry.ANCIENT_WOOD));
 		OreDictionary.registerOre("logWood", new ItemStack(FABlockRegistry.PALM_LOG));
