@@ -1,6 +1,7 @@
 package fossilsarcheology.server.block;
 
 import fossilsarcheology.Revival;
+import fossilsarcheology.server.recipe.FARecipeRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.util.ResourceLocation;
@@ -169,6 +170,10 @@ public class FABlockRegistry {
 	public static final ShortFlowerBlock FLORISSANTIA_FLOWER = new ShortFlowerBlock("florissantia");
 	@GameRegistry.ObjectHolder(Revival.MODID + ":ependra")
 	public static final ShortFlowerBlock EPENDRA_FLOWER = new ShortFlowerBlock("ependra");
+
+	public static void init() {
+		FARecipeRegistry.blocks();
+	}
 
 
 	public static void registerBlock(RegistryEvent.Register<Block> event, Block block) {

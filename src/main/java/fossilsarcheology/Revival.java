@@ -1,7 +1,9 @@
 package fossilsarcheology;
 
 import fossilsarcheology.server.ServerProxy;
+import fossilsarcheology.server.block.FABlockRegistry;
 import fossilsarcheology.server.config.FossilConfig;
+import fossilsarcheology.server.item.FAItemRegistry;
 import fossilsarcheology.server.message.*;
 import fossilsarcheology.server.util.ReleaseType;
 import net.ilexiconn.llibrary.server.config.Config;
@@ -50,6 +52,7 @@ public class Revival {
 	public void onInit(FMLInitializationEvent event) {
 		RevivalAspectRegistry.register();
 		PROXY.onInit();
+		FABlockRegistry.init();
 	}
 
 	@Mod.EventHandler

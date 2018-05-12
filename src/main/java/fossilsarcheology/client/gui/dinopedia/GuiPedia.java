@@ -284,7 +284,7 @@ public class GuiPedia extends GuiScreen {
 				renderFirstPage((EntityFishBase) Revival.PEDIA_OBJECT);
 			}
 		}
-	    /*
+		/*
          * if (Revival.PEDIA_OBJECT instanceof EntityDinoEgg) { ((EntityDinoEgg)
          * Revival.PEDIA_OBJECT).showPedia(this); } else if (Revival.PEDIA_OBJECT
          * instanceof EntityPregnantCow) { ((EntityPregnantCow)
