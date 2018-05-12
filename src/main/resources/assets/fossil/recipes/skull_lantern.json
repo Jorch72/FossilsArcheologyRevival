@@ -2,17 +2,17 @@
   "type": "forge:ore_shapeless",
   "ingredients": [
     {
-      "item": "minecraft:golden_sword",
+      "item": "minecraft:torch",
       "data": 0
     },
     {
-      "item": "fossil:scarab_gem",
+      "item": "fossil:skull_block",
       "data": 0
     }
   ],
   "result": {
-    "item": "fossil:scarab_sword",
-    "data": 32767,
+    "item": "fossil:skull_lantern",
+    "data": 0,
     "count": 1
   }
 }
