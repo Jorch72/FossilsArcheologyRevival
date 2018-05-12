@@ -5,10 +5,10 @@ import net.minecraft.client.model.ModelRenderer;
 
 public class ModelFigurine extends ModelBase {
 
-	ModelRenderer Body;
-	ModelRenderer Head;
-	ModelRenderer ArmLeft;
-	ModelRenderer ArmRight;
+	final ModelRenderer Body;
+	final ModelRenderer Head;
+	final ModelRenderer ArmLeft;
+	final ModelRenderer ArmRight;
 
 	public ModelFigurine() {
 		textureWidth = 64;

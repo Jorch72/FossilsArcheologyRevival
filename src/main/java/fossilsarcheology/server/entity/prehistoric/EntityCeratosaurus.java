@@ -2,7 +2,15 @@ package fossilsarcheology.server.entity.prehistoric;
 
 import com.google.common.base.Predicate;
 import fossilsarcheology.client.sound.FASoundRegistry;
-import fossilsarcheology.server.entity.ai.*;
+import fossilsarcheology.server.entity.ai.DinoAIEatFeeders;
+import fossilsarcheology.server.entity.ai.DinoAIEatItems;
+import fossilsarcheology.server.entity.ai.DinoAIFollowOwner;
+import fossilsarcheology.server.entity.ai.DinoAIHunt;
+import fossilsarcheology.server.entity.ai.DinoAILookIdle;
+import fossilsarcheology.server.entity.ai.DinoAIRiding;
+import fossilsarcheology.server.entity.ai.DinoAIWander;
+import fossilsarcheology.server.entity.ai.DinoAIWatchClosest;
+import fossilsarcheology.server.entity.ai.DinoMeleeAttackAI;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -18,8 +26,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
-
 public class EntityCeratosaurus extends EntityPrehistoric {
 
 	public EntityCeratosaurus(World world) {
@@ -27,22 +33,17 @@ public class EntityCeratosaurus extends EntityPrehistoric {
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(2, this.aiSit);
 		this.tasks.addTask(3, new DinoAIRiding(this, 1.0F));
-		this.tasks.addTask(4, new DinoAIAttackOnCollide(this, 1.5D, false));
+		this.tasks.addTask(4, new DinoMeleeAttackAI(this, 1.5D, false));
 		this.tasks.addTask(5, new DinoAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
-		this.tasks.addTask(6, new DinoAIEatFeeders(this, 1));
-		this.tasks.addTask(6, new DinoAIEatItems(this, 1));
+		this.tasks.addTask(6, new DinoAIEatFeeders(this));
+		this.tasks.addTask(6, new DinoAIEatItems(this));
 		this.tasks.addTask(7, new DinoAIWander(this, 1.0D));
 		this.tasks.addTask(8, new DinoAIWatchClosest(this, EntityPlayer.class, 8.0F));
 		this.tasks.addTask(8, new DinoAILookIdle(this));
 		this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
-		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, new Predicate<Entity>() {
-			@Override
-			public boolean apply(@Nullable Entity entity) {
-				return entity instanceof EntityLivingBase;
-			}
-		}));
+		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
 		this.setActualSize(1.55F, 1.3F);
 		this.pediaScale = 25F;
 		this.nearByMobsAllowed = 5;
@@ -179,6 +180,7 @@ public class EntityCeratosaurus extends EntityPrehistoric {
 		return false;
 	}
 
+	@Override
 	public int getMaxHunger() {
 		return 100;
 	}

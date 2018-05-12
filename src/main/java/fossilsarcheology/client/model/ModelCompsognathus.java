@@ -10,30 +10,30 @@ import net.minecraft.entity.Entity;
 
 public class ModelCompsognathus extends ModelPrehistoric {
 
-	public AdvancedModelRenderer body;
-	public AdvancedModelRenderer LeftUpperLeg;
-	public AdvancedModelRenderer RightUpperLeg;
-	public AdvancedModelRenderer neck;
-	public AdvancedModelRenderer tail1;
-	public AdvancedModelRenderer RightUpperArm;
-	public AdvancedModelRenderer LeftUpperArm;
-	public AdvancedModelRenderer head;
-	public AdvancedModelRenderer headPivot;
-	public AdvancedModelRenderer headFront;
-	public AdvancedModelRenderer crest;
-	public AdvancedModelRenderer headFront_1;
-	public AdvancedModelRenderer EyeR;
-	public AdvancedModelRenderer EyeL;
-	public AdvancedModelRenderer tail2;
-	public AdvancedModelRenderer RightLowerArm;
-	public AdvancedModelRenderer RightUpperArmWing;
-	public AdvancedModelRenderer LeftLowerArm;
-	public AdvancedModelRenderer LeftUpperArmWing;
-	public AdvancedModelRenderer LeftLowerLeg;
-	public AdvancedModelRenderer LeftFoot;
-	public AdvancedModelRenderer RightLowerLeg;
-	public AdvancedModelRenderer RightFoot;
-	private ModelAnimator animator;
+	public final AdvancedModelRenderer body;
+	public final AdvancedModelRenderer LeftUpperLeg;
+	public final AdvancedModelRenderer RightUpperLeg;
+	public final AdvancedModelRenderer neck;
+	public final AdvancedModelRenderer tail1;
+	public final AdvancedModelRenderer RightUpperArm;
+	public final AdvancedModelRenderer LeftUpperArm;
+	public final AdvancedModelRenderer head;
+	public final AdvancedModelRenderer headPivot;
+	public final AdvancedModelRenderer headFront;
+	public final AdvancedModelRenderer crest;
+	public final AdvancedModelRenderer headFront_1;
+	public final AdvancedModelRenderer EyeR;
+	public final AdvancedModelRenderer EyeL;
+	public final AdvancedModelRenderer tail2;
+	public final AdvancedModelRenderer RightLowerArm;
+	public final AdvancedModelRenderer RightUpperArmWing;
+	public final AdvancedModelRenderer LeftLowerArm;
+	public final AdvancedModelRenderer LeftUpperArmWing;
+	public final AdvancedModelRenderer LeftLowerLeg;
+	public final AdvancedModelRenderer LeftFoot;
+	public final AdvancedModelRenderer RightLowerLeg;
+	public final AdvancedModelRenderer RightFoot;
+	private final ModelAnimator animator;
 
 	public ModelCompsognathus() {
 		this.textureWidth = 64;

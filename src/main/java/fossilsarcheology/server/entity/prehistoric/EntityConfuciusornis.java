@@ -2,8 +2,27 @@ package fossilsarcheology.server.entity.prehistoric;
 
 import com.google.common.base.Predicate;
 import fossilsarcheology.client.sound.FASoundRegistry;
-import fossilsarcheology.server.entity.ai.*;
-import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.*;
+import fossilsarcheology.server.entity.ai.DinoAIEatBlocks;
+import fossilsarcheology.server.entity.ai.DinoAIEatFeeders;
+import fossilsarcheology.server.entity.ai.DinoAIEatItems;
+import fossilsarcheology.server.entity.ai.DinoAIFindAirTarget;
+import fossilsarcheology.server.entity.ai.DinoAIFollowOwner;
+import fossilsarcheology.server.entity.ai.DinoAIHunt;
+import fossilsarcheology.server.entity.ai.DinoAILeapAtTarget;
+import fossilsarcheology.server.entity.ai.DinoAILookIdle;
+import fossilsarcheology.server.entity.ai.DinoAIWander;
+import fossilsarcheology.server.entity.ai.DinoAIWatchClosest;
+import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Activity;
+import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Attacking;
+import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Climbing;
+import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Following;
+import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Jumping;
+import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Moving;
+import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Response;
+import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Stalking;
+import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Taming;
+import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Untaming;
+import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.WaterAbility;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAISwimming;
@@ -14,8 +33,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
-
 public class EntityConfuciusornis extends EntityPrehistoricFlying {
 
 	public EntityConfuciusornis(World world) {
@@ -25,18 +42,13 @@ public class EntityConfuciusornis extends EntityPrehistoricFlying {
 		this.tasks.addTask(3, new DinoAIFindAirTarget(this));
 		this.tasks.addTask(5, new DinoAILeapAtTarget(this));
 		this.tasks.addTask(6, new DinoAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
-		this.tasks.addTask(7, new DinoAIEatBlocks(this, 1));
-		this.tasks.addTask(7, new DinoAIEatFeeders(this, 1));
-		this.tasks.addTask(7, new DinoAIEatItems(this, 1));
+		this.tasks.addTask(7, new DinoAIEatBlocks(this));
+		this.tasks.addTask(7, new DinoAIEatFeeders(this));
+		this.tasks.addTask(7, new DinoAIEatItems(this));
 		this.tasks.addTask(8, new DinoAIWander(this, 1.0D));
 		this.tasks.addTask(9, new DinoAIWatchClosest(this, EntityPlayer.class, 8.0F));
 		this.tasks.addTask(9, new DinoAILookIdle(this));
-		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, new Predicate<Entity>() {
-			@Override
-			public boolean apply(@Nullable Entity entity) {
-				return entity instanceof EntityLivingBase;
-			}
-		}));
+		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
 		this.setActualSize(0.7F, 0.8F);
 		minSize = 0.3F;
 		maxSize = 0.8F;
@@ -125,6 +137,7 @@ public class EntityConfuciusornis extends EntityPrehistoricFlying {
 		return 1;
 	}
 
+	@Override
 	public int getMaxHunger() {
 		return 25;
 	}

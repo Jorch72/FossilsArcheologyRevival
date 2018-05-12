@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class BioFossilItem extends Item implements DefaultRenderedItem {
-	private boolean isTarFossil;
+	private final boolean isTarFossil;
 
 	public BioFossilItem(boolean isTarFossil) {
 		this.maxStackSize = 64;

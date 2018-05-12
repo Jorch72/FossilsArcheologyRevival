@@ -5,22 +5,22 @@ import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelSturgeon extends AdvancedModelBase {
-	public AdvancedModelRenderer Body;
-	public AdvancedModelRenderer Head;
-	public AdvancedModelRenderer Tail;
-	public AdvancedModelRenderer LeftFrontFlipper;
-	public AdvancedModelRenderer RightFrontFlipper;
-	public AdvancedModelRenderer UpperJaw;
-	public AdvancedModelRenderer BottomJaw;
-	public AdvancedModelRenderer Tail2;
-	public AdvancedModelRenderer LeftBackFlipper;
-	public AdvancedModelRenderer RightBackFlipper;
-	public AdvancedModelRenderer Tail3;
-	public AdvancedModelRenderer DorsalFin;
-	public AdvancedModelRenderer VentralFin;
-	public AdvancedModelRenderer MiddleTailFin;
-	public AdvancedModelRenderer UpperTailFin;
-	public AdvancedModelRenderer LowerTailFin;
+	public final AdvancedModelRenderer Body;
+	public final AdvancedModelRenderer Head;
+	public final AdvancedModelRenderer Tail;
+	public final AdvancedModelRenderer LeftFrontFlipper;
+	public final AdvancedModelRenderer RightFrontFlipper;
+	public final AdvancedModelRenderer UpperJaw;
+	public final AdvancedModelRenderer BottomJaw;
+	public final AdvancedModelRenderer Tail2;
+	public final AdvancedModelRenderer LeftBackFlipper;
+	public final AdvancedModelRenderer RightBackFlipper;
+	public final AdvancedModelRenderer Tail3;
+	public final AdvancedModelRenderer DorsalFin;
+	public final AdvancedModelRenderer VentralFin;
+	public final AdvancedModelRenderer MiddleTailFin;
+	public final AdvancedModelRenderer UpperTailFin;
+	public final AdvancedModelRenderer LowerTailFin;
 
 	public ModelSturgeon() {
 		this.textureWidth = 128;

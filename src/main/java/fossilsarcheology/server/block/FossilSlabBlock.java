@@ -25,7 +25,7 @@ import java.util.Random;
 
 public abstract class FossilSlabBlock extends BlockSlab implements DefaultRenderedItem, ISlabItem {
 
-	private Block baseBlock;
+	private final Block baseBlock;
 
 	public FossilSlabBlock(String name, float hardness, float resistance, SoundType soundType, Block baseBlock) {
 		super(Material.ROCK);
@@ -52,16 +52,19 @@ public abstract class FossilSlabBlock extends BlockSlab implements DefaultRender
 		return state.getBlock() instanceof FossilSlabBlock && !((FossilSlabBlock) state.getBlock()).isDouble();
 	}
 
-	@Nullable
+	@Override
+    @Nullable
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return Item.getItemFromBlock(baseBlock);
 	}
 
-	public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
+	@Override
+    public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
 		return new ItemStack(baseBlock);
 	}
 
-	public IBlockState getStateFromMeta(int meta) {
+	@Override
+    public IBlockState getStateFromMeta(int meta) {
 		IBlockState iblockstate = this.getDefaultState();
 		if (!this.isDouble()) {
 			return iblockstate.withProperty(HALF, meta == 0 ? BlockSlab.EnumBlockHalf.BOTTOM : BlockSlab.EnumBlockHalf.TOP);
@@ -70,7 +73,8 @@ public abstract class FossilSlabBlock extends BlockSlab implements DefaultRender
 		}
 	}
 
-	public int getMetaFromState(IBlockState state) {
+	@Override
+    public int getMetaFromState(IBlockState state) {
 		int i = 0;
 
 		if (!this.isDouble() && state.getValue(HALF) == BlockSlab.EnumBlockHalf.TOP) {
@@ -81,8 +85,9 @@ public abstract class FossilSlabBlock extends BlockSlab implements DefaultRender
 
 	}
 
-	protected BlockStateContainer createBlockState() {
-		return this.isDouble() ? super.createBlockState() : new BlockStateContainer(this, new IProperty[]{HALF});
+	@Override
+    protected BlockStateContainer createBlockState() {
+		return this.isDouble() ? super.createBlockState() : new BlockStateContainer(this, HALF);
 	}
 
 	@Override
@@ -100,10 +105,11 @@ public abstract class FossilSlabBlock extends BlockSlab implements DefaultRender
 		return Variant.DEFAULT;
 	}
 
-	public static enum Variant implements IStringSerializable {
+	public enum Variant implements IStringSerializable {
 		DEFAULT;
 
-		public String getName() {
+		@Override
+        public String getName() {
 			return "default";
 		}
 	}
@@ -113,7 +119,8 @@ public abstract class FossilSlabBlock extends BlockSlab implements DefaultRender
 			super(name, hardness, resistance, soundType, baseBlock);
 		}
 
-		public boolean isDouble() {
+		@Override
+        public boolean isDouble() {
 			return true;
 		}
 	}
@@ -123,7 +130,8 @@ public abstract class FossilSlabBlock extends BlockSlab implements DefaultRender
 			super(name, hardness, resistance, soundType, baseBlock);
 		}
 
-		public boolean isDouble() {
+		@Override
+        public boolean isDouble() {
 			return false;
 		}
 
@@ -141,21 +149,24 @@ public abstract class FossilSlabBlock extends BlockSlab implements DefaultRender
 			this.setHasSubtypes(true);
 		}
 
-		public int getMetadata(int damage) {
+		@Override
+        public int getMetadata(int damage) {
 			return damage;
 		}
 
-		public String getUnlocalizedName(ItemStack stack) {
+		@Override
+        public String getUnlocalizedName(ItemStack stack) {
 			return this.singleSlab.getUnlocalizedName(stack.getMetadata());
 		}
 
-		public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		@Override
+        public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 			ItemStack stack = playerIn.getHeldItem(hand);
 			if (stack.getCount() != 0 && playerIn.canPlayerEdit(pos.offset(facing), facing, stack)) {
 				Comparable<?> comparable = this.singleSlab.getTypeForItem(stack);
 				IBlockState iblockstate = worldIn.getBlockState(pos);
 				if (iblockstate.getBlock() == this.singleSlab) {
-					BlockSlab.EnumBlockHalf blockslab$enumblockhalf = (BlockSlab.EnumBlockHalf) iblockstate.getValue(BlockSlab.HALF);
+					BlockSlab.EnumBlockHalf blockslab$enumblockhalf = iblockstate.getValue(BlockSlab.HALF);
 					if ((facing == EnumFacing.UP && blockslab$enumblockhalf == BlockSlab.EnumBlockHalf.BOTTOM || facing == EnumFacing.DOWN && blockslab$enumblockhalf == BlockSlab.EnumBlockHalf.TOP)) {
 						IBlockState iblockstate1 = this.doubleSlab.getDefaultState();
 						AxisAlignedBB axisalignedbb = iblockstate1.getCollisionBoundingBox(worldIn, pos);
@@ -173,7 +184,8 @@ public abstract class FossilSlabBlock extends BlockSlab implements DefaultRender
 			}
 		}
 
-		@SideOnly(Side.CLIENT)
+		@Override
+        @SideOnly(Side.CLIENT)
 		public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side, EntityPlayer player, ItemStack stack) {
 			BlockPos blockpos = pos;
 			IBlockState iblockstate = worldIn.getBlockState(pos);
@@ -186,7 +198,7 @@ public abstract class FossilSlabBlock extends BlockSlab implements DefaultRender
 			}
 			pos = pos.offset(side);
 			IBlockState iblockstate1 = worldIn.getBlockState(pos);
-			return iblockstate1.getBlock() == this.singleSlab ? true : super.canPlaceBlockOnSide(worldIn, blockpos, side, player, stack);
+			return iblockstate1.getBlock() == this.singleSlab || super.canPlaceBlockOnSide(worldIn, blockpos, side, player, stack);
 		}
 
 		private boolean tryPlace(EntityPlayer player, ItemStack stack, World worldIn, BlockPos pos, Object itemSlabType) {

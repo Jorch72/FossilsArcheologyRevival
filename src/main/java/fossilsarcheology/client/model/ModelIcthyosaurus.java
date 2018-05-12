@@ -10,23 +10,23 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelIcthyosaurus extends ModelPrehistoric {
-	public AdvancedModelRenderer leftHindFlipper;
-	public AdvancedModelRenderer rightHindFlipper;
-	public AdvancedModelRenderer leftFrontFlipper;
-	public AdvancedModelRenderer rightFrontFlipper;
-	public AdvancedModelRenderer upperBody;
-	public AdvancedModelRenderer lowerBody;
-	public AdvancedModelRenderer neck;
-	public AdvancedModelRenderer upperTailFin;
-	public AdvancedModelRenderer tail1;
-	public AdvancedModelRenderer tail2;
-	public AdvancedModelRenderer lowerTailFin;
-	public AdvancedModelRenderer upperTailFin_1;
-	public AdvancedModelRenderer upperTailFin2;
-	public AdvancedModelRenderer head;
-	public AdvancedModelRenderer upperJaw;
-	public AdvancedModelRenderer lowerJaw;
-	private ModelAnimator animator;
+	public final AdvancedModelRenderer leftHindFlipper;
+	public final AdvancedModelRenderer rightHindFlipper;
+	public final AdvancedModelRenderer leftFrontFlipper;
+	public final AdvancedModelRenderer rightFrontFlipper;
+	public final AdvancedModelRenderer upperBody;
+	public final AdvancedModelRenderer lowerBody;
+	public final AdvancedModelRenderer neck;
+	public final AdvancedModelRenderer upperTailFin;
+	public final AdvancedModelRenderer tail1;
+	public final AdvancedModelRenderer tail2;
+	public final AdvancedModelRenderer lowerTailFin;
+	public final AdvancedModelRenderer upperTailFin_1;
+	public final AdvancedModelRenderer upperTailFin2;
+	public final AdvancedModelRenderer head;
+	public final AdvancedModelRenderer upperJaw;
+	public final AdvancedModelRenderer lowerJaw;
+	private final ModelAnimator animator;
 
 	public ModelIcthyosaurus() {
 		this.textureWidth = 128;

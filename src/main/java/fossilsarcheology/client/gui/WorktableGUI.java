@@ -11,7 +11,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class WorktableGUI extends GuiContainer {
 	private static final ResourceLocation loc = new ResourceLocation(Revival.MODID, "textures/gui/workbench.png");
-	private TileEntityWorktable tile;
+	private final TileEntityWorktable tile;
 
 	public WorktableGUI(InventoryPlayer playerInventory, TileEntityWorktable tile) {
 		super(new WorktableContainer(playerInventory, tile));

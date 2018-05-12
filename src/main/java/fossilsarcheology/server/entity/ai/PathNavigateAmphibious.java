@@ -19,7 +19,8 @@ public class PathNavigateAmphibious extends PathNavigate {
 		this.nodeProcessor.setCanSwim(true);
 	}
 
-	protected PathFinder getPathFinder() {
+	@Override
+    protected PathFinder getPathFinder() {
 		this.nodeProcessor = new WalkNodeProcessor();
 		this.nodeProcessor.setCanEnterDoors(true);
 		this.nodeProcessor.setCanSwim(true);
@@ -29,24 +30,26 @@ public class PathNavigateAmphibious extends PathNavigate {
 	/**
 	 * If on ground or swimming and can swim
 	 */
-	protected boolean canNavigate() {
+	@Override
+    protected boolean canNavigate() {
 		return this.entity.onGround || this.getCanSwim() && this.isInLiquid() || this.entity.isRiding();
 	}
 
-	protected Vec3d getEntityPosition() {
-		return new Vec3d(this.entity.posX, (double) this.entity.posY, this.entity.posZ);
+	@Override
+    protected Vec3d getEntityPosition() {
+		return new Vec3d(this.entity.posX, this.entity.posY, this.entity.posZ);
 	}
 
 	/**
 	 * Returns path to given BlockPos
 	 */
-	public Path getPathToPos(BlockPos pos) {
+	@Override
+    public Path getPathToPos(BlockPos pos) {
 		if (this.world.getBlockState(pos).getMaterial() == Material.AIR) {
 			BlockPos blockpos;
 
 			for (blockpos = pos.down(); blockpos.getY() > 0 && this.world.getBlockState(blockpos).getMaterial() == Material.AIR; blockpos = blockpos.down()) {
-				;
-			}
+            }
 
 			if (blockpos.getY() > 0) {
 				return super.getPathToPos(blockpos.up());
@@ -65,8 +68,7 @@ public class PathNavigateAmphibious extends PathNavigate {
 			BlockPos blockpos1;
 
 			for (blockpos1 = pos.up(); blockpos1.getY() < this.world.getHeight() && this.world.getBlockState(blockpos1).getMaterial().isSolid(); blockpos1 = blockpos1.up()) {
-				;
-			}
+            }
 
 			return super.getPathToPos(blockpos1);
 		}
@@ -75,7 +77,8 @@ public class PathNavigateAmphibious extends PathNavigate {
 	/**
 	 * Returns the path to the given EntityLiving. Args : entity
 	 */
-	public Path getPathToEntityLiving(Entity entityIn) {
+	@Override
+    public Path getPathToEntityLiving(Entity entityIn) {
 		return this.getPathToPos(new BlockPos(entityIn));
 	}
 
@@ -107,7 +110,8 @@ public class PathNavigateAmphibious extends PathNavigate {
 	/**
 	 * Trims path data from the end to the first sun covered block
 	 */
-	protected void removeSunnyPath() {
+	@Override
+    protected void removeSunnyPath() {
 		super.removeSunnyPath();
 
 		if (this.shouldAvoidSun) {
@@ -129,7 +133,8 @@ public class PathNavigateAmphibious extends PathNavigate {
 	/**
 	 * Checks if the specified entity can safely walk to the specified location.
 	 */
-	protected boolean isDirectPathBetweenPoints(Vec3d posVec31, Vec3d posVec32, int sizeX, int sizeY, int sizeZ) {
+	@Override
+    protected boolean isDirectPathBetweenPoints(Vec3d posVec31, Vec3d posVec32, int sizeX, int sizeY, int sizeZ) {
 		int i = MathHelper.floor(posVec31.x);
 		int j = MathHelper.floor(posVec31.z);
 		double d0 = posVec32.x - posVec31.x;

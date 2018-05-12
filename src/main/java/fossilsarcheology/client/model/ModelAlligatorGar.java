@@ -5,20 +5,20 @@ import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelAlligatorGar extends AdvancedModelBase {
-	public AdvancedModelRenderer Body;
-	public AdvancedModelRenderer Head;
-	public AdvancedModelRenderer Tail;
-	public AdvancedModelRenderer RightFrontFlipper;
-	public AdvancedModelRenderer LeftFrontFlipper;
-	public AdvancedModelRenderer UpperJaw;
-	public AdvancedModelRenderer LowerJaw;
-	public AdvancedModelRenderer Tail2;
-	public AdvancedModelRenderer DorsalFin;
-	public AdvancedModelRenderer RightBackFlipper;
-	public AdvancedModelRenderer LeftBackFlipper;
-	public AdvancedModelRenderer MiddleTailFin;
-	public AdvancedModelRenderer LowerTailFin;
-	public AdvancedModelRenderer UpperTailFin;
+	public final AdvancedModelRenderer Body;
+	public final AdvancedModelRenderer Head;
+	public final AdvancedModelRenderer Tail;
+	public final AdvancedModelRenderer RightFrontFlipper;
+	public final AdvancedModelRenderer LeftFrontFlipper;
+	public final AdvancedModelRenderer UpperJaw;
+	public final AdvancedModelRenderer LowerJaw;
+	public final AdvancedModelRenderer Tail2;
+	public final AdvancedModelRenderer DorsalFin;
+	public final AdvancedModelRenderer RightBackFlipper;
+	public final AdvancedModelRenderer LeftBackFlipper;
+	public final AdvancedModelRenderer MiddleTailFin;
+	public final AdvancedModelRenderer LowerTailFin;
+	public final AdvancedModelRenderer UpperTailFin;
 
 	public ModelAlligatorGar() {
 		this.textureWidth = 128;

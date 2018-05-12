@@ -28,7 +28,7 @@ public class TileEntityTimeMachine extends TileEntity implements IInventory, ISi
 	public float sendingCurrentFacing;
 	public float targetFacingAngle;
 	public boolean playerClosing = false;
-	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(1, ItemStack.EMPTY);
+	private NonNullList<ItemStack> stacks = NonNullList.withSize(1, ItemStack.EMPTY);
 	private int chargeLevel = 0;
 	private int restoringLayer = 0;
 
@@ -66,7 +66,7 @@ public class TileEntityTimeMachine extends TileEntity implements IInventory, ISi
 	@Nullable
 	@Override
 	public ItemStack decrStackSize(int index, int count) {
-		if (this.stacks.get(index) != ItemStack.EMPTY) {
+		if (!this.stacks.get(index).isEmpty()) {
 			ItemStack var3;
 
 			if (this.stacks.get(index).getCount() <= count) {
@@ -107,7 +107,7 @@ public class TileEntityTimeMachine extends TileEntity implements IInventory, ISi
 		super.readFromNBT(var1);
 		NBTTagList var2 = var1.getTagList("Items", 10);
 		this.chargeLevel = var1.getShort("chargeLevel");
-		this.stacks = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
+		this.stacks = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
 		ItemStackHelper.loadAllItems(var1, this.stacks);
 	}
 
@@ -269,7 +269,8 @@ public class TileEntityTimeMachine extends TileEntity implements IInventory, ISi
 		readFromNBT(packet.getNbtCompound());
 	}
 
-	public NBTTagCompound getUpdateTag() {
+	@Override
+    public NBTTagCompound getUpdateTag() {
 		return this.writeToNBT(new NBTTagCompound());
 	}
 

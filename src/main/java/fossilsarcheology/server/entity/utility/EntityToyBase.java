@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 
 public abstract class EntityToyBase extends EntityLiving {
 
-	public int toyBonus;
+	public final int toyBonus;
 
 	public EntityToyBase(World world, int toyBonus) {
 		super(world);
@@ -20,7 +20,8 @@ public abstract class EntityToyBase extends EntityLiving {
 
 	}
 
-	public boolean isAIDisabled() {
+	@Override
+    public boolean isAIDisabled() {
 		return false;
 	}
 
@@ -29,7 +30,8 @@ public abstract class EntityToyBase extends EntityLiving {
 		return false;
 	}
 
-	public boolean attackEntityFrom(DamageSource dmg, float f) {
+	@Override
+    public boolean attackEntityFrom(DamageSource dmg, float f) {
 		if (dmg.getTrueSource() != null) {
 			if (dmg.getTrueSource() instanceof EntityPlayer) {
 				this.playSound(getAttackNoise(), 1, this.getSoundPitch());
@@ -48,7 +50,8 @@ public abstract class EntityToyBase extends EntityLiving {
 		return dmg != DamageSource.OUT_OF_WORLD;
 	}
 
-	public boolean canBreatheUnderwater() {
+	@Override
+    public boolean canBreatheUnderwater() {
 		return true;
 	}
 

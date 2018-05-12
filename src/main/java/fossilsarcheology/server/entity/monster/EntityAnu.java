@@ -12,8 +12,18 @@ import fossilsarcheology.server.item.FAItemRegistry;
 import fossilsarcheology.server.structure.SpikesBlockWorldGen;
 import net.ilexiconn.llibrary.server.entity.EntityPropertiesHandler;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.*;
-import net.minecraft.entity.ai.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.entity.IRangedAttackMob;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAIWander;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.monster.EntityMob;
@@ -42,22 +52,17 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
-import java.util.List;
-
 public class EntityAnu extends EntityMob implements IRangedAttackMob {
 
-	private static final DataParameter<Integer> ATTACK_MODE = EntityDataManager.<Integer>createKey(EntityAnu.class, DataSerializers.VARINT);
+	private static final DataParameter<Integer> ATTACK_MODE = EntityDataManager.createKey(EntityAnu.class, DataSerializers.VARINT);
 	public int allHealth = 600;
-	public int middleHealth = 400;
-	public int finalHealth = 200;
+	public final int middleHealth = 400;
+	public final int finalHealth = 200;
 	// length of song in ticks
-	public int songLength = 4041;
+	public final int songLength = 4041;
 	public int songCounter = 0;
 	public boolean isFlying;
-	private AnuAIAvoidEntity aiFear = new AnuAIAvoidEntity(this, EntityPlayer.class, 5.0F, 0.8D, 1.33D);
-	private AnuAIAttackOnCollide aiAttackOnCollide = new AnuAIAttackOnCollide(this, EntityPlayer.class, 1.2D, false);
-	private AnuAIFireballAttack aiFireballAttack = new AnuAIFireballAttack(this, 1.0D, 10, 20, 15.0F);
-	private BlockPos currentTarget;
+    private BlockPos currentTarget;
 
 	public EntityAnu(World world) {
 		super(world);
@@ -67,9 +72,12 @@ public class EntityAnu extends EntityMob implements IRangedAttackMob {
 		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityLivingBase.class, 8.0F));
 		this.tasks.addTask(6, new EntityAILookIdle(this));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
-		this.tasks.addTask(4, aiFear);
-		this.tasks.addTask(5, aiFireballAttack);
-		this.tasks.addTask(5, aiAttackOnCollide);
+        AnuAIAvoidEntity aiFear = new AnuAIAvoidEntity(this, EntityPlayer.class, 5.0F, 0.8D, 1.33D);
+        this.tasks.addTask(4, aiFear);
+        AnuAIFireballAttack aiFireballAttack = new AnuAIFireballAttack(this, 1.0D, 10, 20, 15.0F);
+        this.tasks.addTask(5, aiFireballAttack);
+        AnuAIAttackOnCollide aiAttackOnCollide = new AnuAIAttackOnCollide(this, EntityPlayer.class, 1.2D, false);
+        this.tasks.addTask(5, aiAttackOnCollide);
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
 		this.isImmuneToFire = true;
@@ -93,7 +101,8 @@ public class EntityAnu extends EntityMob implements IRangedAttackMob {
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.35D);
 	}
 
-	public boolean isNonBoss() {
+	@Override
+    public boolean isNonBoss() {
 		return false;
 	}
 
@@ -121,7 +130,6 @@ public class EntityAnu extends EntityMob implements IRangedAttackMob {
 		Entity targetEntity = damageSource.getTrueSource();
 
 		AxisAlignedBB chatDistance = this.getEntityBoundingBox().expand(30.0D, 30.0D, 30.0D);
-		List playerList = this.world.getEntitiesWithinAABB(EntityPlayer.class, chatDistance);
 
 		if (targetEntity instanceof EntityGhast) {
 			return false;
@@ -224,7 +232,8 @@ public class EntityAnu extends EntityMob implements IRangedAttackMob {
 		super.onDeath(dmg);
 	}
 
-	public void fall(float distance, float damageMultiplier) {
+	@Override
+    public void fall(float distance, float damageMultiplier) {
 	}
 
 	@Override
@@ -300,12 +309,12 @@ public class EntityAnu extends EntityMob implements IRangedAttackMob {
 		if (this.getAttackMode() == 1) {
 
 			for (int i = 0; i < 2; ++i) {
-				this.world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, this.posX + (this.rand.nextDouble() - 0.5D) * (double) this.width, this.posY + this.rand.nextDouble() * (double) this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double) this.width, 0.0D, 0.0D, 0.0D, new int[0]);
+				this.world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, this.posX + (this.rand.nextDouble() - 0.5D) * (double) this.width, this.posY + this.rand.nextDouble() * (double) this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double) this.width, 0.0D, 0.0D, 0.0D);
 			}
 		}
 		if (this.getAttackMode() == 2) {
 			for (int i = 0; i < 2; ++i) {
-				this.world.spawnParticle(EnumParticleTypes.DRIP_LAVA, this.posX + (this.rand.nextDouble() - 0.5D) * (double) this.width, this.posY + this.rand.nextDouble() * (double) this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double) this.width, 0.0D, 0.0D, 0.0D, new int[0]);
+				this.world.spawnParticle(EnumParticleTypes.DRIP_LAVA, this.posX + (this.rand.nextDouble() - 0.5D) * (double) this.width, this.posY + this.rand.nextDouble() * (double) this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double) this.width, 0.0D, 0.0D, 0.0D);
 			}
 		}
 		if (this.getAttackMode() == 2) {
@@ -440,7 +449,8 @@ public class EntityAnu extends EntityMob implements IRangedAttackMob {
 		return !this.onGround && this.world.isAirBlock(new BlockPos((int) this.posX, (int) this.posY - 1, (int) this.posZ));
 	}
 
-	protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
+	@Override
+    protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty) {
 		super.setEquipmentBasedOnDifficulty(difficulty);
 		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(FAItemRegistry.ANCIENT_SWORD));
 	}

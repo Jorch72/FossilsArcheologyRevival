@@ -200,7 +200,7 @@ public class ServerProxy implements IGuiHandler {
 			return new CultivateContainer(player.inventory, (TileEntityCultivate) world.getTileEntity(pos));
 		}
 		if (id == GUI_FEEDER) {
-			return new FeederContainer(player.inventory, (TileEntityFeeder) world.getTileEntity(pos));
+			return new FeederContainer(player.inventory, world.getTileEntity(pos));
 		}
 		if (id == GUI_WORKTABLE) {
 			return new WorktableContainer(player.inventory, (TileEntityWorktable) world.getTileEntity(pos));

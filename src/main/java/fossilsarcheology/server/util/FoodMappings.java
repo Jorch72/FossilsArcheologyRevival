@@ -45,7 +45,7 @@ public enum FoodMappings {
 	 * @param diet The specific diet to add the item to.
 	 */
 	public void addToItemMappings(ItemStack item, int food, Diet diet) {
-		if (item != ItemStack.EMPTY) {
+		if (!item.isEmpty()) {
 			switch (diet) {
 				case CARNIVORE:
 					if (this.carnivoreItemDiet == null) {
@@ -672,7 +672,7 @@ public enum FoodMappings {
 		List<ItemStack> stacks = OreDictionary.getOres(dict_name);
 		if (!stacks.isEmpty()) {
 			for (ItemStack stack : stacks) {
-				if (stack != ItemStack.EMPTY) {
+				if (!stack.isEmpty()) {
 					if (stack.getItem() instanceof ItemBlock) {
 						this.addToBlockMappings(((ItemBlock) stack.getItem()).getBlock(), food_value, diet, true);
 					} else {

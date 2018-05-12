@@ -11,7 +11,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class AnalyzerGUI extends GuiContainer {
 	private static final ResourceLocation TEXTURE = new ResourceLocation(Revival.MODID, "textures/gui/analyzer.png");
-	private AnalyzerBlockEntity analyzer;
+	private final AnalyzerBlockEntity analyzer;
 
 	public AnalyzerGUI(InventoryPlayer playerInventory, AnalyzerBlockEntity analyzer) {
 		super(new AnalyzerContainer(playerInventory, analyzer));

@@ -30,7 +30,8 @@ public class IcedStoneBlock extends Block implements DefaultRenderedItem {
 		return Item.getItemFromBlock(Blocks.COBBLESTONE);
 	}
 
-	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+	@Override
+    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		if (worldIn.getLightFor(EnumSkyBlock.BLOCK, pos) > 11 - this.getDefaultState().getLightOpacity()) {
 			this.turnIntoRock(worldIn, pos);
 		}

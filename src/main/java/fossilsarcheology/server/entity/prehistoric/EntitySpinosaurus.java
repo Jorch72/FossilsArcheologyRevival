@@ -2,7 +2,16 @@ package fossilsarcheology.server.entity.prehistoric;
 
 import com.google.common.base.Predicate;
 import fossilsarcheology.client.sound.FASoundRegistry;
-import fossilsarcheology.server.entity.ai.*;
+import fossilsarcheology.server.entity.ai.DinoAIEatFeeders;
+import fossilsarcheology.server.entity.ai.DinoAIEatItems;
+import fossilsarcheology.server.entity.ai.DinoAIFindWaterTarget;
+import fossilsarcheology.server.entity.ai.DinoAIFollowOwner;
+import fossilsarcheology.server.entity.ai.DinoAIHunt;
+import fossilsarcheology.server.entity.ai.DinoAILookIdle;
+import fossilsarcheology.server.entity.ai.DinoAIRiding;
+import fossilsarcheology.server.entity.ai.DinoAIWander;
+import fossilsarcheology.server.entity.ai.DinoAIWatchClosest;
+import fossilsarcheology.server.entity.ai.DinoMeleeAttackAI;
 import fossilsarcheology.server.entity.utility.EntityToyBase;
 import fossilsarcheology.server.item.FAItemRegistry;
 import net.ilexiconn.llibrary.server.animation.Animation;
@@ -23,12 +32,10 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
-
 public class EntitySpinosaurus extends EntityPrehistoricSwimming {
-	private static final DataParameter<Boolean> SWIMMING = EntityDataManager.<Boolean>createKey(EntitySpinosaurus.class, DataSerializers.BOOLEAN);
+	private static final DataParameter<Boolean> SWIMMING = EntityDataManager.createKey(EntitySpinosaurus.class, DataSerializers.BOOLEAN);
 
-	public Animation SHAKE_ANIMATION = Animation.create(65);
+	public final Animation SHAKE_ANIMATION = Animation.create(65);
 	public float swimProgress;
 	private boolean isSwimming;
 
@@ -40,9 +47,9 @@ public class EntitySpinosaurus extends EntityPrehistoricSwimming {
 		this.tasks.addTask(0, new DinoAIFindWaterTarget(this, 10, true));
 		this.tasks.addTask(1, this.aiSit);
 		this.tasks.addTask(3, new DinoAIRiding(this, 1.5D));
-		this.tasks.addTask(3, new DinoAIAttackOnCollide(this, 1.5D, false));
-		this.tasks.addTask(4, new DinoAIEatFeeders(this, 1));
-		this.tasks.addTask(4, new DinoAIEatItems(this, 1));
+		this.tasks.addTask(3, new DinoMeleeAttackAI(this, 1.5D, false));
+		this.tasks.addTask(4, new DinoAIEatFeeders(this));
+		this.tasks.addTask(4, new DinoAIEatItems(this));
 		this.tasks.addTask(5, new DinoAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
 		this.tasks.addTask(6, new DinoAIWander(this, 1.0D));
 		this.tasks.addTask(7, new DinoAIWatchClosest(this, EntityPlayer.class, 8.0F));
@@ -50,12 +57,7 @@ public class EntitySpinosaurus extends EntityPrehistoricSwimming {
 		this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
-		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, new Predicate<Entity>() {
-			@Override
-			public boolean apply(@Nullable Entity entity) {
-				return entity instanceof EntityLivingBase;
-			}
-		}));
+		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
 		minSize = 0.6F;
 		maxSize = 4.75F;
 		teenAge = 5;
@@ -165,6 +167,7 @@ public class EntitySpinosaurus extends EntityPrehistoricSwimming {
 		return 3;
 	}
 
+	@Override
 	public int getMaxHunger() {
 		return 175;
 	}
@@ -174,9 +177,10 @@ public class EntitySpinosaurus extends EntityPrehistoricSwimming {
 		return 1;
 	}
 
+	@Override
 	public void updatePassenger(Entity passenger) {
 		super.updatePassenger(passenger);
-		if (passenger != null && passenger instanceof EntityLivingBase) {
+		if (passenger instanceof EntityLivingBase) {
 			Entity riddenByEntity = passenger;
 			if ((this.getAnimationTick() > 55 || this.getAnimation() == NO_ANIMATION)) {
 				if (riddenByEntity instanceof EntityToyBase) {
@@ -188,7 +192,7 @@ public class EntitySpinosaurus extends EntityPrehistoricSwimming {
 					return;
 				} else {
 					if (passenger instanceof EntityLivingBase) {
-						((EntityLivingBase) riddenByEntity).attackEntityFrom(DamageSource.causeMobDamage(this), Math.max(((EntityLivingBase) riddenByEntity).getMaxHealth(), 100));
+						riddenByEntity.attackEntityFrom(DamageSource.causeMobDamage(this), Math.max(((EntityLivingBase) riddenByEntity).getMaxHealth(), 100));
 
 					}
 					this.onKillEntity((EntityLivingBase) riddenByEntity);
@@ -239,7 +243,7 @@ public class EntitySpinosaurus extends EntityPrehistoricSwimming {
 		if (this.getAttackTarget() != null) {
 			if (getAttackBounds().intersects(this.getAttackTarget().getEntityBoundingBox())) {
 				this.attackEntityAsMob(this.getAttackTarget());
-				if (!this.isEntitySmallerThan(this.getAttackTarget(), 2F * (this.getAgeScale() / this.maxSize))) {
+				if (!isEntitySmallerThan(this.getAttackTarget(), 2F * (this.getAgeScale() / this.maxSize))) {
 					if (this.getAnimation() != ATTACK_ANIMATION) {
 						this.setAnimation(ATTACK_ANIMATION);
 					}
@@ -263,11 +267,7 @@ public class EntitySpinosaurus extends EntityPrehistoricSwimming {
 
 	@Override
 	public boolean attackEntityAsMob(Entity entityIn) {
-		if (this.isInWater()) {
-			return false;
-		}
-
-		return true;
+		return !this.isInWater();
 	}
 
 	@Override
@@ -300,6 +300,7 @@ public class EntitySpinosaurus extends EntityPrehistoricSwimming {
 		}
 	}
 
+	@Override
 	public int getAttackLength() {
 		return 25;
 	}

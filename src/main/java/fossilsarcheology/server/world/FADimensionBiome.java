@@ -7,13 +7,10 @@ import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.world.biome.Biome;
 
 public class FADimensionBiome extends Biome {
-	public int genSelector;
-
 	public FADimensionBiome(boolean anu, BiomeProperties props, Block block) {
 		super(props);
 		this.topBlock = block.getDefaultState();
 		this.fillerBlock = block.getDefaultState();
-		this.genSelector = genSelector;
 		this.spawnableMonsterList.clear();
 		this.spawnableCreatureList.clear();
 		this.spawnableWaterCreatureList.clear();

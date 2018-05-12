@@ -20,7 +20,7 @@ public class MammalEmbryoItem extends PrehistoricEntityItem implements DefaultRe
 
 	@Override
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase entity, EnumHand hand) {
-		if (entity instanceof EntityAnimal && !((EntityAnimal) entity).isChild()) {
+		if (entity instanceof EntityAnimal && !entity.isChild()) {
 			FossilsMammalProperties properties = EntityPropertiesHandler.INSTANCE.getProperties(entity, FossilsMammalProperties.class);
 			if (properties != null) {
 				if (properties.embryo != null || properties.isPregnant) {

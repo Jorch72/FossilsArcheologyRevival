@@ -59,9 +59,9 @@ public enum PrehistoricEntityType {
 	QUAGGA(EntityQuagga.class, MobType.MAMMAL, TimePeriod.CENOZOIC, Diet.HERBIVORE, Parameter.TAME | Parameter.RIDE | Parameter.HERBIVORE, 0X763C24, 0XD3B9AB),
 	ELASMOTHERIUM(EntityElasmotherium.class, MobType.MAMMAL, TimePeriod.CENOZOIC, Diet.HERBIVORE, Parameter.TAME | Parameter.RIDE | Parameter.HERBIVORE, 0X6B321B, 0X666666);
 	private final Class<? extends Entity> entity;
-	public MobType mobType;
-	public Diet diet;
-	public TimePeriod timePeriod;
+	public final MobType mobType;
+	public final Diet diet;
+	public final TimePeriod timePeriod;
 	public int maximimAge = 999;
 	public int adultAge = 6;
 	public int teenAge = 3;
@@ -87,17 +87,14 @@ public enum PrehistoricEntityType {
 	public Item embryoItem;
 	public Item birdEggItem;
 	public Item bestBirdEggItem;
-	public int growTime = 10000;
-	public int primaryEggColor;
-	public int secondaryEggColor;
-	public float eggScale;
-	public String friendlyName;
-	public String resourceName;
-	private float sizeBaby = 1;
-	private float sizeTeen = 1;
-	private float sizeAdult = 1;
+	public final int growTime = 10000;
+	public final int primaryEggColor;
+	public final int secondaryEggColor;
+	public final float eggScale;
+	public final String friendlyName;
+	public final String resourceName;
 
-	PrehistoricEntityType(Class<? extends Entity> entity, MobType mobType, TimePeriod period, Diet diet, int parameters, int primaryEggColor, int secondaryEggColor) {
+    PrehistoricEntityType(Class<? extends Entity> entity, MobType mobType, TimePeriod period, Diet diet, int parameters, int primaryEggColor, int secondaryEggColor) {
 		this.entity = entity;
 		this.mobType = mobType;
 		this.timePeriod = period;
@@ -381,10 +378,7 @@ public enum PrehistoricEntityType {
 	}
 
 	private void setDinoSize(float sizeBaby, float sizeTeen, float sizeAdult) {
-		this.sizeBaby = sizeBaby;
-		this.sizeTeen = sizeTeen;
-		this.sizeAdult = sizeAdult;
-	}
+    }
 
 	private void setProperties(double minHealth, double maxHealth, double minStrength, double maxStrength, double minSpeed, double maxSpeed, int maxHunger) {
 		if (minHealth > 0) {

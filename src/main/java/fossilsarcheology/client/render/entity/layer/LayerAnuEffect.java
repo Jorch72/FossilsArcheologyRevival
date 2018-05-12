@@ -14,7 +14,8 @@ import java.util.Random;
 
 @SideOnly(Side.CLIENT)
 public class LayerAnuEffect implements LayerRenderer<EntityAnuEffect> {
-	public void doRenderLayer(EntityAnuEffect entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+	@Override
+    public void doRenderLayer(EntityAnuEffect entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		if (entitylivingbaseIn.deathTicks > 0) {
 			Tessellator tessellator = Tessellator.getInstance();
 			BufferBuilder vertexbuffer = tessellator.getBuffer();
@@ -67,7 +68,8 @@ public class LayerAnuEffect implements LayerRenderer<EntityAnuEffect> {
 		}
 	}
 
-	public boolean shouldCombineTextures() {
+	@Override
+    public boolean shouldCombineTextures() {
 		return false;
 	}
 }

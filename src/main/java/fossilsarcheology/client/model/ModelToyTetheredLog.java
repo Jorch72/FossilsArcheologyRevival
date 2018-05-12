@@ -8,11 +8,11 @@ import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.Entity;
 
 public class ModelToyTetheredLog extends AdvancedModelBase {
-	public AdvancedModelRenderer rope0;
-	public AdvancedModelRenderer rope1;
-	public AdvancedModelRenderer rope2;
-	public AdvancedModelRenderer log;
-	private ModelAnimator animator;
+	public final AdvancedModelRenderer rope0;
+	public final AdvancedModelRenderer rope1;
+	public final AdvancedModelRenderer rope2;
+	public final AdvancedModelRenderer log;
+	private final ModelAnimator animator;
 
 	public ModelToyTetheredLog() {
 		this.textureWidth = 64;

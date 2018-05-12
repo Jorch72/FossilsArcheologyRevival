@@ -19,7 +19,8 @@ public abstract class AncientStoneSlabBlock extends FossilSlabBlock {
 			super(name, hardness, resistance, soundType, FABlockRegistry.ANCIENT_STONE_DOUBLESLAB);
 		}
 
-		public boolean isDouble() {
+		@Override
+        public boolean isDouble() {
 			return true;
 		}
 
@@ -34,7 +35,8 @@ public abstract class AncientStoneSlabBlock extends FossilSlabBlock {
 			super(name, hardness, resistance, soundType, FABlockRegistry.ANCIENT_STONE_SINGLESLAB);
 		}
 
-		public boolean isDouble() {
+		@Override
+        public boolean isDouble() {
 			return false;
 		}
 

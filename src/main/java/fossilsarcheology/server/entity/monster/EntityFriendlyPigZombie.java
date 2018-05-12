@@ -81,7 +81,7 @@ public class EntityFriendlyPigZombie extends EntityTameable {
 		if (flag) {
 			int i = this.world.getDifficulty().getDifficultyId();
 
-			if (this.getHeldItemMainhand() == ItemStack.EMPTY && this.isBurning() && this.rand.nextFloat() < (float) i * 0.3F) {
+			if (this.getHeldItemMainhand() .isEmpty() && this.isBurning() && this.rand.nextFloat() < (float) i * 0.3F) {
 				entity.setFire(2 * i);
 			}
 		}
@@ -89,7 +89,8 @@ public class EntityFriendlyPigZombie extends EntityTameable {
 		return flag;
 	}
 
-	protected void playStepSound(BlockPos pos, Block blockIn) {
+	@Override
+    protected void playStepSound(BlockPos pos, Block blockIn) {
 		this.playSound(SoundEvents.ENTITY_ZOMBIE_STEP, 0.15F, 1.0F);
 	}
 
@@ -139,15 +140,18 @@ public class EntityFriendlyPigZombie extends EntityTameable {
 		return false;
 	}
 
-	protected SoundEvent getAmbientSound() {
+	@Override
+    protected SoundEvent getAmbientSound() {
 		return SoundEvents.ENTITY_ZOMBIE_PIG_AMBIENT;
 	}
 
-	protected SoundEvent getHurtSound(DamageSource soucre) {
+	@Override
+    protected SoundEvent getHurtSound(DamageSource soucre) {
 		return SoundEvents.ENTITY_ZOMBIE_PIG_HURT;
 	}
 
-	protected SoundEvent getDeathSound() {
+	@Override
+    protected SoundEvent getDeathSound() {
 		return SoundEvents.ENTITY_ZOMBIE_PIG_DEATH;
 	}
 

@@ -4,11 +4,11 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 
 public class ModelAncientHelmet extends ModelBiped {
-	public ModelRenderer Snout;
-	public ModelRenderer Ear1;
-	public ModelRenderer Ear2;
-	public ModelRenderer Tooth1;
-	public ModelRenderer Tooth2;
+	public final ModelRenderer Snout;
+	public final ModelRenderer Ear1;
+	public final ModelRenderer Ear2;
+	public final ModelRenderer Tooth1;
+	public final ModelRenderer Tooth2;
 
 	public ModelAncientHelmet(float f) {
 		super(f, 0, 64, 64);

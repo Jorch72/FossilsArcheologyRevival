@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 
 public class EntityAnuEffect extends EntityLiving {
 
-	private static final DataParameter<Integer> ROTATION = EntityDataManager.<Integer>createKey(EntityAnuEffect.class, DataSerializers.VARINT);
+	private static final DataParameter<Integer> ROTATION = EntityDataManager.createKey(EntityAnuEffect.class, DataSerializers.VARINT);
 	public boolean slowed;
 	public int deathTicks;
 	private Entity target;
@@ -81,9 +81,6 @@ public class EntityAnuEffect extends EntityLiving {
 		++this.deathTicks;
 
 		if (this.deathTicks >= 160 && this.deathTicks <= 180) {
-			float f = (this.rand.nextFloat() - 0.5F) * 8.0F;
-			float f1 = (this.rand.nextFloat() - 0.5F) * 4.0F;
-			float f2 = (this.rand.nextFloat() - 0.5F) * 8.0F;
 			world.newExplosion(this, posX, posY, posZ, 3F, true, true);
 		}
 

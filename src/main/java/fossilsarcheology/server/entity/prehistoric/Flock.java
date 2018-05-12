@@ -13,13 +13,10 @@ import java.util.Random;
 
 public class Flock {
 	public float flockYaw;
-	public List<EntityPrehistoric> flockMembers = new ArrayList<EntityPrehistoric>();
+	public final List<EntityPrehistoric> flockMembers = new ArrayList<>();
 	public EntityPrehistoric flockLeader;
 	public PrehistoricEntityType type;
-	private double flockPosX;
-	private double flockPosY;
-	private double flockPosZ;
-	/**
+    /**
 	 * The PathEntity of our entity
 	 */
 	private Path flockPathEntity;
@@ -35,9 +32,9 @@ public class Flock {
 	public void createFlock(EntityPrehistoric creator) {
 		flockMembers.add(creator);
 		flockLeader = creator;
-		flockPosX = creator.posX;
-		flockPosY = creator.posY;
-		flockPosZ = creator.posZ;
+        double flockPosX = creator.posX;
+        double flockPosY = creator.posY;
+        double flockPosZ = creator.posZ;
 
 	}
 
@@ -75,18 +72,18 @@ public class Flock {
 		EntityPrehistoric entity1 = null;
 		double d0 = Double.MAX_VALUE;
 
-		for (int i = 0; i < list.size(); ++i) {
-			EntityPrehistoric entity2 = (EntityPrehistoric) list.get(i);
+        for (Object aList : list) {
+            EntityPrehistoric entity2 = (EntityPrehistoric) aList;
 
-			if (entity2 != leader && !this.flockMembers.contains(entity2) && entity2.type == leader.type) {
-				double d1 = leader.getDistanceSq(entity2);
+            if (entity2 != leader && !this.flockMembers.contains(entity2) && entity2.type == leader.type) {
+                double d1 = leader.getDistanceSq(entity2);
 
-				if (d1 <= d0) {
-					entity1 = entity2;
-					d0 = d1;
-				}
-			}
-		}
+                if (d1 <= d0) {
+                    entity1 = entity2;
+                    d0 = d1;
+                }
+            }
+        }
 		return entity1;
 	}
 

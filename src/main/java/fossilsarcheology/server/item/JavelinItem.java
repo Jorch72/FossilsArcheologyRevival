@@ -20,8 +20,8 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
 public class JavelinItem extends Item implements DefaultRenderedItem {
-	public ToolMaterial material;
-	private boolean ancient;
+	public final ToolMaterial material;
+	private final boolean ancient;
 
 	public JavelinItem(ToolMaterial material, String name, boolean ancient) {
 		super();

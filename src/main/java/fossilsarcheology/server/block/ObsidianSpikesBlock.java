@@ -20,73 +20,69 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ObsidianSpikesBlock extends Block implements DefaultRenderedItem {
+    protected static final AxisAlignedBB SPIKES_AABB = new AxisAlignedBB(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
 
-	protected static final AxisAlignedBB SPIKES_AABB = new AxisAlignedBB(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
+    public ObsidianSpikesBlock() {
+        super(Material.ROCK);
+        this.setHarvestLevel("pickaxe", 3);
+        this.setCreativeTab(FATabRegistry.BLOCKS);
+        this.setHardness(50.0F);
+        this.setResistance(2000.0F);
+        this.setSoundType(SoundType.STONE);
+        this.setUnlocalizedName("obsidian_spikes");
+    }
 
+    @Override
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+        return SPIKES_AABB;
+    }
 
-	public ObsidianSpikesBlock() {
-		super(Material.ROCK);
-		this.setHarvestLevel("pickaxe", 3);
-		this.setCreativeTab(FATabRegistry.BLOCKS);
-		this.setHardness(50.0F);
-		this.setResistance(2000.0F);
-		this.setSoundType(SoundType.STONE);
-		this.setUnlocalizedName("obsidian_spikes");
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public BlockRenderLayer getBlockLayer() {
+        return BlockRenderLayer.CUTOUT;
+    }
 
-	@Override
-	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		return SPIKES_AABB;
-	}
+    @Override
+    public boolean isFullCube(IBlockState state) {
+        return false;
+    }
 
-	@SideOnly(Side.CLIENT)
-	public BlockRenderLayer getBlockLayer() {
-		return BlockRenderLayer.CUTOUT;
-	}
+    @Override
+    public boolean isOpaqueCube(IBlockState state) {
+        return false;
+    }
 
-	public boolean isFullCube(IBlockState state) {
-		return false;
-	}
+    @Override
+    public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
+        return super.canPlaceBlockAt(worldIn, pos) && this.canBlockStay(worldIn, pos);
+    }
 
-	@Override
-	public boolean isOpaqueCube(IBlockState state) {
-		return false;
-	}
+    private boolean canBlockStay(World worldIn, BlockPos pos) {
+        return worldIn.getBlockState(pos.down()).getMaterial().isSolid();
+    }
 
-	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
-		return super.canPlaceBlockAt(worldIn, pos) ? this.canBlockStay(worldIn, pos) : false;
-	}
+    @Override
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
+        if (!this.canBlockStay(worldIn, pos)) {
+            worldIn.setBlockToAir(pos);
+        }
+    }
 
-	private boolean canBlockStay(World worldIn, BlockPos pos) {
-		return worldIn.getBlockState(pos.down()).getMaterial().isSolid();
-	}
+    @Override
+    public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
+        if (!(entity instanceof EntityAnu) && entity instanceof EntityLivingBase) {
+            EntityLivingBase living = (EntityLivingBase) entity;
+            double deltaX = pos.getX() - entity.posX;
+            double deltaZ = pos.getZ() - entity.posZ;
 
-	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
-		if (!this.canBlockStay(worldIn, pos)) {
-			worldIn.setBlockToAir(pos);
-		}
-	}
-
-	/**
-	 * Triggered whenever an entity collides with this block (enters into the
-	 * block). Args: world, x, y, z, entity
-	 */
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
-		if (!(entity instanceof EntityAnu)) {
-			if (entity instanceof EntityLivingBase) {
-				double var4 = pos.getX() - entity.posX;
-				double var5 = pos.getZ() - entity.posZ;
-
-				entity.attackEntityFrom(DamageSource.CACTUS, 1.0F);
-				if ((entity instanceof EntityPlayer) && !((EntityPlayer) entity).capabilities.isCreativeMode) {
-					((EntityLivingBase) entity).knockBack(entity, 0, var4 * 5.0D, var5 * 5.0D);
-				}
-				if (!world.isRemote && !(entity instanceof EntityPlayer)) {
-					((EntityLivingBase) entity).knockBack(entity, 0, var4 * 5.0D, var5 * 5.0D);
-				}
-			}
-		}
-	}
-
+            entity.attackEntityFrom(DamageSource.CACTUS, 1.0F);
+            if ((entity instanceof EntityPlayer) && !((EntityPlayer) entity).capabilities.isCreativeMode) {
+                living.knockBack(entity, 0, deltaX * 5.0D, deltaZ * 5.0D);
+            }
+            if (!world.isRemote && !(entity instanceof EntityPlayer)) {
+                living.knockBack(entity, 0, deltaX * 5.0D, deltaZ * 5.0D);
+            }
+        }
+    }
 }

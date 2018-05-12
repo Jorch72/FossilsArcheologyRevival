@@ -10,7 +10,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.translation.I18n;
 
 public class DinosaurBoneItem extends Item implements SubtypeRenderedItem {
-	private String type;
+	private final String type;
 
 	public DinosaurBoneItem(String type) {
 		super();

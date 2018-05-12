@@ -9,7 +9,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
 public class TimeMachineContainer extends Container {
-	private TileEntityTimeMachine timeMachine;
+	private final TileEntityTimeMachine timeMachine;
 
 
 	public TimeMachineContainer(InventoryPlayer var1, TileEntityTimeMachine var2) {
@@ -38,7 +38,7 @@ public class TimeMachineContainer extends Container {
 
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int var2) {
-		Slot slot = (Slot) this.inventorySlots.get(var2);
+		Slot slot = this.inventorySlots.get(var2);
 		if (var2 == 6) {
 			if (slot.getStack() != null) {
 				if (slot.getStack().getItem() != null) {

@@ -2,7 +2,16 @@ package fossilsarcheology.server.entity.prehistoric;
 
 import com.google.common.base.Predicate;
 import fossilsarcheology.client.sound.FASoundRegistry;
-import fossilsarcheology.server.entity.ai.*;
+import fossilsarcheology.server.entity.ai.DinoAIEatFeeders;
+import fossilsarcheology.server.entity.ai.DinoAIEatItems;
+import fossilsarcheology.server.entity.ai.DinoAIFindWaterTarget;
+import fossilsarcheology.server.entity.ai.DinoAIFollowOwner;
+import fossilsarcheology.server.entity.ai.DinoAIHunt;
+import fossilsarcheology.server.entity.ai.DinoAILookIdle;
+import fossilsarcheology.server.entity.ai.DinoAIRiding;
+import fossilsarcheology.server.entity.ai.DinoAIWander;
+import fossilsarcheology.server.entity.ai.DinoAIWatchClosest;
+import fossilsarcheology.server.entity.ai.DinoMeleeAttackAI;
 import fossilsarcheology.server.entity.utility.EntityToyBase;
 import fossilsarcheology.server.item.FAItemRegistry;
 import net.ilexiconn.llibrary.server.animation.Animation;
@@ -23,13 +32,11 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
-
 public class EntitySarcosuchus extends EntityPrehistoricSwimming {
 
-	private static final DataParameter<Boolean> SWIMMING = EntityDataManager.<Boolean>createKey(EntitySarcosuchus.class, DataSerializers.BOOLEAN);
+	private static final DataParameter<Boolean> SWIMMING = EntityDataManager.createKey(EntitySarcosuchus.class, DataSerializers.BOOLEAN);
 
-	public static Animation ROLL_ANIMATION = Animation.create(115);
+	public static final Animation ROLL_ANIMATION = Animation.create(115);
 	public float swimProgress;
 	private boolean isSwimming;
 
@@ -40,9 +47,9 @@ public class EntitySarcosuchus extends EntityPrehistoricSwimming {
 		this.tasks.addTask(1, new DinoAIFindWaterTarget(this, 10, true));
 		this.tasks.addTask(2, this.aiSit);
 		this.tasks.addTask(3, new DinoAIRiding(this, 1.0F));
-		this.tasks.addTask(3, new DinoAIAttackOnCollide(this, 1.5D, false));
-		this.tasks.addTask(4, new DinoAIEatFeeders(this, 1));
-		this.tasks.addTask(4, new DinoAIEatItems(this, 1));
+		this.tasks.addTask(3, new DinoMeleeAttackAI(this, 1.5D, false));
+		this.tasks.addTask(4, new DinoAIEatFeeders(this));
+		this.tasks.addTask(4, new DinoAIEatItems(this));
 		this.tasks.addTask(5, new DinoAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
 		this.tasks.addTask(6, new DinoAIWander(this, 1.0D));
 		this.tasks.addTask(7, new DinoAIWatchClosest(this, EntityPlayer.class, 8.0F));
@@ -50,12 +57,7 @@ public class EntitySarcosuchus extends EntityPrehistoricSwimming {
 		this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
-		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, new Predicate<Entity>() {
-			@Override
-			public boolean apply(@Nullable Entity entity) {
-				return entity instanceof EntityLivingBase;
-			}
-		}));
+		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
 		minSize = 0.2F;
 		maxSize = 2.3F;
 		teenAge = 5;
@@ -152,6 +154,7 @@ public class EntitySarcosuchus extends EntityPrehistoricSwimming {
 		return 12;
 	}
 
+	@Override
 	public int getMaxHunger() {
 		return 150;
 	}
@@ -234,16 +237,14 @@ public class EntitySarcosuchus extends EntityPrehistoricSwimming {
 		}
 	}
 
+	@Override
 	public int getAttackLength() {
 		return 15;
 	}
 
 	@Override
 	public boolean attackEntityAsMob(Entity entityIn) {
-		if (this.isInWater()) {
-			return false;
-		}
-		return true;
+		return !this.isInWater();
 	}
 
 	@Override

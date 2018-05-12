@@ -12,7 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class FishItem extends PrehistoricEntityItem implements DefaultRenderedItem {
-	public boolean isEggs;
+	public final boolean isEggs;
 
 	public FishItem(PrehistoricEntityType type, boolean isEggs) {
 		super(isEggs ? "egg" : "fish", type);

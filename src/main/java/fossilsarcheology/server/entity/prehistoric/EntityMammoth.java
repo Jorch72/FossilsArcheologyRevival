@@ -2,7 +2,16 @@ package fossilsarcheology.server.entity.prehistoric;
 
 import com.google.common.base.Predicate;
 import fossilsarcheology.client.sound.FASoundRegistry;
-import fossilsarcheology.server.entity.ai.*;
+import fossilsarcheology.server.entity.ai.DinoAIEatBlocks;
+import fossilsarcheology.server.entity.ai.DinoAIEatFeeders;
+import fossilsarcheology.server.entity.ai.DinoAIEatItems;
+import fossilsarcheology.server.entity.ai.DinoAIFollowOwner;
+import fossilsarcheology.server.entity.ai.DinoAIHunt;
+import fossilsarcheology.server.entity.ai.DinoAILookIdle;
+import fossilsarcheology.server.entity.ai.DinoAIRiding;
+import fossilsarcheology.server.entity.ai.DinoAIWander;
+import fossilsarcheology.server.entity.ai.DinoAIWatchClosest;
+import fossilsarcheology.server.entity.ai.DinoMeleeAttackAI;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -31,13 +40,12 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 
 public class EntityMammoth extends EntityPrehistoric implements IShearable {
 
-	private static final DataParameter<Boolean> SHEARED = EntityDataManager.<Boolean>createKey(EntityMammoth.class, DataSerializers.BOOLEAN);
-	private static PotionEffect BIOME_EFFECT = new PotionEffect(MobEffects.WEAKNESS, 60, 1);
+	private static final DataParameter<Boolean> SHEARED = EntityDataManager.createKey(EntityMammoth.class, DataSerializers.BOOLEAN);
+	private static final PotionEffect BIOME_EFFECT = new PotionEffect(MobEffects.WEAKNESS, 60, 1);
 	protected boolean isSheared;
 	private int eatGrassTimes = 0;
 
@@ -46,23 +54,18 @@ public class EntityMammoth extends EntityPrehistoric implements IShearable {
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(2, this.aiSit);
 		this.tasks.addTask(3, new DinoAIRiding(this, 1.0F));
-		this.tasks.addTask(4, new DinoAIAttackOnCollide(this, 1.5D, false));
+		this.tasks.addTask(4, new DinoMeleeAttackAI(this, 1.5D, false));
 		this.tasks.addTask(5, new DinoAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
-		this.tasks.addTask(6, new DinoAIEatBlocks(this, 1));
-		this.tasks.addTask(6, new DinoAIEatFeeders(this, 1));
-		this.tasks.addTask(6, new DinoAIEatItems(this, 1));
+		this.tasks.addTask(6, new DinoAIEatBlocks(this));
+		this.tasks.addTask(6, new DinoAIEatFeeders(this));
+		this.tasks.addTask(6, new DinoAIEatItems(this));
 		this.tasks.addTask(7, new DinoAIWander(this, 1.0D));
 		this.tasks.addTask(8, new DinoAIWatchClosest(this, EntityPlayer.class, 8.0F));
 		this.tasks.addTask(8, new DinoAILookIdle(this));
 		this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
-		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, new Predicate<Entity>() {
-			@Override
-			public boolean apply(@Nullable Entity entity) {
-				return entity instanceof EntityLivingBase;
-			}
-		}));
+		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
 		this.setActualSize(1.2F, 0.7F);
 		this.pediaScale = 60F;
 		minSize = 1.3F;
@@ -108,6 +111,7 @@ public class EntityMammoth extends EntityPrehistoric implements IShearable {
 		return var7;
 	}
 
+	@Override
 	public String getTexture() {
 		if (this.isSkeleton()) {
 			return "fossil:textures/model/" + type.toString().toLowerCase() + "_0/" + type.toString().toLowerCase() + "_skeleton.png";
@@ -253,17 +257,15 @@ public class EntityMammoth extends EntityPrehistoric implements IShearable {
 						entity.startRiding(null);
 					}
 				}
-				entity.motionY += 0.4000000059604645D;
-				double d0 = this.getAttackTarget().posX - this.posX;
-				double d1 = this.getAttackTarget().posZ - this.posZ;
-				float f = MathHelper.sqrt(d0 * d0 + d1 * d1);
-				entity.addVelocity((double) (-MathHelper.sin((this.rotationYaw - 180) * (float) Math.PI / 180.0F) * 2 * 0.5F), 0.1D, (double) (MathHelper.cos((this.rotationYaw - 180) * (float) Math.PI / 180.0F) * 2 * 0.5F));
+				entity.motionY += 0.4;
+				entity.addVelocity((double) (-MathHelper.sin((this.rotationYaw - 180) * (float) Math.PI / 180.0F) * 2 * 0.5F), 0.1D, (MathHelper.cos((this.rotationYaw - 180) * (float) Math.PI / 180.0F) * 2 * 0.5F));
 				return flag;
 			}
 		}
 		return false;
 	}
 
+	@Override
 	public int getMaxHunger() {
 		return 150;
 	}

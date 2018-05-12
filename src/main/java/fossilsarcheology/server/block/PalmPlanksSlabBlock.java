@@ -18,7 +18,8 @@ public abstract class PalmPlanksSlabBlock extends FossilSlabBlock {
 			super(name, hardness, resistance, soundType, FABlockRegistry.PALM_PLANKS_DOUBLESLAB);
 		}
 
-		public boolean isDouble() {
+		@Override
+        public boolean isDouble() {
 			return true;
 		}
 
@@ -33,7 +34,8 @@ public abstract class PalmPlanksSlabBlock extends FossilSlabBlock {
 			super(name, hardness, resistance, soundType, FABlockRegistry.PALM_PLANKS_SINGLESLAB);
 		}
 
-		public boolean isDouble() {
+		@Override
+        public boolean isDouble() {
 			return false;
 		}
 

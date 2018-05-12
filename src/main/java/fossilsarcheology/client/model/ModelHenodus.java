@@ -9,24 +9,24 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelHenodus extends ModelPrehistoric {
-	public AdvancedModelRenderer Body;
-	public AdvancedModelRenderer neck;
-	public AdvancedModelRenderer leftUpperArm;
-	public AdvancedModelRenderer rightUpperArm;
-	public AdvancedModelRenderer LShell;
-	public AdvancedModelRenderer RShell;
-	public AdvancedModelRenderer leftthigh;
-	public AdvancedModelRenderer rightthigh;
-	public AdvancedModelRenderer Tail1;
-	public AdvancedModelRenderer head;
-	public AdvancedModelRenderer upperJaw;
-	public AdvancedModelRenderer lowerJaw;
-	public AdvancedModelRenderer leftLowerArm;
-	public AdvancedModelRenderer rightLowerArm;
-	public AdvancedModelRenderer leftleg;
-	public AdvancedModelRenderer rightleg;
-	public AdvancedModelRenderer Tail1_1;
-	private ModelAnimator animator;
+	public final AdvancedModelRenderer Body;
+	public final AdvancedModelRenderer neck;
+	public final AdvancedModelRenderer leftUpperArm;
+	public final AdvancedModelRenderer rightUpperArm;
+	public final AdvancedModelRenderer LShell;
+	public final AdvancedModelRenderer RShell;
+	public final AdvancedModelRenderer leftthigh;
+	public final AdvancedModelRenderer rightthigh;
+	public final AdvancedModelRenderer Tail1;
+	public final AdvancedModelRenderer head;
+	public final AdvancedModelRenderer upperJaw;
+	public final AdvancedModelRenderer lowerJaw;
+	public final AdvancedModelRenderer leftLowerArm;
+	public final AdvancedModelRenderer rightLowerArm;
+	public final AdvancedModelRenderer leftleg;
+	public final AdvancedModelRenderer rightleg;
+	public final AdvancedModelRenderer Tail1_1;
+	private final ModelAnimator animator;
 
 	public ModelHenodus() {
 		this.textureWidth = 128;

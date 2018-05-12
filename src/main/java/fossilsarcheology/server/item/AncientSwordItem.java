@@ -18,54 +18,42 @@ import java.util.Random;
 
 public class AncientSwordItem extends ItemSword implements DefaultRenderedItem {
 
-	public AncientSwordItem() {
-		super(ToolMaterial.IRON);
-		this.maxStackSize = 1;
-		this.setMaxDamage(250);
-		this.setCreativeTab(FATabRegistry.ITEMS);
-		this.setUnlocalizedName("ancient_sword");
-	}
+    public AncientSwordItem() {
+        super(ToolMaterial.IRON);
+        this.maxStackSize = 1;
+        this.setMaxDamage(250);
+        this.setCreativeTab(FATabRegistry.ITEMS);
+        this.setUnlocalizedName("ancient_sword");
+    }
 
-	@Override
-	public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase targetentity, EntityLivingBase player) {
-		if (player instanceof EntityPlayer) {
-			if (player != null && this.checkHelmet((EntityPlayer) player)) {
-				if (targetentity != null && (targetentity instanceof EntityPig || targetentity instanceof EntityPigZombie)) {
-					EntityFriendlyPigZombie fpz = new EntityFriendlyPigZombie(targetentity.world);
-					fpz.setLocationAndAngles(targetentity.posX, targetentity.posY, targetentity.posZ, targetentity.rotationYaw, targetentity.rotationPitch);
-					fpz.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.GOLDEN_SWORD));
-					if (!targetentity.world.isRemote) {
-						targetentity.world.spawnEntity(fpz);
-					}
-					fpz.setTamed(true);
-					if (player instanceof EntityPlayer) {
-						EntityPlayer playerUUID = (EntityPlayer) player;
-						fpz.setOwnerId(playerUUID.getUniqueID());
-						fpz.sendMessageToOwner("pigman.summon");
-					}
-					targetentity.setDead();
-					targetentity.world.spawnEntity(new EntityLightningBolt(targetentity.world, targetentity.posX, targetentity.posY, targetentity.posZ, true));
+    @Override
+    public boolean hitEntity(ItemStack heldItem, EntityLivingBase targetEntity, EntityLivingBase player) {
+        if (player instanceof EntityPlayer) {
+            if (this.checkHelmet((EntityPlayer) player)) {
+                if (targetEntity instanceof EntityPig || targetEntity instanceof EntityPigZombie) {
+                    EntityFriendlyPigZombie fpz = new EntityFriendlyPigZombie(targetEntity.world);
+                    fpz.setLocationAndAngles(targetEntity.posX, targetEntity.posY, targetEntity.posZ, targetEntity.rotationYaw, targetEntity.rotationPitch);
+                    fpz.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.GOLDEN_SWORD));
+                    if (!targetEntity.world.isRemote) {
+                        targetEntity.world.spawnEntity(fpz);
+                    }
+                    fpz.setTamed(true);
+                    EntityPlayer playerUUID = (EntityPlayer) player;
+                    fpz.setOwnerId(playerUUID.getUniqueID());
+                    fpz.sendMessageToOwner("pigman.summon");
+                    targetEntity.setDead();
+                    targetEntity.world.spawnEntity(new EntityLightningBolt(targetEntity.world, targetEntity.posX, targetEntity.posY, targetEntity.posZ, true));
+                } else if (targetEntity != null && (new Random()).nextInt(5) == 0) {
+                    targetEntity.world.addWeatherEffect(new EntityAncientLightning(targetEntity.world, targetEntity.posX, targetEntity.posY, targetEntity.posZ));
+                }
+            }
+            heldItem.damageItem(1, player);
+        }
+        return true;
+    }
 
-				} else {
-					if (targetentity != null && (new Random()).nextInt(5) == 0) {
-						targetentity.world.addWeatherEffect(new EntityAncientLightning(targetentity.world, targetentity.posX, targetentity.posY, targetentity.posZ));
-					}
-
-				}
-			}
-
-			par1ItemStack.damageItem(1, player);
-		}
-		return true;
-	}
-
-	private boolean checkHelmet(EntityPlayer player) {
-		ItemStack item = player.inventory.armorInventory.get(3);
-		if (item != ItemStack.EMPTY) {
-			if (item.getItem() == FAItemRegistry.ANCIENT_HELMET) {
-				return true;
-			}
-		}
-		return false;
-	}
+    private boolean checkHelmet(EntityPlayer player) {
+        ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+        return !stack.isEmpty() && stack.getItem() == FAItemRegistry.ANCIENT_HELMET;
+    }
 }

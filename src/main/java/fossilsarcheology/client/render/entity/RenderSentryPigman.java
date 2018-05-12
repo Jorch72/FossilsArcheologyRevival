@@ -21,7 +21,8 @@ public class RenderSentryPigman extends RenderBiped {
 		super(renderManagerIn, new ModelZombie(), 0.5F);
 		this.addLayer(new LayerHeldItem(this));
 		this.addLayer(new LayerBipedArmor(this) {
-			protected void initArmor() {
+			@Override
+            protected void initArmor() {
 				this.modelLeggings = new ModelZombie(0.5F, true);
 				this.modelArmor = new ModelZombie(1.0F, true);
 			}

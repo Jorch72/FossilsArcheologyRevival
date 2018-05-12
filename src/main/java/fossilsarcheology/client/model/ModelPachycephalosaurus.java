@@ -11,31 +11,31 @@ import net.minecraft.entity.Entity;
 
 public class ModelPachycephalosaurus extends ModelPrehistoric {
 
-	public AdvancedModelRenderer leftThigh;
-	public AdvancedModelRenderer rightThigh;
-	public AdvancedModelRenderer tail1;
-	public AdvancedModelRenderer upperBody;
-	public AdvancedModelRenderer tail2;
-	public AdvancedModelRenderer tail3;
-	public AdvancedModelRenderer leftUpperArm;
-	public AdvancedModelRenderer rightUpperArm;
-	public AdvancedModelRenderer neck;
-	public AdvancedModelRenderer leftLowerArm;
-	public AdvancedModelRenderer rightLowerArm;
-	public AdvancedModelRenderer head;
-	public AdvancedModelRenderer dome1;
-	public AdvancedModelRenderer hornBumps;
-	public AdvancedModelRenderer beaklower;
-	public AdvancedModelRenderer beak;
-	public AdvancedModelRenderer dome2_l;
-	public AdvancedModelRenderer dome2_r;
-	public AdvancedModelRenderer leftLeg;
-	public AdvancedModelRenderer leftFoot;
-	public AdvancedModelRenderer rightLeg;
-	public AdvancedModelRenderer rightFoot;
-	public AdvancedModelRenderer lowerBody;
-	public AdvancedModelRenderer headPivot;
-	private ModelAnimator animator;
+	public final AdvancedModelRenderer leftThigh;
+	public final AdvancedModelRenderer rightThigh;
+	public final AdvancedModelRenderer tail1;
+	public final AdvancedModelRenderer upperBody;
+	public final AdvancedModelRenderer tail2;
+	public final AdvancedModelRenderer tail3;
+	public final AdvancedModelRenderer leftUpperArm;
+	public final AdvancedModelRenderer rightUpperArm;
+	public final AdvancedModelRenderer neck;
+	public final AdvancedModelRenderer leftLowerArm;
+	public final AdvancedModelRenderer rightLowerArm;
+	public final AdvancedModelRenderer head;
+	public final AdvancedModelRenderer dome1;
+	public final AdvancedModelRenderer hornBumps;
+	public final AdvancedModelRenderer beaklower;
+	public final AdvancedModelRenderer beak;
+	public final AdvancedModelRenderer dome2_l;
+	public final AdvancedModelRenderer dome2_r;
+	public final AdvancedModelRenderer leftLeg;
+	public final AdvancedModelRenderer leftFoot;
+	public final AdvancedModelRenderer rightLeg;
+	public final AdvancedModelRenderer rightFoot;
+	public final AdvancedModelRenderer lowerBody;
+	public final AdvancedModelRenderer headPivot;
+	private final ModelAnimator animator;
 
 	public ModelPachycephalosaurus() {
 		this.textureWidth = 64;

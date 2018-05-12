@@ -7,7 +7,8 @@ import net.minecraft.world.IBlockAccess;
 
 public class LargeSwimNodeProcessor extends SwimNodeProcessor {
 
-	public void init(IBlockAccess sourceIn, EntityLiving mob) {
+	@Override
+    public void init(IBlockAccess sourceIn, EntityLiving mob) {
 		this.blockaccess = sourceIn;
 		this.entity = mob;
 		this.pointMap.clearMap();

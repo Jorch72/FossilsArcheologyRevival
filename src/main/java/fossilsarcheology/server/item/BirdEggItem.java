@@ -12,7 +12,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
 public class BirdEggItem extends PrehistoricEntityItem implements DefaultRenderedItem {
-	private boolean cultivated;
+	private final boolean cultivated;
 
 	public BirdEggItem(PrehistoricEntityType type, boolean cultivated) {
 		super(cultivated ? "egg_cultivated" : "egg", type);

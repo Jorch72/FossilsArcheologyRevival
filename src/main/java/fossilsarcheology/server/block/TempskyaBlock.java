@@ -5,7 +5,6 @@ import fossilsarcheology.server.tab.FATabRegistry;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -24,7 +23,7 @@ public class TempskyaBlock extends BlockBush implements DefaultRenderedItem {
 
 	public TempskyaBlock() {
 		super(Material.PLANTS);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(LAYER, Integer.valueOf(0)));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(LAYER, 0));
 		this.setTickRandomly(true);
 		this.setUnlocalizedName("tempskya");
 		this.setSoundType(SoundType.PLANT);
@@ -37,6 +36,7 @@ public class TempskyaBlock extends BlockBush implements DefaultRenderedItem {
 		return new AxisAlignedBB(0.30000001192092896D, 0.0D, 0.30000001192092896D, 0.699999988079071D, 1D, 0.699999988079071D);
 	}
 
+	@Override
 	public boolean canBlockStay(World worldIn, BlockPos pos, IBlockState state) {
 		if (state.getBlock() == this && state.getValue(LAYER) == 0) {
 			IBlockState soil = worldIn.getBlockState(pos.down());
@@ -87,16 +87,19 @@ public class TempskyaBlock extends BlockBush implements DefaultRenderedItem {
 	}
 
 
+	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		return this.getDefaultState().withProperty(LAYER, Integer.valueOf(meta));
+		return this.getDefaultState().withProperty(LAYER, meta);
 	}
 
+	@Override
 	public int getMetaFromState(IBlockState state) {
-		return ((Integer) state.getValue(LAYER)).intValue();
+		return state.getValue(LAYER);
 	}
 
+	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[]{LAYER});
+		return new BlockStateContainer(this, LAYER);
 	}
 
 }

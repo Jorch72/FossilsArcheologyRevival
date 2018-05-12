@@ -19,7 +19,8 @@ public class BasicSwordItem extends ItemSword implements DefaultRenderedItem {
 		}
 	}
 
-	public Multimap<String, AttributeModifier> getItemAttributeModifiers(EntityEquipmentSlot equipmentSlot) {
+	@Override
+    public Multimap<String, AttributeModifier> getItemAttributeModifiers(EntityEquipmentSlot equipmentSlot) {
 		if (this == FAItemRegistry.TOOTH_DAGGER) {
 			Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
 

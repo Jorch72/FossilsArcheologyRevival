@@ -36,10 +36,8 @@ public class AnalyzerBlockEntity extends TileEntity implements IInventory, ISide
 	public int currentFuelTime = 100;
 	public int analyzeTime = 0;
 	private String customName;
-	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(13, ItemStack.EMPTY);
+	private NonNullList<ItemStack> stacks = NonNullList.withSize(13, ItemStack.EMPTY);
 	private int rawIndex = -1;
-	private int spaceIndex = -1;
-
 
 	private static int getFuelTime(ItemStack stack) {
 		return 100;
@@ -82,7 +80,7 @@ public class AnalyzerBlockEntity extends TileEntity implements IInventory, ISide
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		this.stacks.set(slot, stack);
-		if (stack != ItemStack.EMPTY && stack.getCount() > this.getInventoryStackLimit()) {
+		if (!stack.isEmpty() && stack.getCount() > this.getInventoryStackLimit()) {
 			stack.setCount(this.getInventoryStackLimit());
 		}
 	}
@@ -94,7 +92,7 @@ public class AnalyzerBlockEntity extends TileEntity implements IInventory, ISide
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
-		this.stacks = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
+		this.stacks = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
 		ItemStackHelper.loadAllItems(compound, this.stacks);
 		this.analyzeFuelTime = compound.getShort("FuelTime");
 		this.analyzeTime = compound.getShort("AnalyzeTime");
@@ -135,7 +133,7 @@ public class AnalyzerBlockEntity extends TileEntity implements IInventory, ISide
 			if (this.getDistanceSq(player.posX, player.posY, player.posZ) < 40) {
 				for (int slot = 12; slot > 8; --slot) {
 					ItemStack stack = this.stacks.get(slot);
-					if (stack != ItemStack.EMPTY) {
+					if (!stack.isEmpty()) {
 						if (stack.getItem() == FAItemRegistry.STONE_TABLET) {
 							// player.addStat(FossilAchievements.TABLET, 1);
 						}
@@ -174,10 +172,10 @@ public class AnalyzerBlockEntity extends TileEntity implements IInventory, ISide
 	}
 
 	private boolean canAnalyze() {
-		this.spaceIndex = -1;
+		int spaceIndex = -1;
 		this.rawIndex = -1;
 		for (int slot = 0; slot < 9; ++slot) {
-			if (this.stacks.get(slot) != ItemStack.EMPTY) {
+			if (!this.stacks.get(slot).isEmpty()) {
 				Item item = this.stacks.get(slot).getItem();
 				if (PrehistoricEntityType.isFoodItem(this.stacks.get(slot).getItem()) || (item instanceof DinosaurBoneItem) || (item == FAItemRegistry.BIOFOSSIL) || (item == FAItemRegistry.TAR_FOSSIL) || /*(item == FAItemRegistry.TAR_DROP) || (item == FAItemRegistry.FAILURESAURUS_FLESH) || */ (item == FAItemRegistry.RELIC_SCRAP) || (item == Items.PORKCHOP) || (item == Items.BEEF) || (item == Items.EGG) || (item == Items.CHICKEN) || (item == Item.getItemFromBlock(Blocks.WOOL)) || /*(item == FAItemRegistry.ICED_MEAT) || */ (item == Items.LEATHER) || (item == FAItemRegistry.PLANT_FOSSIL)) {
 					this.rawIndex = slot;
@@ -190,11 +188,11 @@ public class AnalyzerBlockEntity extends TileEntity implements IInventory, ISide
 		} else {
 			for (int slot = 12; slot > 8; --slot) {
 				if (this.stacks.get(slot).isEmpty()) {
-					this.spaceIndex = slot;
+					spaceIndex = slot;
 					break;
 				}
 			}
-			return this.spaceIndex != -1 && this.rawIndex != -1;
+			return spaceIndex != -1 && this.rawIndex != -1;
 		}
 	}
 
@@ -343,10 +341,10 @@ public class AnalyzerBlockEntity extends TileEntity implements IInventory, ISide
 					output = new ItemStack(FAItemRegistry.BROKEN_SWORD, 1);
 				}
 			}
-			if (output != ItemStack.EMPTY) {
+			if (!output.isEmpty()) {
 				for (int slot = 9; slot < 13; slot++) {
 					ItemStack stack = this.stacks.get(slot);
-					if (stack != ItemStack.EMPTY) {
+					if (!stack.isEmpty()) {
 						if (stack.isItemEqual(output) && stack.getCount() + output.getCount() < 64) {
 							stack.setCount(stack.getCount() + output.getCount());
 							if (this.stacks.get(this.rawIndex).getCount() > 1) {
@@ -422,7 +420,7 @@ public class AnalyzerBlockEntity extends TileEntity implements IInventory, ISide
 	@Override
 	public void openInventory(EntityPlayer player) {
 		for (int slots = 12; slots > 8; --slots) {
-			if (this.stacks.get(slots) != ItemStack.EMPTY) {
+			if (!this.stacks.get(slots).isEmpty()) {
 				if (this.stacks.get(slots).getItem() == FAItemRegistry.STONE_TABLET) {
 					//player.addStat(FossilAchievements.TABLET, 1);
 				}

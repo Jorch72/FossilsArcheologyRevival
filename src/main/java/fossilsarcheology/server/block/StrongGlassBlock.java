@@ -24,23 +24,22 @@ public class StrongGlassBlock extends BlockBreakable implements DefaultRenderedI
 		this.setCreativeTab(FATabRegistry.BLOCKS);
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Override
+    @SideOnly(Side.CLIENT)
 	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 		IBlockState iblockstate = blockAccess.getBlockState(pos.offset(side));
 		Block block = iblockstate.getBlock();
-		if (blockState != iblockstate) {
-			return true;
-		} else {
-			return false;
-		}
+        return blockState != iblockstate;
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Override
+    @SideOnly(Side.CLIENT)
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.CUTOUT;
 	}
 
-	public boolean isFullCube(IBlockState state) {
+	@Override
+    public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 

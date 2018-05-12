@@ -13,7 +13,7 @@ public class FeederContainer extends SyncedFieldContainer {
 	public static final int CARN_INPUT = 0, HERB_INPUT = 1;
 	int lastVegValue = 0;
 	int lastMeatValue = 0;
-	private TileEntityFeeder feeder;
+	private final TileEntityFeeder feeder;
 
 	public FeederContainer(IInventory inventory, TileEntity var2) {
 		super(inventory);
@@ -41,7 +41,7 @@ public class FeederContainer extends SyncedFieldContainer {
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int getSlot) {
 		ItemStack itemstack = ItemStack.EMPTY;
-		Slot slot = (Slot) this.inventorySlots.get(getSlot);
+		Slot slot = this.inventorySlots.get(getSlot);
 		if (slot != null && slot.getHasStack()) {
 			ItemStack itemstack1 = slot.getStack();
 			itemstack = itemstack1.copy();

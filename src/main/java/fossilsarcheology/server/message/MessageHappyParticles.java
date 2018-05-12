@@ -26,7 +26,7 @@ public class MessageHappyParticles extends AbstractMessage<MessageHappyParticles
 	public MessageHappyParticles() {
 	}
 
-	public static final void spawnParticle(Entity entity, Item item) {
+	public static void spawnParticle(Entity entity, Item item) {
 		Random rand = new Random();
 		double motionX = rand.nextGaussian() * 0.07D;
 		double motionY = rand.nextGaussian() * 0.07D;

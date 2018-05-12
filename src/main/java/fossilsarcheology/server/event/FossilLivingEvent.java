@@ -40,7 +40,7 @@ public class FossilLivingEvent {
 			FossilsMammalProperties properties = EntityPropertiesHandler.INSTANCE.getProperties(event.getTarget(), FossilsMammalProperties.class);
 			if ((event.getTarget() instanceof EntityHorse || event.getTarget() instanceof EntityCow || event.getTarget() instanceof EntityPig || event.getTarget() instanceof EntitySheep || event.getTarget() instanceof EntityRabbit) && properties != null && properties.isPregnant) {
 				Revival.PEDIA_OBJECT = event.getTarget();
-				event.getEntityPlayer().openGui(Revival.INSTANCE, ServerProxy.GUI_DINOPEDIA, event.getWorld(), (int) event.getPos().getX(), (int) event.getPos().getY(), (int) event.getPos().getZ());
+				event.getEntityPlayer().openGui(Revival.INSTANCE, ServerProxy.GUI_DINOPEDIA, event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ());
 			}
 		}
 	}
@@ -154,7 +154,7 @@ public class FossilLivingEvent {
 			double var4 = event.getEntityLiving().getRNG().nextGaussian() * 0.02D;
 			double var6 = event.getEntityLiving().getRNG().nextGaussian() * 0.02D;
 			double var8 = event.getEntityLiving().getRNG().nextGaussian() * 0.02D;
-			entity.world.spawnParticle(EnumParticleTypes.HEART, entity.posX + (double) (event.getEntityLiving().getRNG().nextFloat() * entity.width * 2.0F) - (double) entity.width, entity.posY + 0.5D + (double) (event.getEntityLiving().getRNG().nextFloat() * entity.height), entity.posZ + (double) (event.getEntityLiving().getRNG().nextFloat() * entity.width * 2.0F) - (double) entity.width, var4, var6, var8, new int[0]);
+			entity.world.spawnParticle(EnumParticleTypes.HEART, entity.posX + (double) (event.getEntityLiving().getRNG().nextFloat() * entity.width * 2.0F) - (double) entity.width, entity.posY + 0.5D + (double) (event.getEntityLiving().getRNG().nextFloat() * entity.height), entity.posZ + (double) (event.getEntityLiving().getRNG().nextFloat() * entity.width * 2.0F) - (double) entity.width, var4, var6, var8);
 		}
 
 		if (!entity.world.isRemote) {

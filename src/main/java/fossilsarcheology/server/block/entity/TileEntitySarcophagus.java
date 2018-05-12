@@ -47,7 +47,8 @@ public class TileEntitySarcophagus extends TileEntity implements ITickable {
 		return new SPacketUpdateTileEntity(pos, 0, tag);
 	}
 
-	public NBTTagCompound getUpdateTag() {
+	@Override
+    public NBTTagCompound getUpdateTag() {
 		return this.writeToNBT(new NBTTagCompound());
 	}
 

@@ -1,6 +1,5 @@
 package fossilsarcheology.server.entity.ai;
 
-import com.google.common.base.Predicate;
 import fossilsarcheology.server.entity.prehistoric.EntityPrehistoric;
 import fossilsarcheology.server.entity.prehistoric.PrehistoricMoodType;
 import fossilsarcheology.server.entity.utility.EntityToyBase;
@@ -10,11 +9,13 @@ import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.EnumDifficulty;
 
+import java.util.function.Predicate;
+
 public class DinoAIHunt<T extends EntityLivingBase> extends EntityAINearestAttackableTarget<T> {
-	private EntityPrehistoric dragon;
+	private final EntityPrehistoric dragon;
 
 	public DinoAIHunt(EntityPrehistoric entityIn, Class<T> classTarget, boolean checkSight, Predicate<? super T> targetSelector) {
-		super(entityIn, classTarget, 0, checkSight, false, targetSelector);
+		super(entityIn, classTarget, 0, checkSight, false, targetSelector::test);
 		this.dragon = entityIn;
 	}
 
@@ -48,9 +49,7 @@ public class DinoAIHunt<T extends EntityLivingBase> extends EntityAINearestAttac
 					if (targetEntity instanceof EntityToyBase && prehistoric.ticksTillPlay == 0) {
 						return true;
 					}
-					if (prehistoric.isMovementBlocked() || !prehistoric.canDinoHunt(targetEntity, true)) {
-						return false;
-					}
+                    return !prehistoric.isMovementBlocked() && prehistoric.canDinoHunt(targetEntity, true);
 
 				}
 				return true;

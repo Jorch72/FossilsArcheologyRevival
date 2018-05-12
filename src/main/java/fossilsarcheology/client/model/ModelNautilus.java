@@ -6,15 +6,15 @@ import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelNautilus extends AdvancedModelBase {
-	public AdvancedModelRenderer shell;
-	public AdvancedModelRenderer head;
-	public AdvancedModelRenderer flap;
-	public AdvancedModelRenderer tenticle_0;
-	public AdvancedModelRenderer tenticle_1;
-	public AdvancedModelRenderer tenticle_2;
-	public AdvancedModelRenderer tenticle_3;
-	public AdvancedModelRenderer tenticle_4;
-	public AdvancedModelRenderer tenticle_5;
+	public final AdvancedModelRenderer shell;
+	public final AdvancedModelRenderer head;
+	public final AdvancedModelRenderer flap;
+	public final AdvancedModelRenderer tenticle_0;
+	public final AdvancedModelRenderer tenticle_1;
+	public final AdvancedModelRenderer tenticle_2;
+	public final AdvancedModelRenderer tenticle_3;
+	public final AdvancedModelRenderer tenticle_4;
+	public final AdvancedModelRenderer tenticle_5;
 
 	public ModelNautilus() {
 		this.textureWidth = 64;

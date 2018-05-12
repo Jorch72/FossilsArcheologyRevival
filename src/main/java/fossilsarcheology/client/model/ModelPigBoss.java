@@ -7,18 +7,18 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
 
 public class ModelPigBoss extends ModelBiped {
-	public ModelRenderer LeftWing1;
-	public ModelRenderer RightWing1;
-	public ModelRenderer Mouth;
-	public ModelRenderer field_78114_d;
-	public ModelRenderer Hornleft;
-	public ModelRenderer HornLeft;
-	public ModelRenderer LeftTusk;
-	public ModelRenderer RightTusk;
-	public ModelRenderer LeftWing2;
-	public ModelRenderer LeftWing3;
-	public ModelRenderer RightWing2;
-	public ModelRenderer RightWing3;
+	public final ModelRenderer LeftWing1;
+	public final ModelRenderer RightWing1;
+	public final ModelRenderer Mouth;
+	public final ModelRenderer field_78114_d;
+	public final ModelRenderer Hornleft;
+	public final ModelRenderer HornLeft;
+	public final ModelRenderer LeftTusk;
+	public final ModelRenderer RightTusk;
+	public final ModelRenderer LeftWing2;
+	public final ModelRenderer LeftWing3;
+	public final ModelRenderer RightWing2;
+	public final ModelRenderer RightWing3;
 
 	public ModelPigBoss() {
 		this.textureWidth = 64;

@@ -5,17 +5,17 @@ import net.minecraft.client.model.ModelRenderer;
 
 public class ModelEmbryoGeneric extends ModelBase {
 	// fields
-	ModelRenderer head;
-	ModelRenderer body;
-	ModelRenderer neck2;
-	ModelRenderer neck1;
-	ModelRenderer tail1;
-	ModelRenderer tail2;
-	ModelRenderer tail3;
-	ModelRenderer leftarm;
-	ModelRenderer left_foot;
-	ModelRenderer rightfoot;
-	ModelRenderer rightarm;
+    final ModelRenderer head;
+	final ModelRenderer body;
+	final ModelRenderer neck2;
+	final ModelRenderer neck1;
+	final ModelRenderer tail1;
+	final ModelRenderer tail2;
+	final ModelRenderer tail3;
+	final ModelRenderer leftarm;
+	final ModelRenderer left_foot;
+	final ModelRenderer rightfoot;
+	final ModelRenderer rightarm;
 
 	public ModelEmbryoGeneric() {
 		textureWidth = 64;

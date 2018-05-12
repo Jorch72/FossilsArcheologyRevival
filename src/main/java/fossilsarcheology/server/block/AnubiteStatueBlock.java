@@ -6,7 +6,6 @@ import fossilsarcheology.server.block.entity.TileEntityAnubiteStatue;
 import fossilsarcheology.server.tab.FATabRegistry;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -34,11 +33,13 @@ public class AnubiteStatueBlock extends BlockContainer implements DefaultRendere
 		this.setUnlocalizedName("anubite_statue");
 	}
 
-	public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+	@Override
+    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		return super.getStateForPlacement(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(FACING, placer.getHorizontalFacing().getOpposite());
 	}
 
-	public boolean isFullCube(IBlockState state) {
+	@Override
+    public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 
@@ -65,15 +66,17 @@ public class AnubiteStatueBlock extends BlockContainer implements DefaultRendere
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[]{FACING});
+		return new BlockStateContainer(this, FACING);
 	}
 
-	@Deprecated
+	@Override
+    @Deprecated
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return new AxisAlignedBB(0F, 0.0F, 0F, 1F, 1.9F, 1);
 	}
 
-	public boolean isOpaqueCube(IBlockState state) {
+	@Override
+    public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 

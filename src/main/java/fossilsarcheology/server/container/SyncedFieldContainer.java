@@ -10,8 +10,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public abstract class SyncedFieldContainer extends Container {
-	private int[] fields;
-	private IInventory inventory;
+	private final int[] fields;
+	private final IInventory inventory;
 
 	public SyncedFieldContainer(IInventory inventory) {
 		this.inventory = inventory;

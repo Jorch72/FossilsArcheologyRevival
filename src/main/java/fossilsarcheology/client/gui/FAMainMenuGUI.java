@@ -31,10 +31,10 @@ import java.util.Random;
 public class FAMainMenuGUI extends GuiMainMenu {
 	public static final int LAYER_COUNT = 2;
 	public static final ResourceLocation splash = new ResourceLocation(Revival.MODID, "splashes.txt");
-	private ResourceLocation[] layerTextures = new ResourceLocation[FAMainMenuGUI.LAYER_COUNT];
+	private final ResourceLocation[] layerTextures = new ResourceLocation[FAMainMenuGUI.LAYER_COUNT];
 	private int layerTick;
-	private int backAdd;
-	private int frontAdd;
+	private final int backAdd;
+	private final int frontAdd;
 
 	public FAMainMenuGUI() {
 		super();

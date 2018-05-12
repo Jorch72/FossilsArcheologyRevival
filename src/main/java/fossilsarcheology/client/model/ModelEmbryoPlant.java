@@ -5,11 +5,11 @@ import net.minecraft.client.model.ModelRenderer;
 
 public class ModelEmbryoPlant extends ModelBase {
 	// fields
-	ModelRenderer Shape1;
-	ModelRenderer Shape2;
-	ModelRenderer Shape3;
-	ModelRenderer Shape4;
-	ModelRenderer Shape5;
+    final ModelRenderer Shape1;
+	final ModelRenderer Shape2;
+	final ModelRenderer Shape3;
+	final ModelRenderer Shape4;
+	final ModelRenderer Shape5;
 
 	public ModelEmbryoPlant() {
 		textureWidth = 64;

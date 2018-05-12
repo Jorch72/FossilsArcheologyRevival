@@ -21,7 +21,8 @@ public class RenderBirdEgg extends Render<EntityBirdEgg> {
 		this.itemRenderer = itemRendererIn;
 	}
 
-	public void doRender(EntityBirdEgg entity, double x, double y, double z, float entityYaw, float partialTicks) {
+	@Override
+    public void doRender(EntityBirdEgg entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		GlStateManager.pushMatrix();
 		GlStateManager.translate((float) x, (float) y, (float) z);
 		GlStateManager.enableRescaleNormal();
@@ -48,10 +49,11 @@ public class RenderBirdEgg extends Render<EntityBirdEgg> {
 	}
 
 	public ItemStack getStackToRender(EntityBirdEgg entityIn) {
-		return new ItemStack(((EntityBirdEgg) entityIn).item);
+		return new ItemStack(entityIn.item);
 	}
 
-	protected ResourceLocation getEntityTexture(EntityBirdEgg entity) {
+	@Override
+    protected ResourceLocation getEntityTexture(EntityBirdEgg entity) {
 		return TextureMap.LOCATION_BLOCKS_TEXTURE;
 	}
 }

@@ -17,7 +17,7 @@ import org.lwjgl.opengl.GL11;
 public class RenderAnuEffect extends RenderLiving<EntityAnuEffect> {
 	private static final ResourceLocation EXPLODING_TEXTURE = new ResourceLocation(Revival.MODID, "textures/model/anu_statue_explosion.png");
 	private static final ResourceLocation texture = new ResourceLocation(Revival.MODID, "textures/blocks/anuTotem.png");
-	protected ModelAnuTotem modelAnuTotem;
+	protected final ModelAnuTotem modelAnuTotem;
 
 	public RenderAnuEffect(RenderManager render) {
 		super(render, new ModelAnuTotem(), 0.3F);

@@ -42,7 +42,8 @@ public class AnuAIFireballAttack extends EntityAIBase {
 	/**
 	 * Returns whether the EntityAIBase should begin execution.
 	 */
-	public boolean shouldExecute() {
+	@Override
+    public boolean shouldExecute() {
 		EntityLivingBase entitylivingbase = this.entityHost.getAttackTarget();
 
 		if (entitylivingbase == null) {
@@ -53,17 +54,16 @@ public class AnuAIFireballAttack extends EntityAIBase {
 		}
 	}
 
-	/**
-	 * Returns whether an in-progress EntityAIBase should continue executing
-	 */
-	public boolean continueExecuting() {
-		return this.shouldExecute() || !this.entityHost.getNavigator().noPath();
-	}
+    @Override
+    public boolean shouldContinueExecuting() {
+        return this.shouldExecute() || !this.entityHost.getNavigator().noPath();
+    }
 
-	/**
+    /**
 	 * Resets the task
 	 */
-	public void resetTask() {
+	@Override
+    public void resetTask() {
 		this.attackTarget = null;
 		this.field_75318_f = 0;
 		this.rangedAttackTime = -1;
@@ -72,7 +72,8 @@ public class AnuAIFireballAttack extends EntityAIBase {
 	/**
 	 * Updates the task
 	 */
-	public void updateTask() {
+	@Override
+    public void updateTask() {
 		double d0 = this.entityHost.getDistanceSq(this.attackTarget.posX, this.attackTarget.getEntityBoundingBox().minY, this.attackTarget.posZ);
 		boolean flag = this.entityHost.getEntitySenses().canSee(this.attackTarget);
 

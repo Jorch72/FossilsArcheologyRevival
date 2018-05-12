@@ -18,7 +18,8 @@ public abstract class AncientWoodSlabBlock extends FossilSlabBlock {
 			super(name, hardness, resistance, soundType, FABlockRegistry.ANCIENT_WOOD_SINGLESLAB);
 		}
 
-		public boolean isDouble() {
+		@Override
+        public boolean isDouble() {
 			return true;
 		}
 
@@ -33,7 +34,8 @@ public abstract class AncientWoodSlabBlock extends FossilSlabBlock {
 			super(name, hardness, resistance, soundType, FABlockRegistry.ANCIENT_WOOD_SINGLESLAB);
 		}
 
-		public boolean isDouble() {
+		@Override
+        public boolean isDouble() {
 			return false;
 		}
 

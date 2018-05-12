@@ -80,7 +80,7 @@ public class PalmLeavesBlock extends BlockLeaves implements DefaultRenderedItem 
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 		if (!world.isRemote) {
-			if ((Boolean) state.getValue(CHECK_DECAY) && (Boolean) state.getValue(DECAYABLE)) {
+			if (state.getValue(CHECK_DECAY) && state.getValue(DECAYABLE)) {
 				byte scanArea = 4;
 				int i = scanArea + 1;
 				byte size = 32;

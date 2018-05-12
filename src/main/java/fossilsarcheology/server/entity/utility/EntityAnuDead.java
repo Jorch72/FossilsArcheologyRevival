@@ -15,7 +15,7 @@ public class EntityAnuDead extends EntityLiving {
 	public boolean slowed;
 	public int deathTicks = 0;
 	public int deathTicks_animation = 0;
-	public int maxLifespan = 940;
+	public final int maxLifespan = 940;
 	private Entity target;
 
 	public EntityAnuDead(World world) {

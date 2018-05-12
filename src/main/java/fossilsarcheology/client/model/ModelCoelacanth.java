@@ -5,21 +5,21 @@ import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelCoelacanth extends AdvancedModelBase {
-	public AdvancedModelRenderer Body;
-	public AdvancedModelRenderer Head;
-	public AdvancedModelRenderer Tail;
-	public AdvancedModelRenderer RightFrontFlipper;
-	public AdvancedModelRenderer LeftFrontFlipper;
-	public AdvancedModelRenderer BackFlipper;
-	public AdvancedModelRenderer DorsalFin2;
-	public AdvancedModelRenderer UpperJaw;
-	public AdvancedModelRenderer LowerJaw;
-	public AdvancedModelRenderer Tail2;
-	public AdvancedModelRenderer BackFlipper_1;
-	public AdvancedModelRenderer DorsalFin2_1;
-	public AdvancedModelRenderer MiddleTailFin;
-	public AdvancedModelRenderer UpperTailFin;
-	public AdvancedModelRenderer LowerTailFin;
+	public final AdvancedModelRenderer Body;
+	public final AdvancedModelRenderer Head;
+	public final AdvancedModelRenderer Tail;
+	public final AdvancedModelRenderer RightFrontFlipper;
+	public final AdvancedModelRenderer LeftFrontFlipper;
+	public final AdvancedModelRenderer BackFlipper;
+	public final AdvancedModelRenderer DorsalFin2;
+	public final AdvancedModelRenderer UpperJaw;
+	public final AdvancedModelRenderer LowerJaw;
+	public final AdvancedModelRenderer Tail2;
+	public final AdvancedModelRenderer BackFlipper_1;
+	public final AdvancedModelRenderer DorsalFin2_1;
+	public final AdvancedModelRenderer MiddleTailFin;
+	public final AdvancedModelRenderer UpperTailFin;
+	public final AdvancedModelRenderer LowerTailFin;
 
 	public ModelCoelacanth() {
 		this.textureWidth = 128;

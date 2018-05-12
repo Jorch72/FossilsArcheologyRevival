@@ -24,10 +24,10 @@ import javax.annotation.Nullable;
 public class TileEntityFeeder extends TileEntity implements IInventory, ISidedInventory, ITickable {
 	private static final int[] slots_all = new int[]{0, 1};
 	public int currentMeat = 0;
-	public int maxMeat = 10000;
+	public final int maxMeat = 10000;
 	public int currentPlant = 0;
-	public int maxPlant = 10000;
-	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(2, ItemStack.EMPTY);
+	public final int maxPlant = 10000;
+	private NonNullList<ItemStack> stacks = NonNullList.withSize(2, ItemStack.EMPTY);
 	private String customName;
 	private int ticksExisted;
 
@@ -94,7 +94,7 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
-		this.stacks = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
+		this.stacks = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
 		ItemStackHelper.loadAllItems(tag, this.stacks);
 
 		this.currentMeat = tag.getShort("MeatCurrent");
@@ -192,11 +192,8 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
 		if (FoodMappings.INSTANCE.getItemFoodAmount(stack, Diet.HERBIVORE) != 0 && index == 1) {
 			return true;
-		} else if (FoodMappings.INSTANCE.getItemFoodAmount(stack, Diet.CARNIVORE_EGG) != 0 && index == 0) {
-			return true;
-		}
-		return false;
-	}
+		} else return FoodMappings.INSTANCE.getItemFoodAmount(stack, Diet.CARNIVORE_EGG) != 0 && index == 0;
+    }
 
 	public boolean isEmpty(PrehistoricEntityType type) {
 		if (type.diet == Diet.CARNIVORE || type.diet == Diet.CARNIVORE_EGG || type.diet == Diet.PISCCARNIVORE) {
@@ -264,7 +261,7 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 	public void update() {
 		ticksExisted++;
 		if (ticksExisted % 5 == 0) {
-			if (this.stacks.get(0) != ItemStack.EMPTY) {
+			if (!this.stacks.get(0).isEmpty()) {
 				if (this.currentMeat < this.maxMeat) {
 					int carnivoreValue = FoodMappings.INSTANCE.getItemFoodAmount(this.stacks.get(0), Diet.CARNIVORE_EGG);
 					if (carnivoreValue != 0) {
@@ -282,7 +279,7 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 					}
 				}
 			}
-			if (this.stacks.get(1) != ItemStack.EMPTY) {
+			if (!this.stacks.get(1).isEmpty()) {
 				if (this.currentPlant < this.maxPlant) {
 					int herbivoreValue = FoodMappings.INSTANCE.getItemFoodAmount(this.stacks.get(1), Diet.HERBIVORE);
 					if (herbivoreValue != 0) {

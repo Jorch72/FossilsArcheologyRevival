@@ -1,23 +1,28 @@
 package fossilsarcheology.server.entity.monster;
 
-import com.google.common.base.Function;
-import com.google.common.base.Predicate;
 import fossilsarcheology.server.item.FAItemRegistry;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.*;
+import net.minecraft.entity.ai.EntityAIAttackMelee;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAIMoveTowardsTarget;
+import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAIWander;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import javax.annotation.Nullable;
 
 public class EntityAnubite extends EntityMob {
 
@@ -54,8 +59,8 @@ public class EntityAnubite extends EntityMob {
 	}
 
 	private boolean shouldAttackPlayer(EntityPlayer player) {
-		ItemStack itemstack = player.inventory.armorInventory.get(3);
-		return !(itemstack != null && itemstack.getItem() == FAItemRegistry.ANCIENT_HELMET);
+		ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+		return stack.isEmpty() || stack.getItem() != FAItemRegistry.ANCIENT_HELMET;
 	}
 
 	@Override
@@ -111,21 +116,24 @@ public class EntityAnubite extends EntityMob {
 		boolean flag = this.attemptTeleport(event.getTargetX(), event.getTargetY(), event.getTargetZ());
 
 		if (flag) {
-			this.world.playSound((EntityPlayer) null, this.prevPosX, this.prevPosY, this.prevPosZ, SoundEvents.ENTITY_ENDERMEN_TELEPORT, this.getSoundCategory(), 1.0F, 1.0F);
+			this.world.playSound(null, this.prevPosX, this.prevPosY, this.prevPosZ, SoundEvents.ENTITY_ENDERMEN_TELEPORT, this.getSoundCategory(), 1.0F, 1.0F);
 			this.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1.0F, 1.0F);
 		}
 
 		return flag;
 	}
 
+	@Override
 	protected SoundEvent getAmbientSound() {
 		return SoundEvents.ENTITY_WITHER_AMBIENT;
 	}
 
-	protected SoundEvent getHurtSound() {
+	@Override
+	protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
 		return SoundEvents.ENTITY_ITEM_BREAK;
 	}
 
+	@Override
 	protected SoundEvent getDeathSound() {
 		return SoundEvents.ENTITY_IRONGOLEM_DEATH;
 	}
@@ -150,25 +158,25 @@ public class EntityAnubite extends EntityMob {
 			this.anubite = anubite;
 		}
 
+		@Override
 		public boolean shouldExecute() {
-			double d0 = this.getTargetDistance();
-			this.player = this.anubite.world.getNearestAttackablePlayer(this.anubite.posX, this.anubite.posY, this.anubite.posZ, d0, d0, (Function<EntityPlayer, Double>) null, new Predicate<EntityPlayer>() {
-				public boolean apply(@Nullable EntityPlayer p_apply_1_) {
-					return p_apply_1_ != null && AnubiteAIAttackPlayer.this.anubite.shouldAttackPlayer(p_apply_1_);
-				}
-			});
+			double range = this.getTargetDistance();
+			this.player = this.anubite.world.getNearestAttackablePlayer(this.anubite.posX, this.anubite.posY, this.anubite.posZ, range, range, null, player -> player != null && AnubiteAIAttackPlayer.this.anubite.shouldAttackPlayer(player));
 			return this.player != null;
 		}
 
+		@Override
 		public void startExecuting() {
 			this.teleportTime = 0;
 		}
 
+		@Override
 		public void resetTask() {
 			this.player = null;
 			super.resetTask();
 		}
 
+		@Override
 		public boolean shouldContinueExecuting() {
 			if (this.player != null) {
 				if (!this.anubite.shouldAttackPlayer(this.player)) {
@@ -178,19 +186,20 @@ public class EntityAnubite extends EntityMob {
 					return true;
 				}
 			} else {
-				return this.targetEntity != null && ((EntityPlayer) this.targetEntity).isEntityAlive() ? true : super.shouldContinueExecuting();
+				return this.targetEntity != null && this.targetEntity.isEntityAlive() || super.shouldContinueExecuting();
 			}
 		}
 
+		@Override
 		public void updateTask() {
-			if (this.targetEntity != null && this.targetEntity instanceof EntityPlayer) {
-				if (this.anubite.shouldAttackPlayer((EntityPlayer) this.targetEntity)) {
-					if (((EntityPlayer) this.targetEntity).getDistanceSq(this.anubite) < 16.0D) {
+			if (this.targetEntity != null) {
+				if (this.anubite.shouldAttackPlayer(this.targetEntity)) {
+					if (this.targetEntity.getDistanceSq(this.anubite) < 16.0D) {
 						this.anubite.teleportRandomly();
 					}
 
 					this.teleportTime = 0;
-				} else if (((EntityPlayer) this.targetEntity).getDistanceSq(this.anubite) > 256.0D && this.teleportTime++ >= 30 && this.anubite.teleportToEntity(this.targetEntity)) {
+				} else if (this.targetEntity.getDistanceSq(this.anubite) > 256.0D && this.teleportTime++ >= 30 && this.anubite.teleportToEntity(this.targetEntity)) {
 					this.teleportTime = 0;
 				}
 			}

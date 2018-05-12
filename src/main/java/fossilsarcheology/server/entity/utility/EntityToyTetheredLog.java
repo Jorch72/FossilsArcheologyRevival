@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 
 public class EntityToyTetheredLog extends EntityToyBase implements IAnimatedEntity {
 
-	public static Animation KNOCKBACK_ANIMATION = Animation.create(20);
+	public static final Animation KNOCKBACK_ANIMATION = Animation.create(20);
 	private Animation currentAnimation;
 	private int animTick;
 
@@ -51,7 +51,8 @@ public class EntityToyTetheredLog extends EntityToyBase implements IAnimatedEnti
 		return !this.world.isAirBlock(new BlockPos(blockX, blockY, blockZ));
 	}
 
-	public AxisAlignedBB getCollisionBox(Entity entity) {
+	@Override
+    public AxisAlignedBB getCollisionBox(Entity entity) {
 		return this.getEntityBoundingBox();
 	}
 
@@ -65,7 +66,8 @@ public class EntityToyTetheredLog extends EntityToyBase implements IAnimatedEnti
 		return !this.isDead;
 	}
 
-	public boolean attackEntityFrom(DamageSource dmg, float f) {
+	@Override
+    public boolean attackEntityFrom(DamageSource dmg, float f) {
 		if (dmg.getTrueSource() != null)
 			this.rotationYaw = dmg.getTrueSource().rotationYaw;
 		if (this.getAnimation() == NO_ANIMATION && !world.isRemote) {
@@ -116,7 +118,8 @@ public class EntityToyTetheredLog extends EntityToyBase implements IAnimatedEnti
 		return new Animation[]{KNOCKBACK_ANIMATION};
 	}
 
-	protected void collideWithEntity(Entity entity) {
+	@Override
+    protected void collideWithEntity(Entity entity) {
 		if (entity instanceof EntityPrehistoric && ((EntityPrehistoric) entity).ticksTillPlay == 0) {
 			((EntityPrehistoric) entity).doPlayBonus(toyBonus);
 			if (this.getAnimation() != KNOCKBACK_ANIMATION) {
@@ -128,7 +131,8 @@ public class EntityToyTetheredLog extends EntityToyBase implements IAnimatedEnti
 		}
 	}
 
-	protected float getSoundPitch() {
+	@Override
+    protected float getSoundPitch() {
 		return super.getSoundPitch() * 0.2F;
 	}
 

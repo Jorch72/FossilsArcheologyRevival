@@ -5,9 +5,9 @@ import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelToyScratchingPost extends AdvancedModelBase {
-	public AdvancedModelRenderer Wool;
-	public AdvancedModelRenderer Post;
-	public AdvancedModelRenderer Base;
+	public final AdvancedModelRenderer Wool;
+	public final AdvancedModelRenderer Post;
+	public final AdvancedModelRenderer Base;
 
 	public ModelToyScratchingPost() {
 		this.textureWidth = 64;

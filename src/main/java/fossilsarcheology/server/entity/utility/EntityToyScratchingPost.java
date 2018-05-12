@@ -47,7 +47,8 @@ public class EntityToyScratchingPost extends EntityToyBase {
 		return !this.world.isAirBlock(new BlockPos(blockX, blockY, blockZ));
 	}
 
-	public AxisAlignedBB getCollisionBox(Entity entity) {
+	@Override
+    public AxisAlignedBB getCollisionBox(Entity entity) {
 		return this.getEntityBoundingBox();
 	}
 
@@ -61,7 +62,8 @@ public class EntityToyScratchingPost extends EntityToyBase {
 		return !this.isDead;
 	}
 
-	protected float getSoundPitch() {
+	@Override
+    protected float getSoundPitch() {
 		return super.getSoundPitch() * 0.2F;
 	}
 }

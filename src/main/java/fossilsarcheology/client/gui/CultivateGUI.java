@@ -11,7 +11,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class CultivateGUI extends GuiContainer {
 	private static final ResourceLocation loc = new ResourceLocation(Revival.MODID, "textures/gui/cultivate.png");
-	private TileEntityCultivate cultivateInventory;
+	private final TileEntityCultivate cultivateInventory;
 
 	public CultivateGUI(InventoryPlayer playerInventory, TileEntityCultivate tile) {
 		super(new CultivateContainer(playerInventory, tile));

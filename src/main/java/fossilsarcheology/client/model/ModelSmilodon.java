@@ -8,27 +8,27 @@ import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.Entity;
 
 public class ModelSmilodon extends ModelPrehistoric {
-	public AdvancedModelRenderer lowerBody;
-	public AdvancedModelRenderer leftFrontThigh;
-	public AdvancedModelRenderer rightFrontThigh;
-	public AdvancedModelRenderer rightHindThigh;
-	public AdvancedModelRenderer leftHindThigh;
-	public AdvancedModelRenderer upperBody;
-	public AdvancedModelRenderer tail;
-	public AdvancedModelRenderer neck;
-	public AdvancedModelRenderer head;
-	public AdvancedModelRenderer upperJaw;
-	public AdvancedModelRenderer lowerJaw;
-	public AdvancedModelRenderer leftEar;
-	public AdvancedModelRenderer rightEar;
-	public AdvancedModelRenderer nose;
-	public AdvancedModelRenderer upperRightFang;
-	public AdvancedModelRenderer upperLeftFang;
-	public AdvancedModelRenderer leftFrontLeg;
-	public AdvancedModelRenderer rightFrontLeg;
-	public AdvancedModelRenderer rightHindLeg;
-	public AdvancedModelRenderer leftHindLeg;
-	private ModelAnimator animator;
+	public final AdvancedModelRenderer lowerBody;
+	public final AdvancedModelRenderer leftFrontThigh;
+	public final AdvancedModelRenderer rightFrontThigh;
+	public final AdvancedModelRenderer rightHindThigh;
+	public final AdvancedModelRenderer leftHindThigh;
+	public final AdvancedModelRenderer upperBody;
+	public final AdvancedModelRenderer tail;
+	public final AdvancedModelRenderer neck;
+	public final AdvancedModelRenderer head;
+	public final AdvancedModelRenderer upperJaw;
+	public final AdvancedModelRenderer lowerJaw;
+	public final AdvancedModelRenderer leftEar;
+	public final AdvancedModelRenderer rightEar;
+	public final AdvancedModelRenderer nose;
+	public final AdvancedModelRenderer upperRightFang;
+	public final AdvancedModelRenderer upperLeftFang;
+	public final AdvancedModelRenderer leftFrontLeg;
+	public final AdvancedModelRenderer rightFrontLeg;
+	public final AdvancedModelRenderer rightHindLeg;
+	public final AdvancedModelRenderer leftHindLeg;
+	private final ModelAnimator animator;
 
 	public ModelSmilodon() {
 		this.textureWidth = 64;

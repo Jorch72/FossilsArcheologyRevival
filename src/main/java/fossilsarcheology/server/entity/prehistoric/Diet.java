@@ -10,7 +10,7 @@ public enum Diet {
 	PISCCARNIVORE(3),
 	NONE(0);
 
-	private int fearIndex;
+	private final int fearIndex;
 
 	Diet(int fearIndex) {
 		this.fearIndex = fearIndex;

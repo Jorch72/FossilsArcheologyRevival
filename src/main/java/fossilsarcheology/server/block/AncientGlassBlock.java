@@ -2,7 +2,6 @@ package fossilsarcheology.server.block;
 
 import fossilsarcheology.server.api.DefaultRenderedItem;
 import fossilsarcheology.server.tab.FATabRegistry;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -34,15 +33,11 @@ public class AncientGlassBlock extends BlockBreakable implements DefaultRendered
 		//this.setDefaultState(this.blockState.getBaseState().withProperty(CONNECTED_DOWN, Boolean.FALSE).withProperty(CONNECTED_EAST, Boolean.FALSE).withProperty(CONNECTED_NORTH, Boolean.FALSE).withProperty(CONNECTED_SOUTH, Boolean.FALSE).withProperty(CONNECTED_UP, Boolean.FALSE).withProperty(CONNECTED_WEST, Boolean.FALSE));
 	}
 
-	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
-		IBlockState iblockstate = blockAccess.getBlockState(pos.offset(side));
-		Block block = iblockstate.getBlock();
-		if (blockState != iblockstate) {
-			return true;
-		} else {
-			return false;
-		}
+	@Override
+    @SideOnly(Side.CLIENT)
+	public boolean shouldSideBeRendered(IBlockState state, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+		IBlockState neighbour = blockAccess.getBlockState(pos.offset(side));
+		return state.getBlock() != neighbour.getBlock();
 	}
 
    /* @Override
@@ -66,12 +61,14 @@ public class AncientGlassBlock extends BlockBreakable implements DefaultRendered
     }
     */
 
-	@SideOnly(Side.CLIENT)
+	@Override
+    @SideOnly(Side.CLIENT)
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.TRANSLUCENT;
 	}
 
-	public boolean isFullCube(IBlockState state) {
+	@Override
+    public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 }

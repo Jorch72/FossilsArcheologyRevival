@@ -10,27 +10,27 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelDryosaurus extends ModelPrehistoric {
-	public AdvancedModelRenderer lowerBody;
-	public AdvancedModelRenderer leftThigh;
-	public AdvancedModelRenderer rightThigh;
-	public AdvancedModelRenderer upperBody;
-	public AdvancedModelRenderer tail1;
-	public AdvancedModelRenderer neck;
-	public AdvancedModelRenderer leftUpperArm;
-	public AdvancedModelRenderer rightUpperArm;
-	public AdvancedModelRenderer head;
-	public AdvancedModelRenderer headPivot;
-	public AdvancedModelRenderer upperJaw;
-	public AdvancedModelRenderer lowerJaw;
-	public AdvancedModelRenderer leftLowerArm;
-	public AdvancedModelRenderer rightLowerArm;
-	public AdvancedModelRenderer tail2;
-	public AdvancedModelRenderer tail3;
-	public AdvancedModelRenderer leftLeg;
-	public AdvancedModelRenderer leftFoot;
-	public AdvancedModelRenderer rightLeg;
-	public AdvancedModelRenderer rightFoot;
-	private ModelAnimator animator;
+	public final AdvancedModelRenderer lowerBody;
+	public final AdvancedModelRenderer leftThigh;
+	public final AdvancedModelRenderer rightThigh;
+	public final AdvancedModelRenderer upperBody;
+	public final AdvancedModelRenderer tail1;
+	public final AdvancedModelRenderer neck;
+	public final AdvancedModelRenderer leftUpperArm;
+	public final AdvancedModelRenderer rightUpperArm;
+	public final AdvancedModelRenderer head;
+	public final AdvancedModelRenderer headPivot;
+	public final AdvancedModelRenderer upperJaw;
+	public final AdvancedModelRenderer lowerJaw;
+	public final AdvancedModelRenderer leftLowerArm;
+	public final AdvancedModelRenderer rightLowerArm;
+	public final AdvancedModelRenderer tail2;
+	public final AdvancedModelRenderer tail3;
+	public final AdvancedModelRenderer leftLeg;
+	public final AdvancedModelRenderer leftFoot;
+	public final AdvancedModelRenderer rightLeg;
+	public final AdvancedModelRenderer rightFoot;
+	private final ModelAnimator animator;
 
 	public ModelDryosaurus() {
 		this.textureWidth = 128;

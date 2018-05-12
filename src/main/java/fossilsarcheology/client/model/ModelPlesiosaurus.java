@@ -9,26 +9,26 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelPlesiosaurus extends ModelPrehistoric {
-	public AdvancedModelRenderer uppperBody;
-	public AdvancedModelRenderer lowerBody;
-	public AdvancedModelRenderer neck1;
-	public AdvancedModelRenderer tail1;
-	public AdvancedModelRenderer rightBackFlipper;
-	public AdvancedModelRenderer leftBackFlipper;
-	public AdvancedModelRenderer tail2;
-	public AdvancedModelRenderer tail3;
-	public AdvancedModelRenderer neck2;
-	public AdvancedModelRenderer rightFrontFlipper;
-	public AdvancedModelRenderer leftFrontFlipper;
-	public AdvancedModelRenderer neck3;
-	public AdvancedModelRenderer neck4;
-	public AdvancedModelRenderer neck5;
-	public AdvancedModelRenderer neck6;
-	public AdvancedModelRenderer head;
-	public AdvancedModelRenderer upperJaw;
-	public AdvancedModelRenderer bottomJawBase;
-	public AdvancedModelRenderer lowerJaw;
-	private ModelAnimator animator;
+	public final AdvancedModelRenderer uppperBody;
+	public final AdvancedModelRenderer lowerBody;
+	public final AdvancedModelRenderer neck1;
+	public final AdvancedModelRenderer tail1;
+	public final AdvancedModelRenderer rightBackFlipper;
+	public final AdvancedModelRenderer leftBackFlipper;
+	public final AdvancedModelRenderer tail2;
+	public final AdvancedModelRenderer tail3;
+	public final AdvancedModelRenderer neck2;
+	public final AdvancedModelRenderer rightFrontFlipper;
+	public final AdvancedModelRenderer leftFrontFlipper;
+	public final AdvancedModelRenderer neck3;
+	public final AdvancedModelRenderer neck4;
+	public final AdvancedModelRenderer neck5;
+	public final AdvancedModelRenderer neck6;
+	public final AdvancedModelRenderer head;
+	public final AdvancedModelRenderer upperJaw;
+	public final AdvancedModelRenderer bottomJawBase;
+	public final AdvancedModelRenderer lowerJaw;
+	private final ModelAnimator animator;
 
 	public ModelPlesiosaurus() {
 		this.textureWidth = 128;

@@ -30,15 +30,13 @@ import java.util.Random;
 
 public class SifterBlock extends BlockContainer implements DefaultRenderedItem, BlockEntity {
 	private static boolean keepInventory = false;
-	private final boolean isActive;
 
-	public SifterBlock(boolean isActive) {
+    public SifterBlock(boolean isActive) {
 		super(Material.WOOD);
 		this.setHarvestLevel("axe", 0);
 		this.setHardness(2.5F);
 		this.setSoundType(SoundType.METAL);
-		this.isActive = isActive;
-		if (isActive) {
+        if (isActive) {
 			setUnlocalizedName("sifter_active");
 		} else {
 			setUnlocalizedName("sifter");

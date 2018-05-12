@@ -7,11 +7,11 @@ import net.minecraft.entity.ai.RandomPositionGenerator;
 import net.minecraft.util.math.Vec3d;
 
 public class DinoAIWander extends EntityAIBase {
-	private EntityPrehistoric prehistoric;
+	private final EntityPrehistoric prehistoric;
 	private double xPosition;
 	private double yPosition;
 	private double zPosition;
-	private double speed;
+	private final double speed;
 
 	public DinoAIWander(EntityPrehistoric prehistoric, double speed) {
 		this.prehistoric = prehistoric;
@@ -19,7 +19,8 @@ public class DinoAIWander extends EntityAIBase {
 		this.setMutexBits(1);
 	}
 
-	public boolean shouldExecute() {
+	@Override
+    public boolean shouldExecute() {
 		if (this.prehistoric.isMovementBlocked()) {
 			return false;
 		}
@@ -42,11 +43,13 @@ public class DinoAIWander extends EntityAIBase {
 		}
 	}
 
-	public boolean continueExecuting() {
+	@Override
+	public boolean shouldContinueExecuting() {
 		return !this.prehistoric.getNavigator().noPath();
 	}
 
-	public void startExecuting() {
+	@Override
+    public void startExecuting() {
 		this.prehistoric.getNavigator().tryMoveToXYZ(this.xPosition,
 				this.yPosition, this.zPosition, this.speed);
 	}

@@ -10,15 +10,14 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 public class DinoAIFindWaterTarget extends EntityAIBase {
-	protected DinoAIFindWaterTarget.Sorter fleePosSorter;
-	private EntityCreature mob;
-	private int range;
-	private boolean avoidAttacker;
+	protected final DinoAIFindWaterTarget.Sorter fleePosSorter;
+	private final EntityCreature mob;
+	private final int range;
+	private final boolean avoidAttacker;
 
 	public DinoAIFindWaterTarget(EntityCreature mob, int range, boolean avoidAttacker) {
 		this.mob = mob;
@@ -69,7 +68,7 @@ public class DinoAIFindWaterTarget extends EntityAIBase {
 			}
 			if (!water.isEmpty()) {
 				if (avoidAttacker && this.mob.getAttackingEntity() != null) {
-					Collections.sort(water, this.fleePosSorter);
+					water.sort(this.fleePosSorter);
 
 				}
 				return water.get(this.mob.getRNG().nextInt(water.size()));
@@ -94,11 +93,12 @@ public class DinoAIFindWaterTarget extends EntityAIBase {
 		}
 
 		//further; more prefered.
+		@Override
 		public int compare(BlockPos p_compare_1_, BlockPos p_compare_2_) {
 			this.pos = DinoAIFindWaterTarget.this.mob.getPosition();
 			double d0 = this.pos.distanceSq(p_compare_1_);
 			double d1 = this.pos.distanceSq(p_compare_2_);
-			return d0 < d1 ? 1 : (d0 > d1 ? -1 : 0);
+			return Double.compare(d1, d0);
 		}
 	}
 }

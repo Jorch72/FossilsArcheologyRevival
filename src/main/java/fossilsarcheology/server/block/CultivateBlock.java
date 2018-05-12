@@ -74,7 +74,7 @@ public class CultivateBlock extends BlockContainer implements DefaultRenderedIte
 		String var6 = I18n.format("cultivate.outBreak");
 
 		for (int var7 = 0; var7 < world.playerEntities.size(); ++var7) {
-			EntityPlayer P = (EntityPlayer) world.playerEntities.get(var7);
+			EntityPlayer P = world.playerEntities.get(var7);
 
 			if (Math.pow(pos.getX() - P.posX, 2D) + Math.pow(pos.getY() - P.posY, 2D) + Math.pow(pos.getZ() - P.posZ, 2D) < 10000) {
 				// P.addStat(FossilAchievements.FAILURESAURUS, 1);
@@ -265,11 +265,13 @@ public class CultivateBlock extends BlockContainer implements DefaultRenderedIte
 		return new ItemStack(FABlockRegistry.CULTIVATE_IDLE);
 	}
 
-	public BlockRenderLayer getBlockLayer() {
+	@Override
+    public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.TRANSLUCENT;
 	}
 
-	public boolean isOpaqueCube(IBlockState state) {
+	@Override
+    public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 

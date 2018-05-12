@@ -15,9 +15,9 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class EntityBirdEgg extends EntityThrowable {
-	public Item item;
-	PrehistoricEntityType type;
-	boolean cultivated;
+	public final Item item;
+	final PrehistoricEntityType type;
+	final boolean cultivated;
 
 	public EntityBirdEgg(World par1World) {
 		super(par1World);
@@ -70,7 +70,7 @@ public class EntityBirdEgg extends EntityThrowable {
 
 				}
 				for (int j = 0; j < 8; ++j) {
-					this.world.spawnParticle(EnumParticleTypes.SNOWBALL, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D, new int[0]);
+					this.world.spawnParticle(EnumParticleTypes.SNOWBALL, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
 				}
 			}
 		}

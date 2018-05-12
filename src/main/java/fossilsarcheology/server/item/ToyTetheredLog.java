@@ -18,7 +18,8 @@ public class ToyTetheredLog extends Item implements DefaultRenderedItem {
 		this.setCreativeTab(FATabRegistry.ITEMS);
 	}
 
-	public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+	@Override
+    public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if (facing == EnumFacing.DOWN && worldIn.isAirBlock(pos.down(1)) && worldIn.isAirBlock(pos.down(2))) {
 			EntityToyTetheredLog ball = new EntityToyTetheredLog(worldIn);
 			ball.setLocationAndAngles(pos.getX() + 0.5, pos.getY() - 1.9, pos.getZ() + 0.5, 0, 0);

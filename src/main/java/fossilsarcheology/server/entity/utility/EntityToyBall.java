@@ -22,7 +22,7 @@ import net.minecraft.world.World;
 
 public class EntityToyBall extends EntityToyBase {
 
-	private static final DataParameter<Integer> COLOR = EntityDataManager.<Integer>createKey(EntityToyBall.class, DataSerializers.VARINT);
+	private static final DataParameter<Integer> COLOR = EntityDataManager.createKey(EntityToyBall.class, DataSerializers.VARINT);
 	public int rollValue;
 
 	public EntityToyBall(World world) {
@@ -37,17 +37,20 @@ public class EntityToyBall extends EntityToyBase {
 		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(1);
 	}
 
-	protected void entityInit() {
+	@Override
+    protected void entityInit() {
 		super.entityInit();
 		this.dataManager.register(COLOR, 0);
 	}
 
-	public void writeEntityToNBT(NBTTagCompound compound) {
+	@Override
+    public void writeEntityToNBT(NBTTagCompound compound) {
 		super.writeEntityToNBT(compound);
 		compound.setInteger("Color", this.getColor());
 	}
 
-	public void readEntityFromNBT(NBTTagCompound compound) {
+	@Override
+    public void readEntityFromNBT(NBTTagCompound compound) {
 		super.readEntityFromNBT(compound);
 		this.setColor(compound.getInteger("Color"));
 	}
@@ -68,7 +71,8 @@ public class EntityToyBall extends EntityToyBase {
 		}
 	}
 
-	public void onUpdate() {
+	@Override
+    public void onUpdate() {
 		super.onUpdate();
 		if (Math.abs(this.motionX) > 0.01 || Math.abs(this.motionZ) > 0.01) {
 			rollValue++;
@@ -81,7 +85,8 @@ public class EntityToyBall extends EntityToyBase {
 		return new ItemStack(FAItemRegistry.TOY_BALL, 1, this.getColor());
 	}
 
-	public boolean attackEntityFrom(DamageSource dmg, float f) {
+	@Override
+    public boolean attackEntityFrom(DamageSource dmg, float f) {
 		if (dmg.getTrueSource() != null) {
 			if (dmg.getTrueSource() instanceof EntityPlayer) {
 				this.playSound(getAttackNoise(), 1, this.getSoundPitch());

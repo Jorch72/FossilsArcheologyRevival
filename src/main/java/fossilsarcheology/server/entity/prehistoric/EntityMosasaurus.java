@@ -2,8 +2,25 @@ package fossilsarcheology.server.entity.prehistoric;
 
 import com.google.common.base.Predicate;
 import fossilsarcheology.client.sound.FASoundRegistry;
-import fossilsarcheology.server.entity.ai.*;
-import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.*;
+import fossilsarcheology.server.entity.ai.DinoAIEatFeeders;
+import fossilsarcheology.server.entity.ai.DinoAIEatItems;
+import fossilsarcheology.server.entity.ai.DinoAIFindWaterTarget;
+import fossilsarcheology.server.entity.ai.DinoAIGetInWater;
+import fossilsarcheology.server.entity.ai.DinoAIHunt;
+import fossilsarcheology.server.entity.ai.DinoAILookIdle;
+import fossilsarcheology.server.entity.ai.DinoAIRiding;
+import fossilsarcheology.server.entity.ai.DinoAIWatchClosest;
+import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Activity;
+import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Attacking;
+import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Climbing;
+import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Following;
+import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Jumping;
+import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Moving;
+import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Response;
+import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Stalking;
+import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Taming;
+import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Untaming;
+import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.WaterAbility;
 import fossilsarcheology.server.entity.utility.EntityToyBase;
 import fossilsarcheology.server.item.FAItemRegistry;
 import net.ilexiconn.llibrary.server.animation.Animation;
@@ -18,11 +35,9 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
-
 public class EntityMosasaurus extends EntityPrehistoricSwimming {
 
-	public static Animation SHAKE_ANIMATION = Animation.create(50);
+	public static final Animation SHAKE_ANIMATION = Animation.create(50);
 
 	public EntityMosasaurus(World world) {
 		super(world, PrehistoricEntityType.MOSASAURUS, 2, 9, 12, 70, 0.3, 0.35);
@@ -30,17 +45,12 @@ public class EntityMosasaurus extends EntityPrehistoricSwimming {
 		this.tasks.addTask(1, new DinoAIGetInWater(this, 1.0D));
 		this.tasks.addTask(2, this.aiSit);
 		this.tasks.addTask(3, new DinoAIRiding(this, 1.0F));
-		this.tasks.addTask(4, new DinoAIEatFeeders(this, 1));
-		this.tasks.addTask(4, new DinoAIEatItems(this, 1));
+		this.tasks.addTask(4, new DinoAIEatFeeders(this));
+		this.tasks.addTask(4, new DinoAIEatItems(this));
 		this.tasks.addTask(5, new DinoAIWatchClosest(this, EntityPlayer.class, 8.0F));
 		this.tasks.addTask(5, new DinoAILookIdle(this));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
-		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, new Predicate<Entity>() {
-			@Override
-			public boolean apply(@Nullable Entity entity) {
-				return entity instanceof EntityLivingBase;
-			}
-		}));
+		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
 		this.hasBabyTexture = false;
 		this.setActualSize(1.5F, 0.6F);
 		minSize = 0.6F;
@@ -149,7 +159,7 @@ public class EntityMosasaurus extends EntityPrehistoricSwimming {
 		super.onLivingUpdate();
 		if (this.getAttackTarget() != null) {
 			if (getAttackBounds().intersects(this.getAttackTarget().getEntityBoundingBox())) {
-				if (!this.isEntitySmallerThan(this.getAttackTarget(), 2F * (this.getAgeScale() / this.maxSize))) {
+				if (!isEntitySmallerThan(this.getAttackTarget(), 2F * (this.getAgeScale() / this.maxSize))) {
 					if (this.getAnimation() != ATTACK_ANIMATION) {
 						this.setAnimation(ATTACK_ANIMATION);
 					}
@@ -168,9 +178,10 @@ public class EntityMosasaurus extends EntityPrehistoricSwimming {
 
 	}
 
+	@Override
 	public void updatePassenger(Entity passenger) {
 		super.updatePassenger(passenger);
-		if (passenger != null && passenger instanceof EntityLivingBase) {
+		if (passenger instanceof EntityLivingBase) {
 			Entity riddenByEntity = passenger;
 			if ((this.getAnimationTick() > 55 || this.getAnimation() == NO_ANIMATION)) {
 				if (riddenByEntity instanceof EntityToyBase) {
@@ -182,7 +193,7 @@ public class EntityMosasaurus extends EntityPrehistoricSwimming {
 					return;
 				} else {
 					if (passenger instanceof EntityLivingBase) {
-						((EntityLivingBase) riddenByEntity).attackEntityFrom(DamageSource.causeMobDamage(this), Math.max(((EntityLivingBase) riddenByEntity).getMaxHealth(), 100));
+						riddenByEntity.attackEntityFrom(DamageSource.causeMobDamage(this), Math.max(((EntityLivingBase) riddenByEntity).getMaxHealth(), 100));
 
 					}
 					this.onKillEntity((EntityLivingBase) riddenByEntity);

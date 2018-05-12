@@ -123,7 +123,8 @@ public class ClientProxy extends ServerProxy {
 		RENDER_HANDLER.onPostInit();
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Override
+    @SideOnly(Side.CLIENT)
 	public void calculateChainBuffer(EntityFishBase entity) {
 		entity.chainBuffer.calculateChainSwingBuffer(70, 10, 4, entity);
 	}
@@ -139,7 +140,7 @@ public class ClientProxy extends ServerProxy {
 			return new CultivateGUI(player.inventory, (TileEntityCultivate) world.getTileEntity(pos));
 		}
 		if (id == GUI_FEEDER) {
-			return new FeederGUI(player.inventory, (TileEntityFeeder) world.getTileEntity(pos));
+			return new FeederGUI(player.inventory, world.getTileEntity(pos));
 		}
 		if (id == GUI_WORKTABLE) {
 			return new WorktableGUI(player.inventory, (TileEntityWorktable) world.getTileEntity(pos));
@@ -156,12 +157,14 @@ public class ClientProxy extends ServerProxy {
 		return null;
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Override
+    @SideOnly(Side.CLIENT)
 	public void spawnBubbleParticles(World world, float f, float f1, float f2, double motionX, double motionY, double motionZ) {
 		Minecraft.getMinecraft().effectRenderer.addEffect(new BubbleFX(world, f, f1, f2, motionX, motionY, motionZ));
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Override
+    @SideOnly(Side.CLIENT)
 	public net.minecraft.client.model.ModelBiped getArmorModel(int id) {
 		return id == 0 ? helmetModel : null;
 	}

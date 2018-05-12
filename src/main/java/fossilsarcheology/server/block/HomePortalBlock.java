@@ -33,7 +33,8 @@ public class HomePortalBlock extends Block implements DefaultRenderedItem {
 		return false;
 	}
 
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+	@Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return null;
 	}
 
@@ -50,7 +51,8 @@ public class HomePortalBlock extends Block implements DefaultRenderedItem {
 		}
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Override
+    @SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState stateIn, World world, BlockPos pos, Random rand) {
 		super.randomDisplayTick(stateIn, world, pos, rand);
 		if (rand.nextInt(100) == 0) {
@@ -69,7 +71,7 @@ public class HomePortalBlock extends Block implements DefaultRenderedItem {
 						if (!world.isAirBlock(new BlockPos((l - x) / 2 + x, j1, (i1 - z) / 2 + z))) {
 							break;
 						}
-						world.spawnParticle(EnumParticleTypes.PORTAL, x + 0.5D, y + 0.5D, z + 0.5D, (double) ((float) (l - x) + rand.nextFloat()) - 0.5D, (double) ((float) (j1 - y) - rand.nextFloat() - 1.0F), (double) ((float) (i1 - z) + rand.nextFloat()) - 0.5D, new int[0]);
+						world.spawnParticle(EnumParticleTypes.PORTAL, x + 0.5D, y + 0.5D, z + 0.5D, (double) ((float) (l - x) + rand.nextFloat()) - 0.5D, (double) ((float) (j1 - y) - rand.nextFloat() - 1.0F), (double) ((float) (i1 - z) + rand.nextFloat()) - 0.5D);
 					}
 				}
 			}

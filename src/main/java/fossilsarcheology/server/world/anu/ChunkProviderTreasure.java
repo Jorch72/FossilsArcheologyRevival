@@ -8,7 +8,7 @@ import net.minecraft.world.chunk.ChunkPrimer;
 public class ChunkProviderTreasure extends ChunkProviderAnu {
 
 	public ChunkProviderTreasure(World worldObjIn, boolean mapFeaturesEnabledIn, long seed) {
-		super(worldObjIn, mapFeaturesEnabledIn, seed);
+		super(worldObjIn, seed);
 	}
 
 	public Chunk provideChunk(int x, int z) {

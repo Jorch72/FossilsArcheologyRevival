@@ -26,7 +26,8 @@ public class DinoAIGetInWater extends EntityAIBase {
 		this.setMutexBits(1);
 	}
 
-	public boolean shouldExecute() {
+	@Override
+    public boolean shouldExecute() {
 		if (creature.isBeingRidden() || creature instanceof EntityTameable && ((EntityTameable) creature).isSitting() || creature.isInWater() || creature.getAttackTarget() != null && !creature.getAttackTarget().isInWater()) {
 			return false;
 		} else {
@@ -46,14 +47,16 @@ public class DinoAIGetInWater extends EntityAIBase {
 	/**
 	 * Returns whether an in-progress EntityAIBase should continue executing
 	 */
-	public boolean shouldContinueExecuting() {
+	@Override
+    public boolean shouldContinueExecuting() {
 		return !this.creature.getNavigator().noPath();
 	}
 
 	/**
 	 * Execute a one shot task or start executing a continuous task
 	 */
-	public void startExecuting() {
+	@Override
+    public void startExecuting() {
 		this.creature.getNavigator().tryMoveToXYZ(this.shelterX, this.shelterY, this.shelterZ, this.movementSpeed);
 	}
 

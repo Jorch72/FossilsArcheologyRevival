@@ -10,23 +10,23 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelMosasaurus extends ModelPrehistoric {
-	public AdvancedModelRenderer upperBody;
-	public AdvancedModelRenderer lowerBody;
-	public AdvancedModelRenderer neck;
-	public AdvancedModelRenderer leftFrontFlipper;
-	public AdvancedModelRenderer rightFrontFlipper;
-	public AdvancedModelRenderer tail1;
-	public AdvancedModelRenderer leftHindFlipper;
-	public AdvancedModelRenderer rightHindFlipper;
-	public AdvancedModelRenderer tail2;
-	public AdvancedModelRenderer lowerTailFin;
-	public AdvancedModelRenderer upperTailFin;
-	public AdvancedModelRenderer head;
-	public AdvancedModelRenderer jawBase;
-	public AdvancedModelRenderer upperJaw;
-	public AdvancedModelRenderer bottomJaw;
-	public AdvancedModelRenderer teeth;
-	private ModelAnimator animator;
+	public final AdvancedModelRenderer upperBody;
+	public final AdvancedModelRenderer lowerBody;
+	public final AdvancedModelRenderer neck;
+	public final AdvancedModelRenderer leftFrontFlipper;
+	public final AdvancedModelRenderer rightFrontFlipper;
+	public final AdvancedModelRenderer tail1;
+	public final AdvancedModelRenderer leftHindFlipper;
+	public final AdvancedModelRenderer rightHindFlipper;
+	public final AdvancedModelRenderer tail2;
+	public final AdvancedModelRenderer lowerTailFin;
+	public final AdvancedModelRenderer upperTailFin;
+	public final AdvancedModelRenderer head;
+	public final AdvancedModelRenderer jawBase;
+	public final AdvancedModelRenderer upperJaw;
+	public final AdvancedModelRenderer bottomJaw;
+	public final AdvancedModelRenderer teeth;
+	private final ModelAnimator animator;
 
 	public ModelMosasaurus() {
 		this.textureWidth = 128;

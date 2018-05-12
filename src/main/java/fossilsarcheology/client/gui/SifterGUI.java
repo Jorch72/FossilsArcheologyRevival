@@ -14,7 +14,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class SifterGUI extends GuiContainer {
 	private static final ResourceLocation SIFTER_TEXTURE = new ResourceLocation(Revival.MODID + ":" + "textures/gui/sifter.png");
-	private TileEntitySifter sifterInventory;
+	private final TileEntitySifter sifterInventory;
 
 	public SifterGUI(InventoryPlayer playerInventory, TileEntitySifter sifterInventory) {
 		super(new SifterContainer(playerInventory, sifterInventory));

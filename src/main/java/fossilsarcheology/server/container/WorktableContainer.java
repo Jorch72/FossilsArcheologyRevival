@@ -8,11 +8,11 @@ import net.minecraft.inventory.SlotFurnaceOutput;
 
 public class WorktableContainer extends SyncedFieldContainer {
 
-	private TileEntityWorktable furnace;
+	private final TileEntityWorktable furnace;
 
 	public WorktableContainer(InventoryPlayer var1, TileEntityWorktable var2) {
 		super(var2);
-		this.furnace = (TileEntityWorktable) var2;
+		this.furnace = var2;
 		this.addSlotToContainer(new Slot(this.furnace, 0, 49, 20));
 		this.addSlotToContainer(new Slot(this.furnace, 1, 81, 54));
 		this.addSlotToContainer(new SlotFurnaceOutput(var1.player, this.furnace, 2, 116, 21));

@@ -12,17 +12,15 @@ import net.minecraft.util.math.Vec3d;
 
 public class DinoAIRiding extends EntityAIBase {
 	private static final float PLAYER_SPEED = 0.98f;
-	private final double speed;
-	public int FollowTimeWithoutWhip = 120;
+	public final int FollowTimeWithoutWhip = 120;
 	private int lastTimeSeenWhip = -1;
-	private EntityPrehistoric prehistoric;
+	private final EntityPrehistoric prehistoric;
 	private EntityPlayer rider;
 
 	public DinoAIRiding(EntityPrehistoric dinosaur, double speed) {
 		super();
 		this.prehistoric = dinosaur;
-		this.speed = speed;
-		setMutexBits(-1);
+        setMutexBits(-1);
 
 	}
 

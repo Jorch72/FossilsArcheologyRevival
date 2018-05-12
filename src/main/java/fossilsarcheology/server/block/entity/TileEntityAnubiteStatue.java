@@ -41,7 +41,8 @@ public class TileEntityAnubiteStatue extends TileEntity implements ITickable {
 		readFromNBT(packet.getNbtCompound());
 	}
 
-	public NBTTagCompound getUpdateTag() {
+	@Override
+    public NBTTagCompound getUpdateTag() {
 		return this.writeToNBT(new NBTTagCompound());
 	}
 

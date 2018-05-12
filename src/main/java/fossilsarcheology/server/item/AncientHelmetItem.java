@@ -3,6 +3,7 @@ package fossilsarcheology.server.item;
 import fossilsarcheology.Revival;
 import fossilsarcheology.server.api.DefaultRenderedItem;
 import fossilsarcheology.server.tab.FATabRegistry;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
@@ -19,8 +20,8 @@ public class AncientHelmetItem extends ItemArmor implements DefaultRenderedItem 
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public net.minecraft.client.model.ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, net.minecraft.client.model.ModelBiped _default) {
-		net.minecraft.client.model.ModelBiped armorModel = new net.minecraft.client.model.ModelBiped();
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default) {
+		ModelBiped armorModel = new ModelBiped();
 
 		if (itemStack != null) {
 			if (itemStack.getItem() instanceof AncientHelmetItem) {

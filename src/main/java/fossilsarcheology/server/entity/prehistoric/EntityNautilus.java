@@ -4,7 +4,6 @@ import fossilsarcheology.server.entity.EntityFishBase;
 import fossilsarcheology.server.item.FAItemRegistry;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
@@ -14,12 +13,11 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-import java.util.Collections;
 import java.util.List;
 
 public class EntityNautilus extends EntityFishBase {
 
-	private static final DataParameter<Boolean> ISINSHELL = EntityDataManager.<Boolean>createKey(EntityNautilus.class, DataSerializers.BOOLEAN);
+	private static final DataParameter<Boolean> ISINSHELL = EntityDataManager.createKey(EntityNautilus.class, DataSerializers.BOOLEAN);
 	public float shellProgress;
 	public boolean isInShell;
 	public int ticksToShell;
@@ -98,21 +96,8 @@ public class EntityNautilus extends EntityFishBase {
 	}
 
 	public boolean isThereNearbyMobs() {
-		Entity targetEntity;
-		EntityAINearestAttackableTarget.Sorter theNearestAttackableTargetSorter = new EntityAINearestAttackableTarget.Sorter(this);
 		List<EntityLivingBase> list = world.getEntitiesWithinAABB(EntityLivingBase.class, this.getEntityBoundingBox().expand(2.0D, 2.0D, 2.0D), null);
-		Collections.sort(list, theNearestAttackableTargetSorter);
-
-		if (list.isEmpty()) {
-			return false;
-		} else {
-			for (Entity entity : list) {
-				if (isAScaryAnimal(entity)) {
-					return true;
-				}
-			}
-			return false;
-		}
+		return list.stream().anyMatch(this::isAScaryAnimal);
 	}
 
 	public boolean isAScaryAnimal(Entity entity) {

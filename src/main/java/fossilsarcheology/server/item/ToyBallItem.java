@@ -24,12 +24,14 @@ public class ToyBallItem extends Item {
 		this.setCreativeTab(FATabRegistry.ITEMS);
 	}
 
-	public String getUnlocalizedName(ItemStack stack) {
+	@Override
+    public String getUnlocalizedName(ItemStack stack) {
 		int i = stack.getMetadata();
 		return super.getUnlocalizedName() + "." + EnumDyeColor.byDyeDamage(i).getUnlocalizedName();
 	}
 
-	public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+	@Override
+    public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		EntityToyBall ball = new EntityToyBall(worldIn);
 		ItemStack stack = playerIn.getHeldItem(hand);
 		ball.setColor(stack.getItemDamage());

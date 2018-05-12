@@ -16,7 +16,7 @@ public class TileEntityAnuStatue extends TileEntity implements ITickable {
 	@Override
 	public void update() {
 		for (int var7 = 0; var7 < world.playerEntities.size(); ++var7) {
-			EntityPlayer P = (EntityPlayer) world.playerEntities.get(var7);
+			EntityPlayer P = world.playerEntities.get(var7);
 
 			if (Math.pow(this.pos.getX() - P.posX, 2D) + Math.pow(this.pos.getY() - P.posY, 2D) + Math.pow(this.pos.getZ() - P.posZ, 2D) < 40) {
 				//P.addStat(FossilAchievements.FIND_ANU_TOTEM, 1);
@@ -25,7 +25,7 @@ public class TileEntityAnuStatue extends TileEntity implements ITickable {
 
 		if (world.getBlockState(new BlockPos(this.pos.getX() - 1, pos.getY(), pos.getZ() - 1)).getBlock() == FABlockRegistry.FIGURINE && world.getBlockState(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ() - 1)).getBlock() == FABlockRegistry.FIGURINE && world.getBlockState(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ() + 1)).getBlock() == FABlockRegistry.FIGURINE && world.getBlockState(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ() + 1)).getBlock() == FABlockRegistry.FIGURINE && world.getBlockState(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ())).getBlock() == Blocks.REDSTONE_WIRE && world.getBlockState(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ())).getBlock() == Blocks.REDSTONE_WIRE && world.getBlockState(new BlockPos(pos.getX(), pos.getY(), pos.getZ() - 1)).getBlock() == Blocks.REDSTONE_WIRE && world.getBlockState(new BlockPos(pos.getX(), pos.getY(), pos.getZ() + 1)).getBlock() == Blocks.REDSTONE_WIRE) {
 			for (int var7 = 0; var7 < world.playerEntities.size(); ++var7) {
-				EntityPlayer P = (EntityPlayer) world.playerEntities.get(var7);
+				EntityPlayer P = world.playerEntities.get(var7);
 
 				if (Math.pow(this.pos.getX() - P.posX, 2D) + Math.pow(this.pos.getY() - P.posY, 2D) + Math.pow(this.pos.getZ() - P.posZ, 2D) < 90) {
 					//P.addStat(FossilAchievements.ANU_PORTAL, 1);

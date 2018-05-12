@@ -13,17 +13,16 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public class DinoAIFollowOwner extends EntityAIBase {
-	World theWorld;
-	float maxDist;
-	float minDist;
-	private EntityPrehistoric prehistoric;
+	final World theWorld;
+	final float maxDist;
+	final float minDist;
+	private final EntityPrehistoric prehistoric;
 	private EntityLivingBase theOwner;
-	private double speed;
-	private PathNavigate petPathfinder;
+	private final double speed;
+	private final PathNavigate petPathfinder;
 	private int counter;
-	private boolean avoidsWater;
 
-	public DinoAIFollowOwner(EntityPrehistoric prehistoric, double speed, float minDist, float maxDist) {
+    public DinoAIFollowOwner(EntityPrehistoric prehistoric, double speed, float minDist, float maxDist) {
 		this.prehistoric = prehistoric;
 		this.theWorld = prehistoric.world;
 		this.speed = speed;
@@ -36,7 +35,8 @@ public class DinoAIFollowOwner extends EntityAIBase {
 	/**
 	 * Returns whether the EntityAIBase should begin execution.
 	 */
-	public boolean shouldExecute() {
+	@Override
+    public boolean shouldExecute() {
 		EntityLivingBase entitylivingbase = this.prehistoric.getOwner();
 
 		if (entitylivingbase == null) {
@@ -53,13 +53,15 @@ public class DinoAIFollowOwner extends EntityAIBase {
 		}
 	}
 
-	public boolean continueExecuting() {
+	@Override
+    public boolean shouldContinueExecuting() {
 		return !this.petPathfinder.noPath() && this.prehistoric.getDistanceSq(this.theOwner) > (double) (this.maxDist * this.maxDist) && !this.prehistoric.isSitting();
 	}
 
-	public void startExecuting() {
+	@Override
+    public void startExecuting() {
 		this.counter = 0;
-		this.avoidsWater = this.prehistoric.getPathPriority(PathNodeType.WATER) == 0;
+        boolean avoidsWater = this.prehistoric.getPathPriority(PathNodeType.WATER) == 0;
 		this.prehistoric.setPathPriority(PathNodeType.WATER, 0.0F);
 		if (this.prehistoric.isSitting()) {
 			this.prehistoric.setSitting(false);
@@ -69,7 +71,8 @@ public class DinoAIFollowOwner extends EntityAIBase {
 		}
 	}
 
-	public void resetTask() {
+	@Override
+    public void resetTask() {
 		this.theOwner = null;
 		this.petPathfinder.clearPath();
 		this.prehistoric.setPathPriority(PathNodeType.WATER, 0.0F);
@@ -77,10 +80,11 @@ public class DinoAIFollowOwner extends EntityAIBase {
 
 	private boolean isEmptyBlock(BlockPos pos) {
 		IBlockState iblockstate = this.theWorld.getBlockState(pos);
-		return iblockstate.getMaterial() == Material.AIR ? true : !iblockstate.isFullCube();
+		return iblockstate.getMaterial() == Material.AIR || !iblockstate.isFullCube();
 	}
 
-	public void updateTask() {
+	@Override
+    public void updateTask() {
 		this.prehistoric.getLookHelper().setLookPositionWithEntity(this.theOwner, 10.0F, (float) this.prehistoric.getVerticalFaceSpeed());
 
 		if (!this.prehistoric.isSitting()) {

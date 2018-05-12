@@ -9,22 +9,22 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelLiopleurodon extends ModelPrehistoric {
-	public AdvancedModelRenderer LowerBody;
-	public AdvancedModelRenderer BackFlipper_Right;
-	public AdvancedModelRenderer Tail;
-	public AdvancedModelRenderer BackFlipper_Left;
-	public AdvancedModelRenderer UpperBody;
-	public AdvancedModelRenderer Tail1;
-	public AdvancedModelRenderer Tail2;
-	public AdvancedModelRenderer Neck;
-	public AdvancedModelRenderer FrontFlipper_Right;
-	public AdvancedModelRenderer FrontFlipper_Left;
-	public AdvancedModelRenderer Head;
-	public AdvancedModelRenderer JawTop;
-	public AdvancedModelRenderer JawBottomBase;
-	public AdvancedModelRenderer Teeth;
-	public AdvancedModelRenderer JawBottom;
-	private ModelAnimator animator;
+	public final AdvancedModelRenderer LowerBody;
+	public final AdvancedModelRenderer BackFlipper_Right;
+	public final AdvancedModelRenderer Tail;
+	public final AdvancedModelRenderer BackFlipper_Left;
+	public final AdvancedModelRenderer UpperBody;
+	public final AdvancedModelRenderer Tail1;
+	public final AdvancedModelRenderer Tail2;
+	public final AdvancedModelRenderer Neck;
+	public final AdvancedModelRenderer FrontFlipper_Right;
+	public final AdvancedModelRenderer FrontFlipper_Left;
+	public final AdvancedModelRenderer Head;
+	public final AdvancedModelRenderer JawTop;
+	public final AdvancedModelRenderer JawBottomBase;
+	public final AdvancedModelRenderer Teeth;
+	public final AdvancedModelRenderer JawBottom;
+	private final ModelAnimator animator;
 
 	public ModelLiopleurodon() {
 		this.textureWidth = 128;

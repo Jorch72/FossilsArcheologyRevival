@@ -42,7 +42,7 @@ public class MessageFoodParticles extends AbstractMessage<MessageFoodParticles> 
 	public MessageFoodParticles() {
 	}
 
-	public static final void spawnItemParticle(Entity entity, Item item) {
+	public static void spawnItemParticle(Entity entity, Item item) {
 		Random rand = new Random();
 		double motionX = rand.nextGaussian() * 0.07D;
 		double motionY = rand.nextGaussian() * 0.07D;
@@ -53,7 +53,7 @@ public class MessageFoodParticles extends AbstractMessage<MessageFoodParticles> 
 		Revival.PROXY.spawnPacketItemParticles(entity.world, f, f1, f2, motionX, motionY, motionZ, item);
 	}
 
-	public static final void spawnBlockParticle(Entity entity, Block block) {
+	public static void spawnBlockParticle(Entity entity, Block block) {
 		Random rand = new Random();
 		double motionX = rand.nextGaussian() * 0.07D;
 		double motionY = rand.nextGaussian() * 0.07D;

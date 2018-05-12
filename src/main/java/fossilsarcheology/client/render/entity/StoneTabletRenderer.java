@@ -94,8 +94,7 @@ public class StoneTabletRenderer extends Render<StoneTabletEntity> {
 		GlStateManager.rotate(180.0F - yaw, 0.0F, 1.0F, 0.0F);
 		GlStateManager.enableRescaleNormal();
 		this.bindEntityTexture(entity);
-		StoneTabletEntity.Variant entitypainting$enumart = entity.variant;
-		float f = 0.0625F;
+		StoneTabletEntity.Variant variant = entity.variant;
 		GlStateManager.scale(0.0625F, 0.0625F, 0.0625F);
 
 		if (this.renderOutlines) {
@@ -103,7 +102,7 @@ public class StoneTabletRenderer extends Render<StoneTabletEntity> {
 			GlStateManager.enableOutlineMode(this.getTeamColor(entity));
 		}
 
-		this.renderTablet(entity, entitypainting$enumart.sizeX, entitypainting$enumart.sizeY, entitypainting$enumart.offsetX, entitypainting$enumart.offsetY);
+		this.renderTablet(entity, variant.sizeX, variant.sizeY, variant.offsetX, variant.offsetY);
 
 		if (this.renderOutlines) {
 			GlStateManager.disableOutlineMode();

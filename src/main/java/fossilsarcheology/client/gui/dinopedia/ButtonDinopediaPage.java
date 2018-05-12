@@ -12,10 +12,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ButtonDinopediaPage extends GuiButton {
 	private static final ResourceLocation BOOK_TEXTURE = new ResourceLocation(Revival.MODID, "textures/gui/dinopedia.png");
 	private final boolean nextPage;
-	private int page;
-	private int lastpage = 1;
+	private final int page;
 
-	public ButtonDinopediaPage(int id, int xPos, int yPos, boolean nextPage, int bookpage) {
+    public ButtonDinopediaPage(int id, int xPos, int yPos, boolean nextPage, int bookpage) {
 		super(id, xPos, yPos, 34, 24, "");
 		this.nextPage = nextPage;
 		page = bookpage;
@@ -31,7 +30,8 @@ public class ButtonDinopediaPage extends GuiButton {
 
 			// if ((hovering) || (this.nextPage && page == lastpage) ||
 			// (!this.nextPage && page == 0))
-			if ((this.nextPage && page == lastpage) || (!this.nextPage && page == 0)) {
+            int lastpage = 1;
+            if ((this.nextPage && page == lastpage) || (!this.nextPage && page == 0)) {
 				height -= 23;
 			}
 

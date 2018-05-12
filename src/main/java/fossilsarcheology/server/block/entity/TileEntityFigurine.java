@@ -36,7 +36,8 @@ public class TileEntityFigurine extends TileEntity {
 		readFromNBT(packet.getNbtCompound());
 	}
 
-	public NBTTagCompound getUpdateTag() {
+	@Override
+    public NBTTagCompound getUpdateTag() {
 		return this.writeToNBT(new NBTTagCompound());
 	}
 

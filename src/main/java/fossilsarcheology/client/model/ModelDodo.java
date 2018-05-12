@@ -9,21 +9,21 @@ import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.Entity;
 
 public class ModelDodo extends ModelPrehistoric {
-	public AdvancedModelRenderer body;
-	public AdvancedModelRenderer rightLeg;
-	public AdvancedModelRenderer leftLeg;
-	public AdvancedModelRenderer tail;
-	public AdvancedModelRenderer rightWing;
-	public AdvancedModelRenderer leftWing;
-	public AdvancedModelRenderer bottom;
-	public AdvancedModelRenderer neck;
-	public AdvancedModelRenderer head;
-	public AdvancedModelRenderer headPivot;
-	public AdvancedModelRenderer beakUpper;
-	public AdvancedModelRenderer beakLower;
-	public AdvancedModelRenderer rightFoot;
-	public AdvancedModelRenderer leftFoot;
-	private ModelAnimator animator;
+	public final AdvancedModelRenderer body;
+	public final AdvancedModelRenderer rightLeg;
+	public final AdvancedModelRenderer leftLeg;
+	public final AdvancedModelRenderer tail;
+	public final AdvancedModelRenderer rightWing;
+	public final AdvancedModelRenderer leftWing;
+	public final AdvancedModelRenderer bottom;
+	public final AdvancedModelRenderer neck;
+	public final AdvancedModelRenderer head;
+	public final AdvancedModelRenderer headPivot;
+	public final AdvancedModelRenderer beakUpper;
+	public final AdvancedModelRenderer beakLower;
+	public final AdvancedModelRenderer rightFoot;
+	public final AdvancedModelRenderer leftFoot;
+	private final ModelAnimator animator;
 
 	public ModelDodo() {
 		this.textureWidth = 64;

@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class FossilTarOverlayEvent {
 	@SubscribeEvent
 	public void onBlockOverlay(RenderBlockOverlayEvent e) {
-		if (e.getPlayer().world.getBlockState(e.getBlockPos()) == FABlockRegistry.TAR) {
+		if (e.getPlayer().world.getBlockState(e.getBlockPos()).getBlock() == FABlockRegistry.TAR) {
 			e.setCanceled(true);
 			Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(Revival.MODID, "textures/blocks/tar.png"));
 			Tessellator tessellator = Tessellator.getInstance();

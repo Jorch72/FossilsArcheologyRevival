@@ -5,18 +5,18 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelAnuTotem extends ModelBase {
-	public ModelRenderer field_78112_f;
-	public ModelRenderer field_78124_i;
-	public ModelRenderer Head;
-	public ModelRenderer field_78115_e;
-	public ModelRenderer field_78113_g;
-	public ModelRenderer field_78123_h;
-	public ModelRenderer Mouth;
-	public ModelRenderer field_78114_d;
-	public ModelRenderer Hornleft;
-	public ModelRenderer HornLeft;
-	public ModelRenderer LeftTusk;
-	public ModelRenderer RightTusk;
+	public final ModelRenderer field_78112_f;
+	public final ModelRenderer field_78124_i;
+	public final ModelRenderer Head;
+	public final ModelRenderer field_78115_e;
+	public final ModelRenderer field_78113_g;
+	public final ModelRenderer field_78123_h;
+	public final ModelRenderer Mouth;
+	public final ModelRenderer field_78114_d;
+	public final ModelRenderer Hornleft;
+	public final ModelRenderer HornLeft;
+	public final ModelRenderer LeftTusk;
+	public final ModelRenderer RightTusk;
 
 	public ModelAnuTotem() {
 		this.textureWidth = 64;

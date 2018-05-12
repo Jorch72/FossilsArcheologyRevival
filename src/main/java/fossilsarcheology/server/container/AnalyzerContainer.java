@@ -7,7 +7,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotFurnaceOutput;
 
 public class AnalyzerContainer extends SyncedFieldContainer {
-	private AnalyzerBlockEntity analyzer;
+	private final AnalyzerBlockEntity analyzer;
 
 	public AnalyzerContainer(InventoryPlayer playerInventory, AnalyzerBlockEntity tile) {
 		super(tile);

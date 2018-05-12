@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FishAIWaterFindTarget extends EntityAIBase {
-	private EntityFishBase mob;
+	private final EntityFishBase mob;
 
 	public FishAIWaterFindTarget(EntityFishBase mob) {
 		this.mob = mob;

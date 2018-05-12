@@ -16,15 +16,12 @@ import net.minecraft.world.World;
 
 public class EntityTarSlime extends EntitySlime {
 
-	private int newSlimeJumpDelay;
-
-	public EntityTarSlime(World world) {
+    public EntityTarSlime(World world) {
 		super(world);
-		newSlimeJumpDelay = this.rand.nextInt(20) + 10;
-
 	}
 
-	protected EnumParticleTypes getParticleType() {
+	@Override
+    protected EnumParticleTypes getParticleType() {
 		return EnumParticleTypes.SUSPENDED_DEPTH;
 	}
 
@@ -55,7 +52,8 @@ public class EntityTarSlime extends EntitySlime {
 
 	}
 
-	protected void alterSquishAmount() {
+	@Override
+    protected void alterSquishAmount() {
 		this.squishAmount *= 1F;
 	}
 

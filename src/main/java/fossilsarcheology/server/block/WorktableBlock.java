@@ -34,15 +34,13 @@ public class WorktableBlock extends BlockContainer implements DefaultRenderedIte
 
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
 	private static boolean keepInventory = false;
-	private final boolean isActive;
 
-	public WorktableBlock(boolean isActive) {
+    public WorktableBlock(boolean isActive) {
 		super(Material.WOOD);
 		this.setHarvestLevel("axe", 0);
 		this.setHardness(2.5F);
 		this.setSoundType(SoundType.WOOD);
-		this.isActive = isActive;
-		if (isActive) {
+        if (isActive) {
 			setUnlocalizedName("worktable_active");
 		} else {
 			setUnlocalizedName("worktable");

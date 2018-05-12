@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 public abstract class EntityPrehistoricFlying extends EntityPrehistoric {
 
 	public static final int FLYING_INDEX = 29;
-	private static final DataParameter<Boolean> FLYING = EntityDataManager.<Boolean>createKey(EntityPrehistoricFlying.class, DataSerializers.BOOLEAN);
+	private static final DataParameter<Boolean> FLYING = EntityDataManager.createKey(EntityPrehistoricFlying.class, DataSerializers.BOOLEAN);
 	public BlockPos airTarget;
 	public float flyProgress;
 	private boolean isFlying;
@@ -92,7 +92,8 @@ public abstract class EntityPrehistoricFlying extends EntityPrehistoric {
 		}
 	}
 
-	public boolean canSleep() {
+	@Override
+    public boolean canSleep() {
 		if (super.canSleep() && this.isFlying() && this.onGround) {
 			this.setFlying(false);
 			return super.canSleep();

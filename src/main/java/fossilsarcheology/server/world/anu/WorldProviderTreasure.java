@@ -85,7 +85,8 @@ public class WorldProviderTreasure extends WorldProvider {
 		return null;
 	}
 
-	public IChunkGenerator createChunkGenerator() {
+	@Override
+    public IChunkGenerator createChunkGenerator() {
 		return new ChunkProviderTreasure(this.world, this.world.getWorldInfo().isMapFeaturesEnabled(), this.world.getSeed());
 	}
 

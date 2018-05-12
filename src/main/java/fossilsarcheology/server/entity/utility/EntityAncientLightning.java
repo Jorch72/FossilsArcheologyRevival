@@ -31,8 +31,8 @@ public class EntityAncientLightning extends EntityLightningBolt {
 		super.onUpdate();
 
 		if (this.lightningState == 2) {
-			this.world.playSound((EntityPlayer) null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_LIGHTNING_THUNDER, SoundCategory.WEATHER, 10000.0F, 0.8F + this.rand.nextFloat() * 0.2F);
-			this.world.playSound((EntityPlayer) null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_LIGHTNING_IMPACT, SoundCategory.WEATHER, 2.0F, 0.5F + this.rand.nextFloat() * 0.2F);
+			this.world.playSound(null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_LIGHTNING_THUNDER, SoundCategory.WEATHER, 10000.0F, 0.8F + this.rand.nextFloat() * 0.2F);
+			this.world.playSound(null, this.posX, this.posY, this.posZ, SoundEvents.ENTITY_LIGHTNING_IMPACT, SoundCategory.WEATHER, 2.0F, 0.5F + this.rand.nextFloat() * 0.2F);
 		}
 
 		--this.lightningState;
@@ -61,8 +61,8 @@ public class EntityAncientLightning extends EntityLightningBolt {
 			double var6 = 3.0D;
 			List var7 = this.world.getEntitiesWithinAABBExcludingEntity(this, new AxisAlignedBB(this.posX - var6, this.posY - var6, this.posZ - var6, this.posX + var6, this.posY + 6.0D + var6, this.posZ + var6));
 
-			for (int var4 = 0; var4 < var7.size(); ++var4) {
-				Entity var5 = (Entity) var7.get(var4);
+			for (Object aVar7 : var7) {
+				Entity var5 = (Entity) aVar7;
 
 				if (!(var5 instanceof EntityPlayer) && !(var5 instanceof EntityFriendlyPigZombie) && !(var5 instanceof EntityPig)) {
 					var5.onStruckByLightning(new EntityLightningBolt(this.world, this.posX, this.posY, this.posZ, false));

@@ -23,8 +23,8 @@ import net.minecraft.world.World;
 
 public class EntityFailuresaurus extends EntityMob {
 
-	private static final DataParameter<Integer> VARIANT = EntityDataManager.<Integer>createKey(EntityFailuresaurus.class, DataSerializers.VARINT);
-	private static final DataParameter<Byte> CLIMBING = EntityDataManager.<Byte>createKey(EntityFailuresaurus.class, DataSerializers.BYTE);
+	private static final DataParameter<Integer> VARIANT = EntityDataManager.createKey(EntityFailuresaurus.class, DataSerializers.VARINT);
+	private static final DataParameter<Byte> CLIMBING = EntityDataManager.createKey(EntityFailuresaurus.class, DataSerializers.BYTE);
 
 	public EntityFailuresaurus(World var1) {
 		super(var1);
@@ -39,18 +39,20 @@ public class EntityFailuresaurus extends EntityMob {
 
 	}
 
-	protected PathNavigate getNewNavigator(World worldIn) {
+	@Override
+	protected PathNavigate createNavigator(World worldIn) {
 		return new PathNavigateClimber(this, worldIn);
 	}
 
 	@Override
 	protected void entityInit() {
 		super.entityInit();
-		this.dataManager.register(CLIMBING, Byte.valueOf((byte) 0));
+		this.dataManager.register(CLIMBING, (byte) 0);
 		this.dataManager.register(VARIANT, 0);
 		this.setSkin(this.world.rand.nextInt(3));
 	}
 
+	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.20000000149011612D);
@@ -85,11 +87,11 @@ public class EntityFailuresaurus extends EntityMob {
 	}
 
 	public boolean isBesideClimbableBlock() {
-		return (((Byte) this.dataManager.get(CLIMBING)).byteValue() & 1) != 0;
+		return (this.dataManager.get(CLIMBING) & 1) != 0;
 	}
 
 	public void setBesideClimbableBlock(boolean climbing) {
-		byte b0 = ((Byte) this.dataManager.get(CLIMBING)).byteValue();
+		byte b0 = this.dataManager.get(CLIMBING);
 
 		if (climbing) {
 			b0 = (byte) (b0 | 1);
@@ -97,7 +99,7 @@ public class EntityFailuresaurus extends EntityMob {
 			b0 = (byte) (b0 & -2);
 		}
 
-		this.dataManager.set(CLIMBING, Byte.valueOf(b0));
+		this.dataManager.set(CLIMBING, b0);
 	}
 
 	/**
@@ -118,6 +120,7 @@ public class EntityFailuresaurus extends EntityMob {
 		this.setSkin(par1NBTTagCompound.getInteger("FailuresaurusSkin"));
 	}
 
+	@Override
 	protected void dropFewItems(boolean wasRecentlyHit, int lootingModifier) {
 		this.dropItem(FAItemRegistry.FAILURESAURUS_FLESH, 1);
 	}
@@ -135,16 +138,19 @@ public class EntityFailuresaurus extends EntityMob {
 		}
 	}
 
+	@Override
 	protected SoundEvent getAmbientSound() {
 		return SoundEvents.ENTITY_ZOMBIE_AMBIENT;
 
 	}
 
+	@Override
 	protected SoundEvent getHurtSound(DamageSource source) {
 		return SoundEvents.ENTITY_ZOMBIE_HURT;
 
 	}
 
+	@Override
 	protected SoundEvent getDeathSound() {
 		return SoundEvents.ENTITY_ZOMBIE_DEATH;
 	}

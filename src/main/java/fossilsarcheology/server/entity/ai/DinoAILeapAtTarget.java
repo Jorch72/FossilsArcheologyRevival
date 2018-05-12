@@ -5,7 +5,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIBase;
 
 public class DinoAILeapAtTarget extends EntityAIBase {
-	EntityPrehistoric dino;
+	final EntityPrehistoric dino;
 	EntityLivingBase leapTarget;
 
 	public DinoAILeapAtTarget(EntityPrehistoric dino) {

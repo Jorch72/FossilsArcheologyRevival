@@ -16,7 +16,7 @@ import java.util.Random;
 
 public class FossilSeedsItem extends Item {
 	public static final String[] fossilSeeds = new String[]{"dillhoffia", "sarracina", "cephalotaxus", "licopodiophyta", "paleopanax", "zamites", "bennettitales", "welwitschia", "horsetail", "tempskya", "vaccinium", "osmunda", "crataegus", "florissantia", "ephedra"};
-	public boolean isFossil;
+	public final boolean isFossil;
 
 	public FossilSeedsItem(boolean isFossil) {
 		super();
@@ -89,7 +89,7 @@ public class FossilSeedsItem extends Item {
 				world.setBlockState(new BlockPos(x, y + 1, z), FABlockRegistry.HORSETAIL_SMALL_FLOWER.getDefaultState());
 				return true;
 			case 9:
-				if (((TempskyaBlock) FABlockRegistry.TEMPSKYA_FLOWER).canPlaceBlockAt(world, new BlockPos(x, y + 1, z))) {
+				if (FABlockRegistry.TEMPSKYA_FLOWER.canPlaceBlockAt(world, new BlockPos(x, y + 1, z))) {
 					world.setBlockState(new BlockPos(x, y + 1, z), FABlockRegistry.TEMPSKYA_FLOWER.getDefaultState().withProperty(TempskyaBlock.LAYER, 0), 2);
 					world.setBlockState(new BlockPos(x, y + 2, z), FABlockRegistry.TEMPSKYA_FLOWER.getDefaultState().withProperty(TempskyaBlock.LAYER, 1), 2);
 					world.setBlockState(new BlockPos(x, y + 3, z), FABlockRegistry.TEMPSKYA_FLOWER.getDefaultState().withProperty(TempskyaBlock.LAYER, 2), 2);

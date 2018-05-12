@@ -7,11 +7,11 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotFurnaceOutput;
 
 public class SifterContainer extends SyncedFieldContainer {
-	private TileEntitySifter sifter;
+	private final TileEntitySifter sifter;
 
 	public SifterContainer(InventoryPlayer var1, TileEntitySifter var2) {
 		super(var2);
-		this.sifter = (TileEntitySifter) var2;
+		this.sifter = var2;
 		int var3;
 		int var4;
 

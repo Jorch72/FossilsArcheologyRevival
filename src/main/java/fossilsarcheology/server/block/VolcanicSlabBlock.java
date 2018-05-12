@@ -23,7 +23,8 @@ public abstract class VolcanicSlabBlock extends FossilSlabBlock {
 			return new FossilSlabBlockItem(this, FABlockRegistry.VOLCANIC_SINGLESLAB, FABlockRegistry.VOLCANIC_DOUBLESLAB);
 		}
 
-		public boolean isDouble() {
+		@Override
+        public boolean isDouble() {
 			return true;
 		}
 	}
@@ -38,7 +39,8 @@ public abstract class VolcanicSlabBlock extends FossilSlabBlock {
 			return new FossilSlabBlockItem(this, FABlockRegistry.VOLCANIC_SINGLESLAB, FABlockRegistry.VOLCANIC_DOUBLESLAB);
 		}
 
-		public boolean isDouble() {
+		@Override
+        public boolean isDouble() {
 			return false;
 		}
 	}

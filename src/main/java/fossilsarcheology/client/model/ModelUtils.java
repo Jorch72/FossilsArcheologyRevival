@@ -64,9 +64,7 @@ public class ModelUtils {
 		float f = 0;
 		try {
 			f = ReflectionHelper.findField(AdvancedModelRenderer.class, new String[]{name, name}).getFloat(box);
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
+		} catch (IllegalArgumentException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
 		return f;

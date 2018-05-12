@@ -9,18 +9,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.World;
-
-import java.util.Random;
 
 
 public class DinoAIFindAirTarget extends EntityAIBase {
-	private EntityPrehistoricFlying prehistoric;
-	private World theWorld;
+	private final EntityPrehistoricFlying prehistoric;
 
-	public DinoAIFindAirTarget(EntityPrehistoricFlying prehistoric) {
+    public DinoAIFindAirTarget(EntityPrehistoricFlying prehistoric) {
 		this.prehistoric = prehistoric;
-		this.theWorld = prehistoric.world;
 	}
 
 	public static BlockPos getBlockInView(EntityPrehistoricFlying dinosaur) {
@@ -33,8 +28,7 @@ public class DinoAIFindAirTarget extends EntityAIBase {
 		BlockPos ground = dinosaur.world.getHeight(radialPos);
 		int distFromGround = (int) dinosaur.posY - ground.getY();
 		BlockPos newPos = radialPos.up(distFromGround > 16 ? (int) Math.min(Revival.CONFIG.flyingTargetMaxHeight, dinosaur.posY + dinosaur.getRNG().nextInt(16) - 8) : (int) dinosaur.posY + dinosaur.getRNG().nextInt(16) + 1);
-		BlockPos pos = newPos;// dinosaur.doesWantToLand() ? ground : newPos;
-		if (!isTargetBlocked(dinosaur, new Vec3d(newPos)) && dinosaur.getDistanceSqToCenter(newPos) > 6) {
+        if (!isTargetBlocked(dinosaur, new Vec3d(newPos)) && dinosaur.getDistanceSqToCenter(newPos) > 6) {
 			return newPos;
 		}
 		return null;
@@ -45,15 +39,14 @@ public class DinoAIFindAirTarget extends EntityAIBase {
 			RayTraceResult rayTrace = entity.world.rayTraceBlocks(new Vec3d(entity.getPosition()), target, false);
 			if (rayTrace != null && rayTrace.hitVec != null) {
 				BlockPos pos = new BlockPos(rayTrace.hitVec);
-				if (!entity.world.isAirBlock(pos)) {
-					return true;
-				}
+				return !entity.world.isAirBlock(pos);
 			}
 		}
 		return false;
 	}
 
-	public boolean shouldExecute() {
+	@Override
+    public boolean shouldExecute() {
 		if (prehistoric != null) {
 			if (!prehistoric.isFlying()) {
 				return false;
@@ -87,13 +80,12 @@ public class DinoAIFindAirTarget extends EntityAIBase {
 		return false;
 	}
 
-	public boolean continueExecuting() {
+	@Override
+	public boolean shouldContinueExecuting() {
 		return prehistoric.airTarget != null;
 	}
 
 	public BlockPos findAirTarget() {
-		Random random = this.prehistoric.getRNG();
-
 		if (prehistoric.getAttackTarget() == null) {
 			for (int i = 0; i < 10; i++) {
 				BlockPos pos = getBlockInView(prehistoric);

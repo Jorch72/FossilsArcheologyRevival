@@ -22,13 +22,14 @@ public class WorldProviderAnu extends WorldProvider {
 
 	}
 
-	public IChunkGenerator createChunkGenerator() {
-		return new ChunkProviderAnu(this.world, this.world.getWorldInfo().isMapFeaturesEnabled(), this.world.getSeed());
+	@Override
+    public IChunkGenerator createChunkGenerator() {
+		return new ChunkProviderAnu(this.world, this.world.getSeed());
 	}
 
 
 	@Override
-	public float calculateCelestialAngle(long p_76563_1_, float p_76563_3_) {
+	public float calculateCelestialAngle(long worldTime, float partialTicks) {
 		return 0.0F;
 	}
 
@@ -40,7 +41,7 @@ public class WorldProviderAnu extends WorldProvider {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Vec3d getFogColor(float p_76562_1_, float p_76562_2_) {
-		return new Vec3d(0.20000000298023224D, 0.029999999329447746D, 0.029999999329447746D);
+		return new Vec3d(0.2, 0.03, 0.03);
 	}
 
 	@Override
@@ -60,7 +61,7 @@ public class WorldProviderAnu extends WorldProvider {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public float[] calcSunriseSunsetColors(float p_76560_1_, float p_76560_2_) {
+	public float[] calcSunriseSunsetColors(float celestialAngle, float partialTicks) {
 		return null;
 	}
 
@@ -70,13 +71,9 @@ public class WorldProviderAnu extends WorldProvider {
 		return 8.0F;
 	}
 
-	/**
-	 * Will check if the x, z position specified is alright to be set as the map
-	 * spawn point
-	 */
 	@Override
-	public boolean canCoordinateBeSpawn(int p_76566_1_, int p_76566_2_) {
-		return this.world.getBlockState(this.world.getHeight(new BlockPos(p_76566_1_, 0, p_76566_2_))).getMaterial().blocksMovement();
+	public boolean canCoordinateBeSpawn(int x, int z) {
+		return this.world.getBlockState(this.world.getHeight(new BlockPos(x, 0, z))).getMaterial().blocksMovement();
 	}
 
 	@Override
@@ -86,7 +83,7 @@ public class WorldProviderAnu extends WorldProvider {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean doesXZShowFog(int p_76568_1_, int p_76568_2_) {
+	public boolean doesXZShowFog(int x, int z) {
 		return false;
 	}
 

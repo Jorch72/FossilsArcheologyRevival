@@ -38,11 +38,13 @@ public class TimeMachineBlock extends BlockContainer implements DefaultRenderedI
 		this.setCreativeTab(FATabRegistry.BLOCKS);
 	}
 
-	public boolean isFullCube(IBlockState state) {
+	@Override
+    public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 
-	public EnumBlockRenderType getRenderType(IBlockState state) {
+	@Override
+    public EnumBlockRenderType getRenderType(IBlockState state) {
 		return EnumBlockRenderType.MODEL;
 	}
 
@@ -52,7 +54,8 @@ public class TimeMachineBlock extends BlockContainer implements DefaultRenderedI
 		return false;
 	}
 
-	@SideOnly(Side.CLIENT)
+	@Override
+    @SideOnly(Side.CLIENT)
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.CUTOUT;
 	}

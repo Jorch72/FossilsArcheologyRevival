@@ -2,7 +2,13 @@ package fossilsarcheology.server.entity.prehistoric;
 
 import com.google.common.base.Predicate;
 import fossilsarcheology.client.sound.FASoundRegistry;
-import fossilsarcheology.server.entity.ai.*;
+import fossilsarcheology.server.entity.ai.DinoAIEatFeeders;
+import fossilsarcheology.server.entity.ai.DinoAIEatItems;
+import fossilsarcheology.server.entity.ai.DinoAIFindWaterTarget;
+import fossilsarcheology.server.entity.ai.DinoAIGetInWater;
+import fossilsarcheology.server.entity.ai.DinoAIHunt;
+import fossilsarcheology.server.entity.ai.DinoAILookIdle;
+import fossilsarcheology.server.entity.ai.DinoAIWatchClosest;
 import fossilsarcheology.server.item.FAItemRegistry;
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.minecraft.entity.Entity;
@@ -14,8 +20,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
-
 public class EntityPlesiosaurus extends EntityPrehistoricSwimming {
 
 	public EntityPlesiosaurus(World world) {
@@ -24,18 +28,13 @@ public class EntityPlesiosaurus extends EntityPrehistoricSwimming {
 		this.tasks.addTask(0, new DinoAIFindWaterTarget(this, 10, true));
 		this.tasks.addTask(1, new DinoAIGetInWater(this, 1.0D));
 		this.tasks.addTask(2, this.aiSit);
-		this.tasks.addTask(3, new DinoAIEatFeeders(this, 1));
-		this.tasks.addTask(3, new DinoAIEatItems(this, 1));
+		this.tasks.addTask(3, new DinoAIEatFeeders(this));
+		this.tasks.addTask(3, new DinoAIEatItems(this));
 		this.tasks.addTask(4, new DinoAIMakeFish(this));
 		this.tasks.addTask(5, new DinoAIWatchClosest(this, EntityPlayer.class, 8.0F));
 		this.tasks.addTask(5, new DinoAILookIdle(this));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
-		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, new Predicate<Entity>() {
-			@Override
-			public boolean apply(@Nullable Entity entity) {
-				return entity instanceof EntityLivingBase;
-			}
-		}));
+		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
 		this.setActualSize(1.0F, 1.5F);
 		minSize = 0.3F;
 		maxSize = 1.5F;
@@ -132,6 +131,7 @@ public class EntityPlesiosaurus extends EntityPrehistoricSwimming {
 		return 7;
 	}
 
+	@Override
 	public String getTexture() {
 		if (isSkeleton()) {
 			return "fossil:textures/model/plesiosaurus_0/" + "plesiosaurus_skeleton.png";
@@ -148,6 +148,7 @@ public class EntityPlesiosaurus extends EntityPrehistoricSwimming {
 		return 2;
 	}
 
+	@Override
 	public int getMaxHunger() {
 		return 125;
 	}

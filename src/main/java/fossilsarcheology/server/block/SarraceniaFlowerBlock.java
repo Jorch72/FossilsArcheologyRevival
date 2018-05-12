@@ -17,11 +17,12 @@ public class SarraceniaFlowerBlock extends Block implements DefaultRenderedItem 
 		setSoundType(SoundType.PLANT);
 	}
 
-	public boolean isFullCube(IBlockState state) {
+	@Override
+    public boolean isFullCube(IBlockState state) {
 		return false;
 	}
 
-	public static enum EnumPlantTypes implements IStringSerializable {
+	public enum EnumPlantTypes implements IStringSerializable {
 		SARRACENIA(6, "sarracenia_flower_bottom", "sarracenia_flower_top");
 
 		private static final EnumPlantTypes[] META_LOOKUP = new EnumPlantTypes[values().length];
@@ -36,11 +37,11 @@ public class SarraceniaFlowerBlock extends Block implements DefaultRenderedItem 
 		private final String name;
 		private final String unlocalizedName;
 
-		private EnumPlantTypes(int meta, String name) {
+		EnumPlantTypes(int meta, String name) {
 			this(meta, name, name);
 		}
 
-		private EnumPlantTypes(int meta, String name, String unlocalizedName) {
+		EnumPlantTypes(int meta, String name, String unlocalizedName) {
 			this.meta = meta;
 			this.name = name;
 			this.unlocalizedName = unlocalizedName;
@@ -62,7 +63,8 @@ public class SarraceniaFlowerBlock extends Block implements DefaultRenderedItem 
 			return this.name;
 		}
 
-		public String getName() {
+		@Override
+        public String getName() {
 			return this.name;
 		}
 

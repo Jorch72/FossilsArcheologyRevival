@@ -7,11 +7,11 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotFurnaceOutput;
 
 public class CultivateContainer extends SyncedFieldContainer {
-	private TileEntityCultivate furnace;
+	private final TileEntityCultivate furnace;
 
 	public CultivateContainer(InventoryPlayer playerInventory, TileEntityCultivate var2) {
 		super(var2);
-		this.furnace = (TileEntityCultivate) var2;
+		this.furnace = var2;
 		this.addSlotToContainer(new Slot(this.furnace, 0, 49, 20));
 		this.addSlotToContainer(new Slot(this.furnace, 1, 81, 54));
 		this.addSlotToContainer(new SlotFurnaceOutput(playerInventory.player, this.furnace, 2, 116, 21));

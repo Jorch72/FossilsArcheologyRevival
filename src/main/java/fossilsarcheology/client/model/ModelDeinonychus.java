@@ -9,42 +9,42 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelDeinonychus extends ModelPrehistoric {
-	public AdvancedModelRenderer lowerBody;
-	public AdvancedModelRenderer leftThigh;
-	public AdvancedModelRenderer rightThigh;
-	public AdvancedModelRenderer upperBody;
-	public AdvancedModelRenderer tail1;
-	public AdvancedModelRenderer neck;
-	public AdvancedModelRenderer leftUpperArm;
-	public AdvancedModelRenderer rightUpperArm;
-	public AdvancedModelRenderer head;
-	public AdvancedModelRenderer headPivot;
-	public AdvancedModelRenderer crest;
-	public AdvancedModelRenderer upperJaw;
-	public AdvancedModelRenderer lowerJaw;
-	public AdvancedModelRenderer crest2;
-	public AdvancedModelRenderer crest3;
-	public AdvancedModelRenderer leftLowerArm;
-	public AdvancedModelRenderer leftUpperArmWing;
-	public AdvancedModelRenderer leftLowerArmWing;
-	public AdvancedModelRenderer rightLowerArm;
-	public AdvancedModelRenderer rightUpperArmWing;
-	public AdvancedModelRenderer rightLowerArmWing;
-	public AdvancedModelRenderer tail2;
-	public AdvancedModelRenderer TailFeather4;
-	public AdvancedModelRenderer tail3;
-	public AdvancedModelRenderer TailFeather2;
-	public AdvancedModelRenderer TailFeather3;
-	public AdvancedModelRenderer TailFeather1;
-	public AdvancedModelRenderer leftLeg;
-	public AdvancedModelRenderer leftFoot;
-	public AdvancedModelRenderer leftToeClaw1;
-	public AdvancedModelRenderer leftToeClaw2;
-	public AdvancedModelRenderer rightLeg;
-	public AdvancedModelRenderer rightFoot;
-	public AdvancedModelRenderer rightToeClaw1;
-	public AdvancedModelRenderer rightToeClaw2;
-	private ModelAnimator animator;
+	public final AdvancedModelRenderer lowerBody;
+	public final AdvancedModelRenderer leftThigh;
+	public final AdvancedModelRenderer rightThigh;
+	public final AdvancedModelRenderer upperBody;
+	public final AdvancedModelRenderer tail1;
+	public final AdvancedModelRenderer neck;
+	public final AdvancedModelRenderer leftUpperArm;
+	public final AdvancedModelRenderer rightUpperArm;
+	public final AdvancedModelRenderer head;
+	public final AdvancedModelRenderer headPivot;
+	public final AdvancedModelRenderer crest;
+	public final AdvancedModelRenderer upperJaw;
+	public final AdvancedModelRenderer lowerJaw;
+	public final AdvancedModelRenderer crest2;
+	public final AdvancedModelRenderer crest3;
+	public final AdvancedModelRenderer leftLowerArm;
+	public final AdvancedModelRenderer leftUpperArmWing;
+	public final AdvancedModelRenderer leftLowerArmWing;
+	public final AdvancedModelRenderer rightLowerArm;
+	public final AdvancedModelRenderer rightUpperArmWing;
+	public final AdvancedModelRenderer rightLowerArmWing;
+	public final AdvancedModelRenderer tail2;
+	public final AdvancedModelRenderer TailFeather4;
+	public final AdvancedModelRenderer tail3;
+	public final AdvancedModelRenderer TailFeather2;
+	public final AdvancedModelRenderer TailFeather3;
+	public final AdvancedModelRenderer TailFeather1;
+	public final AdvancedModelRenderer leftLeg;
+	public final AdvancedModelRenderer leftFoot;
+	public final AdvancedModelRenderer leftToeClaw1;
+	public final AdvancedModelRenderer leftToeClaw2;
+	public final AdvancedModelRenderer rightLeg;
+	public final AdvancedModelRenderer rightFoot;
+	public final AdvancedModelRenderer rightToeClaw1;
+	public final AdvancedModelRenderer rightToeClaw2;
+	private final ModelAnimator animator;
 
 	public ModelDeinonychus() {
 		this.textureWidth = 128;
@@ -394,7 +394,7 @@ public class ModelDeinonychus extends ModelPrehistoric {
 		this.chainWave(neckParts, speed2, degree * 0.5F, 3, f, f1);
 		this.chainWave(tailParts, speed2, degree * 0.3F, -4, f, f1);
 
-		if (((EntityDeinonychus) entity).getAnimation() != ((EntityDeinonychus) entity).ATTACK_ANIMATION && ((EntityDeinonychus) entity).getRidingEntity() != null) {
+		if (((EntityDeinonychus) entity).getAnimation() != ((EntityDeinonychus) entity).ATTACK_ANIMATION && entity.getRidingEntity() != null) {
 			ModelUtils.setRotateAngleAlt(lowerBody, -15, 0, 0);
 			ModelUtils.setRotateAngleAlt(leftLeg, 20, 0, 0);
 			ModelUtils.setRotateAngleAlt(leftFoot, -20, 0, 0);

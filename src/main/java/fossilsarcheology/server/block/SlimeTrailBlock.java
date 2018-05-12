@@ -20,7 +20,8 @@ public class SlimeTrailBlock extends BlockRail implements DefaultRenderedItem {
 		this.slipperiness = 1.12F;
 	}
 
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+	@Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return rand.nextInt(3) == 0 ? Items.SLIME_BALL : null;
 	}
 

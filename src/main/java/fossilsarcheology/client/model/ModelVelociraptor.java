@@ -9,41 +9,41 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelVelociraptor extends ModelPrehistoric {
-	public AdvancedModelRenderer lowerBody;
-	public AdvancedModelRenderer leftThigh;
-	public AdvancedModelRenderer rightThigh;
-	public AdvancedModelRenderer upperBody;
-	public AdvancedModelRenderer tail1;
-	public AdvancedModelRenderer neck;
-	public AdvancedModelRenderer leftUpperArm;
-	public AdvancedModelRenderer rightUpperArm;
-	public AdvancedModelRenderer headPivot;
-	public AdvancedModelRenderer head;
-	public AdvancedModelRenderer upperJaw;
-	public AdvancedModelRenderer lowerJaw;
-	public AdvancedModelRenderer upperCrest;
-	public AdvancedModelRenderer lowerCrest;
-	public AdvancedModelRenderer leftUpperArmFeather;
-	public AdvancedModelRenderer leftLowerArm;
-	public AdvancedModelRenderer leftLowerArmFeather;
-	public AdvancedModelRenderer rightUpperArmFeather;
-	public AdvancedModelRenderer rightLowerArm;
-	public AdvancedModelRenderer rightLowerArmFeather;
-	public AdvancedModelRenderer tail2;
-	public AdvancedModelRenderer tailFeather4;
-	public AdvancedModelRenderer tail3;
-	public AdvancedModelRenderer rightToeClaw2;
-	public AdvancedModelRenderer tailFeather3;
-	public AdvancedModelRenderer tailFeather1;
-	public AdvancedModelRenderer tailFeather2;
-	public AdvancedModelRenderer leftLeg;
-	public AdvancedModelRenderer leftFoot;
-	public AdvancedModelRenderer leftToeClaw1;
-	public AdvancedModelRenderer leftToeClaw2;
-	public AdvancedModelRenderer rightLeg;
-	public AdvancedModelRenderer rightFoot;
-	public AdvancedModelRenderer rightToeClaw1;
-	public ModelAnimator animator;
+	public final AdvancedModelRenderer lowerBody;
+	public final AdvancedModelRenderer leftThigh;
+	public final AdvancedModelRenderer rightThigh;
+	public final AdvancedModelRenderer upperBody;
+	public final AdvancedModelRenderer tail1;
+	public final AdvancedModelRenderer neck;
+	public final AdvancedModelRenderer leftUpperArm;
+	public final AdvancedModelRenderer rightUpperArm;
+	public final AdvancedModelRenderer headPivot;
+	public final AdvancedModelRenderer head;
+	public final AdvancedModelRenderer upperJaw;
+	public final AdvancedModelRenderer lowerJaw;
+	public final AdvancedModelRenderer upperCrest;
+	public final AdvancedModelRenderer lowerCrest;
+	public final AdvancedModelRenderer leftUpperArmFeather;
+	public final AdvancedModelRenderer leftLowerArm;
+	public final AdvancedModelRenderer leftLowerArmFeather;
+	public final AdvancedModelRenderer rightUpperArmFeather;
+	public final AdvancedModelRenderer rightLowerArm;
+	public final AdvancedModelRenderer rightLowerArmFeather;
+	public final AdvancedModelRenderer tail2;
+	public final AdvancedModelRenderer tailFeather4;
+	public final AdvancedModelRenderer tail3;
+	public final AdvancedModelRenderer rightToeClaw2;
+	public final AdvancedModelRenderer tailFeather3;
+	public final AdvancedModelRenderer tailFeather1;
+	public final AdvancedModelRenderer tailFeather2;
+	public final AdvancedModelRenderer leftLeg;
+	public final AdvancedModelRenderer leftFoot;
+	public final AdvancedModelRenderer leftToeClaw1;
+	public final AdvancedModelRenderer leftToeClaw2;
+	public final AdvancedModelRenderer rightLeg;
+	public final AdvancedModelRenderer rightFoot;
+	public final AdvancedModelRenderer rightToeClaw1;
+	public final ModelAnimator animator;
 
 	public ModelVelociraptor() {
 		this.textureWidth = 128;
@@ -241,8 +241,7 @@ public class ModelVelociraptor extends ModelPrehistoric {
 		ModelUtils.rotate(animator, neck, 15, 0, 0);
 		ModelUtils.rotate(animator, head, -20, 0, 0);
 		ModelUtils.rotate(animator, lowerJaw, 24, 0, 0);
-		;
-		animator.endKeyframe();
+        animator.endKeyframe();
 		animator.resetKeyframe(10);
 		animator.setAnimation(prehistoric.ATTACK_ANIMATION);
 		animator.startKeyframe(10);
@@ -396,7 +395,7 @@ public class ModelVelociraptor extends ModelPrehistoric {
 		this.chainWave(neckParts, speed2, degree * 0.5F, 4, f, f1);
 		this.chainWave(tailParts, speed2, degree * 0.3F, -4, f, f1);
 
-		if (((EntityVelociraptor) entity).getAnimation() != ((EntityVelociraptor) entity).ATTACK_ANIMATION && ((EntityVelociraptor) entity).getRidingEntity() != null) {
+		if (((EntityVelociraptor) entity).getAnimation() != ((EntityVelociraptor) entity).ATTACK_ANIMATION && entity.getRidingEntity() != null) {
 			ModelUtils.setRotateAngleAlt(lowerBody, -15, 0, 0);
 			ModelUtils.setRotateAngleAlt(leftLeg, 20, 0, 0);
 			ModelUtils.setRotateAngleAlt(leftFoot, -20, 0, 0);

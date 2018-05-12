@@ -6,7 +6,7 @@ import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelToyBall extends AdvancedModelBase {
-	public AdvancedModelRenderer ball;
+	public final AdvancedModelRenderer ball;
 
 	public ModelToyBall() {
 		this.textureWidth = 32;

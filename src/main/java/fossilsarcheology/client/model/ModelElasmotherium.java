@@ -7,27 +7,27 @@ import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
 import net.minecraft.entity.Entity;
 
 public class ModelElasmotherium extends ModelPrehistoric {
-	public AdvancedModelRenderer middleBody;
-	public AdvancedModelRenderer rightFrontThigh;
-	public AdvancedModelRenderer rightHindThigh;
-	public AdvancedModelRenderer leftFrontThigh;
-	public AdvancedModelRenderer leftHindThigh;
-	public AdvancedModelRenderer upperBody;
-	public AdvancedModelRenderer lowerBody;
-	public AdvancedModelRenderer neck;
-	public AdvancedModelRenderer head;
-	public AdvancedModelRenderer upperJaw;
-	public AdvancedModelRenderer lowerJaw;
-	public AdvancedModelRenderer EarR;
-	public AdvancedModelRenderer EarL;
-	public AdvancedModelRenderer lowerHorn;
-	public AdvancedModelRenderer upperHorn;
-	public AdvancedModelRenderer tail;
-	public AdvancedModelRenderer rightFrontLeg;
-	public AdvancedModelRenderer rightHindLeg;
-	public AdvancedModelRenderer leftFrontLeg;
-	public AdvancedModelRenderer leftHindLeg;
-	private ModelAnimator animator;
+	public final AdvancedModelRenderer middleBody;
+	public final AdvancedModelRenderer rightFrontThigh;
+	public final AdvancedModelRenderer rightHindThigh;
+	public final AdvancedModelRenderer leftFrontThigh;
+	public final AdvancedModelRenderer leftHindThigh;
+	public final AdvancedModelRenderer upperBody;
+	public final AdvancedModelRenderer lowerBody;
+	public final AdvancedModelRenderer neck;
+	public final AdvancedModelRenderer head;
+	public final AdvancedModelRenderer upperJaw;
+	public final AdvancedModelRenderer lowerJaw;
+	public final AdvancedModelRenderer EarR;
+	public final AdvancedModelRenderer EarL;
+	public final AdvancedModelRenderer lowerHorn;
+	public final AdvancedModelRenderer upperHorn;
+	public final AdvancedModelRenderer tail;
+	public final AdvancedModelRenderer rightFrontLeg;
+	public final AdvancedModelRenderer rightHindLeg;
+	public final AdvancedModelRenderer leftFrontLeg;
+	public final AdvancedModelRenderer leftHindLeg;
+	private final ModelAnimator animator;
 
 	public ModelElasmotherium() {
 		this.textureWidth = 64;
