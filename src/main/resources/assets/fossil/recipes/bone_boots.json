@@ -7,7 +7,7 @@
   "key": {
     "X": {
       "item": "fossil:bone_unique_item",
-      "data": 16
+      "data": 32767
     },
     "G": {
       "type": "forge:ore_dict",
