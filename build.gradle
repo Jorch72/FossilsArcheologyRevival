@@ -1,22 +1,22 @@
 buildscript {
-    repositories {
-        mavenCentral()
-        maven {
-            name = "forge"
-            url = "http://files.minecraftforge.net/maven"
-        }
-        maven {
-            name = "sonatype"
-            url = "https://oss.sonatype.org/content/repositories/snapshots/"
-        }
-        maven {
-            name = "CurseForge"
-            url = "https://minecraft.curseforge.com/api/maven/"
-        }
+  repositories {
+    mavenCentral()
+    maven {
+      name = "forge"
+      url = "http://files.minecraftforge.net/maven"
     }
-    dependencies {
-        classpath "net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT"
+    maven {
+      name = "sonatype"
+      url = "https://oss.sonatype.org/content/repositories/snapshots/"
     }
+    maven {
+      name = "CurseForge"
+      url = "https://minecraft.curseforge.com/api/maven/"
+    }
+  }
+  dependencies {
+    classpath "net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT"
+  }
 }
 
 apply plugin: "net.minecraftforge.gradle.forge"
@@ -29,92 +29,97 @@ archivesBaseName = "fossilsarcheology"
 sourceCompatibility = targetCompatibility = "1.8"
 
 minecraft {
-    version = "1.12.2-14.23.3.2655"
-    runDir = "minecraft"
-    mappings = "snapshot_20180510"
+  version = "1.12.2-14.23.3.2655"
+  runDir = "minecraft"
+  mappings = "snapshot_20180510"
 }
 
 repositories {
-    mavenCentral()
-    maven {
-        url = "http://maven.mcmoddev.com"
-    }
-    maven {
-        name = "Mobius Repo"
-        url = "http://tehnut.info/maven"
-    }
-    maven {
-        name = "JEI"
-        url = "http://dvs1.progwml6.com/files/maven"
-    }
+  mavenCentral()
+  maven {
+    url = "http://maven.mcmoddev.com"
+  }
+  maven {
+    name = "Mobius Repo"
+    url = "http://tehnut.info/maven"
+  }
+  maven {
+    name = "JEI"
+    url = "http://dvs1.progwml6.com/files/maven"
+  }
+  maven {
+    name = "gegy1000"
+    url = "https://maven.gegy1000.net"
+  }
 }
 
 dependencies {
-    compile "net.ilexiconn:llibrary:1.7.9-1.12.2:dev"
-    deobfCompile "mcp.mobius.waila:Hwyla:1.8.25-B40_1.12"
-    runtime "mezz.jei:jei_1.12.2:4.9.1.175"
+  compile "net.ilexiconn:llibrary:1.7.9-1.12.2:dev"
+  compile "com.azanor:thaumcraft-api:6.1-beta3"
+  deobfCompile "mcp.mobius.waila:Hwyla:1.8.25-B40_1.12"
+  runtime "mezz.jei:jei_1.12.2:4.9.1.175"
 }
 
 processResources {
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
-    inputs.property "llibrary_version", llibrary_version
+  inputs.property "version", project.version
+  inputs.property "mcversion", project.minecraft.version
+  inputs.property "llibrary_version", llibrary_version
 
-    from(sourceSets.main.resources.srcDirs) {
-        include "mcmod.info"
-        expand "version": project.version, "mcversion": project.minecraft.version, "llibrary_version": llibrary_version
-    }
+  from(sourceSets.main.resources.srcDirs) {
+    include "mcmod.info"
+    expand "version": project.version, "mcversion": project.minecraft.version, "llibrary_version": llibrary_version
+  }
 
-    from(sourceSets.main.resources.srcDirs) {
-        exclude "mcmod.info"
-    }
+  from(sourceSets.main.resources.srcDirs) {
+    exclude "mcmod.info"
+  }
 }
 
 jar {
-    manifest {
-        attributes "FMLAT": "fossil_at.cfg"
-    }
+  manifest {
+    attributes "FMLAT": "fossil_at.cfg"
+  }
 }
 
 task devJar(type: Jar) {
-    classifier = "dev"
-    from sourceSets.main.output
-    manifest {
-        attributes "FMLAT": "fossil_at.cfg"
-    }
+  classifier = "dev"
+  from sourceSets.main.output
+  manifest {
+    attributes "FMLAT": "fossil_at.cfg"
+  }
 }
 
 String getModFile() {
-    String path = ""
-    FileTree tree = fileTree(dir: 'src/main/java')
-    tree.include '**/*.java'
-    tree.visit { element ->
-        if (element.file.isFile()) {
-            element.file.eachLine { String s ->
-                s = s.trim()
-                if (s.matches("@Mod\\s*\\(.*")) {
-                    path = "src/main/java/$element.relativePath"
-                }
-            }
+  String path = ""
+  FileTree tree = fileTree(dir: 'src/main/java')
+  tree.include '**/*.java'
+  tree.visit { element ->
+    if (element.file.isFile()) {
+      element.file.eachLine { String s ->
+        s = s.trim()
+        if (s.matches("@Mod\\s*\\(.*")) {
+          path = "src/main/java/$element.relativePath"
         }
+      }
     }
-    return path
+  }
+  return path
 }
 
 String getModField(String type, String mod_file) {
-    if (mod_file.length() == 0) {
-        return ""
+  if (mod_file.length() == 0) {
+    return ""
+  }
+  String field = ""
+  String prefix = "public static final String $type = \""
+  File file = file(mod_file)
+  file.eachLine { String s ->
+    s = s.trim()
+    if (s.startsWith(prefix)) {
+      s = s.substring(prefix.length(), s.length() - 2)
+      field = s
     }
-    String field = ""
-    String prefix = "public static final String $type = \""
-    File file = file(mod_file)
-    file.eachLine { String s ->
-        s = s.trim()
-        if (s.startsWith(prefix)) {
-            s = s.substring(prefix.length(), s.length() - 2)
-            field = s
-        }
-    }
-    return field
+  }
+  return field
 }
 
