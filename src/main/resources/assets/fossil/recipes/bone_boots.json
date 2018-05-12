@@ -1,14 +1,10 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "X X",
+    "G G",
     "G G"
   ],
   "key": {
-    "X": {
-      "item": "fossil:bone_unique_item",
-      "data": 16
-    },
     "G": {
       "type": "forge:ore_dict",
       "ore": "dinosaurClaw"
