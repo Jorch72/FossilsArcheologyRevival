@@ -9,19 +9,19 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderPrehistoric extends RenderLiving<EntityPrehistoric> {
 
-    public RenderPrehistoric(ModelBase model) {
-        super(Minecraft.getMinecraft().getRenderManager(), model, 0.3F);
-    }
+	public RenderPrehistoric(ModelBase model) {
+		super(Minecraft.getMinecraft().getRenderManager(), model, 0.3F);
+	}
 
-    @Override
-    protected ResourceLocation getEntityTexture(EntityPrehistoric entity) {
-        return new ResourceLocation(entity.getTexture());
-    }
+	@Override
+	protected ResourceLocation getEntityTexture(EntityPrehistoric entity) {
+		return new ResourceLocation(entity.getTexture());
+	}
 
-    @Override
-    protected void preRenderCallback(EntityPrehistoric entity, float f) {
-        float scale = entity.getGender() == 1 ? entity.getMaleSize() : 1 * entity.getAgeScale();
-        GlStateManager.scale(scale, scale, scale);
-        this.shadowSize = entity.width * 0.45F;
-    }
+	@Override
+	protected void preRenderCallback(EntityPrehistoric entity, float f) {
+		float scale = entity.getGender() == 1 ? entity.getMaleSize() : 1 * entity.getAgeScale();
+		GlStateManager.scale(scale, scale, scale);
+		this.shadowSize = entity.width * 0.45F;
+	}
 }
