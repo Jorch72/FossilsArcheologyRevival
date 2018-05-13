@@ -25,7 +25,7 @@ public class FossilTarOverlayEvent {
 			Tessellator tessellator = Tessellator.getInstance();
 			BufferBuilder vertexbuffer = tessellator.getBuffer();
 			float f = 1;
-			GlStateManager.color(f, f, f, 0.5F);
+			GlStateManager.color(f, f, f, 0.8F);
 			GlStateManager.enableBlend();
 			GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 			GlStateManager.pushMatrix();

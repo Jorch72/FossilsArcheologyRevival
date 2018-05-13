@@ -21,12 +21,18 @@ import fossilsarcheology.server.item.ItemDinoMeat;
 import fossilsarcheology.server.item.PrehistoricEntityItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemMeshDefinition;
+import net.minecraft.client.renderer.block.model.ModelBakery;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMap;
+import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -45,6 +51,7 @@ public class ClientProxy extends ServerProxy {
 	public static final RenderingHandler RENDER_HANDLER = new RenderingHandler();
 	@SideOnly(Side.CLIENT)
 	private static final ModelAncientHelmet helmetModel = new ModelAncientHelmet(1.0f);
+	private static final ModelResourceLocation BLOCK_TAR_MODEL = new ModelResourceLocation("fossil:tar", "fluid");
 
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
@@ -60,6 +67,22 @@ public class ClientProxy extends ServerProxy {
 				RENDER_HANDLER.registerBlockRenderer(block, ((DefaultRenderedItem) block).getResource(block.getUnlocalizedName().substring("tile.".length())), "inventory");
 			}
 		}
+
+		Item tar = Item.getItemFromBlock(FABlockRegistry.TAR);
+		ModelBakery.registerItemVariants(tar);
+		ModelLoader.setCustomMeshDefinition(tar, new ItemMeshDefinition() {
+			@Override
+			public ModelResourceLocation getModelLocation(ItemStack stack) {
+				return BLOCK_TAR_MODEL;
+			}
+		});
+		ModelLoader.setCustomStateMapper(FABlockRegistry.TAR, new StateMapperBase() {
+			@Override
+			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+				return BLOCK_TAR_MODEL;
+			}
+		});
+
 		for (Item item : FAItemRegistry.ITEMS) {
 			String name = item instanceof PrehistoricEntityItem ? ((PrehistoricEntityItem) item).resourceName : item instanceof ItemDinoMeat ? ((ItemDinoMeat) item).resourceName : item.getUnlocalizedName().substring("item.".length());
 

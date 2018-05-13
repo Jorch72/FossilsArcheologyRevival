@@ -69,14 +69,16 @@ public class TarBlock extends BlockFluidClassic {
 
 	@Override
 	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
-		if ((world.getBlockState(new BlockPos(entity).down()).getMaterial() == Material.WATER || world.getBlockState(new BlockPos(entity).down()).getMaterial() == Material.CORAL) && world.getBlockState(pos.down()).getMaterial() == Material.WATER && entity.getRidingEntity() == null) {
-			if (entity instanceof EntityLivingBase) {
-				EntityLivingBase living = (EntityLivingBase) entity;
-				living.motionX *= 0.8;
-				living.motionZ *= 0.8;
-			}
+		if (entity instanceof EntityLivingBase) {
+			EntityLivingBase living = (EntityLivingBase) entity;
+			living.motionX *= 0.1;
+			living.motionZ *= 0.1;
+			living.setInWeb();
 		}
 	}
 
-
+	@Deprecated
+	public boolean causesSuffocation(IBlockState state) {
+		return true;
+	}
 }
