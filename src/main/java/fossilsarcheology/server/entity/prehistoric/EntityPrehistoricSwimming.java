@@ -225,28 +225,20 @@ public abstract class EntityPrehistoricSwimming extends EntityPrehistoric {
         @Override
         public void onUpdateMoveHelper() {
             if (this.action == EntityMoveHelper.Action.MOVE_TO && !this.dinosaur.getNavigator().noPath() && !this.dinosaur.isBeingRidden()) {
-                double distanceX = this.posX - this.dinosaur.posX;
-                double distanceY = this.posY - this.dinosaur.posY;
-                double distanceZ = this.posZ - this.dinosaur.posZ;
-                double distance = Math.abs(distanceX * distanceX + distanceZ * distanceZ);
-                double distanceWithY = (double) MathHelper.sqrt(distanceX * distanceX + distanceY * distanceY + distanceZ * distanceZ);
-                distanceY = distanceY / distanceWithY;
-                float angle = (float) (Math.atan2(distanceZ, distanceX) * 180.0D / Math.PI) - 90.0F;
-                this.dinosaur.rotationYaw = this.limitAngle(this.dinosaur.rotationYaw, angle, 30.0F);
-                this.dinosaur.setAIMoveSpeed(2F);
-                this.dinosaur.motionY += (double) this.dinosaur.getAIMoveSpeed() * distanceY * 0.1D;
-                if (distance < (double) Math.max(1.0F, this.entity.width)) {
-                    float f = this.dinosaur.rotationYaw * 0.017453292F;
-                    this.dinosaur.motionX -= (double) (MathHelper.sin(f) * 0.35F);
-                    this.dinosaur.motionZ += (double) (MathHelper.cos(f) * 0.35F);
+                if (this.action == EntityMoveHelper.Action.MOVE_TO && !this.dinosaur.getNavigator().noPath()) {
+                    double distanceX = this.posX - this.dinosaur.posX;
+                    double distanceY = this.posY - this.dinosaur.posY;
+                    double distanceZ = this.posZ - this.dinosaur.posZ;
+                    double distance = Math.abs(distanceX * distanceX + distanceY * distanceY + distanceZ * distanceZ);
+                    distance = (double) MathHelper.sqrt(distance);
+                    distanceY /= distance;
+                    float angle = (float) (Math.atan2(distanceZ, distanceX) * 180.0D / Math.PI) - 90.0F;
+                    this.dinosaur.rotationYaw = this.limitAngle(this.dinosaur.rotationYaw, angle, 30.0F);
+                    this.dinosaur.setAIMoveSpeed((float) this.dinosaur.swimSpeed() * 7.0F);
+                    this.dinosaur.motionY += (double) this.dinosaur.getAIMoveSpeed() * distanceY * 0.1D;
+                } else {
+                    this.dinosaur.setAIMoveSpeed(0.0F);
                 }
-            } else if (this.action == EntityMoveHelper.Action.JUMPING) {
-                this.entity.setAIMoveSpeed((float) (this.speed * this.entity.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue()));
-                if (this.entity.onGround) {
-                    this.action = EntityMoveHelper.Action.WAIT;
-                }
-            } else {
-                this.dinosaur.setAIMoveSpeed(0.0F);
             }
         }
     }

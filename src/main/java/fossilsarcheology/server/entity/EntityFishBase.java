@@ -1,7 +1,7 @@
 package fossilsarcheology.server.entity;
 
 import fossilsarcheology.Revival;
-import fossilsarcheology.server.entity.ai.DinoAIFindWaterTarget;
+import fossilsarcheology.server.entity.ai.FishAIFindWaterTarget;
 import fossilsarcheology.server.entity.prehistoric.EntityNautilus;
 import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityType;
 import fossilsarcheology.server.item.FAItemRegistry;
@@ -50,17 +50,19 @@ public abstract class EntityFishBase extends EntityTameable {
         super(world);
         this.moveHelper = new EntityFishBase.SwimmingMoveHelper();
         this.navigator = new PathNavigateSwimmer(this, world);
-        this.tasks.addTask(1, new DinoAIFindWaterTarget(this, 10, true));
-        this.tasks.addTask(2, new EntityAILookIdle(this));
         this.selfType = selfType;
         if (FMLCommonHandler.instance().getSide().isClient()) {
             this.chainBuffer = new ChainBuffer();
         }
     }
 
+    protected void initEntityAI() {
+        this.tasks.addTask(0, new FishAIFindWaterTarget(this));
+        this.tasks.addTask(1, new EntityAILookIdle(this));
+    }
     @Override
     public boolean isAIDisabled() {
-        return true;
+        return false;
     }
 
     public abstract String getTexture();
@@ -254,7 +256,7 @@ public abstract class EntityFishBase extends EntityTameable {
     }
 
     public boolean isDirectPathBetweenPoints(Vec3d vec1, Vec3d vec2) {
-        RayTraceResult movingobjectposition = this.world.rayTraceBlocks(vec1, new Vec3d(vec2.x, vec2.y + (double) this.height * 0.5D, vec2.z), false, true, false);
+        RayTraceResult movingobjectposition = this.world.rayTraceBlocks(vec1, new Vec3d(vec2.x, vec2.y, vec2.z), false, true, false);
         return movingobjectposition == null || movingobjectposition.typeOfHit != RayTraceResult.Type.BLOCK;
     }
 
@@ -367,28 +369,20 @@ public abstract class EntityFishBase extends EntityTameable {
         @Override
         public void onUpdateMoveHelper() {
             if (this.action == EntityMoveHelper.Action.MOVE_TO && !this.dinosaur.getNavigator().noPath() && !this.dinosaur.isBeingRidden()) {
-                double distanceX = this.posX - this.dinosaur.posX;
-                double distanceY = this.posY - this.dinosaur.posY;
-                double distanceZ = this.posZ - this.dinosaur.posZ;
-                double distance = Math.abs(distanceX * distanceX + distanceZ * distanceZ);
-                double distanceWithY = (double) MathHelper.sqrt(distanceX * distanceX + distanceY * distanceY + distanceZ * distanceZ);
-                distanceY = distanceY / distanceWithY;
-                float angle = (float) (Math.atan2(distanceZ, distanceX) * 180.0D / Math.PI) - 90.0F;
-                this.dinosaur.rotationYaw = this.limitAngle(this.dinosaur.rotationYaw, angle, 30.0F);
-                this.dinosaur.setAIMoveSpeed(2F);
-                this.dinosaur.motionY += (double) this.dinosaur.getAIMoveSpeed() * distanceY * 0.1D;
-                if (distance < (double) Math.max(1.0F, this.entity.width)) {
-                    float f = this.dinosaur.rotationYaw * 0.017453292F;
-                    this.dinosaur.motionX -= (double) (MathHelper.sin(f) * 0.35F);
-                    this.dinosaur.motionZ += (double) (MathHelper.cos(f) * 0.35F);
+                if (this.action == EntityMoveHelper.Action.MOVE_TO && !this.dinosaur.getNavigator().noPath()) {
+                    double distanceX = this.posX - this.dinosaur.posX;
+                    double distanceY = this.posY - this.dinosaur.posY;
+                    double distanceZ = this.posZ - this.dinosaur.posZ;
+                    double distance = Math.abs(distanceX * distanceX + distanceY * distanceY + distanceZ * distanceZ);
+                    distance = (double) MathHelper.sqrt(distance);
+                    distanceY /= distance;
+                    float angle = (float) (Math.atan2(distanceZ, distanceX) * 180.0D / Math.PI) - 90.0F;
+                    this.dinosaur.rotationYaw = this.limitAngle(this.dinosaur.rotationYaw, angle, 30.0F);
+                    this.dinosaur.setAIMoveSpeed((float) 1.0F);
+                    this.dinosaur.motionY += (double) this.dinosaur.getAIMoveSpeed() * distanceY * 0.1D;
+                } else {
+                    this.dinosaur.setAIMoveSpeed(0.0F);
                 }
-            } else if (this.action == EntityMoveHelper.Action.JUMPING) {
-                this.entity.setAIMoveSpeed((float) (this.speed * this.entity.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue()));
-                if (this.entity.onGround && !this.dinosaur.isInWater()) {
-                    this.action = EntityMoveHelper.Action.WAIT;
-                }
-            } else {
-                this.dinosaur.setAIMoveSpeed(0.0F);
             }
         }
     }

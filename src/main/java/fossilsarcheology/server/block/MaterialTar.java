@@ -8,6 +8,7 @@ public class MaterialTar extends Material {
 	public MaterialTar() {
 		super(MapColor.BLACK);
 		setNoPushMobility();
+		setReplaceable();
 	}
 
 	@Override

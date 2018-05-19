@@ -177,7 +177,7 @@ public class AnalyzerBlockEntity extends TileEntity implements IInventory, ISide
 		for (int slot = 0; slot < 9; ++slot) {
 			if (!this.stacks.get(slot).isEmpty()) {
 				Item item = this.stacks.get(slot).getItem();
-				if (PrehistoricEntityType.isFoodItem(this.stacks.get(slot).getItem()) || (item instanceof DinosaurBoneItem) || (item == FAItemRegistry.BIOFOSSIL) || (item == FAItemRegistry.TAR_FOSSIL) || /*(item == FAItemRegistry.TAR_DROP) || (item == FAItemRegistry.FAILURESAURUS_FLESH) || */ (item == FAItemRegistry.RELIC_SCRAP) || (item == Items.PORKCHOP) || (item == Items.BEEF) || (item == Items.EGG) || (item == Items.CHICKEN) || (item == Item.getItemFromBlock(Blocks.WOOL)) || /*(item == FAItemRegistry.ICED_MEAT) || */ (item == Items.LEATHER) || (item == FAItemRegistry.PLANT_FOSSIL)) {
+				if (PrehistoricEntityType.isFoodItem(this.stacks.get(slot).getItem()) || (item instanceof DinosaurBoneItem) || (item == FAItemRegistry.BIOFOSSIL) || (item == FAItemRegistry.TAR_FOSSIL) || (item == FAItemRegistry.TARDROP) || (item == FAItemRegistry.FAILURESAURUS_FLESH) || (item == FAItemRegistry.RELIC_SCRAP) || (item == Items.PORKCHOP) || (item == Items.BEEF) || (item == Items.EGG) || (item == Items.CHICKEN) || (item == Item.getItemFromBlock(Blocks.WOOL)) || (item == FAItemRegistry.ICED_MEAT) ||  (item == Items.LEATHER) || (item == FAItemRegistry.PLANT_FOSSIL)) {
 					this.rawIndex = slot;
 					break;
 				}
@@ -203,31 +203,23 @@ public class AnalyzerBlockEntity extends TileEntity implements IInventory, ISide
 			int rand = random.nextInt(100);
 			Item rawItem = this.stacks.get(rawIndex).getItem();
 			if (rawItem instanceof DinosaurBoneItem) {
-				if (!Revival.RELEASE_TYPE.enableDebugging()) {
-					if (rand > -1 && rand <= 30) {
-						output = new ItemStack(Items.DYE, 3, 15);
-					}
-					if (rand > 30 && rand <= 65) {
-						output = new ItemStack(Items.BONE, 3);
-					}
-					if (rand > 65) {
-						output = new ItemStack(DinosaurBoneType.getEntity(DinosaurBoneType.values()[this.stacks.get(rawIndex).getItemDamage()]).dnaItem, 1);
-					}
-				} else {
-					output = new ItemStack(PrehistoricEntityType.getRandomTimePeriod(random, TimePeriod.MESOZOIC).dnaItem, 1);
+				if (rand > -1 && rand <= 30) {
+					output = new ItemStack(Items.DYE, 3, 15);
+				}
+				if (rand > 30 && rand <= 65) {
+					output = new ItemStack(Items.BONE, 3);
+				}
+				if (rand > 65) {
+					output = new ItemStack(DinosaurBoneType.getEntity(DinosaurBoneType.values()[this.stacks.get(rawIndex).getItemDamage()]).dnaItem, 1);
 				}
 			} else if (rawItem == FAItemRegistry.BIOFOSSIL) {
-				if (!Revival.RELEASE_TYPE.enableDebugging()) {
-					if (rand > -1 && rand <= 50) {
-						output = new ItemStack(Items.DYE, 3, 15);
-					}
-					if (rand > 50 && rand <= 85) {
-						output = new ItemStack(Blocks.SAND, 1 + random.nextInt(2));
-					}
-					if (rand > 85) {
-						output = new ItemStack(PrehistoricEntityType.getRandomTimePeriod(random, TimePeriod.MESOZOIC).dnaItem, 1);
-					}
-				} else {
+				if (rand > -1 && rand <= 50) {
+					output = new ItemStack(Items.DYE, 3, 15);
+				}
+				if (rand > 50 && rand <= 85) {
+					output = new ItemStack(Blocks.SAND, 1 + random.nextInt(2));
+				}
+				if (rand > 85) {
 					output = new ItemStack(PrehistoricEntityType.getRandomTimePeriod(random, TimePeriod.MESOZOIC).dnaItem, 1);
 				}
 			} else if (rawItem == FAItemRegistry.TAR_FOSSIL) {

@@ -10,12 +10,11 @@ import net.minecraft.util.math.Vec3d;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FishAIWaterFindTarget extends EntityAIBase {
+public class FishAIFindWaterTarget extends EntityAIBase {
 	private final EntityFishBase mob;
 
-	public FishAIWaterFindTarget(EntityFishBase mob) {
+	public FishAIFindWaterTarget(EntityFishBase mob) {
 		this.mob = mob;
-		this.setMutexBits(1);
 	}
 
 	@Override
