@@ -1,6 +1,7 @@
 package fossilsarcheology.server.block;
 
 import fossilsarcheology.Revival;
+import fossilsarcheology.server.api.DefaultRenderedItem;
 import fossilsarcheology.server.dimension.AnuTeleporter;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -19,13 +20,14 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public class AnuPortalBlock extends Block {
+public class AnuPortalBlock extends Block implements DefaultRenderedItem {
 	public AnuPortalBlock() {
 		super(Material.PORTAL);
 		this.setResistance(60000000.0F);
 		this.setHardness(60000000.0F);
 		this.setSoundType(SoundType.GLASS);
 		this.setUnlocalizedName("anu_portal");
+		this.setLightLevel(0.5F);
 	}
 
 	@Override

@@ -162,6 +162,9 @@ public abstract class FossilSlabBlock extends BlockSlab implements DefaultRender
 		@Override
         public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 			ItemStack stack = playerIn.getHeldItem(hand);
+			if(stack.getItem() == Item.getItemFromBlock(doubleSlab)){
+				return EnumActionResult.SUCCESS;
+			}
 			if (stack.getCount() != 0 && playerIn.canPlayerEdit(pos.offset(facing), facing, stack)) {
 				Comparable<?> comparable = this.singleSlab.getTypeForItem(stack);
 				IBlockState iblockstate = worldIn.getBlockState(pos);
