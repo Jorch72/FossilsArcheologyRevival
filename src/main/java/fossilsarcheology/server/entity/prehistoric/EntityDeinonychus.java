@@ -16,12 +16,7 @@ import fossilsarcheology.server.entity.utility.EntityToyBase;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIFleeSun;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
-import net.minecraft.entity.ai.EntityAIRestrictSun;
-import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.*;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -35,8 +30,21 @@ public class EntityDeinonychus extends EntityPrehistoric {
 
 	public EntityDeinonychus(World world) {
 		super(world, PrehistoricEntityType.DEINONYCHUS, 2, 6, 10, 32, 0.23, 0.35);
+		this.nearByMobsAllowed = 9;
+		this.hasFeatherToggle = true;
+		this.featherToggle = Revival.CONFIG.featheredDeinonychus;
+		this.setActualSize(1.8F, 1.25F);
+		minSize = 0.3F;
+		maxSize = 1;
+		teenAge = 4;
+		developsResistance = false;
+		breaksBlocks = false;
+		this.pediaScale = 34F;
+	}
+
+	public void initEntityAI() {
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(2, this.aiSit);
+		this.tasks.addTask(2, this.aiSit = new EntityAISit(this));
 		this.tasks.addTask(3, new DinoAIRiding(this, 1.0F));
 		this.tasks.addTask(4, new DinoAILeapAtTarget(this));
 		this.tasks.addTask(5, new EntityAIRestrictSun(this));
@@ -51,16 +59,6 @@ public class EntityDeinonychus extends EntityPrehistoric {
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
-		this.nearByMobsAllowed = 9;
-		this.hasFeatherToggle = true;
-		this.featherToggle = Revival.CONFIG.featheredDeinonychus;
-		this.setActualSize(1.8F, 1.25F);
-		minSize = 0.3F;
-		maxSize = 1;
-		teenAge = 4;
-		developsResistance = false;
-		breaksBlocks = false;
-		this.pediaScale = 34F;
 	}
 
 	@Override

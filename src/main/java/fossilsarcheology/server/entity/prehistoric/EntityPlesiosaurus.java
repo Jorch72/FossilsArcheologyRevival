@@ -14,6 +14,7 @@ import net.ilexiconn.llibrary.server.animation.Animation;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAISit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.DamageSource;
@@ -25,16 +26,6 @@ public class EntityPlesiosaurus extends EntityPrehistoricSwimming {
 	public EntityPlesiosaurus(World world) {
 		super(world, PrehistoricEntityType.PLESIOSAUR, 2, 12, 10, 30, 0.2, 0.3);
 		FISH_ANIMATION = Animation.create(40);
-		this.tasks.addTask(0, new DinoAIFindWaterTarget(this, 10, true));
-		this.tasks.addTask(1, new DinoAIGetInWater(this, 1.0D));
-		this.tasks.addTask(2, this.aiSit);
-		this.tasks.addTask(3, new DinoAIEatFeeders(this));
-		this.tasks.addTask(3, new DinoAIEatItems(this));
-		this.tasks.addTask(4, new DinoAIMakeFish(this));
-		this.tasks.addTask(5, new DinoAIWatchClosest(this, EntityPlayer.class, 8.0F));
-		this.tasks.addTask(5, new DinoAILookIdle(this));
-		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
-		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
 		this.setActualSize(1.0F, 1.5F);
 		minSize = 0.3F;
 		maxSize = 1.5F;
@@ -42,6 +33,19 @@ public class EntityPlesiosaurus extends EntityPrehistoricSwimming {
 		developsResistance = true;
 		breaksBlocks = true;
 		pediaScale = 40;
+	}
+
+	public void initEntityAI() {
+		this.tasks.addTask(0, new DinoAIFindWaterTarget(this, 10, true));
+		this.tasks.addTask(1, new DinoAIGetInWater(this, 1.0D));
+		this.tasks.addTask(2, this.aiSit = new EntityAISit(this));
+		this.tasks.addTask(3, new DinoAIEatFeeders(this));
+		this.tasks.addTask(3, new DinoAIEatItems(this));
+		this.tasks.addTask(4, new DinoAIMakeFish(this));
+		this.tasks.addTask(5, new DinoAIWatchClosest(this, EntityPlayer.class, 8.0F));
+		this.tasks.addTask(5, new DinoAILookIdle(this));
+		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
+		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
 	}
 
 	@Override

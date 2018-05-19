@@ -25,10 +25,7 @@ import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Water
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
-import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.*;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -41,8 +38,20 @@ public class EntitySmilodon extends EntityPrehistoric {
 
 	public EntitySmilodon(World world) {
 		super(world, PrehistoricEntityType.SMILODON, 1, 5, 8, 34, 0.25, 0.3);
+		this.setActualSize(0.9F, 0.8F);
+		this.pediaScale = 47F;
+		this.nearByMobsAllowed = 7;
+		minSize = 0.5F;
+		maxSize = 1.7F;
+		teenAge = 4;
+		developsResistance = true;
+		breaksBlocks = false;
+		hasBabyTexture = false;
+	}
+
+	public void initEntityAI() {
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(2, this.aiSit);
+		this.tasks.addTask(2, this.aiSit = new EntityAISit(this));
 		this.tasks.addTask(3, new DinoAIRiding(this, 1.0F));
 		this.tasks.addTask(4, new DinoMeleeAttackAI(this, 1.5D, false));
 		this.tasks.addTask(5, new DinoAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
@@ -55,15 +64,6 @@ public class EntitySmilodon extends EntityPrehistoric {
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
-		this.setActualSize(0.9F, 0.8F);
-		this.pediaScale = 47F;
-		this.nearByMobsAllowed = 7;
-		minSize = 0.5F;
-		maxSize = 1.7F;
-		teenAge = 4;
-		developsResistance = true;
-		breaksBlocks = false;
-		hasBabyTexture = false;
 	}
 
 	@Override

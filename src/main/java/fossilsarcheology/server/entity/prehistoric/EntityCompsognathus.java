@@ -13,12 +13,7 @@ import fossilsarcheology.server.entity.ai.DinoAIWatchClosest;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIFleeSun;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
-import net.minecraft.entity.ai.EntityAIRestrictSun;
-import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.*;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -31,8 +26,21 @@ public class EntityCompsognathus extends EntityPrehistoric {
 
 	public EntityCompsognathus(World world) {
 		super(world, PrehistoricEntityType.COMPSOGNATHUS, 1, 1, 4, 12, 0.25, 0.4);
+		this.setActualSize(1.1F, 1.1F);
+		this.nearByMobsAllowed = 5;
+		this.hasFeatherToggle = true;
+		this.featherToggle = Revival.CONFIG.featheredCompsognathus;
+		minSize = 0.25F;
+		maxSize = 0.65F;
+		teenAge = 2;
+		developsResistance = false;
+		breaksBlocks = false;
+		this.pediaScale = 50F;
+	}
+
+	public void initEntityAI() {
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(2, this.aiSit);
+		this.tasks.addTask(2, this.aiSit = new EntityAISit(this));
 		this.tasks.addTask(4, new DinoAILeapAtTarget(this));
 		this.tasks.addTask(5, new EntityAIRestrictSun(this));
 		this.tasks.addTask(6, new EntityAIFleeSun(this, 1.0D));
@@ -46,16 +54,6 @@ public class EntityCompsognathus extends EntityPrehistoric {
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
-		this.setActualSize(1.1F, 1.1F);
-		this.nearByMobsAllowed = 5;
-		this.hasFeatherToggle = true;
-		this.featherToggle = Revival.CONFIG.featheredCompsognathus;
-		minSize = 0.25F;
-		maxSize = 0.65F;
-		teenAge = 2;
-		developsResistance = false;
-		breaksBlocks = false;
-		this.pediaScale = 50F;
 	}
 
 	@Override

@@ -20,7 +20,7 @@ public class RenderPrehistoric extends RenderLiving<EntityPrehistoric> {
 
 	@Override
 	protected void preRenderCallback(EntityPrehistoric entity, float f) {
-		float scale = entity.getGender() == 1 ? entity.getMaleSize() : 1 * entity.getAgeScale();
+		float scale = entity.getGender() == 1 ? entity.getMaleSize() * entity.getAgeScale() : 1 * entity.getAgeScale();
 		GlStateManager.scale(scale, scale, scale);
 		this.shadowSize = entity.width * 0.45F;
 	}

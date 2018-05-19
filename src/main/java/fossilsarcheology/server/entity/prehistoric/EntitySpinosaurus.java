@@ -21,6 +21,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
 import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
+import net.minecraft.entity.ai.EntityAISit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
@@ -44,8 +45,20 @@ public class EntitySpinosaurus extends EntityPrehistoricSwimming {
 		this.setActualSize(1.5F, 1.0F);
 		isAmphibious = true;
 		FISH_ANIMATION = Animation.create(40);
+		minSize = 0.6F;
+		maxSize = 4.75F;
+		teenAge = 5;
+		developsResistance = true;
+		breaksBlocks = true;
+		this.hasBabyTexture = true;
+		this.ridingY = 1.21F;
+		this.ridingXZ = -0.3F;
+		this.pediaScale = 26F;
+	}
+
+	public void initEntityAI() {
 		this.tasks.addTask(0, new DinoAIFindWaterTarget(this, 10, true));
-		this.tasks.addTask(1, this.aiSit);
+		this.tasks.addTask(1, this.aiSit = new EntityAISit(this));
 		this.tasks.addTask(3, new DinoAIRiding(this, 1.5D));
 		this.tasks.addTask(3, new DinoMeleeAttackAI(this, 1.5D, false));
 		this.tasks.addTask(4, new DinoAIEatFeeders(this));
@@ -58,15 +71,6 @@ public class EntitySpinosaurus extends EntityPrehistoricSwimming {
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
-		minSize = 0.6F;
-		maxSize = 4.75F;
-		teenAge = 5;
-		developsResistance = true;
-		breaksBlocks = true;
-		this.hasBabyTexture = true;
-		this.ridingY = 1.21F;
-		this.ridingXZ = -0.3F;
-		this.pediaScale = 26F;
 	}
 
 	@Override

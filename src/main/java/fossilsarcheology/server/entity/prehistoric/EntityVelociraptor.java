@@ -15,12 +15,7 @@ import fossilsarcheology.server.entity.utility.EntityToyBase;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIFleeSun;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
-import net.minecraft.entity.ai.EntityAIRestrictSun;
-import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.*;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -35,8 +30,21 @@ public class EntityVelociraptor extends EntityPrehistoric {
 
 	public EntityVelociraptor(World world) {
 		super(world, PrehistoricEntityType.VELOCIRAPTOR, 1, 4, 4, 22, 0.25, 0.3);
+		this.hasFeatherToggle = true;
+		this.pediaScale = 45F;
+		this.featherToggle = Revival.CONFIG.featheredVelociraptor;
+		this.setActualSize(1.5F, 1.5F);
+		minSize = 0.3F;
+		maxSize = 0.8F;
+		teenAge = 3;
+		developsResistance = false;
+		breaksBlocks = false;
+		this.nearByMobsAllowed = 9;
+	}
+
+	public void initEntityAI() {
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(2, this.aiSit);
+		this.tasks.addTask(2, this.aiSit = new EntityAISit(this));
 		this.tasks.addTask(3, new DinoAILeapAtTarget(this));
 		this.tasks.addTask(4, new EntityAIRestrictSun(this));
 		this.tasks.addTask(5, new EntityAIFleeSun(this, 1.0D));
@@ -50,16 +58,6 @@ public class EntityVelociraptor extends EntityPrehistoric {
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, false));
 		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
-		this.hasFeatherToggle = true;
-		this.pediaScale = 45F;
-		this.featherToggle = Revival.CONFIG.featheredVelociraptor;
-		this.setActualSize(1.5F, 1.5F);
-		minSize = 0.3F;
-		maxSize = 0.8F;
-		teenAge = 3;
-		developsResistance = false;
-		breaksBlocks = false;
-		this.nearByMobsAllowed = 9;
 	}
 
 	@Override

@@ -15,10 +15,7 @@ import fossilsarcheology.server.entity.ai.DinoAIWatchClosest;
 import fossilsarcheology.server.entity.ai.DinoMeleeAttackAI;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
-import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -32,8 +29,16 @@ public class EntityPterosaur extends EntityPrehistoricFlying {
 
 	public EntityPterosaur(World world) {
 		super(world, PrehistoricEntityType.PTEROSAUR, 1, 2, 6, 30, 0.15, 0.2);
+		this.setActualSize(1.1F, 1.1F);
+		minSize = 0.3F;
+		maxSize = 1.2F;
+		teenAge = 4;
+		pediaScale = 45;
+	}
+
+	public void initEntityAI() {
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(2, this.aiSit);
+		this.tasks.addTask(2, this.aiSit = new EntityAISit(this));
 		this.tasks.addTask(3, new DinoAIFindAirTarget(this));
 		this.tasks.addTask(3, new DinoMeleeAttackAI(this, 1.5D, false));
 		this.tasks.addTask(5, new DinoAILeapAtTarget(this));
@@ -48,11 +53,7 @@ public class EntityPterosaur extends EntityPrehistoricFlying {
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
-		this.setActualSize(1.1F, 1.1F);
-		minSize = 0.3F;
-		maxSize = 1.2F;
-		teenAge = 4;
-		pediaScale = 45;
+
 	}
 
 	@Override

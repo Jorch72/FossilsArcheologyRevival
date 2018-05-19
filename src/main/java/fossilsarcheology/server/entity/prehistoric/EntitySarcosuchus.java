@@ -21,6 +21,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
 import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
+import net.minecraft.entity.ai.EntityAISit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
@@ -44,8 +45,19 @@ public class EntitySarcosuchus extends EntityPrehistoricSwimming {
 		super(world, PrehistoricEntityType.SARCOSUCHUS, 1, 3, 15, 70, 0.25, 0.25);
 		this.setActualSize(2.0F, 1.0F);
 		isAmphibious = true;
+		minSize = 0.2F;
+		maxSize = 2.3F;
+		teenAge = 5;
+		developsResistance = true;
+		breaksBlocks = true;
+		this.hasBabyTexture = true;
+		this.ridingY = 1.2F;
+		this.pediaScale = 30;
+	}
+
+	public void initEntityAI() {
 		this.tasks.addTask(1, new DinoAIFindWaterTarget(this, 10, true));
-		this.tasks.addTask(2, this.aiSit);
+		this.tasks.addTask(2, this.aiSit = new EntityAISit(this));
 		this.tasks.addTask(3, new DinoAIRiding(this, 1.0F));
 		this.tasks.addTask(3, new DinoMeleeAttackAI(this, 1.5D, false));
 		this.tasks.addTask(4, new DinoAIEatFeeders(this));
@@ -58,14 +70,6 @@ public class EntitySarcosuchus extends EntityPrehistoricSwimming {
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
-		minSize = 0.2F;
-		maxSize = 2.3F;
-		teenAge = 5;
-		developsResistance = true;
-		breaksBlocks = true;
-		this.hasBabyTexture = true;
-		this.ridingY = 1.2F;
-		this.pediaScale = 30;
 	}
 
 	@Override

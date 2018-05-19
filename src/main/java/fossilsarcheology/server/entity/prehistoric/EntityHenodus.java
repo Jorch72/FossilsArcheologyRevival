@@ -17,6 +17,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
 import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
+import net.minecraft.entity.ai.EntityAISit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -30,9 +31,18 @@ public class EntityHenodus extends EntityPrehistoricSwimming {
 		super(world, PrehistoricEntityType.HENODUS, 1, 2, 10, 30, 0.25, 0.3);
 		this.setActualSize(1.1F, 1F);
 		isAmphibious = true;
+		minSize = 0.5F;
+		maxSize = 0.9F;
+		teenAge = 2;
+		developsResistance = true;
+		this.hasBabyTexture = true;
+		this.pediaScale = 40F;
+	}
+
+	public void initEntityAI() {
 		this.tasks.addTask(0, new DinoAIFindWaterTarget(this, 10, true));
 		this.tasks.addTask(1, new DinoAIGetInWater(this, 1.0D));
-		this.tasks.addTask(2, this.aiSit);
+		this.tasks.addTask(2, this.aiSit = new EntityAISit(this));
 		this.tasks.addTask(3, new DinoMeleeAttackAI(this, 1.5D, false));
 		this.tasks.addTask(4, new DinoAIEatFeeders(this));
 		this.tasks.addTask(4, new DinoAIEatItems(this));
@@ -44,12 +54,6 @@ public class EntityHenodus extends EntityPrehistoricSwimming {
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
-		minSize = 0.5F;
-		maxSize = 0.9F;
-		teenAge = 2;
-		developsResistance = true;
-		this.hasBabyTexture = true;
-		this.pediaScale = 40F;
 	}
 
 	@Override

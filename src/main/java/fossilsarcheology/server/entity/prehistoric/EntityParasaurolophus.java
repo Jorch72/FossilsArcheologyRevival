@@ -26,10 +26,7 @@ import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Water
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
-import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.*;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -52,8 +49,20 @@ public class EntityParasaurolophus extends EntityPrehistoric {
 
 	public EntityParasaurolophus(World world) {
 		super(world, PrehistoricEntityType.PARASAUROLOPHUS, 2, 17, 25, 70, 0.25, 0.5);
+		this.setActualSize(1.6F, 1.2F);
+		this.nearByMobsAllowed = 6;
+		minSize = 0.6F;
+		maxSize = 2.5F;
+		teenAge = 5;
+		developsResistance = true;
+		breaksBlocks = true;
+		this.pediaScale = 30F;
+		this.ridingY = 2;
+	}
+
+	public void initEntityAI() {
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(2, this.aiSit);
+		this.tasks.addTask(2, this.aiSit = new EntityAISit(this));
 		this.tasks.addTask(3, new DinoAIRiding(this, 1.5F));
 		this.tasks.addTask(3, new DinoMeleeAttackAI(this, 1.0D, false));
 		this.tasks.addTask(4, new DinoAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
@@ -67,15 +76,7 @@ public class EntityParasaurolophus extends EntityPrehistoric {
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
-		this.setActualSize(1.6F, 1.2F);
-		this.nearByMobsAllowed = 6;
-		minSize = 0.6F;
-		maxSize = 2.5F;
-		teenAge = 5;
-		developsResistance = true;
-		breaksBlocks = true;
-		this.pediaScale = 30F;
-		this.ridingY = 2;
+
 	}
 
 	@Override

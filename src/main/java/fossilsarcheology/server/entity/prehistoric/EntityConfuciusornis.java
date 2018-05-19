@@ -25,6 +25,7 @@ import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Untam
 import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.WaterAbility;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.ai.EntityAISit;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -37,8 +38,18 @@ public class EntityConfuciusornis extends EntityPrehistoricFlying {
 
 	public EntityConfuciusornis(World world) {
 		super(world, PrehistoricEntityType.CONFUCIUSORNIS, 1, 1, 4, 12, 0.15, 0.25);
+			this.setActualSize(0.7F, 0.8F);
+		minSize = 0.3F;
+		maxSize = 0.8F;
+		teenAge = 2;
+		developsResistance = false;
+		breaksBlocks = false;
+		pediaScale = 47;
+	}
+
+	public void initEntityAI() {
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(2, this.aiSit);
+		this.tasks.addTask(2, this.aiSit = new EntityAISit(this));
 		this.tasks.addTask(3, new DinoAIFindAirTarget(this));
 		this.tasks.addTask(5, new DinoAILeapAtTarget(this));
 		this.tasks.addTask(6, new DinoAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
@@ -49,16 +60,9 @@ public class EntityConfuciusornis extends EntityPrehistoricFlying {
 		this.tasks.addTask(9, new DinoAIWatchClosest(this, EntityPlayer.class, 8.0F));
 		this.tasks.addTask(9, new DinoAILookIdle(this));
 		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
-		this.setActualSize(0.7F, 0.8F);
-		minSize = 0.3F;
-		maxSize = 0.8F;
-		teenAge = 2;
-		developsResistance = false;
-		breaksBlocks = false;
-		pediaScale = 47;
 	}
 
-	@Override
+		@Override
 	public void setSpawnValues() {
 	}
 

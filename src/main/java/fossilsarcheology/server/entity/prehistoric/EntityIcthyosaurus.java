@@ -14,6 +14,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
+import net.minecraft.entity.ai.EntityAISit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
@@ -23,9 +24,18 @@ public class EntityIcthyosaurus extends EntityPrehistoricSwimming {
 	public EntityIcthyosaurus(World world) {
 		super(world, PrehistoricEntityType.ICTHYOSAURUS, 1, 4, 10, 30, 0.1, 0.1);
 		FISH_ANIMATION = Animation.create(40);
+		this.setActualSize(1.2F, 1.0F);
+		minSize = 0.3F;
+		maxSize = 0.8F;
+		teenAge = 3;
+		developsResistance = true;
+		pediaScale = 40;
+	}
+
+	public void initEntityAI() {
 		this.tasks.addTask(0, new DinoAIFindWaterTarget(this, 10, true));
 		this.tasks.addTask(1, new DinoAIGetInWater(this, 1.0D));
-		this.tasks.addTask(2, this.aiSit);
+		this.tasks.addTask(2, this.aiSit = new EntityAISit(this));
 		this.tasks.addTask(3, new DinoAIEatFeeders(this));
 		this.tasks.addTask(3, new DinoAIEatItems(this));
 		this.tasks.addTask(4, new DinoAIMakeFish(this));
@@ -35,12 +45,6 @@ public class EntityIcthyosaurus extends EntityPrehistoricSwimming {
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
-		this.setActualSize(1.2F, 1.0F);
-		minSize = 0.3F;
-		maxSize = 0.8F;
-		teenAge = 3;
-		developsResistance = true;
-		pediaScale = 40;
 	}
 
 	@Override

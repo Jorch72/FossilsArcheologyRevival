@@ -25,10 +25,7 @@ import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Water
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
-import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.*;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -41,8 +38,19 @@ public class EntityStegosaurus extends EntityPrehistoric {
 
 	public EntityStegosaurus(World world) {
 		super(world, PrehistoricEntityType.STEGOSAURUS, 2, 9, 12, 66, 0.25, 0.3);
+		this.setActualSize(1.4F, 1.3F);
+		this.nearByMobsAllowed = 7;
+		minSize = 1F;
+		maxSize = 2.5F;
+		teenAge = 5;
+		developsResistance = true;
+		breaksBlocks = true;
+		this.pediaScale = 20F;
+	}
+
+	public void initEntityAI() {
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(2, this.aiSit);
+		this.tasks.addTask(2, this.aiSit = new EntityAISit(this));
 		this.tasks.addTask(3, new DinoMeleeAttackAI(this, 1.5D, false));
 		this.tasks.addTask(4, new DinoAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
 		this.tasks.addTask(5, new DinoAIEatBlocks(this));
@@ -55,14 +63,6 @@ public class EntityStegosaurus extends EntityPrehistoric {
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
-		this.setActualSize(1.4F, 1.3F);
-		this.nearByMobsAllowed = 7;
-		minSize = 1F;
-		maxSize = 2.5F;
-		teenAge = 5;
-		developsResistance = true;
-		breaksBlocks = true;
-		this.pediaScale = 20F;
 	}
 
 	@Override

@@ -848,7 +848,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
 
     @Override
     public void setScaleForAge(boolean child) {
-        this.setScale(this.getAgeScale());
+        this.setScale(Math.min(this.getAgeScale(), 4F));
     }
 
     public Entity createEgg(EntityAgeable entity) {
@@ -1686,16 +1686,17 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
         if (this.getRidingPlayer() != null && this.getRidingPlayer() instanceof EntityPlayer && this.isOwner(this.getRidingPlayer()) && this.getAttackTarget() != this.getRidingPlayer()) {
             rotationYaw = renderYawOffset;
             rotationYaw = this.getRidingPlayer().rotationYaw;
+            rotationYawHead = this.getRidingPlayer().rotationYaw;
             float radius = ridingXZ * (0.7F * getAgeScale()) * -3;
             float angle = (0.01745329251F * this.renderYawOffset);
             double extraX = (double) (radius * MathHelper.sin((float) (Math.PI + angle)));
             double extraZ = (double) (radius * MathHelper.cos(angle));
-            double extraY = ridingY * (getAgeScale()) * 0.75;
+            double extraY = ridingY * (getAgeScale());
             float spinosaurusAddition = 0;
             if (this instanceof EntitySpinosaurus) {
                 spinosaurusAddition = -(((EntitySpinosaurus) this).swimProgress * 0.1F);
             }
-            this.getRidingPlayer().setPosition(this.posX + extraX, this.posY + extraY + spinosaurusAddition, this.posZ + extraZ);
+            this.getRidingPlayer().setPosition(this.posX + extraX, this.posY + extraY + spinosaurusAddition - 1.75F, this.posZ + extraZ);
         }
     }
 

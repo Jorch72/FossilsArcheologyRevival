@@ -14,10 +14,7 @@ import fossilsarcheology.server.entity.ai.DinoMeleeAttackAI;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
-import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.*;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -30,8 +27,20 @@ public class EntityAllosaurus extends EntityPrehistoric {
 
 	public EntityAllosaurus(World world) {
 		super(world, PrehistoricEntityType.ALLOSAURUS, 2, 11, 10, 58, 0.25, 0.42);
+		this.setActualSize(1.1F, 0.9F);
+		this.pediaScale = 35F;
+		this.nearByMobsAllowed = 5;
+		minSize = 0.55F;
+		maxSize = 3.1F;
+		developsResistance = true;
+		breaksBlocks = true;
+		this.teenAge = 5;
+		this.ridingY = 1.3F;
+	}
+
+	public void initEntityAI() {
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(2, this.aiSit);
+		this.tasks.addTask(2, this.aiSit = new EntityAISit(this));
 		this.tasks.addTask(3, new DinoAIRiding(this, 1.0F));
 		this.tasks.addTask(4, new DinoMeleeAttackAI(this, 1.0D, false));
 		this.tasks.addTask(5, new DinoAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
@@ -44,15 +53,6 @@ public class EntityAllosaurus extends EntityPrehistoric {
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
-		this.setActualSize(1.1F, 0.9F);
-		this.pediaScale = 35F;
-		this.nearByMobsAllowed = 5;
-		minSize = 0.55F;
-		maxSize = 3.1F;
-		developsResistance = true;
-		breaksBlocks = true;
-		this.teenAge = 5;
-		this.ridingY = 1.3F;
 	}
 
 	@Override

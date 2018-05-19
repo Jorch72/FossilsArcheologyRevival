@@ -15,10 +15,7 @@ import fossilsarcheology.server.entity.ai.DinoMeleeAttackAI;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
-import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.*;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -51,8 +48,21 @@ public class EntityMammoth extends EntityPrehistoric implements IShearable {
 
 	public EntityMammoth(World world) {
 		super(world, PrehistoricEntityType.MAMMOTH, 2, 12, 10, 66, 0.2, 0.3);
+		this.setActualSize(1.2F, 0.7F);
+		this.pediaScale = 60F;
+		minSize = 1.3F;
+		maxSize = 5F;
+		teenAge = 7;
+		developsResistance = true;
+		breaksBlocks = true;
+		this.ridingY = 1.25F;
+		this.eatGrassTimes = 0;
+		this.setSheared(false);
+	}
+
+	public void initEntityAI() {
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(2, this.aiSit);
+		this.tasks.addTask(2, this.aiSit  = new EntityAISit(this));
 		this.tasks.addTask(3, new DinoAIRiding(this, 1.0F));
 		this.tasks.addTask(4, new DinoMeleeAttackAI(this, 1.5D, false));
 		this.tasks.addTask(5, new DinoAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
@@ -66,16 +76,11 @@ public class EntityMammoth extends EntityPrehistoric implements IShearable {
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
-		this.setActualSize(1.2F, 0.7F);
-		this.pediaScale = 60F;
-		minSize = 1.3F;
-		maxSize = 5F;
-		teenAge = 7;
-		developsResistance = true;
-		breaksBlocks = true;
-		this.ridingY = 1.25F;
-		this.eatGrassTimes = 0;
-		this.setSheared(false);
+	}
+
+	protected void entityInit(){
+		super.entityInit();
+		this.dataManager.register(SHEARED, false);
 	}
 
 	@Override
@@ -88,11 +93,6 @@ public class EntityMammoth extends EntityPrehistoric implements IShearable {
 		return 35;
 	}
 
-	@Override
-	protected void entityInit() {
-		super.entityInit();
-		this.dataManager.register(SHEARED, false);
-	}
 
 	@Override
 	public boolean isShearable(ItemStack item, IBlockAccess world, BlockPos pos) {

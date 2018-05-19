@@ -24,10 +24,7 @@ import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.Water
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
-import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.*;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -41,8 +38,18 @@ public class EntityPhorusrhacos extends EntityPrehistoric {
 
 	public EntityPhorusrhacos(World world) {
 		super(world, PrehistoricEntityType.PHORUSRHACOS, 1, 5, 10, 38, 0.25, 0.35);
+		this.setActualSize(1.4F, 2.5F);
+		this.pediaScale = 27;
+		this.nearByMobsAllowed = 3;
+		minSize = 0.4F;
+		maxSize = 1.3F;
+		teenAge = 4;
+		developsResistance = true;
+	}
+
+	public void initEntityAI() {
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(2, this.aiSit);
+		this.tasks.addTask(2, this.aiSit = new EntityAISit(this));
 		this.tasks.addTask(4, new DinoMeleeAttackAI(this, 2.0D, false));
 		this.tasks.addTask(5, new DinoAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
 		this.tasks.addTask(6, new DinoAIEatFeeders(this));
@@ -54,13 +61,6 @@ public class EntityPhorusrhacos extends EntityPrehistoric {
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
-		this.setActualSize(1.4F, 2.5F);
-		this.pediaScale = 27;
-		this.nearByMobsAllowed = 3;
-		minSize = 0.4F;
-		maxSize = 1.3F;
-		teenAge = 4;
-		developsResistance = true;
 	}
 
 	@Override

@@ -15,6 +15,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIPanic;
+import net.minecraft.entity.ai.EntityAISit;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
@@ -29,8 +30,20 @@ public class EntityDodo extends EntityPrehistoric {
 	public EntityDodo(World world) {
 		super(world, PrehistoricEntityType.DODO, 1, 1, 4, 10, 0.2, 0.25);
 		this.teenAge = 3;
+		this.setActualSize(0.8F, 0.7F);
+		this.nearByMobsAllowed = 10;
+		minSize = 0.5F;
+		maxSize = 1F;
+		teenAge = 2;
+		developsResistance = false;
+		breaksBlocks = false;
+		hasTeenTexture = false;
+		pediaScale = 40;
+	}
+
+	public void initEntityAI() {
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(2, this.aiSit);
+		this.tasks.addTask(2, this.aiSit = new EntityAISit(this));
 		this.tasks.addTask(3, new EntityAIPanic(this, 1.5D));
 		this.tasks.addTask(5, new DinoMeleeAttackAI(this, 1.0D, false));
 		this.tasks.addTask(6, new DinoAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
@@ -41,15 +54,6 @@ public class EntityDodo extends EntityPrehistoric {
 		this.tasks.addTask(9, new DinoAIWatchClosest(this, EntityPlayer.class, 8.0F));
 		this.tasks.addTask(9, new DinoAILookIdle(this));
 		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
-		this.setActualSize(0.8F, 0.7F);
-		this.nearByMobsAllowed = 10;
-		minSize = 0.5F;
-		maxSize = 1F;
-		teenAge = 2;
-		developsResistance = false;
-		breaksBlocks = false;
-		hasTeenTexture = false;
-		pediaScale = 40;
 	}
 
 	@Override

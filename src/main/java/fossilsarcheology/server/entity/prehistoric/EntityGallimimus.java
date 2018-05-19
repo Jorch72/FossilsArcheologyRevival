@@ -16,11 +16,7 @@ import fossilsarcheology.server.entity.ai.DinoMeleeAttackAI;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
-import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
-import net.minecraft.entity.ai.EntityAIPanic;
-import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.*;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -33,8 +29,21 @@ public class EntityGallimimus extends EntityPrehistoric {
 
 	public EntityGallimimus(World world) {
 		super(world, PrehistoricEntityType.GALLIMIMUS, 1, 3, 8, 40, 0.25, 0.4);
+		this.setActualSize(1.1F, 2F);
+		this.pediaScale = 35F;
+		this.hasFeatherToggle = true;
+		this.featherToggle = Revival.CONFIG.featheredGallimimus;
+		minSize = 0.5F;
+		maxSize = 2.2F;
+		teenAge = 4;
+		developsResistance = true;
+		breaksBlocks = false;
+		this.ridingY = 1.6F;
+	}
+
+	public void initEntityAI() {
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(2, this.aiSit);
+		this.tasks.addTask(2, this.aiSit = new EntityAISit(this));
 		this.tasks.addTask(3, new DinoAIEatBlocks(this));
 		this.tasks.addTask(3, new DinoAIEatFeeders(this));
 		this.tasks.addTask(3, new DinoAIEatItems(this));
@@ -49,16 +58,6 @@ public class EntityGallimimus extends EntityPrehistoric {
 		this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
-		this.setActualSize(1.1F, 2F);
-		this.pediaScale = 35F;
-		this.hasFeatherToggle = true;
-		this.featherToggle = Revival.CONFIG.featheredGallimimus;
-		minSize = 0.5F;
-		maxSize = 2.2F;
-		teenAge = 4;
-		developsResistance = true;
-		breaksBlocks = false;
-		this.ridingY = 1.6F;
 	}
 
 	@Override

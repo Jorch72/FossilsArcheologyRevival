@@ -210,7 +210,7 @@ public class ModelBrachiosaurus extends ModelPrehistoric {
 		ModelUtils.faceTargetMod(Neck4, f3, f4, 0.16F);
 		ModelUtils.faceTargetMod(Neck5, f3, f4, 0.16F);
 
-		float speed = 0.1F;
+		float speed = 0.05F;
 		float speed2 = 0.45F;
 		float degree = 0.5F;
 		{

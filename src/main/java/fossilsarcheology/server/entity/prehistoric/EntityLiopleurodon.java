@@ -16,6 +16,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAISit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -30,16 +31,6 @@ public class EntityLiopleurodon extends EntityPrehistoricSwimming {
 
 	public EntityLiopleurodon(World world) {
 		super(world, PrehistoricEntityType.LIOPLEURODON, 2, 12, 10, 45, 0.3, 0.4);
-		this.tasks.addTask(0, new DinoAIFindWaterTarget(this, 10, true));
-		this.tasks.addTask(1, new DinoAIGetInWater(this, 1.0D));
-		this.tasks.addTask(2, this.aiSit);
-		this.tasks.addTask(3, new DinoAIRiding(this, 1.5));
-		this.tasks.addTask(4, new DinoAIEatFeeders(this));
-		this.tasks.addTask(4, new DinoAIEatItems(this));
-		this.tasks.addTask(5, new DinoAIWatchClosest(this, EntityPlayer.class, 8.0F));
-		this.tasks.addTask(5, new DinoAILookIdle(this));
-		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
-		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
 		this.hasBabyTexture = false;
 		this.setActualSize(2.25F, 0.7F);
 		minSize = 0.8F;
@@ -50,6 +41,19 @@ public class EntityLiopleurodon extends EntityPrehistoricSwimming {
 		hasBabyTexture = false;
 		pediaScale = 30;
 		this.ridingY = 1.3F;
+	}
+
+	public void initEntityAI() {
+		this.tasks.addTask(0, new DinoAIFindWaterTarget(this, 10, true));
+		this.tasks.addTask(1, new DinoAIGetInWater(this, 1.0D));
+		this.tasks.addTask(2, this.aiSit = new EntityAISit(this));
+		this.tasks.addTask(3, new DinoAIRiding(this, 1.5));
+		this.tasks.addTask(4, new DinoAIEatFeeders(this));
+		this.tasks.addTask(4, new DinoAIEatItems(this));
+		this.tasks.addTask(5, new DinoAIWatchClosest(this, EntityPlayer.class, 8.0F));
+		this.tasks.addTask(5, new DinoAILookIdle(this));
+		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
+		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
 	}
 
 	@Override
