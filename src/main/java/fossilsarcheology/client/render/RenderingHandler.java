@@ -132,9 +132,13 @@ import fossilsarcheology.server.entity.utility.EntityToyBall;
 import fossilsarcheology.server.entity.utility.EntityToyScratchingPost;
 import fossilsarcheology.server.entity.utility.EntityToyTetheredLog;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.BlockOldLeaf;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.StateMap;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
@@ -224,12 +228,13 @@ public class RenderingHandler {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTimeMachine.class, new TileEntityTimeMachineRender());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCultivate.class, new TileEntityCultivateRender());
 
-        Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler((state, worldIn, pos, tintIndex) -> worldIn != null && pos != null ? BiomeColorHelper.getFoliageColorAtPos(worldIn, pos) : ColorizerFoliage.getFoliageColorBasic(), FABlockRegistry.FERNS);
-        Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> {
+        MINECRAFT.getBlockColors().registerBlockColorHandler((state, worldIn, pos, tintIndex) -> worldIn != null && pos != null ? BiomeColorHelper.getFoliageColorAtPos(worldIn, pos) : ColorizerFoliage.getFoliageColorBasic(), FABlockRegistry.FERNS);
+        MINECRAFT.getItemColors().registerItemColorHandler((stack, tintIndex) -> {
             @SuppressWarnings("deprecation")
             IBlockState state = ((ItemBlock) stack.getItem()).getBlock().getStateFromMeta(stack.getMetadata());
-            return Minecraft.getMinecraft().getBlockColors().colorMultiplier(state, null, null, tintIndex);
+            return MINECRAFT.getBlockColors().colorMultiplier(state, null, null, tintIndex);
         }, FABlockRegistry.FERNS);
+
     }
 
     public void onPostInit() {

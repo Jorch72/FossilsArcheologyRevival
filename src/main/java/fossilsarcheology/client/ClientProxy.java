@@ -20,6 +20,8 @@ import fossilsarcheology.server.item.FossilSeedsItem;
 import fossilsarcheology.server.item.ItemDinoMeat;
 import fossilsarcheology.server.item.PrehistoricEntityItem;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.BlockOldLeaf;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -29,6 +31,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
@@ -56,6 +59,7 @@ public class ClientProxy extends ServerProxy {
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public static void registerModels(ModelRegistryEvent event) {
+		ModelLoader.setCustomStateMapper(FABlockRegistry.PALM_LEAVES, (new StateMap.Builder()).ignore(BlockLeaves.CHECK_DECAY, BlockLeaves.DECAYABLE).build());
 		for (Block block : FABlockRegistry.BLOCKS) {
 			if (block instanceof IgnoreRenderProperty) {
 				IProperty<?>[] ignoredProperties = ((IgnoreRenderProperty) block).getIgnoredProperties();
@@ -82,7 +86,6 @@ public class ClientProxy extends ServerProxy {
 				return BLOCK_TAR_MODEL;
 			}
 		});
-
 		for (Item item : FAItemRegistry.ITEMS) {
 			String name = item instanceof PrehistoricEntityItem ? ((PrehistoricEntityItem) item).resourceName : item instanceof ItemDinoMeat ? ((ItemDinoMeat) item).resourceName : item.getUnlocalizedName().substring("item.".length());
 

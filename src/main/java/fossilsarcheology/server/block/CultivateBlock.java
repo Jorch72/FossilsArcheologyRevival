@@ -18,6 +18,8 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityPigZombie;
+import net.minecraft.entity.passive.EntityMooshroom;
+import net.minecraft.entity.passive.EntityZombieHorse;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -75,13 +77,10 @@ public class CultivateBlock extends BlockContainer implements DefaultRenderedIte
 
 		for (int var7 = 0; var7 < world.playerEntities.size(); ++var7) {
 			EntityPlayer P = world.playerEntities.get(var7);
-
 			if (Math.pow(pos.getX() - P.posX, 2D) + Math.pow(pos.getY() - P.posY, 2D) + Math.pow(pos.getZ() - P.posZ, 2D) < 10000) {
-				// P.addStat(FossilAchievements.FAILURESAURUS, 1);
 				P.sendStatusMessage(new TextComponentString(var6), false);
 			}
 		}
-
 		this.returnIron(world, pos);
 		this.returnDNA(world, pos);
 		if (!world.isRemote) {
@@ -91,36 +90,36 @@ public class CultivateBlock extends BlockContainer implements DefaultRenderedIte
 
 					if (tileentity.getDNAType() == 2 || tileentity.getDNAType() == 3) {
 						world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.BLOCKS, 1, 1, false);
-						world.setBlockState(pos.up(), FABlockRegistry.MUTANT_FLOWER.getDefaultState());
-						world.setBlockState(pos.up(2), FABlockRegistry.MUTANT_FLOWER.getDefaultState());//TODO:set it to upper part w/ meta
+						world.setBlockState(pos.up(), FABlockRegistry.MUTANT_FLOWER.getDefaultState().withProperty(TallFlowerBlock.HALF, TallFlowerBlock.EnumBlockHalf.LOWER));
+						world.setBlockState(pos.up(2), FABlockRegistry.MUTANT_FLOWER.getDefaultState().withProperty(TallFlowerBlock.HALF, TallFlowerBlock.EnumBlockHalf.UPPER));
 						world.setBlockState(pos, Blocks.DIRT.getDefaultState());
 
 					} else {
-						Object creature = null;
+						EntityLiving creature = null;
 						world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.BLOCKS, 1, 1, false);
 						world.setBlockState(pos, Blocks.WATER.getDefaultState());
-
-						if (world.isRemote) {
-							return;
-						}
 
 						int rand = world.rand.nextInt(100);
 
 						if (rand <= 5) {
 							creature = new EntityCreeper(world);
 						}
-
-						if (rand > 5 && rand < 10) {
+						else if (rand < 10) {
 							creature = new EntityPigZombie(world);
 						}
-
-						if (rand >= 10) {
+						else if (rand > 10 && rand < 15) {
+							creature = new EntityZombieHorse(world);
+						}
+						else if (rand > 15 && rand < 20) {
+							creature = new EntityMooshroom(world);
+						}
+						else {
 							creature = new EntityFailuresaurus(world);
 							((EntityFailuresaurus) creature).setSkin(new Random().nextInt(3));
 						}
 
-						((EntityLiving) creature).setLocationAndAngles((double) pos.getX() + 0.5, (double) pos.getY() + 0.5, (double) pos.getZ() + 0.5, world.rand.nextFloat() * 360.0F, 0.0F);
-						world.spawnEntity((Entity) creature);
+						creature.setLocationAndAngles((double) pos.getX() + 0.5, (double) pos.getY() + 0.5, (double) pos.getZ() + 0.5, world.rand.nextFloat() * 360.0F, 0.0F);
+						world.spawnEntity(creature);
 					}
 					world.removeTileEntity(pos);
 				}
@@ -131,26 +130,16 @@ public class CultivateBlock extends BlockContainer implements DefaultRenderedIte
 
 	private void returnIron(World world, BlockPos pos) {
 		Random rand = new Random();
-		ItemStack stack = new ItemStack(Items.IRON_INGOT, 3);
+		ItemStack stack = new ItemStack(Items.IRON_INGOT, 1 + world.rand.nextInt(2));
 		float offsetX = rand.nextFloat() * 0.8F + 0.1F;
 		float offsetY = rand.nextFloat() * 0.8F + 0.1F;
 		float offsetZ = rand.nextFloat() * 0.8F + 0.1F;
-
-		while (stack.getCount() > 0) {
-			int stackDecay = rand.nextInt(21) + 10;
-
-			if (stackDecay > stack.getCount()) {
-				stackDecay = stack.getCount();
-			}
-
-			stack.shrink(stackDecay);
-			EntityItem item = new EntityItem(world, (double) ((float) pos.getX() + offsetX), (double) ((float) pos.getY() + offsetY), (double) ((float) pos.getZ() + offsetZ), new ItemStack(stack.getItem(), stackDecay, stack.getItemDamage()));
-			float motionMutlipler = 0.05F;
-			item.motionX = (double) ((float) rand.nextGaussian() * motionMutlipler);
-			item.motionY = (double) ((float) rand.nextGaussian() * motionMutlipler + 0.2F);
-			item.motionZ = (double) ((float) rand.nextGaussian() * motionMutlipler);
-			world.spawnEntity(item);
-		}
+		EntityItem item = new EntityItem(world, (double) ((float) pos.getX() + offsetX), (double) ((float) pos.getY() + offsetY), (double) ((float) pos.getZ() + offsetZ), stack);
+		float motionMutlipler = 0.05F;
+		item.motionX = (double) ((float) rand.nextGaussian() * motionMutlipler);
+		item.motionY = (double) ((float) rand.nextGaussian() * motionMutlipler + 0.2F);
+		item.motionZ = (double) ((float) rand.nextGaussian() * motionMutlipler);
+		world.spawnEntity(item);
 	}
 
 	private void returnDNA(World world, BlockPos pos) {

@@ -2,8 +2,11 @@ package fossilsarcheology.server.world.gen;
 
 import fossilsarcheology.server.block.FABlockRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.BlockRotatedPillar;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
@@ -11,8 +14,8 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import java.util.Random;
 
 public class WorldGenPalm extends WorldGenerator {
-	private static final IBlockState LOG = FABlockRegistry.PALM_LOG.getDefaultState();
-	private static final IBlockState LEAF = FABlockRegistry.PALM_LEAVES.getDefaultState();
+	private static final IBlockState LOG = FABlockRegistry.PALM_LOG.getDefaultState().withProperty(BlockRotatedPillar.AXIS, EnumFacing.Axis.Y);
+	private static final IBlockState LEAF = FABlockRegistry.PALM_LEAVES.getDefaultState().withProperty(BlockLeaves.CHECK_DECAY, false);
 
 
 	@Override

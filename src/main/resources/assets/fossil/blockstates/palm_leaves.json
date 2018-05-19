@@ -1,6 +1,6 @@
 {
     "variants": {
-        "all": {
+        "normal": {
             "model": "fossil:palm_leaves"
         }
     }
