@@ -1,6 +1,7 @@
 package fossilsarcheology.server.block;
 
 import fossilsarcheology.server.api.DefaultRenderedItem;
+import fossilsarcheology.server.item.FAItemRegistry;
 import fossilsarcheology.server.tab.FATabRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
@@ -134,7 +135,7 @@ public class PalmLeavesBlock extends BlockLeaves implements DefaultRenderedItem 
 					this.dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
 					world.setBlockToAir(pos);
 					if (new Random().nextInt(5) == 0) {
-						spawnAsEntity(world, pos, new ItemStack(Items.STICK));
+						spawnAsEntity(world, pos, new ItemStack(FABlockRegistry.PALM_SAPLING));
 					}
 				}
 			}
