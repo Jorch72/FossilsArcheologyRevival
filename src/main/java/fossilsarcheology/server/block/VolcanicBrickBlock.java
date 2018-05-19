@@ -10,7 +10,7 @@ public class VolcanicBrickBlock extends Block implements DefaultRenderedItem {
 	public VolcanicBrickBlock() {
 		super(Material.ROCK);
 		setHardness(5.0F);
-		setSoundType(SoundType.GROUND);
+		setSoundType(SoundType.STONE);
 		this.setUnlocalizedName("volcanic_brick");
 		setCreativeTab(FATabRegistry.BLOCKS);
 	}
