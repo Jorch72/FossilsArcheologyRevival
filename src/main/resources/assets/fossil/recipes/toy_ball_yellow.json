@@ -3,7 +3,7 @@
   "ingredients": [
     {
       "type": "forge:ore_dict",
-      "ore": "dyeLightBlue"
+      "ore": "dyeYellow"
     },
     {
       "item": "fossil:toyball",
@@ -12,7 +12,7 @@
   ],
   "result": {
     "item": "fossil:toyball",
-    "data": 12,
+    "data": 11,
     "count": 0
   }
 }
