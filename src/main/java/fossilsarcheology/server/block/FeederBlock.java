@@ -9,30 +9,30 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.*;
+import net.minecraft.util.EnumBlockRenderType;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.Mirror;
+import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class FeederBlock extends BlockContainer implements DefaultRenderedItem {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
-    public static final PropertyInteger FOOD = PropertyInteger.create("food", 0, 3);
-    private static final int NO_BIT = 0;
-    private static final int HERB_BIT = 4;
-    private static final int CARN_BIT = 8;
-    private static final int BOTH_BITS = 12;
-    private static final int DIRECTION_BITS = 3;
+    public static final PropertyBool HERB = PropertyBool.create("herb");
+    public static final PropertyBool CARN = PropertyBool.create("carn");
 
     protected FeederBlock() {
         super(Material.IRON);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(FOOD, 0));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(HERB, false).withProperty(CARN, false));
         this.setSoundType(SoundType.METAL);
         this.setUnlocalizedName("feeder");
         this.setCreativeTab(FATabRegistry.BLOCKS);
@@ -40,31 +40,8 @@ public class FeederBlock extends BlockContainer implements DefaultRenderedItem {
     }
 
     public static void updateFeederBlockState(boolean herb, boolean carn, World world, BlockPos pos) {
-        int meta = world.getBlockState(pos).getBlock().getMetaFromState(world.getBlockState(pos));
-        TileEntity tileentity = world.getTileEntity(pos);
-        // world.setBlock(x, y, z, FABlockRegistry.INSTANCE.feederActive);
-        if (herb) { // If there's VEGGIES{
-            meta |= HERB_BIT;
-        } else {
-            meta &= ~HERB_BIT;
-        }
-        if (carn) {
-            meta |= CARN_BIT;
-        } else {
-            meta &= ~CARN_BIT;
-        }
-
-        world.setBlockState(pos, world.getBlockState(pos).getBlock().getStateFromMeta(meta));
-
-        if (tileentity != null) {
-            world.setTileEntity(pos, tileentity);
-        }
-    }
-
-    public static void setState(boolean active, World worldIn, BlockPos pos) {
-        IBlockState iblockstate = worldIn.getBlockState(pos);
-        worldIn.setBlockState(pos, FABlockRegistry.FEEDER.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)).withProperty(FOOD, iblockstate.getValue(FOOD)), 3);
-        worldIn.setBlockState(pos, FABlockRegistry.FEEDER.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)).withProperty(FOOD, iblockstate.getValue(FOOD)), 3);
+        IBlockState state = world.getBlockState(pos);
+        world.setBlockState(pos, state.withProperty(HERB, herb).withProperty(CARN, carn));
     }
 
     @Override
@@ -119,17 +96,20 @@ public class FeederBlock extends BlockContainer implements DefaultRenderedItem {
 
     @Override
     public IBlockState getStateFromMeta(int meta) {
-        EnumFacing facing = EnumFacing.getFront(meta);
+        EnumFacing facing = EnumFacing.getHorizontal(meta & 3);
         if (facing.getAxis() == EnumFacing.Axis.Y) {
             facing = EnumFacing.NORTH;
         }
-        return this.getDefaultState().withProperty(FACING, facing).withProperty(FOOD, 0);
+        boolean herb = (meta >> 2 & 1) != 0;
+        boolean carn = (meta >> 3 & 1) != 0;
+        return this.getDefaultState().withProperty(FACING, facing).withProperty(HERB, herb).withProperty(CARN, carn);
     }
 
     @Override
     public int getMetaFromState(IBlockState state) {
-        int i = state.getValue(FACING).getIndex();
-        return i |= 3;
+        return state.getValue(FACING).getHorizontalIndex()
+                | (state.getValue(HERB) ? 1 : 0) << 2
+                | (state.getValue(CARN) ? 1 : 0) << 3;
     }
 
     @Override
@@ -144,11 +124,11 @@ public class FeederBlock extends BlockContainer implements DefaultRenderedItem {
 
     @Override
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, FACING, FOOD);
+        return new BlockStateContainer(this, FACING, HERB, CARN);
     }
 
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
+    public TileEntity createNewTileEntity(World world, int meta) {
         return new TileEntityFeeder();
     }
 }
