@@ -1,6 +1,5 @@
 package fossilsarcheology.server.block.entity;
 
-import fossilsarcheology.Revival;
 import fossilsarcheology.server.block.AnalyzerBlock;
 import fossilsarcheology.server.block.FABlockRegistry;
 import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityType;
