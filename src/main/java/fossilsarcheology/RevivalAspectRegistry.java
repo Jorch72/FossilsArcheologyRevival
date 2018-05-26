@@ -74,6 +74,7 @@ public class RevivalAspectRegistry {
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ANCIENT_WOOD), new AspectList().add(Aspect.PLANT, 4).add(RevivalAspectRegistry.TIME, 4));
 
 		ThaumcraftApi.registerEntityTag("fossil.tyrannosaurus", new AspectList().add(Aspect.BEAST, 35).add(Aspect.AVERSION, 35).add(Aspect.AIR, 35).add(RevivalAspectRegistry.TIME, 20));
+		ThaumcraftApi.registerEntityTag("fossil.triceratops", new AspectList().add(Aspect.BEAST, 35).add(Aspect.AVERSION, 35).add(Aspect.PROTECT, 35).add(RevivalAspectRegistry.TIME, 20));
 	}
 
 }
