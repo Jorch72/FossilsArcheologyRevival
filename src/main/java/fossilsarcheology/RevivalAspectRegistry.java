@@ -51,10 +51,25 @@ public class RevivalAspectRegistry {
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.WHIP), new AspectList().add(Aspect.BEAST, 10).add(Aspect.DESIRE, 10).add(Aspect.AVERSION, 10));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.ICED_MEAT), new AspectList().add(Aspect.BEAST, 5).add(Aspect.COLD, 5).add(Aspect.DEATH, 5));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.AMPHORA_VASE), new AspectList().add(Aspect.CRAFT, 15).add(Aspect.SENSES, 15).add(Aspect.DESIRE, 15).add(RevivalAspectRegistry.TIME, 8));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.AMPHORA_VASE, 1, 1), new AspectList().add(Aspect.CRAFT, 15).add(Aspect.SENSES, 15).add(Aspect.DESIRE, 15).add(RevivalAspectRegistry.TIME, 8));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.AMPHORA_VASE, 1, 2), new AspectList().add(Aspect.CRAFT, 15).add(Aspect.SENSES, 15).add(Aspect.DESIRE, 15).add(RevivalAspectRegistry.TIME, 8));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.AMPHORA_VASE, 1, 3), new AspectList().add(Aspect.CRAFT, 15).add(Aspect.SENSES, 15).add(Aspect.DESIRE, 15).add(RevivalAspectRegistry.TIME, 8));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.KYLIX_VASE), new AspectList().add(Aspect.CRAFT, 15).add(Aspect.SENSES, 15).add(Aspect.DESIRE, 15).add(RevivalAspectRegistry.TIME, 8));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.KYLIX_VASE, 1, 1), new AspectList().add(Aspect.CRAFT, 15).add(Aspect.SENSES, 15).add(Aspect.DESIRE, 15).add(RevivalAspectRegistry.TIME, 8));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.KYLIX_VASE, 1, 2), new AspectList().add(Aspect.CRAFT, 15).add(Aspect.SENSES, 15).add(Aspect.DESIRE, 15).add(RevivalAspectRegistry.TIME, 8));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.KYLIX_VASE, 1, 3), new AspectList().add(Aspect.CRAFT, 15).add(Aspect.SENSES, 15).add(Aspect.DESIRE, 15).add(RevivalAspectRegistry.TIME, 8));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.VOLUTE_VASE), new AspectList().add(Aspect.CRAFT, 15).add(Aspect.SENSES, 15).add(Aspect.DESIRE, 15).add(RevivalAspectRegistry.TIME, 8));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.VOLUTE_VASE, 1, 1), new AspectList().add(Aspect.CRAFT, 15).add(Aspect.SENSES, 15).add(Aspect.DESIRE, 15).add(RevivalAspectRegistry.TIME, 8));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.VOLUTE_VASE, 1, 2), new AspectList().add(Aspect.CRAFT, 15).add(Aspect.SENSES, 15).add(Aspect.DESIRE, 15).add(RevivalAspectRegistry.TIME, 8));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.VOLUTE_VASE, 1, 3), new AspectList().add(Aspect.CRAFT, 15).add(Aspect.SENSES, 15).add(Aspect.DESIRE, 15).add(RevivalAspectRegistry.TIME, 8));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.TIME_MACHINE), new AspectList().add(Aspect.CRAFT, 25).add(Aspect.MOTION, 15).add(Aspect.DESIRE, 15).add(RevivalAspectRegistry.TIME, 25));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ICED_STONE), new AspectList().add(Aspect.EARTH, 4).add(Aspect.COLD, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.SKULL_BLOCK), new AspectList().add(Aspect.DEATH, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.VOLCANIC_ROCK), new AspectList().add(Aspect.FIRE, 4).add(Aspect.EARTH, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.VOLCANIC_ASH), new AspectList().add(Aspect.FIRE, 4).add(Aspect.DARKNESS, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.FIGURINE), new AspectList().add(Aspect.MAN, 10).add(RevivalAspectRegistry.TIME, 10));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.PALM_LOG), new AspectList().add(Aspect.PLANT, 10).add(RevivalAspectRegistry.TIME, 10));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ANCIENT_GLASS), new AspectList().add(Aspect.CRYSTAL, 5).add(RevivalAspectRegistry.TIME, 5));
 	}
 
 }
