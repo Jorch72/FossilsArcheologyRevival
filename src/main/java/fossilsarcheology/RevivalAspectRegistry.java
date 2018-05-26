@@ -72,6 +72,10 @@ public class RevivalAspectRegistry {
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ANCIENT_GLASS), new AspectList().add(Aspect.CRYSTAL, 5).add(RevivalAspectRegistry.TIME, 5));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.STRONG_GLASS), new AspectList().add(Aspect.CRYSTAL, 4).add(Aspect.PROTECT, 4));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ANCIENT_WOOD), new AspectList().add(Aspect.PLANT, 4).add(RevivalAspectRegistry.TIME, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ANCIENT_WOOD_PLATE), new AspectList().add(Aspect.PLANT, 4).add(RevivalAspectRegistry.TIME, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ANCIENT_WOOD_STAIRS), new AspectList().add(Aspect.PLANT, 4).add(RevivalAspectRegistry.TIME, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ANCIENT_WOOD_DOUBLESLAB), new AspectList().add(Aspect.PLANT, 4).add(RevivalAspectRegistry.TIME, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ANCIENT_WOOD_SINGLESLAB), new AspectList().add(Aspect.PLANT, 4).add(RevivalAspectRegistry.TIME, 4));
 
 		ThaumcraftApi.registerEntityTag("fossil.tyrannosaurus", new AspectList().add(Aspect.BEAST, 35).add(Aspect.AVERSION, 35).add(Aspect.AIR, 35).add(RevivalAspectRegistry.TIME, 20));
 		ThaumcraftApi.registerEntityTag("fossil.triceratops", new AspectList().add(Aspect.BEAST, 35).add(Aspect.AVERSION, 35).add(Aspect.PROTECT, 35).add(RevivalAspectRegistry.TIME, 20));
