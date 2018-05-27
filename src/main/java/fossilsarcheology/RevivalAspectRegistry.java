@@ -90,6 +90,11 @@ public class RevivalAspectRegistry {
 		ThaumcraftApi.registerEntityTag("fossil.triceratops", new AspectList().add(Aspect.BEAST, 35).add(Aspect.AVERSION, 35).add(Aspect.PROTECT, 35).add(RevivalAspectRegistry.TIME, 20));
 		ThaumcraftApi.registerEntityTag("fossil.henodus", new AspectList().add(Aspect.BEAST, 15).add(Aspect.WATER, 15).add(Aspect.PROTECT, 20).add(RevivalAspectRegistry.TIME, 15));
 		ThaumcraftApi.registerEntityTag("fossil.dodo", new AspectList().add(Aspect.BEAST, 10).add(Aspect.AIR, 15).add(RevivalAspectRegistry.TIME, 15));
+		ThaumcraftApi.registerEntityTag("fossil.allosaurus", new AspectList().add(Aspect.BEAST, 30).add(Aspect.AIR, 20).add(Aspect.ENERGY, 20).add(RevivalAspectRegistry.TIME, 20));
+		ThaumcraftApi.registerEntityTag("fossil.ankylosaurus", new AspectList().add(Aspect.BEAST, 35).add(Aspect.AVERSION, 35).add(Aspect.PROTECT, 35).add(RevivalAspectRegistry.TIME, 20));
+		ThaumcraftApi.registerEntityTag("fossil.brachiosaurus", new AspectList().add(Aspect.BEAST, 35).add(Aspect.EARTH, 35).add(Aspect.PROTECT, 35).add(RevivalAspectRegistry.TIME, 20));
+		ThaumcraftApi.registerEntityTag("fossil.ceratosaurus", new AspectList().add(Aspect.BEAST, 25).add(Aspect.AVERSION, 20).add(RevivalAspectRegistry.TIME, 20));
+		ThaumcraftApi.registerEntityTag("fossil.compsognathus", new AspectList().add(Aspect.BEAST, 10).add(Aspect.AVERSION, 5).add(Aspect.DARKNESS, 5).add(RevivalAspectRegistry.TIME, 20));
 	}
 
 }
