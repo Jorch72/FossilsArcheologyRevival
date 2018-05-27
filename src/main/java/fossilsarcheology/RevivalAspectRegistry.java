@@ -13,8 +13,10 @@ import thaumcraft.api.aspects.AspectList;
  */
 public class RevivalAspectRegistry {
 
-	//We define the aspect here
-	public static final Aspect TIME = new Aspect("chronos", 0Xb5a642, new Aspect[]{Aspect.EXCHANGE, Aspect.MOTION}, new ResourceLocation(Revival.MODID, "textures/thaumcraft/hourglass.png"), 1);
+	//We define the aspects here
+	public static final Aspect TIME = new Aspect("chronos", 0Xb5a642, new Aspect[]{Aspect.EXCHANGE, Aspect.MOTION}, new ResourceLocation(Revival.MODID, "textures/thaumcraft/chronos.png"), 1);
+	public static final Aspect RUIN = new Aspect("anteanus", 0XF2F0E6, new Aspect[]{Aspect.MAN, RevivalAspectRegistry.TIME}, new ResourceLocation(Revival.MODID, "textures/thaumcraft/ruere.png"), 1);
+	public static final Aspect FOSSIL = new Aspect("priscus", 0X9f8170, new Aspect[]{Aspect.BEAST, RevivalAspectRegistry.TIME}, new ResourceLocation(Revival.MODID, "textures/thaumcraft/fodere.png"), 1);
 
 	public static void register() {
 
