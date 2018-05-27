@@ -95,6 +95,8 @@ public class RevivalAspectRegistry {
 		ThaumcraftApi.registerEntityTag("fossil.brachiosaurus", new AspectList().add(Aspect.BEAST, 35).add(Aspect.EARTH, 35).add(Aspect.PROTECT, 35).add(RevivalAspectRegistry.TIME, 20));
 		ThaumcraftApi.registerEntityTag("fossil.ceratosaurus", new AspectList().add(Aspect.BEAST, 25).add(Aspect.AVERSION, 20).add(RevivalAspectRegistry.TIME, 20));
 		ThaumcraftApi.registerEntityTag("fossil.compsognathus", new AspectList().add(Aspect.BEAST, 10).add(Aspect.AVERSION, 5).add(Aspect.DARKNESS, 5).add(RevivalAspectRegistry.TIME, 20));
+		ThaumcraftApi.registerEntityTag("fossil.confuciusornis", new AspectList().add(Aspect.BEAST, 10).add(Aspect.FLIGHT, 5).add(Aspect.AIR, 5).add(RevivalAspectRegistry.TIME, 20));
+		ThaumcraftApi.registerEntityTag("fossil.kelenken", new AspectList().add(Aspect.BEAST, 15).add(Aspect.FLIGHT, 10).add(Aspect.AIR, 5).add(Aspect.AVERSION, 5).add(RevivalAspectRegistry.TIME, 20));
 	}
 
 }
