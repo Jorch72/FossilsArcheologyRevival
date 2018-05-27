@@ -103,6 +103,10 @@ public class RevivalAspectRegistry {
 		ThaumcraftApi.registerEntityTag("fossil.quagga", new AspectList().add(Aspect.BEAST, 20).add(Aspect.MOTION, 15).add(RevivalAspectRegistry.TIME, 15));
 		ThaumcraftApi.registerEntityTag("fossil.smilodon", new AspectList().add(Aspect.BEAST, 20).add(Aspect.COLD, 15).add(Aspect.AVERSION, 15).add(RevivalAspectRegistry.TIME, 15));
 		ThaumcraftApi.registerEntityTag("fossil.mammoth", new AspectList().add(Aspect.BEAST, 20).add(Aspect.COLD, 15).add(Aspect.PROTECT, 15).add(RevivalAspectRegistry.TIME, 15));
+		ThaumcraftApi.registerEntityTag("fossil.coelacanth", new AspectList().add(Aspect.BEAST, 5).add(Aspect.WATER, 5).add(Aspect.DARKNESS, 5).add(RevivalAspectRegistry.TIME, 5));
+		ThaumcraftApi.registerEntityTag("fossil.alligator_gar", new AspectList().add(Aspect.BEAST, 5).add(Aspect.WATER, 5).add(Aspect.AVERSION, 5).add(RevivalAspectRegistry.TIME, 5));
+		ThaumcraftApi.registerEntityTag("fossil.sturgeon", new AspectList().add(Aspect.BEAST, 5).add(Aspect.WATER, 5).add(Aspect.DESIRE, 5).add(RevivalAspectRegistry.TIME, 5));
+		ThaumcraftApi.registerEntityTag("fossil.nautilus", new AspectList().add(Aspect.BEAST, 5).add(Aspect.WATER, 5).add(Aspect.PROTECT, 5).add(RevivalAspectRegistry.TIME, 5));
 	}
 
 }
