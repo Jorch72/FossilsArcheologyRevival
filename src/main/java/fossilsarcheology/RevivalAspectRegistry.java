@@ -84,6 +84,11 @@ public class RevivalAspectRegistry {
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ANALYZER), new AspectList().add(Aspect.MECHANISM, 25).add(Aspect.METAL, 25).add(RevivalAspectRegistry.TIME, 20));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.CULTIVATE_IDLE), new AspectList().add(Aspect.MECHANISM, 25).add(Aspect.WATER, 25).add(Aspect.ALCHEMY, 25).add(Aspect.LIFE, 25).add(RevivalAspectRegistry.TIME, 20));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.CULTIVATE_ACTIVEE), new AspectList().add(Aspect.MECHANISM, 25).add(Aspect.WATER, 25).add(Aspect.ALCHEMY, 25).add(Aspect.LIFE, 25).add(RevivalAspectRegistry.TIME, 20));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ANCIENT_STONE), new AspectList().add(Aspect.EARTH, 4).add(RevivalAspectRegistry.TIME, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ANCIENT_STONE_BRICK), new AspectList().add(Aspect.EARTH, 4).add(RevivalAspectRegistry.TIME, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ANCIENT_STONE_DOUBLESLAB), new AspectList().add(Aspect.EARTH, 4).add(RevivalAspectRegistry.TIME, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ANCIENT_STONE_SINGLESLAB), new AspectList().add(Aspect.EARTH, 4).add(RevivalAspectRegistry.TIME, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ANCIENT_STONE_STAIRS), new AspectList().add(Aspect.EARTH, 4).add(RevivalAspectRegistry.TIME, 4));
 
 		//Entities
 		ThaumcraftApi.registerEntityTag("fossil.tyrannosaurus", new AspectList().add(Aspect.BEAST, 35).add(Aspect.AVERSION, 35).add(Aspect.AIR, 35).add(RevivalAspectRegistry.TIME, 20));
@@ -107,6 +112,9 @@ public class RevivalAspectRegistry {
 		ThaumcraftApi.registerEntityTag("fossil.alligator_gar", new AspectList().add(Aspect.BEAST, 5).add(Aspect.WATER, 5).add(Aspect.AVERSION, 5).add(RevivalAspectRegistry.TIME, 5));
 		ThaumcraftApi.registerEntityTag("fossil.sturgeon", new AspectList().add(Aspect.BEAST, 5).add(Aspect.WATER, 5).add(Aspect.DESIRE, 5).add(RevivalAspectRegistry.TIME, 5));
 		ThaumcraftApi.registerEntityTag("fossil.nautilus", new AspectList().add(Aspect.BEAST, 5).add(Aspect.WATER, 5).add(Aspect.PROTECT, 5).add(RevivalAspectRegistry.TIME, 5));
+		ThaumcraftApi.registerEntityTag("fossil.velociraptor", new AspectList().add(Aspect.BEAST, 13).add(Aspect.AIR, 13).add(Aspect.MOTION, 13).add(RevivalAspectRegistry.TIME, 13));
+		ThaumcraftApi.registerEntityTag("fossil.dilophosaurus", new AspectList().add(Aspect.BEAST, 13).add(Aspect.AIR, 13).add(Aspect.MOTION, 13).add(RevivalAspectRegistry.TIME, 13));
+		ThaumcraftApi.registerEntityTag("fossil.elasmotherium", new AspectList().add(Aspect.BEAST, 20).add(Aspect.COLD, 15).add(Aspect.PROTECT, 15).add(RevivalAspectRegistry.TIME, 15));
 	}
 
 }
