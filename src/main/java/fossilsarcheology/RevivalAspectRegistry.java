@@ -97,6 +97,12 @@ public class RevivalAspectRegistry {
 		ThaumcraftApi.registerEntityTag("fossil.compsognathus", new AspectList().add(Aspect.BEAST, 10).add(Aspect.AVERSION, 5).add(Aspect.DARKNESS, 5).add(RevivalAspectRegistry.TIME, 20));
 		ThaumcraftApi.registerEntityTag("fossil.confuciusornis", new AspectList().add(Aspect.BEAST, 10).add(Aspect.FLIGHT, 5).add(Aspect.AIR, 5).add(RevivalAspectRegistry.TIME, 20));
 		ThaumcraftApi.registerEntityTag("fossil.kelenken", new AspectList().add(Aspect.BEAST, 15).add(Aspect.FLIGHT, 10).add(Aspect.AIR, 5).add(Aspect.AVERSION, 5).add(RevivalAspectRegistry.TIME, 20));
+		ThaumcraftApi.registerEntityTag("fossil.titanis", new AspectList().add(Aspect.BEAST, 15).add(Aspect.FLIGHT, 10).add(Aspect.AIR, 5).add(Aspect.AVERSION, 5).add(RevivalAspectRegistry.TIME, 20));
+		ThaumcraftApi.registerEntityTag("fossil.gastornis", new AspectList().add(Aspect.BEAST, 15).add(Aspect.FLIGHT, 10).add(Aspect.AIR, 5).add(Aspect.AVERSION, 5).add(RevivalAspectRegistry.TIME, 20));
+		ThaumcraftApi.registerEntityTag("fossil.phorusrhacos", new AspectList().add(Aspect.BEAST, 15).add(Aspect.FLIGHT, 10).add(Aspect.AIR, 5).add(Aspect.AVERSION, 5).add(RevivalAspectRegistry.TIME, 20));
+		ThaumcraftApi.registerEntityTag("fossil.quagga", new AspectList().add(Aspect.BEAST, 20).add(Aspect.MOTION, 15).add(RevivalAspectRegistry.TIME, 15));
+		ThaumcraftApi.registerEntityTag("fossil.smilodon", new AspectList().add(Aspect.BEAST, 20).add(Aspect.COLD, 15).add(Aspect.AVERSION, 15).add(RevivalAspectRegistry.TIME, 15));
+		ThaumcraftApi.registerEntityTag("fossil.mammoth", new AspectList().add(Aspect.BEAST, 20).add(Aspect.COLD, 15).add(Aspect.PROTECT, 15).add(RevivalAspectRegistry.TIME, 15));
 	}
 
 }
