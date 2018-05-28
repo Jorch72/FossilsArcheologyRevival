@@ -95,6 +95,7 @@ public class RevivalAspectRegistry {
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ANCIENT_STONE_DOUBLESLAB), new AspectList().add(Aspect.EARTH, 4).add(RevivalAspectRegistry.TIME, 4));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ANCIENT_STONE_SINGLESLAB), new AspectList().add(Aspect.EARTH, 4).add(RevivalAspectRegistry.TIME, 4));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ANCIENT_STONE_STAIRS), new AspectList().add(Aspect.EARTH, 4).add(RevivalAspectRegistry.TIME, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.DILLHOFFIA_FLOWER), new AspectList().add(Aspect.PLANT, 4).add(RevivalAspectRegistry.TIME, 4));
 
 		//Entities
 		ThaumcraftApi.registerEntityTag("fossil.tyrannosaurus", new AspectList().add(Aspect.BEAST, 35).add(Aspect.AVERSION, 35).add(Aspect.AIR, 35).add(RevivalAspectRegistry.TIME, 20));
@@ -122,5 +123,9 @@ public class RevivalAspectRegistry {
 		ThaumcraftApi.registerEntityTag("fossil.dilophosaurus", new AspectList().add(Aspect.BEAST, 13).add(Aspect.AIR, 13).add(Aspect.MOTION, 13).add(RevivalAspectRegistry.TIME, 13));
 		ThaumcraftApi.registerEntityTag("fossil.elasmotherium", new AspectList().add(Aspect.BEAST, 20).add(Aspect.COLD, 15).add(Aspect.PROTECT, 15).add(RevivalAspectRegistry.TIME, 15));
 		ThaumcraftApi.registerEntityTag("fossil.dryosaurus", new AspectList().add(Aspect.BEAST, 10).add(Aspect.AIR, 10).add(Aspect.MOTION, 10).add(RevivalAspectRegistry.TIME, 10));
+		ThaumcraftApi.registerEntityTag("fossil.gallimimus", new AspectList().add(Aspect.BEAST, 10).add(Aspect.AIR, 10).add(Aspect.MOTION, 15).add(RevivalAspectRegistry.TIME, 10));
+		ThaumcraftApi.registerEntityTag("fossil.ichthyosaurus", new AspectList().add(Aspect.BEAST, 15).add(Aspect.WATER, 15).add(Aspect.SENSES, 15).add(RevivalAspectRegistry.TIME, 15));
+		ThaumcraftApi.registerEntityTag("fossil.liopleurodon", new AspectList().add(Aspect.BEAST, 15).add(Aspect.WATER, 15).add(Aspect.AVERSION, 15).add(RevivalAspectRegistry.TIME, 15));
+		ThaumcraftApi.registerEntityTag("fossil.mosasaurus", new AspectList().add(Aspect.BEAST, 15).add(Aspect.WATER, 15).add(Aspect.AVERSION, 15).add(RevivalAspectRegistry.TIME, 15));
 	}
 }
