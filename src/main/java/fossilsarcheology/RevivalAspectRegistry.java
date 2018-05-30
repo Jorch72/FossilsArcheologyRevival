@@ -155,5 +155,8 @@ public class RevivalAspectRegistry {
 		ThaumcraftApi.registerEntityTag("fossil.therizinosaurus", new AspectList().add(Aspect.BEAST, 35).add(Aspect.AVERSION, 35).add(Aspect.AIR, 35).add(RevivalAspectRegistry.TIME, 20));
 		ThaumcraftApi.registerEntityTag("fossil.sarcosuchus", new AspectList().add(Aspect.BEAST, 35).add(Aspect.AVERSION, 35).add(Aspect.WATER, 35).add(RevivalAspectRegistry.TIME, 20));
 		ThaumcraftApi.registerEntityTag("fossil.failuresaurus", new AspectList().add(Aspect.BEAST, 20).add(Aspect.UNDEAD, 20).add(Aspect.WATER, 20).add(Aspect.ALCHEMY, 20));
+		ThaumcraftApi.registerEntityTag("fossil.dinoegg", new AspectList().add(Aspect.LIFE, 4).add(Aspect.PROTECT, 4));
+		ThaumcraftApi.registerEntityTag("fossil.birdegg", new AspectList().add(Aspect.LIFE, 4).add(Aspect.PROTECT, 4));
+		ThaumcraftApi.registerEntityTag("fossil.anu", new AspectList().add(Aspect.SOUL, 50).add(Aspect.DESIRE, 50).add(Aspect.UNDEAD, 50));
 	}
 }
