@@ -58,6 +58,10 @@ public class RevivalAspectRegistry {
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.WHIP), new AspectList().add(Aspect.BEAST, 10).add(Aspect.DESIRE, 10).add(Aspect.AVERSION, 10));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.ICED_MEAT), new AspectList().add(Aspect.BEAST, 5).add(Aspect.COLD, 5).add(Aspect.DEATH, 5));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.STONE_TABLET), new AspectList().add(Aspect.EARTH, 5).add(RevivalAspectRegistry.RUIN, 5).add(RevivalAspectRegistry.TIME, 5));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.FOSSIL_RECORD_NANO_ANU), new AspectList().add(Aspect.SENSES, 5).add(Aspect.DESIRE, 5));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.FOSSIL_RECORD_BONES), new AspectList().add(Aspect.SENSES, 5).add(Aspect.DESIRE, 5));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.FOSSIL_RECORD_NANO_DISCOVERING), new AspectList().add(Aspect.SENSES, 5).add(Aspect.DESIRE, 5));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.FOSSIL_RECORD_NANO_SCARAB), new AspectList().add(Aspect.SENSES, 5).add(Aspect.DESIRE, 5));
 
 		//Blocks
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.AMPHORA_VASE), new AspectList().add(Aspect.CRAFT, 15).add(Aspect.SENSES, 15).add(Aspect.DESIRE, 15).add(RevivalAspectRegistry.TIME, 8));
