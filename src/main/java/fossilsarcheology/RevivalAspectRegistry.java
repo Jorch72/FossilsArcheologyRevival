@@ -157,6 +157,10 @@ public class RevivalAspectRegistry {
 		ThaumcraftApi.registerEntityTag("fossil.failuresaurus", new AspectList().add(Aspect.BEAST, 20).add(Aspect.UNDEAD, 20).add(Aspect.WATER, 20).add(Aspect.ALCHEMY, 20));
 		ThaumcraftApi.registerEntityTag("fossil.dinoegg", new AspectList().add(Aspect.LIFE, 4).add(Aspect.PROTECT, 4));
 		ThaumcraftApi.registerEntityTag("fossil.birdegg", new AspectList().add(Aspect.LIFE, 4).add(Aspect.PROTECT, 4));
-		ThaumcraftApi.registerEntityTag("fossil.anu", new AspectList().add(Aspect.SOUL, 50).add(Aspect.DESIRE, 50).add(Aspect.UNDEAD, 50).add(Aspect.FIRE, 50).add(Aspect.FLIGHT, 50));
+		ThaumcraftApi.registerEntityTag("fossil.anu", new AspectList().add(Aspect.SOUL, 50).add(Aspect.DESIRE, 50).add(Aspect.UNDEAD, 50).add(Aspect.FIRE, 50).add(Aspect.FLIGHT, 50).add(Aspect.DARKNESS, 50));
+		ThaumcraftApi.registerEntityTag("fossil.tarslime", new AspectList().add(Aspect.LIFE, 10).add(Aspect.ALCHEMY, 10).add(Aspect.WATER, 10).add(Aspect.DARKNESS, 10));
+		ThaumcraftApi.registerEntityTag("fossil.anubite", new AspectList().add(Aspect.SOUL, 30).add(Aspect.DESIRE, 30).add(Aspect.UNDEAD, 30).add(Aspect.FIRE, 30).add(Aspect.DARKNESS, 30));
+		ThaumcraftApi.registerEntityTag("fossil.sentrypigman", new AspectList().add(Aspect.SOUL, 30).add(Aspect.DESIRE, 30).add(Aspect.UNDEAD, 30).add(Aspect.FIRE, 30).add(Aspect.DARKNESS, 30));
+		ThaumcraftApi.registerEntityTag("fossil.friendlypigman", new AspectList().add(Aspect.SOUL, 30).add(Aspect.DESIRE, 30).add(Aspect.UNDEAD, 30).add(Aspect.FIRE, 30).add(Aspect.DARKNESS, 30));
 	}
 }
