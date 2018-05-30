@@ -67,6 +67,11 @@ public class RevivalAspectRegistry {
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.FOSSIL_SEED_FERN), new AspectList().add(Aspect.PLANT, 5).add(RevivalAspectRegistry.TIME, 5).add(RevivalAspectRegistry.FOSSIL, 5));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.FERN_SEED), new AspectList().add(Aspect.PLANT, 5).add(RevivalAspectRegistry.TIME, 5));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.FOSSIL_SEED), new AspectList().add(Aspect.PLANT, 5).add(RevivalAspectRegistry.TIME, 5).add(RevivalAspectRegistry.FOSSIL, 5));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.DIAMOND_JAVELIN), new AspectList().add(Aspect.AVERSION, 10).add(RevivalAspectRegistry.TIME, 10));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.GOLD_JAVELIN), new AspectList().add(Aspect.AVERSION, 10).add(RevivalAspectRegistry.TIME, 10));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.IRON_JAVELIN), new AspectList().add(Aspect.AVERSION, 10).add(RevivalAspectRegistry.TIME, 10));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.STONE_JAVELIN), new AspectList().add(Aspect.AVERSION, 10).add(RevivalAspectRegistry.TIME, 10));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.WOODEN_JAVELIN), new AspectList().add(Aspect.AVERSION, 10).add(RevivalAspectRegistry.TIME, 10));
 
 		//Blocks
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.AMPHORA_VASE), new AspectList().add(Aspect.CRAFT, 15).add(Aspect.SENSES, 15).add(Aspect.DESIRE, 15).add(RevivalAspectRegistry.TIME, 8));
