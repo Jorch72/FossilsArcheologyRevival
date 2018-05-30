@@ -106,6 +106,13 @@ public class RevivalAspectRegistry {
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.BENNETTITALES_SMALL_FLOWER), new AspectList().add(Aspect.PLANT, 4).add(RevivalAspectRegistry.TIME, 4));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.CEPHALOTAXUS_FLOWER), new AspectList().add(Aspect.PLANT, 4).add(RevivalAspectRegistry.TIME, 4));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.CRATAEGUS_FLOWER), new AspectList().add(Aspect.PLANT, 4).add(RevivalAspectRegistry.TIME, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.EPENDRA_FLOWER), new AspectList().add(Aspect.PLANT, 4).add(RevivalAspectRegistry.TIME, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.LICOPODIOPHYTA_FLOWER), new AspectList().add(Aspect.PLANT, 4).add(RevivalAspectRegistry.TIME, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.OSMUNDA_FLOWER), new AspectList().add(Aspect.PLANT, 4).add(RevivalAspectRegistry.TIME, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.TEMPSKYA_FLOWER), new AspectList().add(Aspect.PLANT, 4).add(RevivalAspectRegistry.TIME, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.VACCINIUM_FLOWER), new AspectList().add(Aspect.PLANT, 4).add(RevivalAspectRegistry.TIME, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.WELWITSCHIA_FLOWER), new AspectList().add(Aspect.PLANT, 4).add(RevivalAspectRegistry.TIME, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ZAMITES_FLOWER), new AspectList().add(Aspect.PLANT, 4).add(RevivalAspectRegistry.TIME, 4));
 
 		//Entities
 		ThaumcraftApi.registerEntityTag("fossil.tyrannosaurus", new AspectList().add(Aspect.BEAST, 35).add(Aspect.AVERSION, 35).add(Aspect.AIR, 35).add(RevivalAspectRegistry.TIME, 20));
