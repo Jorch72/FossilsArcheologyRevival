@@ -48,8 +48,6 @@ public class RevivalAspectRegistry {
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.PALAE_SAPLING_FOSSIL), new AspectList().add(Aspect.EARTH, 5).add(Aspect.PLANT, 5).add(RevivalAspectRegistry.TIME, 5));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.PLANT_FOSSIL), new AspectList().add(Aspect.EARTH, 5).add(Aspect.PLANT, 5).add(RevivalAspectRegistry.TIME, 5));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.TAR_FOSSIL), new AspectList().add(Aspect.EARTH, 5).add(Aspect.ALCHEMY, 5).add(Aspect.BEAST, 5).add(RevivalAspectRegistry.TIME, 5));
-		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.FOSSIL_SEED), new AspectList().add(Aspect.EARTH, 5).add(Aspect.PLANT, 5).add(RevivalAspectRegistry.TIME, 5));
-		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.FOSSIL_SEED_FERN), new AspectList().add(Aspect.EARTH, 5).add(Aspect.PLANT, 5).add(RevivalAspectRegistry.TIME, 5));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.TARDROP), new AspectList().add(Aspect.EARTH, 3).add(Aspect.WATER, 3).add(Aspect.DARKNESS, 3).add(Aspect.ALCHEMY, 3).add(Aspect.ENTROPY, 3));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.TAR_BUCKET), new AspectList().add(Aspect.EARTH, 7).add(Aspect.WATER, 7).add(Aspect.DARKNESS, 7).add(Aspect.ALCHEMY, 7).add(Aspect.ENTROPY, 7));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.TOY_BALL), new AspectList().add(Aspect.CRAFT, 8).add(Aspect.SENSES, 8));
@@ -62,6 +60,13 @@ public class RevivalAspectRegistry {
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.FOSSIL_RECORD_BONES), new AspectList().add(Aspect.SENSES, 5).add(Aspect.DESIRE, 5));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.FOSSIL_RECORD_NANO_DISCOVERING), new AspectList().add(Aspect.SENSES, 5).add(Aspect.DESIRE, 5));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.FOSSIL_RECORD_NANO_SCARAB), new AspectList().add(Aspect.SENSES, 5).add(Aspect.DESIRE, 5));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.SHELL), new AspectList().add(Aspect.WATER, 5).add(Aspect.PROTECT, 5));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.MAGIC_CONCH), new AspectList().add(Aspect.WATER, 5).add(Aspect.PROTECT, 5).add(Aspect.MAGIC, 5));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.RELIC_SCRAP), new AspectList().add(Aspect.EARTH, 5).add(Aspect.CRAFT, 5).add(RevivalAspectRegistry.TIME, 5).add(RevivalAspectRegistry.RUIN, 5));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.SEED), new AspectList().add(Aspect.PLANT, 5).add(RevivalAspectRegistry.TIME, 5).add(RevivalAspectRegistry.FOSSIL, 5));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.FOSSIL_SEED_FERN), new AspectList().add(Aspect.PLANT, 5).add(RevivalAspectRegistry.TIME, 5).add(RevivalAspectRegistry.FOSSIL, 5));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.FERN_SEED), new AspectList().add(Aspect.PLANT, 5).add(RevivalAspectRegistry.TIME, 5));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.FOSSIL_SEED), new AspectList().add(Aspect.PLANT, 5).add(RevivalAspectRegistry.TIME, 5).add(RevivalAspectRegistry.FOSSIL, 5));
 
 		//Blocks
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.AMPHORA_VASE), new AspectList().add(Aspect.CRAFT, 15).add(Aspect.SENSES, 15).add(Aspect.DESIRE, 15).add(RevivalAspectRegistry.TIME, 8));
@@ -90,6 +95,7 @@ public class RevivalAspectRegistry {
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ANCIENT_WOOD_STAIRS), new AspectList().add(Aspect.PLANT, 4).add(RevivalAspectRegistry.TIME, 4));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ANCIENT_WOOD_DOUBLESLAB), new AspectList().add(Aspect.PLANT, 4).add(RevivalAspectRegistry.TIME, 4));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ANCIENT_WOOD_SINGLESLAB), new AspectList().add(Aspect.PLANT, 4).add(RevivalAspectRegistry.TIME, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ANCIENT_WOOD_PILLAR), new AspectList().add(Aspect.PLANT, 4).add(RevivalAspectRegistry.TIME, 4));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ANALYZER), new AspectList().add(Aspect.MECHANISM, 25).add(Aspect.METAL, 25).add(RevivalAspectRegistry.TIME, 20));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.CULTIVATE_IDLE), new AspectList().add(Aspect.MECHANISM, 25).add(Aspect.WATER, 25).add(Aspect.ALCHEMY, 25).add(Aspect.LIFE, 25).add(RevivalAspectRegistry.TIME, 20));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.CULTIVATE_ACTIVEE), new AspectList().add(Aspect.MECHANISM, 25).add(Aspect.WATER, 25).add(Aspect.ALCHEMY, 25).add(Aspect.LIFE, 25).add(RevivalAspectRegistry.TIME, 20));
