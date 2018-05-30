@@ -7,6 +7,7 @@ import fossilsarcheology.server.message.*;
 import fossilsarcheology.server.util.ReleaseType;
 import net.ilexiconn.llibrary.server.config.Config;
 import net.ilexiconn.llibrary.server.network.NetworkWrapper;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -49,7 +50,9 @@ public class Revival {
 
 	@Mod.EventHandler
 	public void onInit(FMLInitializationEvent event) {
-		RevivalAspectRegistry.register();
+		if (Loader.isModLoaded("thaumcraft")) {
+			RevivalAspectRegistry.register();
+		}
 		PROXY.onInit();
 		FABlockRegistry.init();
 	}
