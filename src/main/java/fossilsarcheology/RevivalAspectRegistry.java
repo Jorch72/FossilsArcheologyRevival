@@ -113,6 +113,7 @@ public class RevivalAspectRegistry {
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.VACCINIUM_FLOWER), new AspectList().add(Aspect.PLANT, 4).add(RevivalAspectRegistry.TIME, 4));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.WELWITSCHIA_FLOWER), new AspectList().add(Aspect.PLANT, 4).add(RevivalAspectRegistry.TIME, 4));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.ZAMITES_FLOWER), new AspectList().add(Aspect.PLANT, 4).add(RevivalAspectRegistry.TIME, 4));
+		ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.MUTANT_FLOWER), new AspectList().add(Aspect.PLANT, 4).add(Aspect.UNDEAD, 4));
 
 		//Entities
 		ThaumcraftApi.registerEntityTag("fossil.tyrannosaurus", new AspectList().add(Aspect.BEAST, 35).add(Aspect.AVERSION, 35).add(Aspect.AIR, 35).add(RevivalAspectRegistry.TIME, 20));
