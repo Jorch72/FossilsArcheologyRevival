@@ -2,7 +2,6 @@ package fossilsarcheology;
 
 import fossilsarcheology.server.block.FABlockRegistry;
 import fossilsarcheology.server.item.FAItemRegistry;
-import fossilsarcheology.server.item.variant.DinosaurBoneType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import thaumcraft.api.ThaumcraftApi;
