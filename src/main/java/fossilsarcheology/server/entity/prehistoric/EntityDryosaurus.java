@@ -24,8 +24,8 @@ public class EntityDryosaurus extends EntityPrehistoric {
 		this.teenAge = 3;
 		this.setActualSize(0.8F, 0.7F);
 		this.nearByMobsAllowed = 10;
-		minSize = 0.5F;
-		maxSize = 1F;
+		minSize = 0.2F;
+		maxSize = 1.2F;
 		teenAge = 2;
 		developsResistance = false;
 		breaksBlocks = false;
