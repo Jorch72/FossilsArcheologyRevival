@@ -22,8 +22,8 @@ public class EntityHenodus extends EntityPrehistoricSwimming {
 		super(world, PrehistoricEntityType.HENODUS, 1, 2, 10, 30, 0.25, 0.3);
 		this.setActualSize(1.1F, 1F);
 		isAmphibious = true;
-		minSize = 0.5F;
-		maxSize = 0.9F;
+		minSize = 0.25F;
+		maxSize = 0.48F;
 		teenAge = 2;
 		developsResistance = true;
 		this.hasBabyTexture = true;
