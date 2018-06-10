@@ -23,8 +23,8 @@ public class EntitySmilodon extends EntityPrehistoric {
 		this.setActualSize(0.9F, 0.8F);
 		this.pediaScale = 47F;
 		this.nearByMobsAllowed = 7;
-		minSize = 0.5F;
-		maxSize = 1.7F;
+		minSize = 0.4F;
+		maxSize = 1.4F;
 		teenAge = 4;
 		developsResistance = true;
 		breaksBlocks = false;
