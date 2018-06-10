@@ -36,8 +36,8 @@ public class EntitySpinosaurus extends EntityPrehistoricSwimming {
 		this.setActualSize(1.5F, 1.0F);
 		isAmphibious = true;
 		FISH_ANIMATION = Animation.create(40);
-		minSize = 0.6F;
-		maxSize = 4.75F;
+		minSize = 0.25F;
+		maxSize = 3.1F;
 		teenAge = 5;
 		developsResistance = true;
 		breaksBlocks = true;
