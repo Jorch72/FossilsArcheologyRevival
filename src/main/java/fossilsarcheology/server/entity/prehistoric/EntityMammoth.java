@@ -41,8 +41,8 @@ public class EntityMammoth extends EntityPrehistoric implements IShearable {
 		super(world, PrehistoricEntityType.MAMMOTH, 2, 12, 10, 66, 0.2, 0.3);
 		this.setActualSize(1.2F, 0.7F);
 		this.pediaScale = 60F;
-		minSize = 1.3F;
-		maxSize = 5F;
+		minSize = 1.1F;
+		maxSize = 3.6F;
 		teenAge = 7;
 		developsResistance = true;
 		breaksBlocks = true;
