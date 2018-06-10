@@ -22,8 +22,8 @@ public class EntityCeratosaurus extends EntityPrehistoric {
 		this.setActualSize(1.55F, 1.3F);
 		this.pediaScale = 25F;
 		this.nearByMobsAllowed = 5;
-		minSize = 0.4F;
-		maxSize = 1.9F;
+		minSize = 0.2F;
+		maxSize = 1.25F;
 		teenAge = 5;
 		developsResistance = true;
 		breaksBlocks = true;
