@@ -36,8 +36,8 @@ public class EntitySarcosuchus extends EntityPrehistoricSwimming {
 		super(world, PrehistoricEntityType.SARCOSUCHUS, 1, 3, 15, 70, 0.25, 0.25);
 		this.setActualSize(2.0F, 1.0F);
 		isAmphibious = true;
-		minSize = 0.2F;
-		maxSize = 2.3F;
+		minSize = 0.15F;
+		maxSize = 2F;
 		teenAge = 5;
 		developsResistance = true;
 		breaksBlocks = true;
