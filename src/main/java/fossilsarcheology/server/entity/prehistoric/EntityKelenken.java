@@ -22,8 +22,8 @@ public class EntityKelenken extends EntityPrehistoric {
 		super(world, PrehistoricEntityType.KELENKEN, 1, 6, 10, 40, 0.25, 0.35);
 		this.setActualSize(1.4F, 2.5F);
 		this.nearByMobsAllowed = 3;
-		minSize = 0.4F;
-		maxSize = 1.4F;
+		minSize = 0.25F;
+		maxSize = 1.1F;
 		teenAge = 4;
 		developsResistance = true;
 		breaksBlocks = false;
