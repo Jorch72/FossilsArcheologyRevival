@@ -22,8 +22,8 @@ public class EntityDilophosaurus extends EntityPrehistoric {
 		this.setActualSize(1.5F, 0.9F);
 		this.nearByMobsAllowed = 7;
 		this.pediaScale = 26F;
-		minSize = 0.5F;
-		maxSize = 2F;
+		minSize = 0.18F;
+		maxSize = 1.4F;
 		teenAge = 4;
 		developsResistance = true;
 		breaksBlocks = false;
