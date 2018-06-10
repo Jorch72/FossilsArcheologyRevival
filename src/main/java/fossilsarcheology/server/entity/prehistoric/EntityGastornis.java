@@ -23,8 +23,8 @@ public class EntityGastornis extends EntityPrehistoric {
 		this.setActualSize(1.4F, 2.5F);
 		this.pediaScale = 22F;
 		this.nearByMobsAllowed = 3;
-		minSize = 0.4F;
-		maxSize = 1F;
+		minSize = 0.2F;
+		maxSize = 0.8F;
 		teenAge = 4;
 		developsResistance = true;
 		breaksBlocks = false;
