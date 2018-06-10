@@ -23,7 +23,7 @@ public class EntityKelenken extends EntityPrehistoric {
 		this.setActualSize(1.4F, 2.5F);
 		this.nearByMobsAllowed = 3;
 		minSize = 0.25F;
-		maxSize = 1.1F;
+		maxSize = 1.15F;
 		teenAge = 4;
 		developsResistance = true;
 		breaksBlocks = false;
