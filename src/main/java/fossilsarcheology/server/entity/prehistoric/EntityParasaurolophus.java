@@ -32,8 +32,8 @@ public class EntityParasaurolophus extends EntityPrehistoric {
 		super(world, PrehistoricEntityType.PARASAUROLOPHUS, 2, 17, 25, 70, 0.25, 0.5);
 		this.setActualSize(1.6F, 1.2F);
 		this.nearByMobsAllowed = 6;
-		minSize = 0.6F;
-		maxSize = 2.5F;
+		minSize = 0.15F;
+		maxSize = 1.6F;
 		teenAge = 5;
 		developsResistance = true;
 		breaksBlocks = true;
