@@ -25,7 +25,7 @@ public class EntityTitanis extends EntityPrehistoric {
 		this.pediaScale = 23F;
 		this.nearByMobsAllowed = 3;
 		minSize = 0.2F;
-		maxSize = 1F;
+		maxSize = 0.75F;
 		teenAge = 4;
 		developsResistance = true;
 		breaksBlocks = false;
