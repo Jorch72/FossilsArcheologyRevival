@@ -24,8 +24,8 @@ public class EntityGallimimus extends EntityPrehistoric {
 		this.pediaScale = 35F;
 		this.hasFeatherToggle = true;
 		this.featherToggle = Revival.CONFIG.featheredGallimimus;
-		minSize = 0.5F;
-		maxSize = 2.2F;
+		minSize = 0.2F;
+		maxSize = 1.65F;
 		teenAge = 4;
 		developsResistance = true;
 		breaksBlocks = false;
