@@ -23,8 +23,8 @@ public class EntityCompsognathus extends EntityPrehistoric {
 		this.nearByMobsAllowed = 5;
 		this.hasFeatherToggle = true;
 		this.featherToggle = Revival.CONFIG.featheredCompsognathus;
-		minSize = 0.25F;
-		maxSize = 0.65F;
+		minSize = 0.2F;
+		maxSize = 0.5F;
 		teenAge = 2;
 		developsResistance = false;
 		breaksBlocks = false;
