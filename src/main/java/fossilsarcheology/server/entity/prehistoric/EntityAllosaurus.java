@@ -22,8 +22,8 @@ public class EntityAllosaurus extends EntityPrehistoric {
 		this.setActualSize(1.1F, 0.9F);
 		this.pediaScale = 35F;
 		this.nearByMobsAllowed = 5;
-		minSize = 0.55F;
-		maxSize = 3.1F;
+		minSize = 0.25F;
+		maxSize = 2.3F;
 		developsResistance = true;
 		breaksBlocks = true;
 		this.teenAge = 5;
