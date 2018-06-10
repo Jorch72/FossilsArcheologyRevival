@@ -20,7 +20,7 @@ public class EntityIcthyosaurus extends EntityPrehistoricSwimming {
 		FISH_ANIMATION = Animation.create(40);
 		this.setActualSize(1.2F, 1.0F);
 		minSize = 0.3F;
-		maxSize = 0.8F;
+		maxSize = 0.95F;
 		teenAge = 3;
 		developsResistance = true;
 		pediaScale = 40;
