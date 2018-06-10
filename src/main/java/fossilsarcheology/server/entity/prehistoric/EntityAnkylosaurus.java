@@ -21,8 +21,8 @@ public class EntityAnkylosaurus extends EntityPrehistoric {
 		super(world, PrehistoricEntityType.ANKYLOSAURUS, 2, 9, 25, 70, 0.25, 0.45);
 		this.setActualSize(1.7F, 1.0F);
 		this.nearByMobsAllowed = 6;
-		minSize = 0.5F;
-		maxSize = 2.0F;
+		minSize = 0.2F;
+		maxSize = 1.85F;
 		teenAge = 5;
 		developsResistance = true;
 		breaksBlocks = true;
