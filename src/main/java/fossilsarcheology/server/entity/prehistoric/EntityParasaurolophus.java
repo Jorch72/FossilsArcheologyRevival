@@ -263,6 +263,11 @@ public class EntityParasaurolophus extends EntityPrehistoric {
 		super.setSitting(sitting);
 	}
 
+	@Override
+	public float getMaleSize() {
+		return 1.15F;
+	}
+
 
 	@Override
 	public int getMaxHunger() {
