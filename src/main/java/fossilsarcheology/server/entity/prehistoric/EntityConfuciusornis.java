@@ -147,9 +147,8 @@ public class EntityConfuciusornis extends EntityPrehistoricFlying {
 		return FASoundRegistry.CONFUSCIUSORNIS_DEATH;
 	}
 
-	//Fixme: There is no getFemaleSize method!
 	@Override
- 	public float getFemaleSize() {
-  		return 1.2F;
+ 	public float getMaleSize() {
+  		return 0.8F;
  	}
 }
