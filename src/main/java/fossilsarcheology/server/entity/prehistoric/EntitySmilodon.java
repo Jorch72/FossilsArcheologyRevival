@@ -157,7 +157,7 @@ public class EntitySmilodon extends EntityPrehistoric {
 
 	@Override
 	public float getMaleSize() {
-		return 1.2F;
+		return 1.10F;
 	}
 
 	@Override
