@@ -118,6 +118,11 @@ public class EntityDodo extends EntityPrehistoric {
 	}
 
 	@Override
+	public float getMaleSize() {
+		return 1.25F;
+	}
+
+	@Override
 	public PrehistoricEntityTypeAI.WaterAbility aiWaterAbilityType() {
 
 		return PrehistoricEntityTypeAI.WaterAbility.NONE;
