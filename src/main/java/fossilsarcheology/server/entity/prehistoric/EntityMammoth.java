@@ -230,7 +230,7 @@ public class EntityMammoth extends EntityPrehistoric implements IShearable {
 
 	@Override
 	public float getMaleSize() {
-		return 1.2F;
+		return 1.15F;
 	}
 
 	@Override
@@ -297,4 +297,5 @@ public class EntityMammoth extends EntityPrehistoric implements IShearable {
 	public boolean canBeRidden() {
 		return true;
 	}
+
 }
