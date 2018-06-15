@@ -46,13 +46,13 @@ public class Revival {
 	@Mod.EventHandler
 	public void onPreInit(FMLPreInitializationEvent event) {
 		PROXY.onPreInit();
+		if (Loader.isModLoaded("thaumcraft")) {
+			RevivalAspectRegistry.register();
+		}
 	}
 
 	@Mod.EventHandler
 	public void onInit(FMLInitializationEvent event) {
-		if (Loader.isModLoaded("thaumcraft")) {
-			RevivalAspectRegistry.register();
-		}
 		PROXY.onInit();
 		FABlockRegistry.init();
 	}
