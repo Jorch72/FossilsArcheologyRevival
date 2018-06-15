@@ -117,6 +117,7 @@ public class EntityDodo extends EntityPrehistoric {
 		return PrehistoricEntityTypeAI.Moving.WALKANDGLIDE;
 	}
 
+	//Male dodos were bigger than females
 	@Override
 	public float getMaleSize() {
 		return 1.25F;

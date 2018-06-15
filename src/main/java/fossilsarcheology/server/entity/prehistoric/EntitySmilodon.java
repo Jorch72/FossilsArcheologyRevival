@@ -156,11 +156,6 @@ public class EntitySmilodon extends EntityPrehistoric {
 	}
 
 	@Override
-	public float getMaleSize() {
-		return 1.1F;
-	}
-
-	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (this.getAnimation() == ATTACK_ANIMATION && this.getAnimationTick() == 12 && this.getAttackTarget() != null) {
