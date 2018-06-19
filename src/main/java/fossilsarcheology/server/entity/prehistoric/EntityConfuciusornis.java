@@ -20,8 +20,8 @@ public class EntityConfuciusornis extends EntityPrehistoricFlying {
 	public EntityConfuciusornis(World world) {
 		super(world, PrehistoricEntityType.CONFUCIUSORNIS, 1, 1, 4, 12, 0.15, 0.25);
 			this.setActualSize(0.7F, 0.8F);
-		minSize = 0.3F;
-		maxSize = 0.8F;
+		minSize = 0.2F;
+		maxSize = 0.55F;
 		teenAge = 2;
 		developsResistance = false;
 		breaksBlocks = false;
@@ -146,4 +146,9 @@ public class EntityConfuciusornis extends EntityPrehistoricFlying {
 	protected SoundEvent getDeathSound() {
 		return FASoundRegistry.CONFUSCIUSORNIS_DEATH;
 	}
+
+	@Override
+ 	public float getMaleSize() {
+  		return 0.8F;
+ 	}
 }

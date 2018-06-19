@@ -21,7 +21,7 @@ public class EntityPterosaur extends EntityPrehistoricFlying {
 		super(world, PrehistoricEntityType.PTEROSAUR, 1, 2, 6, 30, 0.15, 0.2);
 		this.setActualSize(1.1F, 1.1F);
 		minSize = 0.3F;
-		maxSize = 1.2F;
+		maxSize = 1.1F;
 		teenAge = 4;
 		pediaScale = 45;
 	}

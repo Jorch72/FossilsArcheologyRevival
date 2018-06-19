@@ -31,8 +31,8 @@ public class EntityTriceratops extends EntityPrehistoric {
 		this.featherToggle = !Revival.CONFIG.quilledTriceratops;
 		this.setActualSize(1.1F, 0.6F);
 		this.nearByMobsAllowed = 7;
-		minSize = 1F;
-		maxSize = 6F;
+		minSize = 0.4F;
+		maxSize = 5F;
 		teenAge = 5;
 		developsResistance = true;
 		breaksBlocks = true;

@@ -26,8 +26,8 @@ public class EntityLiopleurodon extends EntityPrehistoricSwimming {
 		super(world, PrehistoricEntityType.LIOPLEURODON, 2, 12, 10, 45, 0.3, 0.4);
 		this.hasBabyTexture = false;
 		this.setActualSize(2.25F, 0.7F);
-		minSize = 0.8F;
-		maxSize = 1.8F;
+		minSize = 0.45F;
+		maxSize = 1.6F;
 		teenAge = 6;
 		developsResistance = true;
 		breaksBlocks = false;

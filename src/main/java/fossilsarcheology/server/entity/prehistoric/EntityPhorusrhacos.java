@@ -24,8 +24,8 @@ public class EntityPhorusrhacos extends EntityPrehistoric {
 		this.setActualSize(1.4F, 2.5F);
 		this.pediaScale = 27;
 		this.nearByMobsAllowed = 3;
-		minSize = 0.4F;
-		maxSize = 1.3F;
+		minSize = 0.2F;
+		maxSize = 1F;
 		teenAge = 4;
 		developsResistance = true;
 	}

@@ -27,8 +27,8 @@ public class EntityVelociraptor extends EntityPrehistoric {
 		this.pediaScale = 45F;
 		this.featherToggle = Revival.CONFIG.featheredVelociraptor;
 		this.setActualSize(1.5F, 1.5F);
-		minSize = 0.3F;
-		maxSize = 0.8F;
+		minSize = 0.2F;
+		maxSize = 0.6F;
 		teenAge = 3;
 		developsResistance = false;
 		breaksBlocks = false;

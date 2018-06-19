@@ -26,8 +26,8 @@ public class EntityDeinonychus extends EntityPrehistoric {
 		this.hasFeatherToggle = true;
 		this.featherToggle = Revival.CONFIG.featheredDeinonychus;
 		this.setActualSize(1.8F, 1.25F);
-		minSize = 0.3F;
-		maxSize = 1;
+		minSize = 0.2F;
+		maxSize = 0.85F;
 		teenAge = 4;
 		developsResistance = false;
 		breaksBlocks = false;

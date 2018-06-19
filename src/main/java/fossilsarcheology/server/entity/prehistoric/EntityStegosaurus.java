@@ -22,8 +22,8 @@ public class EntityStegosaurus extends EntityPrehistoric {
 		super(world, PrehistoricEntityType.STEGOSAURUS, 2, 9, 12, 66, 0.25, 0.3);
 		this.setActualSize(1.4F, 1.3F);
 		this.nearByMobsAllowed = 7;
-		minSize = 1F;
-		maxSize = 2.5F;
+		minSize = 0.2F;
+		maxSize = 2F;
 		teenAge = 5;
 		developsResistance = true;
 		breaksBlocks = true;

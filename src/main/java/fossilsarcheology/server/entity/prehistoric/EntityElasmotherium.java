@@ -21,8 +21,8 @@ public class EntityElasmotherium extends EntityPrehistoric {
 		this.setActualSize(1F, 1F);
 		this.nearByMobsAllowed = 9;
 		this.pediaScale = 54;
-		minSize = 0.5F;
-		maxSize = 2.6F;
+		minSize = 0.6F;
+		maxSize = 3F;
 		teenAge = 4;
 		developsResistance = true;
 		breaksBlocks = true;

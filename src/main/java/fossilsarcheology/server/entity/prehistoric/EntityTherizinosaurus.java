@@ -21,8 +21,8 @@ public class EntityTherizinosaurus extends EntityPrehistoric {
 	public EntityTherizinosaurus(World world) {
 		super(world, PrehistoricEntityType.THERIZINOSAURUS, 2, 17, 25, 70, 0.25, 0.45);
 		this.nearByMobsAllowed = 6;
-		minSize = 0.6F;
-		maxSize = 2.5F;
+		minSize = 0.25F;
+		maxSize = 2.2F;
 		teenAge = 5;
 		developsResistance = true;
 		breaksBlocks = true;

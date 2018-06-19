@@ -23,8 +23,8 @@ public class EntityBrachiosaurus extends EntityPrehistoric {
 		super(world, PrehistoricEntityType.BRACHIOSAURUS, 2, 46, 20, 200, 0.3, 0.45);
 		this.setActualSize(1.5F, 1.7F);
 		this.nearByMobsAllowed = 10;
-		minSize = 1;
-		maxSize = 5.8F;
+		minSize = 0.25F;
+		maxSize = 5.9F;
 		teenAge = 9;
 		developsResistance = true;
 		breaksBlocks = true;
