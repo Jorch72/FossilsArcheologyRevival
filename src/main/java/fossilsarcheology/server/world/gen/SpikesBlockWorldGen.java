@@ -1,4 +1,4 @@
-package fossilsarcheology.server.structure;
+package fossilsarcheology.server.world.gen;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;

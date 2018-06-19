@@ -2,10 +2,12 @@ package fossilsarcheology.server.world;
 
 import fossilsarcheology.Revival;
 import fossilsarcheology.server.block.FABlockRegistry;
+import fossilsarcheology.server.structure.StructureUtils;
 import fossilsarcheology.server.world.gen.HellBoatWorldGen;
 import fossilsarcheology.server.world.gen.WorldGenPalm;
 import fossilsarcheology.server.world.gen.WorldGenTarPit;
 import net.minecraft.block.material.Material;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -17,6 +19,15 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 import java.util.Random;
 
 public class FAWorldGenerator implements IWorldGenerator {
+
+	private static final ResourceLocation TAR_SITE = new ResourceLocation(Revival.MODID, "tar_site");
+	private static final ResourceLocation FOSSIL_SITE = new ResourceLocation(Revival.MODID, "fossil_site");
+	private static final ResourceLocation FOSSIL_SITE_TENT = new ResourceLocation(Revival.MODID, "fossil_site_tent");
+	private static final ResourceLocation MOAI = new ResourceLocation(Revival.MODID, "moai");
+	private static final ResourceLocation MOAI_WITH_HAT = new ResourceLocation(Revival.MODID, "moai_with_hat");
+	private static final ResourceLocation AZTEC_TEMPLE = new ResourceLocation(Revival.MODID, "aztec_temple");
+	private static final ResourceLocation AZTEC_WEAPONS_SHOP = new ResourceLocation(Revival.MODID, "aztec_weapons_shop");
+	private static final ResourceLocation EGYPTIAN_ACADEMY = new ResourceLocation(Revival.MODID, "egyptian_academy");
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
@@ -40,6 +51,7 @@ public class FAWorldGenerator implements IWorldGenerator {
 				}
 			}
 		}
+
 		if (world.provider.getDimension() == 0) {
 			int x = chunkX * 16 + random.nextInt(16);
 			int z = chunkZ * 16 + random.nextInt(16);
@@ -73,6 +85,12 @@ public class FAWorldGenerator implements IWorldGenerator {
 					new HellBoatWorldGen().generate(world, random, new BlockPos(x, 32, z));
 				}
 			}
+		}
+		int x = chunkX * 16 + 8;
+		int z = chunkZ * 16 + 8;
+		BlockPos height = world.getHeight(new BlockPos(x, 0, z));
+		if (Revival.CONFIG.generateTarSites && world.rand.nextInt(3) == 0) {
+			StructureUtils.generateStructureAtWithRandomRotation(TAR_SITE, world, height,random, false);
 		}
 	}
 }

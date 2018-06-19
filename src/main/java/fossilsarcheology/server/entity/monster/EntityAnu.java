@@ -9,7 +9,7 @@ import fossilsarcheology.server.entity.utility.EntityAncientLightning;
 import fossilsarcheology.server.entity.utility.EntityAnuDead;
 import fossilsarcheology.server.entity.utility.FossilsPlayerProperties;
 import fossilsarcheology.server.item.FAItemRegistry;
-import fossilsarcheology.server.structure.SpikesBlockWorldGen;
+import fossilsarcheology.server.world.gen.SpikesBlockWorldGen;
 import net.ilexiconn.llibrary.server.entity.EntityPropertiesHandler;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.*;
