@@ -55,11 +55,9 @@ public class AnuStatueBlock extends BlockContainer implements DefaultRenderedIte
         return true;
     }
 
-    @Override
-    public int getWeakPower(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+    public int getRedstonePower(BlockPos pos, EnumFacing facing) {
         return 15;
     }
-
     @Override
     public boolean shouldCheckWeakPower(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
         return true;
@@ -87,6 +85,11 @@ public class AnuStatueBlock extends BlockContainer implements DefaultRenderedIte
         }
         return true;
     }
+
+    public int getWeakPower(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side){
+        return 15;
+    }
+
 
     @Override
     public int getMetaFromState(IBlockState state) {

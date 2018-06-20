@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.item.EntityXPOrb;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
@@ -79,6 +80,11 @@ public class EntityAnuEffect extends EntityLiving {
 	@Override
 	protected void onDeathUpdate() {
 		++this.deathTicks;
+		if(world.getClosestPlayerToEntity(this, 50) != null){
+			EntityPlayer player = world.getClosestPlayerToEntity(this, 50);
+			this.faceEntity(player, 20F, 20F);
+
+		}
 
 		if (this.deathTicks >= 160 && this.deathTicks <= 180) {
 			world.newExplosion(this, posX, posY, posZ, 3F, true, true);
@@ -105,8 +111,6 @@ public class EntityAnuEffect extends EntityLiving {
 				// (int)this.posY, (int)this.posZ, 0);
 			}
 		}
-		this.renderYawOffset = this.rotationYaw += 20.0F;
-
 		if (this.deathTicks == 200 && !this.world.isRemote) {
 			i = 2000;
 

@@ -14,10 +14,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumBlockRenderType;
-import net.minecraft.util.IStringSerializable;
-import net.minecraft.util.NonNullList;
+import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -25,6 +22,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
 
 public class FigurineBlock extends BlockContainer implements IBlockItem, BlockEntity {
     public static final PropertyEnum<FigurineBlock.EnumType> VARIANT = PropertyEnum.create("variant", FigurineBlock.EnumType.class);
@@ -108,6 +107,10 @@ public class FigurineBlock extends BlockContainer implements IBlockItem, BlockEn
     @Override
     public Class<? extends TileEntity> getEntity() {
         return TileEntityFigurine.class;
+    }
+
+    public boolean canConnectRedstone(IBlockState state, IBlockAccess world, BlockPos pos, @Nullable EnumFacing side){
+        return true;
     }
 
     @Override
