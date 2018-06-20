@@ -52,6 +52,7 @@ public class FAWorldGenerator implements IWorldGenerator {
 						int Xcoord = chunkX * 16 + random.nextInt(16);
 						int Ycoord = random.nextInt(30);
 						int Zcoord = chunkZ * 16 + random.nextInt(16);
+						(new WorldGenMinable(FABlockRegistry.ICED_STONE.getDefaultState(), 4 + random.nextInt(4))).generate(world, random, new BlockPos(Xcoord, Ycoord, Zcoord));
 						(new WorldGenMinable(FABlockRegistry.PERMAFROST.getDefaultState(), 2 + random.nextInt(4))).generate(world, random, new BlockPos(Xcoord, Ycoord, Zcoord));
 					}
 				}
@@ -62,7 +63,7 @@ public class FAWorldGenerator implements IWorldGenerator {
 			int x = chunkX * 16 + random.nextInt(16);
 			int z = chunkZ * 16 + random.nextInt(16);
 
-			if (BiomeDictionary.hasType(world.getBiome(new BlockPos(x, 0, z)), BiomeDictionary.Type.SWAMP)) {
+			if (BiomeDictionary.hasType(world.getBiome(new BlockPos(x, 0, z)), BiomeDictionary.Type.SWAMP) && random.nextInt(15) == 0) {
 				if (Revival.CONFIG.generateTarSites) {
 					for (int k = 0; k < 10; k++) {
 						int y = random.nextInt(128);
