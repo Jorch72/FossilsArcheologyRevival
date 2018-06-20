@@ -37,6 +37,10 @@ public class FAWorldGenerator implements IWorldGenerator {
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
+		boolean prevLogCascadingWorldGen = net.minecraftforge.common.ForgeModContainer.logCascadingWorldGeneration;
+		if(!Revival.CONFIG.logCascadingWorldGen) {
+			net.minecraftforge.common.ForgeModContainer.logCascadingWorldGeneration = false;
+		}
 		for (int dimensionID : Revival.CONFIG.oreGenerationDimensions) {
 			if (world.provider.getDimension() == dimensionID) {
 				if (Revival.CONFIG.generateFossils) {
@@ -120,6 +124,9 @@ public class FAWorldGenerator implements IWorldGenerator {
 		}
 		if (Revival.CONFIG.generateAcademy && random.nextInt(65) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY) && BiomeDictionary.hasType(biome, BiomeDictionary.Type.DRY) && BiomeDictionary.hasType(biome, BiomeDictionary.Type.HOT)) {
 			StructureUtils.generateStructureAtWithRandomRotationWithLoot(EGYPTIAN_ACADEMY, EGYPTIAN_ACADEMY_CHEST, world, height.down(), random, true, false);
+		}
+		if(!Revival.CONFIG.logCascadingWorldGen) {
+			net.minecraftforge.common.ForgeModContainer.logCascadingWorldGeneration = prevLogCascadingWorldGen;
 		}
 	}
 }

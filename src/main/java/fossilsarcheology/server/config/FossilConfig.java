@@ -91,4 +91,6 @@ public class FossilConfig {
 	public int enchantmentIDPaleontology = 90;
 	@ConfigEntry(category = "ids")
 	public int villagerId = 303;
+	@ConfigEntry(category = "generation")
+	public boolean logCascadingWorldGen = false;
 }
