@@ -38,7 +38,7 @@ public class RenderingHandler {
         RenderingRegistry.registerEntityRenderingHandler(JavelinEntity.class, JavelinRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(AncientJavelinEntity.class, JavelinRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(StoneTabletEntity.class, StoneTabletRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityAnuEffect.class, RenderAnuEffect::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityAnuStatue.class,new RenderAnuStatue(MINECRAFT.getRenderManager()));
         RenderingRegistry.registerEntityRenderingHandler(EntityAnubite.class, RenderAnubite::new);
         RenderingRegistry.registerEntityRenderingHandler(EntitySentryPigman.class, RenderSentryPigman::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityTarSlime.class, RenderTarSlime::new);

@@ -36,7 +36,7 @@ public class FAEntityRegistry {
 		registerEntity(EntityBirdEgg.class, "fossil.birdegg", 9);
 
 		registerEntity(EntityFriendlyPigZombie.class, "fossil.friendlypigzombie", 12);
-		registerEntity(EntityAnuEffect.class, "fossil.anueffect", 13);
+		registerEntity(EntityAnuStatue.class, "fossil.anueffect", 13);
 		registerEntity(EntityAnuDead.class, "fossil.anudead", 15);
 		registerSpawnable(EntityTarSlime.class, "fossil.tarslime", 16, 0X222222, 0x0B0B0B);
 		registerSpawnable(EntitySentryPigman.class, "fossil.sentrypigman", 18, 15373203, 0XD0A750);

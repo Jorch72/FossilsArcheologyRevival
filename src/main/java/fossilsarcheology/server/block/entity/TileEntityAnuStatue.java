@@ -1,7 +1,8 @@
 package fossilsarcheology.server.block.entity;
 
 import fossilsarcheology.server.block.FABlockRegistry;
-import fossilsarcheology.server.entity.utility.EntityAnuEffect;
+import fossilsarcheology.server.entity.monster.EntityAnu;
+import fossilsarcheology.server.entity.utility.EntityAnuStatue;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
@@ -32,14 +33,13 @@ public class TileEntityAnuStatue extends TileEntity implements ITickable {
 				}
 			}
 			world.newExplosion(null, pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5, 5F, true, true);
-			EntityAnuEffect newMob = new EntityAnuEffect(world);
+			EntityAnuStatue newMob = new EntityAnuStatue(world);
 			if (!world.isRemote) {
 				newMob.setLocationAndAngles(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 0, 0);
 
 				world.spawnEntity(newMob);
 			}
-			newMob.setAnuRotation(FABlockRegistry.ANU_STATUE.getMetaFromState(world.getBlockState(new BlockPos(pos.getX(), pos.getY(), pos.getZ()))));
-			newMob.playSummonSong();
+			//newMob.playSummonSong();
 			newMob.setHealth(0);
 			world.setBlockToAir(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()));
 			world.setBlockToAir(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ()));
