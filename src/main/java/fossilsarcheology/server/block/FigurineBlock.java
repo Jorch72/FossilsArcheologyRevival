@@ -184,6 +184,7 @@ public class FigurineBlock extends BlockContainer implements IBlockItem, BlockEn
     class FigurineBlockItem extends ItemBlock {
         public FigurineBlockItem(Block block) {
             super(block);
+            this.setHasSubtypes(true);
         }
 
         @Override
