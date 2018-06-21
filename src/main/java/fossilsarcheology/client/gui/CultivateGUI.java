@@ -6,21 +6,22 @@ import fossilsarcheology.server.container.CultivateContainer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
 public class CultivateGUI extends GuiContainer {
-	private static final ResourceLocation loc = new ResourceLocation(Revival.MODID, "textures/gui/cultivate.png");
-	private final TileEntityCultivate cultivateInventory;
+	private static final ResourceLocation TEXTURE = new ResourceLocation(Revival.MODID, "textures/gui/cultivate.png");
+	private final TileEntityCultivate entity;
+	private final CultivateContainer container;
 
-	public CultivateGUI(InventoryPlayer playerInventory, TileEntityCultivate tile) {
-		super(new CultivateContainer(playerInventory, tile));
-		this.cultivateInventory = tile;
+	public CultivateGUI(TileEntityCultivate entity, CultivateContainer container) {
+		super(container);
+		this.entity = entity;
+		this.container = container;
 	}
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		String customName = this.cultivateInventory.getName();
+		String customName = this.entity.getName();
 		this.fontRenderer.drawString(I18n.format(customName), this.xSize / 2 - this.fontRenderer.getStringWidth(I18n.format(customName)) / 2, 6, 4210752);
 
 		this.fontRenderer.drawString(I18n.format("container.inventory"), 8, this.ySize - 96 + 2, 4210752);
@@ -29,18 +30,19 @@ public class CultivateGUI extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		mc.getTextureManager().bindTexture(loc);
+        this.mc.getTextureManager().bindTexture(TEXTURE);
 		int drawX = (this.width - this.xSize) / 2;
 		int drawY = (this.height - this.ySize) / 2;
 		this.drawTexturedModalRect(drawX, drawY, 0, 0, this.xSize, this.ySize);
-		int scaledProgress;
 
-		if (this.cultivateInventory.isBurning()) {
-			scaledProgress = this.cultivateInventory.getBurnTimeRemainingScaled(12);
-			this.drawTexturedModalRect(drawX + 82, drawY + 36 + 12 - scaledProgress, 176, 12 - scaledProgress, 14, scaledProgress + 2);
+		if (this.container.fuelTime > 0) {
+            int fuelHeight = 12;
+            int scaledProgress = this.container.fuelTime * fuelHeight / this.container.totalFuelTime;
+			this.drawTexturedModalRect(drawX + 82, drawY + 36 + fuelHeight - scaledProgress, 176, fuelHeight - scaledProgress, 14, scaledProgress + 2);
 		}
 
-		scaledProgress = this.cultivateInventory.getCultivateProgressScaled(24);
+		int progressWidth = 24;
+		int scaledProgress = this.container.cultivationTime * progressWidth / 6000;
 		this.drawTexturedModalRect(drawX + 79, drawY + 18, 176, 14, scaledProgress + 1, 16);
 	}
 

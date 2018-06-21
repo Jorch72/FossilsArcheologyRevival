@@ -11,6 +11,7 @@ import fossilsarcheology.server.api.IgnoreRenderProperty;
 import fossilsarcheology.server.api.SubtypeRenderedItem;
 import fossilsarcheology.server.block.FABlockRegistry;
 import fossilsarcheology.server.block.entity.*;
+import fossilsarcheology.server.container.CultivateContainer;
 import fossilsarcheology.server.entity.EntityFishBase;
 import fossilsarcheology.server.event.FossilHelmetOverlayEvent;
 import fossilsarcheology.server.event.FossilMainMenuEvent;
@@ -161,7 +162,8 @@ public class ClientProxy extends ServerProxy {
 			return new AnalyzerGUI(player.inventory, (AnalyzerBlockEntity) world.getTileEntity(pos));
 		}
 		if (id == GUI_CULTIVATE) {
-			return new CultivateGUI(player.inventory, (TileEntityCultivate) world.getTileEntity(pos));
+			TileEntityCultivate entity = (TileEntityCultivate) world.getTileEntity(pos);
+			return new CultivateGUI(entity, new CultivateContainer(player.inventory, entity));
 		}
 		if (id == GUI_FEEDER) {
 			return new FeederGUI(player.inventory, world.getTileEntity(pos));
