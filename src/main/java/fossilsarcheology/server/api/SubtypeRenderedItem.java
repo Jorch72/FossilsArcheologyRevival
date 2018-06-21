@@ -1,7 +1,9 @@
 package fossilsarcheology.server.api;
 
+import net.minecraft.util.ResourceLocation;
+
 public interface SubtypeRenderedItem {
 	int[] getUsedSubtypes();
 
-	String getResource(String name, int metadata);
+	String getResource(ResourceLocation name, int metadata);
 }

@@ -7,6 +7,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
 
 public class DinosaurBoneItem extends Item implements SubtypeRenderedItem {
@@ -54,7 +55,7 @@ public class DinosaurBoneItem extends Item implements SubtypeRenderedItem {
 	}
 
 	@Override
-	public String getResource(String name, int metadata) {
+	public String getResource(ResourceLocation name, int metadata) {
 		DinosaurBoneType type = DinosaurBoneType.values()[metadata];
 		return "bones/" + type.getResourceName() + "/" + this.type;
 	}

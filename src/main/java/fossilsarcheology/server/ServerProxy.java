@@ -6,8 +6,26 @@ import fossilsarcheology.server.block.FABlockRegistry;
 import fossilsarcheology.server.block.FAFluidRegistry;
 import fossilsarcheology.server.block.IBlockItem;
 import fossilsarcheology.server.block.ISlabItem;
-import fossilsarcheology.server.block.entity.*;
-import fossilsarcheology.server.container.*;
+import fossilsarcheology.server.block.entity.AnalyzerBlockEntity;
+import fossilsarcheology.server.block.entity.TileEntityAmphora;
+import fossilsarcheology.server.block.entity.TileEntityAncientChest;
+import fossilsarcheology.server.block.entity.TileEntityAnuStatue;
+import fossilsarcheology.server.block.entity.TileEntityAnubiteStatue;
+import fossilsarcheology.server.block.entity.TileEntityCultivate;
+import fossilsarcheology.server.block.entity.TileEntityFeeder;
+import fossilsarcheology.server.block.entity.TileEntityFigurine;
+import fossilsarcheology.server.block.entity.TileEntityKylix;
+import fossilsarcheology.server.block.entity.TileEntitySarcophagus;
+import fossilsarcheology.server.block.entity.TileEntitySifter;
+import fossilsarcheology.server.block.entity.TileEntityTimeMachine;
+import fossilsarcheology.server.block.entity.TileEntityVolute;
+import fossilsarcheology.server.block.entity.TileEntityWorktable;
+import fossilsarcheology.server.container.AnalyzerContainer;
+import fossilsarcheology.server.container.CultivateContainer;
+import fossilsarcheology.server.container.FeederContainer;
+import fossilsarcheology.server.container.SifterContainer;
+import fossilsarcheology.server.container.TimeMachineContainer;
+import fossilsarcheology.server.container.WorktableContainer;
 import fossilsarcheology.server.entity.EntityFishBase;
 import fossilsarcheology.server.entity.FAEntityRegistry;
 import fossilsarcheology.server.entity.prehistoric.EntityPrehistoric;
@@ -66,7 +84,6 @@ public class ServerProxy implements IGuiHandler {
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
-        FAOreDictRegistry.initBlocks();
 
         GameRegistry.registerTileEntity(TileEntityCultivate.class, "fossil.cultivate");
         GameRegistry.registerTileEntity(TileEntityFeeder.class, "fossil.feeder");
@@ -100,7 +117,6 @@ public class ServerProxy implements IGuiHandler {
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
-        FAOreDictRegistry.initItems();
 
         try {
             for (Field f : FABlockRegistry.class.getDeclaredFields()) {
@@ -167,6 +183,8 @@ public class ServerProxy implements IGuiHandler {
     }
 
     public void onInit() {
+        FAOreDictRegistry.register();
+
         MinecraftForge.EVENT_BUS.register(new FossilCraftingEvent());
         MinecraftForge.EVENT_BUS.register(new FossilPickupItemEvent());
         MinecraftForge.EVENT_BUS.register(new FossilBonemealEvent());

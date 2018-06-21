@@ -1,6 +1,7 @@
 package fossilsarcheology.server.block;
 
 import fossilsarcheology.server.api.BlockEntity;
+import fossilsarcheology.server.api.SubtypeRenderedItem;
 import fossilsarcheology.server.block.entity.TileEntityVase;
 import fossilsarcheology.server.tab.FATabRegistry;
 import net.minecraft.block.Block;
@@ -18,12 +19,13 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public abstract class VaseBlock extends BlockContainer implements BlockEntity, IBlockItem {
+public abstract class VaseBlock extends BlockContainer implements BlockEntity, IBlockItem, SubtypeRenderedItem {
     public static final PropertyEnum<VaseVariant> VARIANT = PropertyEnum.create("variant", VaseVariant.class);
 
     protected VaseBlock(String type) {
@@ -100,6 +102,20 @@ public abstract class VaseBlock extends BlockContainer implements BlockEntity, I
 
     @Override
     public abstract TileEntity createNewTileEntity(World world, int meta);
+
+    @Override
+    public int[] getUsedSubtypes() {
+        int[] usedSubtypes = new int[VaseVariant.values().length];
+        for (int i = 0; i < usedSubtypes.length; i++) {
+            usedSubtypes[i] = i;
+        }
+        return usedSubtypes;
+    }
+
+    @Override
+    public String getResource(ResourceLocation name, int metadata) {
+        return name.getResourcePath() + "_" + metadata;
+    }
 
     class VaseItemBlock extends ItemBlock {
         private VaseItemBlock(Block block) {
