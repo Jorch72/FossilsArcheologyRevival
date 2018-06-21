@@ -34,6 +34,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class RenderingHandler {
     private static final Minecraft MINECRAFT = Minecraft.getMinecraft();
 
+    @SuppressWarnings("deprecation")
     public void onPreInit() {
         RenderingRegistry.registerEntityRenderingHandler(JavelinEntity.class, JavelinRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(AncientJavelinEntity.class, JavelinRenderer::new);
@@ -49,6 +50,7 @@ public class RenderingHandler {
         RenderingRegistry.registerEntityRenderingHandler(EntityToyTetheredLog.class, RenderToyTetheredLog::new);
     }
 
+    @SuppressWarnings("deprecation")
     public void onInit() {
         RenderingRegistry.registerEntityRenderingHandler(EntityNautilus.class, new RenderFish(new ModelNautilus(), MINECRAFT.getRenderManager()));
         RenderingRegistry.registerEntityRenderingHandler(EntityCoelacanth.class, new RenderFish(new ModelCoelacanth(), MINECRAFT.getRenderManager()));

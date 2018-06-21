@@ -32,6 +32,7 @@ public class ObsidianSpikesBlock extends Block implements DefaultRenderedItem {
         this.setUnlocalizedName("obsidian_spikes");
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
         return SPIKES_AABB;
@@ -43,11 +44,13 @@ public class ObsidianSpikesBlock extends Block implements DefaultRenderedItem {
         return BlockRenderLayer.CUTOUT;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean isFullCube(IBlockState state) {
         return false;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean isOpaqueCube(IBlockState state) {
         return false;
@@ -62,6 +65,7 @@ public class ObsidianSpikesBlock extends Block implements DefaultRenderedItem {
         return worldIn.getBlockState(pos.down()).getMaterial().isSolid();
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
         if (!this.canBlockStay(worldIn, pos)) {

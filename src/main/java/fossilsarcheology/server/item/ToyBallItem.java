@@ -16,6 +16,7 @@ import net.minecraft.world.World;
 
 public class ToyBallItem extends Item {
 
+	//Fixme: Toy balls do not show up in creative except for the F&A creative tab
 	public ToyBallItem() {
 		this.setHasSubtypes(true);
 		this.setMaxDamage(0);

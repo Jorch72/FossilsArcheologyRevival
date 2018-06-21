@@ -63,6 +63,7 @@ public abstract class FossilSlabBlock extends BlockSlab implements DefaultRender
 		return new ItemStack(baseBlock);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
     public IBlockState getStateFromMeta(int meta) {
 		IBlockState iblockstate = this.getDefaultState();

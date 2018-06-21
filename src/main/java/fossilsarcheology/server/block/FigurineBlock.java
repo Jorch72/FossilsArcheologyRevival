@@ -36,11 +36,13 @@ public class FigurineBlock extends BlockContainer implements IBlockItem, BlockEn
         this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumType.FIGURINE_STEVE_PRISTINE));
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
         return AABB;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean isFullCube(IBlockState state) {
         return false;
@@ -79,11 +81,13 @@ public class FigurineBlock extends BlockContainer implements IBlockItem, BlockEn
         return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean isOpaqueCube(IBlockState state) {
         return false;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public IBlockState getStateFromMeta(int meta) {
         return this.getDefaultState().withProperty(VARIANT, FigurineBlock.EnumType.byMetadata(meta));

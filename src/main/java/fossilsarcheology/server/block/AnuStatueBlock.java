@@ -39,17 +39,20 @@ public class AnuStatueBlock extends BlockContainer implements DefaultRenderedIte
         this.setUnlocalizedName("anu_statue");
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     @Deprecated
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
         return new AxisAlignedBB(0F, 0.0F, 0F, 1F, 1.9F, 1);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean isFullCube(IBlockState state) {
         return false;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean canProvidePower(IBlockState state) {
         return true;
@@ -63,11 +66,13 @@ public class AnuStatueBlock extends BlockContainer implements DefaultRenderedIte
         return true;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
         return super.getStateForPlacement(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(FACING, placer.getHorizontalFacing().getOpposite());
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public IBlockState getStateFromMeta(int meta) {
         return this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta));
@@ -112,6 +117,7 @@ public class AnuStatueBlock extends BlockContainer implements DefaultRenderedIte
         return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean isOpaqueCube(IBlockState state) {
         return false;

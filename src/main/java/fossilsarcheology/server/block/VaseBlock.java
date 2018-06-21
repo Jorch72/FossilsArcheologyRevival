@@ -59,6 +59,7 @@ public abstract class VaseBlock extends BlockContainer implements BlockEntity, I
         }
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public IBlockState getStateFromMeta(int meta) {
         return this.getDefaultState().withProperty(VARIANT, VaseVariant.get(meta));
@@ -74,6 +75,7 @@ public abstract class VaseBlock extends BlockContainer implements BlockEntity, I
         return new BlockStateContainer(this, VARIANT);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean isFullCube(IBlockState state) {
         return false;
@@ -95,6 +97,7 @@ public abstract class VaseBlock extends BlockContainer implements BlockEntity, I
         return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean isOpaqueCube(IBlockState state) {
         return false;

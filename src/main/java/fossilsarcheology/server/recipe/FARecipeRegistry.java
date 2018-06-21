@@ -17,6 +17,7 @@ public class FARecipeRegistry {
 
 	public static void blocks() {
 
+		//Fixme: Bone armor does not show up as a valid recipe in JEI
 		FAItemRegistry.ANCIENT_HELMET_MATERIAL.setRepairItem(new ItemStack(FAItemRegistry.SCARAB_GEM));
 		FAItemRegistry.SCARAB_MATERIAL.setRepairItem(new ItemStack(FAItemRegistry.SCARAB_GEM));
 		FAItemRegistry.BONE.setRepairItem(new ItemStack(Items.BONE));
