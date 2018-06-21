@@ -20,6 +20,7 @@ public class RevivalAspectRegistry {
 
 	public static void register() {
 
+		//Fixme: Add aspects for enum-based items, such as bones, meats, etc. Also some revising is in order, so the new aspects added don't go to waste.
 		//Items
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.BIOFOSSIL), new AspectList().add(Aspect.EARTH, 5).add(Aspect.BEAST, 5).add(RevivalAspectRegistry.TIME, 5));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.AMBER), new AspectList().add(Aspect.EARTH, 3).add(Aspect.CRYSTAL, 3).add(RevivalAspectRegistry.TIME, 3));
@@ -38,9 +39,7 @@ public class RevivalAspectRegistry {
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.TOOTH_DAGGER), new AspectList().add(Aspect.DEATH, 10).add(Aspect.BEAST, 10).add(Aspect.CRAFT, 10).add(Aspect.AVERSION, 10));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.FOOT), new AspectList().add(Aspect.DEATH, 5).add(Aspect.BEAST, 5).add(RevivalAspectRegistry.TIME, 5));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.LEG_BONE), new AspectList().add(Aspect.DEATH, 5).add(Aspect.BEAST, 5).add(RevivalAspectRegistry.TIME, 5));
-		for (int i = 0; i < 32; i++) {
-			ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.UNIQUE_ITEM), new AspectList().add(Aspect.DEATH, 5).add(Aspect.BEAST, 5).add(RevivalAspectRegistry.TIME, 5).add(Aspect.DESIRE, 2));
-		}
+		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.UNIQUE_ITEM), new AspectList().add(Aspect.DEATH, 5).add(Aspect.BEAST, 5).add(RevivalAspectRegistry.TIME, 5).add(Aspect.DESIRE, 2));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.RIBCAGE), new AspectList().add(Aspect.DEATH, 5).add(Aspect.BEAST, 5).add(RevivalAspectRegistry.TIME, 5));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.SKULL), new AspectList().add(Aspect.DEATH, 5).add(Aspect.BEAST, 5).add(RevivalAspectRegistry.TIME, 5));
 		ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.VERTEBRAE), new AspectList().add(Aspect.DEATH, 5).add(Aspect.BEAST, 5).add(RevivalAspectRegistry.TIME, 5));
