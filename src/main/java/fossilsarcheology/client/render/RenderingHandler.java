@@ -5,6 +5,7 @@ import fossilsarcheology.client.model.*;
 import fossilsarcheology.client.render.entity.*;
 import fossilsarcheology.client.render.tile.*;
 import fossilsarcheology.server.block.FABlockRegistry;
+import fossilsarcheology.server.block.VaseVariant;
 import fossilsarcheology.server.block.entity.*;
 import fossilsarcheology.server.entity.EntityDinosaurEgg;
 import fossilsarcheology.server.entity.StoneTabletEntity;
@@ -103,9 +104,9 @@ public class RenderingHandler {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySarcophagus.class, new TileEntitySarcophagusRender());
         ForgeHooksClient.registerTESRItemStack(Item.getItemFromBlock(FABlockRegistry.SARCOPHAGUS), 0, TileEntitySarcophagus.class);
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFigurine.class, new TileEntityFigurineRender());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAmphora.class, new TileEntityVaseRenderer(new ModelVaseAmphora()));
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityVolute.class, new TileEntityVaseRenderer(new ModelVaseVolute()));
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityKylix.class, new TileEntityVaseRenderer(new ModelVaseKylix()));
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAmphora.class, new TileEntityVaseRenderer(new ModelVaseAmphora(), VaseVariant::getAmphoraTexture));
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityVolute.class, new TileEntityVaseRenderer(new ModelVaseVolute(), VaseVariant::getVoluteTexture));
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityKylix.class, new TileEntityVaseRenderer(new ModelVaseKylix(), VaseVariant::getKylixTexture));
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTimeMachine.class, new TileEntityTimeMachineRender());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCultivate.class, new TileEntityCultivateRender());
 

@@ -20,7 +20,6 @@ public class ToyBallItem extends Item {
 	public ToyBallItem() {
 		this.setHasSubtypes(true);
 		this.setMaxDamage(0);
-		this.setCreativeTab(CreativeTabs.MATERIALS);
 		this.setUnlocalizedName("toyball");
 		this.setCreativeTab(FATabRegistry.ITEMS);
 	}
@@ -45,7 +44,7 @@ public class ToyBallItem extends Item {
 
 	@Override
 	public void getSubItems(CreativeTabs creativeTabs, NonNullList<ItemStack> list) {
-		if (creativeTabs == FATabRegistry.ITEMS) {
+		if (this.isInCreativeTab(creativeTabs)) {
 			for (int i = 0; i < 16; ++i) {
 				list.add(new ItemStack(this, 1, i));
 			}
