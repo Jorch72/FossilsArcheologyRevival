@@ -2,7 +2,10 @@ package fossilsarcheology;
 
 import fossilsarcheology.server.ServerProxy;
 import fossilsarcheology.server.block.FABlockRegistry;
+<<<<<<< HEAD
 import fossilsarcheology.server.compat.ThaumcraftCompatBridge;
+=======
+>>>>>>> parent of e90b7e2a... Rewrote Thaumcraft integration
 import fossilsarcheology.server.config.FossilConfig;
 import fossilsarcheology.server.message.*;
 import fossilsarcheology.server.util.ReleaseType;
@@ -48,7 +51,7 @@ public class Revival {
 	public void onPreInit(FMLPreInitializationEvent event) {
 		PROXY.onPreInit();
 		if (Loader.isModLoaded("thaumcraft")) {
-			ThaumcraftCompatBridge.registerAspects();
+			RevivalAspectRegistry.register();
 		}
 	}
 
