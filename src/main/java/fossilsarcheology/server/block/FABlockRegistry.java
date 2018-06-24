@@ -1,11 +1,13 @@
 package fossilsarcheology.server.block;
 
 import fossilsarcheology.Revival;
+import fossilsarcheology.server.compat.ThaumcraftCompatBridge;
 import fossilsarcheology.server.recipe.FARecipeRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.ArrayList;
@@ -177,6 +179,9 @@ public class FABlockRegistry {
 
 
 	public static void registerBlock(RegistryEvent.Register<Block> event, Block block) {
+		if (Loader.isModLoaded("thaumcraft")) {
+			ThaumcraftCompatBridge.registerAspects();
+		}
 		String name = block.getUnlocalizedName().substring("tile.".length());
 		if (block.getRegistryName() == null) {
 			ResourceLocation identifier = new ResourceLocation(Revival.MODID, name);
