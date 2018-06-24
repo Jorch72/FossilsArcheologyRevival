@@ -1,9 +1,7 @@
 package fossilsarcheology.server.entity.utility;
 
 import fossilsarcheology.server.block.FABlockRegistry;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;

@@ -1,11 +1,6 @@
 package fossilsarcheology.client;
 
-import fossilsarcheology.client.gui.AnalyzerGUI;
-import fossilsarcheology.client.gui.CultivateGUI;
-import fossilsarcheology.client.gui.FeederGUI;
-import fossilsarcheology.client.gui.SifterGUI;
-import fossilsarcheology.client.gui.TimeMachineGUI;
-import fossilsarcheology.client.gui.WorktableGUI;
+import fossilsarcheology.client.gui.*;
 import fossilsarcheology.client.gui.dinopedia.GuiPedia;
 import fossilsarcheology.client.model.ModelAncientHelmet;
 import fossilsarcheology.client.particle.BubbleFX;
@@ -15,11 +10,7 @@ import fossilsarcheology.server.api.DefaultRenderedItem;
 import fossilsarcheology.server.api.IgnoreRenderProperty;
 import fossilsarcheology.server.api.SubtypeRenderedItem;
 import fossilsarcheology.server.block.FABlockRegistry;
-import fossilsarcheology.server.block.entity.AnalyzerBlockEntity;
-import fossilsarcheology.server.block.entity.TileEntityCultivate;
-import fossilsarcheology.server.block.entity.TileEntitySifter;
-import fossilsarcheology.server.block.entity.TileEntityTimeMachine;
-import fossilsarcheology.server.block.entity.TileEntityWorktable;
+import fossilsarcheology.server.block.entity.*;
 import fossilsarcheology.server.container.CultivateContainer;
 import fossilsarcheology.server.entity.EntityFishBase;
 import fossilsarcheology.server.event.FossilHelmetOverlayEvent;
