@@ -38,7 +38,7 @@ public class FAWorldGenerator implements IWorldGenerator {
 	private static final ResourceLocation AZTEC_WEAPONS_CHEST = LootTableList.register(new ResourceLocation(Revival.MODID, "aztec_weapons_shop"));
 	private static final ResourceLocation EGYPTIAN_ACADEMY_CHEST = LootTableList.register(new ResourceLocation(Revival.MODID, "egyptian_academy"));
 	private static final ResourceLocation ANU_CASTLE_CHEST = LootTableList.register(new ResourceLocation(Revival.MODID, "anu_castle"));
-	private static final BlockPos ANU_CASTLE_POS = new BlockPos(0, 63, 0);
+	private static final BlockPos ANU_CASTLE_POS = new BlockPos(-70, 63, -70);
 	private static final BlockPos TREASURE_ROOM_POS = new BlockPos(0, 56, 0);
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
@@ -134,7 +134,7 @@ public class FAWorldGenerator implements IWorldGenerator {
 			int counter = 0;
 			counter++;
 			if (counter == 1) {
-				StructureUtils.generateStructureAtWithRandomRotationWithLoot(ANU_CASTLE, ANU_CASTLE_CHEST, world, new BlockPos(0, 63, 0), random, false, false);
+				StructureUtils.generateStructureAtWithRotationWithLoot(ANU_CASTLE, ANU_CASTLE_CHEST, world, new BlockPos(-140, 63, -140), random, Rotation.NONE, false, false);
 				int structurebase = 140;
 				int base = 14;
 				for (int y = 50; y < 63; y++) {
@@ -145,6 +145,7 @@ public class FAWorldGenerator implements IWorldGenerator {
 						}
 					}
 				}
+				world.setBlockState(new BlockPos(0, 73, 0), FABlockRegistry.SARCOPHAGUS.getDefaultState());
 			}
 		}
 		if (world.getChunkFromChunkCoords(chunkX, chunkZ) == world.getChunkFromBlockCoords(TREASURE_ROOM_POS) && world.provider.getDimension() == Revival.CONFIG.dimensionIDTreasure) {
