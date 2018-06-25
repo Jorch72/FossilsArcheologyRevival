@@ -11,7 +11,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderDeadAnu extends RenderLiving<EntityAnuDead> {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(Revival.MODID, "textures/model/PigBoss.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(Revival.MODID, "textures/model/anu.png");
 
 	public RenderDeadAnu(RenderManager render, ModelBase model, float shadowSize) {
 		super(render, model, shadowSize);

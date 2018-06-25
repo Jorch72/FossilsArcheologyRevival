@@ -720,10 +720,25 @@
       "fossil:whip1"
     ]
   },
-  "anu_otem": {
+  "anu_totem": {
     "category": "player",
     "sounds": [
       "fossil:anuTotem"
+    ]
+  },
+  "anu_laugh": {
+    "category": "player",
+    "sounds": [
+      "fossil:anu_living_stage1_0",
+      "fossil:anu_living_stage1_1",
+      "fossil:anu_living_stage1_2",
+      "fossil:anu_living_stage1_3"
+    ]
+  },
+  "anu_cough": {
+    "category": "player",
+    "sounds": [
+      "fossil:anu_living_stage2_0"
     ]
   },
   "record_bones_disc": {

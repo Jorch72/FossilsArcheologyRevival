@@ -23,6 +23,8 @@ import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.ISound;
+import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMap;
@@ -30,6 +32,7 @@ import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -185,5 +188,16 @@ public class ClientProxy extends ServerProxy {
     @SideOnly(Side.CLIENT)
     public net.minecraft.client.model.ModelBiped getArmorModel(int id) {
         return id == 0 ? helmetModel : null;
+    }
+
+    public void playSound(SoundEvent sound) {
+        Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMusicRecord(sound));
+    }
+
+    public void stopSound(SoundEvent sound) {
+        ISound isound = PositionedSoundRecord.getMusicRecord(sound);
+        if (Minecraft.getMinecraft().getSoundHandler().isSoundPlaying(isound)) {
+            Minecraft.getMinecraft().getSoundHandler().stopSound(isound);
+        }
     }
 }

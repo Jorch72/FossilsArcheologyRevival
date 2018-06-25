@@ -1,5 +1,6 @@
 package fossilsarcheology.server.entity.utility;
 
+import fossilsarcheology.client.sound.FASoundRegistry;
 import fossilsarcheology.server.block.FABlockRegistry;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.*;
@@ -43,4 +44,7 @@ public class EntityAnuStatue extends EntityLiving {
     }
 
 
+    public void playSummonSong() {
+        this.playSound(FASoundRegistry.ANU_TOTEM, 1, 1);
+    }
 }

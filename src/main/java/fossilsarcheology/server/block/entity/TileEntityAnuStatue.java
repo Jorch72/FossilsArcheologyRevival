@@ -38,7 +38,7 @@ public class TileEntityAnuStatue extends TileEntity implements ITickable {
 
 				world.spawnEntity(newMob);
 			}
-			//newMob.playSummonSong();
+			newMob.playSummonSong();
 			world.setBlockToAir(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()));
 			world.setBlockToAir(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ()));
 			world.setBlockToAir(new BlockPos(pos.getX(), pos.getY(), pos.getZ() - 1));

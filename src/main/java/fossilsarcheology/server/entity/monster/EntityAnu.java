@@ -14,10 +14,7 @@ import net.ilexiconn.llibrary.server.entity.EntityPropertiesHandler;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.monster.EntityBlaze;
-import net.minecraft.entity.monster.EntityGhast;
-import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.entity.monster.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityLargeFireball;
@@ -99,9 +96,9 @@ public class EntityAnu extends EntityMob implements IRangedAttackMob {
 	@Override
 	protected SoundEvent getAmbientSound() {
 		if (this.getAttackMode() == 0) {
-			return FASoundRegistry.ANU_LIVING_HEALTH;
+			return FASoundRegistry.ANU_LAUGH;
 		} else {
-			return FASoundRegistry.ANU_LIVING_MIDDLE;
+			return FASoundRegistry.ANU_COUGH;
 		}
 	}
 
@@ -337,7 +334,7 @@ public class EntityAnu extends EntityMob implements IRangedAttackMob {
 				this.spawnMobs(new EntitySentryPigman(world));
 			}
 			if (spawnWitherChoice == 0) {
-				this.spawnMobs(new EntitySkeleton(world));
+				this.spawnMobs(new EntityWitherSkeleton(world));
 				EntityPlayer player = this.world.getClosestPlayerToEntity(this, 50);
 				if (player != null) {
 					player.sendStatusMessage(new TextComponentString(I18n.format("entity.fossil.PigBoss.name") + ": " + I18n.format("anuSpeaker.archers")), false);

@@ -61,7 +61,7 @@ public class ObsidianSpikesBlock extends Block implements DefaultRenderedItem {
         return super.canPlaceBlockAt(worldIn, pos) && this.canBlockStay(worldIn, pos);
     }
 
-    private boolean canBlockStay(World worldIn, BlockPos pos) {
+    public boolean canBlockStay(World worldIn, BlockPos pos) {
         return worldIn.getBlockState(pos.down()).getMaterial().isSolid();
     }
 

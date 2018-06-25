@@ -141,8 +141,6 @@ public class FASoundRegistry {
 	public static final SoundEvent ICTHYOSAURUS_LIVING = create("icthyosaurus_living");
 	public static final SoundEvent ICTHYOSAURUS_OUTSIDE = create("icthyosaurus_outside");
 
-	public static final SoundEvent ANU_LIVING_HEALTH = create("anu_living_healthy");
-	public static final SoundEvent ANU_LIVING_MIDDLE = create("anu_living_middle");
 	public static final SoundEvent ANU_DEATH_EFFECT = create("anu_death_effect");
 
 	public static final SoundEvent DRUM_SINGLE = create("drum_single");
@@ -150,6 +148,8 @@ public class FASoundRegistry {
 	public static final SoundEvent TAR = create("tar");
 	public static final SoundEvent WHIP = create("whip");
 	public static final SoundEvent ANU_TOTEM = create("anu_totem");
+	public static final SoundEvent ANU_LAUGH = create("anu_laugh");
+	public static final SoundEvent ANU_COUGH = create("anu_cough");
 
 	public static final SoundEvent RECORD_BONES = create("record_bones_disc");
 	public static final SoundEvent MUSIC_DISCOVERY = create("music.discovery");
