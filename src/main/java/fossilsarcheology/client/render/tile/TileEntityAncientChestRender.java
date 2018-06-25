@@ -53,10 +53,10 @@ public class TileEntityAncientChestRender extends TileEntitySpecialRenderer<Tile
 		if (facing == EnumFacing.NORTH) {
 			GlStateManager.pushMatrix();
 			float scale = 1F;
-			GlStateManager.translate((float) x + 0.5F, (float) y + 0.45F, (float) z - 0.3F);
+			GlStateManager.translate((float) x + 0.5F, (float) y + 0.6F, (float) z - 0.1F);
 			GlStateManager.rotate((float) 180, 0.0F, 1.0F, 0.0F);
-			GlStateManager.rotate(90, 0F, 1F, 0F);
-			GlStateManager.rotate(45, 0F, 0F, -1F);
+			GlStateManager.rotate(270, 0F, 1F, 0F);
+			GlStateManager.rotate(-45, 0F, 0F, -1F);
 			GlStateManager.scale(scale, scale, scale);
 			Minecraft.getMinecraft().getRenderItem().renderItem(KEY_STACK, ItemCameraTransforms.TransformType.FIXED);
 			GlStateManager.popMatrix();
@@ -64,9 +64,10 @@ public class TileEntityAncientChestRender extends TileEntitySpecialRenderer<Tile
 		if (facing == EnumFacing.EAST) {
 			GlStateManager.pushMatrix();
 			float scale = 1F;
-			GlStateManager.translate((float) x + 0.5F, (float) y + 0.45F, (float) z + 1.3F);
-			GlStateManager.rotate(90, 0F, 1F, 0F);
-			GlStateManager.rotate(45, 0F, 0F, -1F);
+			GlStateManager.translate((float) x + 1.1F, (float) y + 0.6F, (float) z + 0.5F);
+			GlStateManager.rotate((float) 90, 0.0F, 1.0F, 0.0F);
+			GlStateManager.rotate(-90, 0F, 1F, 0F);
+			GlStateManager.rotate(45, 0F, 0F, 1F);
 			GlStateManager.scale(scale, scale, scale);
 			Minecraft.getMinecraft().getRenderItem().renderItem(KEY_STACK, ItemCameraTransforms.TransformType.FIXED);
 			GlStateManager.popMatrix();
@@ -74,21 +75,21 @@ public class TileEntityAncientChestRender extends TileEntitySpecialRenderer<Tile
 		if (facing == EnumFacing.SOUTH) {
 			GlStateManager.pushMatrix();
 			float scale = 1F;
-			GlStateManager.translate((float) x - 0.3F, (float) y + 0.45F, (float) z + 0.5F);
-			GlStateManager.rotate((float) -90, 0.0F, 1.0F, 0.0F);
+			GlStateManager.translate((float) x + 0.5F, (float) y + 0.6F, (float) z + 1.1F);
+			GlStateManager.rotate((float) 180, 0.0F, 1.0F, 0.0F);
 			GlStateManager.rotate(90, 0F, 1F, 0F);
-			GlStateManager.rotate(45, 0F, 0F, -1F);
+			GlStateManager.rotate(-45, 0F, 0F, -1F);
 			GlStateManager.scale(scale, scale, scale);
 			Minecraft.getMinecraft().getRenderItem().renderItem(KEY_STACK, ItemCameraTransforms.TransformType.FIXED);
 			GlStateManager.popMatrix();
 		}
-		if (facing == EnumFacing.EAST) {
+		if (facing == EnumFacing.WEST) {
 			GlStateManager.pushMatrix();
 			float scale = 1F;
-			GlStateManager.translate((float) x + 1.3F, (float) y + 0.45F, (float) z + 0.5F);
+			GlStateManager.translate((float) x - 0.1F, (float) y + 0.6F, (float) z + 0.5F);
 			GlStateManager.rotate((float) 90, 0.0F, 1.0F, 0.0F);
 			GlStateManager.rotate(90, 0F, 1F, 0F);
-			GlStateManager.rotate(45, 0F, 0F, -1F);
+			GlStateManager.rotate(45, 0F, 0F, 1F);
 			GlStateManager.scale(scale, scale, scale);
 			Minecraft.getMinecraft().getRenderItem().renderItem(KEY_STACK, ItemCameraTransforms.TransformType.FIXED);
 			GlStateManager.popMatrix();

@@ -61,7 +61,7 @@ public class TileEntitySarcophagusRender extends TileEntitySpecialRenderer<TileE
 	}
 
 	public void renderItem(double x, double y, double z, EnumFacing facing) {
-		if (facing == EnumFacing.SOUTH) {
+		if (facing == EnumFacing.NORTH) {
 			GlStateManager.pushMatrix();
 			float scale = 1F;
 			GlStateManager.translate((float) x + 0.5F, (float) y + 1.2F, (float) z);
@@ -72,18 +72,17 @@ public class TileEntitySarcophagusRender extends TileEntitySpecialRenderer<TileE
 		if (facing == EnumFacing.WEST) {
 			GlStateManager.pushMatrix();
 			float scale = 1F;
-			GlStateManager.translate((float) x + 0.5F, (float) y + 1.2F, (float) z + 1F);
+			GlStateManager.translate((float) x, (float) y + 1.2F, (float) z + 0.5F);
+			GlStateManager.rotate((float) -90, 0.0F, 1.0F, 0.0F);
 			GlStateManager.rotate(180, 0F, 1F, 0F);
 			GlStateManager.scale(scale, scale, scale * 2F);
 			Minecraft.getMinecraft().getRenderItem().renderItem(KEY, ItemCameraTransforms.TransformType.FIXED);
 			GlStateManager.popMatrix();
 		}
-		if (facing == EnumFacing.NORTH) {
+		if (facing == EnumFacing.SOUTH) {
 			GlStateManager.pushMatrix();
 			float scale = 1F;
-			GlStateManager.translate((float) x, (float) y + 1.2F, (float) z + 0.5F);
-			GlStateManager.rotate((float) -90, 0.0F, 1.0F, 0.0F);
-			GlStateManager.rotate(180, 0F, 1F, 0F);
+			GlStateManager.translate((float) x + 0.5F, (float) y + 1.2F, (float) z + 1);
 			GlStateManager.scale(scale, scale, scale * 2F);
 			Minecraft.getMinecraft().getRenderItem().renderItem(KEY, ItemCameraTransforms.TransformType.FIXED);
 			GlStateManager.popMatrix();

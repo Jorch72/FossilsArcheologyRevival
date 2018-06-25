@@ -9,6 +9,7 @@ import fossilsarcheology.server.world.gen.WorldGenTarPit;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -38,7 +39,7 @@ public class FAWorldGenerator implements IWorldGenerator {
 	private static final ResourceLocation EGYPTIAN_ACADEMY_CHEST = LootTableList.register(new ResourceLocation(Revival.MODID, "egyptian_academy"));
 	private static final ResourceLocation ANU_CASTLE_CHEST = LootTableList.register(new ResourceLocation(Revival.MODID, "anu_castle"));
 	private static final BlockPos ANU_CASTLE_POS = new BlockPos(0, 63, 0);
-	private static final BlockPos TREASURE_ROOM_POS = new BlockPos( -80, 63, -120);
+	private static final BlockPos TREASURE_ROOM_POS = new BlockPos(0, 56, 0);
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
 		boolean prevLogCascadingWorldGen = net.minecraftforge.common.ForgeModContainer.logCascadingWorldGeneration;
@@ -150,7 +151,7 @@ public class FAWorldGenerator implements IWorldGenerator {
 			int counter = 0;
 			counter++;
 			if (counter == 1) {
-				StructureUtils.generateStructureAtWithRandomRotation(TREASURE_ROOM, world, TREASURE_ROOM_POS, random, false, false);
+				StructureUtils.generateStructureAtWithRotation(TREASURE_ROOM, world, TREASURE_ROOM_POS, random, Rotation.NONE, false, false);
 			}
 		}
 		if(!Revival.CONFIG.logCascadingWorldGen) {

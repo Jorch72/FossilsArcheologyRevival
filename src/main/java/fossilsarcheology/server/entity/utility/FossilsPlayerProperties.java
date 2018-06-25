@@ -20,7 +20,6 @@ public class FossilsPlayerProperties extends EntityProperties<EntityPlayer> {
 
 	@Override
 	public void init() {
-		killedAnu = false;
 	}
 
 	@Override

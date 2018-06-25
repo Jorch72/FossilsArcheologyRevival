@@ -88,7 +88,7 @@ public class StructureUtils {
         Mirror mirror = Mirror.values()[random.nextInt(Mirror.values().length)];
         MinecraftServer server = world.getMinecraftServer();
         TemplateManager templateManager = world.getSaveHandler().getStructureTemplateManager();
-        PlacementSettings settings = new PlacementSettings().setRotation(rotation).setMirror(mirror);
+        PlacementSettings settings = new PlacementSettings().setRotation(rotation).setMirror(Mirror.NONE);
         if (removeAir) {
             settings.setReplacedBlock(Blocks.AIR);
         }

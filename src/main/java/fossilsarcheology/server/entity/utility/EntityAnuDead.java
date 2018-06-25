@@ -2,6 +2,8 @@ package fossilsarcheology.server.entity.utility;
 
 import fossilsarcheology.Revival;
 import fossilsarcheology.client.sound.FASoundRegistry;
+import fossilsarcheology.server.dimension.AnuTeleporter;
+import fossilsarcheology.server.dimension.TreasureTeleporter;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -52,10 +54,10 @@ public class EntityAnuDead extends EntityLiving {
 				thePlayer.timeUntilPortal = 10;
 			} else if (thePlayer.dimension != Revival.CONFIG.dimensionIDTreasure) {
 				thePlayer.timeUntilPortal = 10;
-				thePlayer.mcServer.getPlayerList().changePlayerDimension(thePlayer, Revival.CONFIG.dimensionIDTreasure);
+				thePlayer.mcServer.getPlayerList().transferPlayerToDimension(thePlayer, Revival.CONFIG.dimensionIDTreasure, new TreasureTeleporter(thePlayer.mcServer.getWorld(Revival.CONFIG.dimensionIDTreasure)));
 			} else {
 				thePlayer.timeUntilPortal = 10;
-				thePlayer.mcServer.getPlayerList().changePlayerDimension(thePlayer, 0);
+				thePlayer.mcServer.getPlayerList().transferPlayerToDimension(thePlayer, 0, new TreasureTeleporter(thePlayer.mcServer.getWorld(0)));
 			}
 		}
 		return true;
