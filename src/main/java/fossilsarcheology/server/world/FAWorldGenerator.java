@@ -31,10 +31,14 @@ public class FAWorldGenerator implements IWorldGenerator {
 	private static final ResourceLocation AZTEC_TEMPLE = new ResourceLocation(Revival.MODID, "aztec_temple");
 	private static final ResourceLocation AZTEC_WEAPONS_SHOP = new ResourceLocation(Revival.MODID, "aztec_weapons_shop");
 	private static final ResourceLocation EGYPTIAN_ACADEMY = new ResourceLocation(Revival.MODID, "egyptian_academy");
+	private static final ResourceLocation ANU_CASTLE = new ResourceLocation(Revival.MODID, "anu_castle");
+	private static final ResourceLocation TREASURE_ROOM = new ResourceLocation(Revival.MODID, "treasure_room");
 	private static final ResourceLocation AZTEC_TEMPLE_CHEST = LootTableList.register(new ResourceLocation(Revival.MODID, "aztec_temple"));
 	private static final ResourceLocation AZTEC_WEAPONS_CHEST = LootTableList.register(new ResourceLocation(Revival.MODID, "aztec_weapons_shop"));
 	private static final ResourceLocation EGYPTIAN_ACADEMY_CHEST = LootTableList.register(new ResourceLocation(Revival.MODID, "egyptian_academy"));
-
+	private static final ResourceLocation ANU_CASTLE_CHEST = LootTableList.register(new ResourceLocation(Revival.MODID, "anu_castle"));
+	private static final BlockPos ANU_CASTLE_POS = new BlockPos(0, 63, 0);
+	private static final BlockPos TREASURE_ROOM_POS = new BlockPos( -80, 63, -120);
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
 		boolean prevLogCascadingWorldGen = net.minecraftforge.common.ForgeModContainer.logCascadingWorldGeneration;
@@ -124,6 +128,30 @@ public class FAWorldGenerator implements IWorldGenerator {
 		}
 		if (Revival.CONFIG.generateAcademy && random.nextInt(65) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY) && BiomeDictionary.hasType(biome, BiomeDictionary.Type.DRY) && BiomeDictionary.hasType(biome, BiomeDictionary.Type.HOT)) {
 			StructureUtils.generateStructureAtWithRandomRotationWithLoot(EGYPTIAN_ACADEMY, EGYPTIAN_ACADEMY_CHEST, world, height.down(), random, true, false);
+		}
+		if (world.getChunkFromChunkCoords(chunkX, chunkZ) == world.getChunkFromBlockCoords(ANU_CASTLE_POS) && world.provider.getDimension() == Revival.CONFIG.dimensionIDDarknessLair) {
+			int counter = 0;
+			counter++;
+			if (counter == 1) {
+				StructureUtils.generateStructureAtWithRandomRotationWithLoot(ANU_CASTLE, ANU_CASTLE_CHEST, world, new BlockPos(0, 63, 0), random, false, false);
+				int structurebase = 140;
+				int base = 14;
+				for (int y = 50; y < 63; y++) {
+					base--;
+					for (int baseX = -70 - base; baseX < structurebase - 70 + base; baseX++) {
+						for (int baseZ = -70 - base; baseZ < structurebase - 70 + base; baseZ++) {
+							world.setBlockState(new BlockPos(baseX, y, baseZ), Blocks.NETHERRACK.getDefaultState());
+						}
+					}
+				}
+			}
+		}
+		if (world.getChunkFromChunkCoords(chunkX, chunkZ) == world.getChunkFromBlockCoords(TREASURE_ROOM_POS) && world.provider.getDimension() == Revival.CONFIG.dimensionIDTreasure) {
+			int counter = 0;
+			counter++;
+			if (counter == 1) {
+				StructureUtils.generateStructureAtWithRandomRotation(TREASURE_ROOM, world, TREASURE_ROOM_POS, random, false, false);
+			}
 		}
 		if(!Revival.CONFIG.logCascadingWorldGen) {
 			net.minecraftforge.common.ForgeModContainer.logCascadingWorldGeneration = prevLogCascadingWorldGen;

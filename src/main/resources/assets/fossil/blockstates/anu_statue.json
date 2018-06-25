@@ -1,10 +1,23 @@
 {
   "variants": {
-    "normal": {
-      "model": "fossil:anu_statue"
+    "facing=north": {
+      "model": "fossil:anu_statue",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "fossil:anu_statue",
+      "y": 0
+    },
+    "facing=west": {
+      "model": "fossil:anu_statue",
+      "y": -270
+    },
+    "facing=east": {
+      "model": "fossil:anu_statue",
+      "y": -90
     },
     "inventory": {
-      "model": "fossil:anu_statue"
+      "model": "iceandfire:lectern"
     }
   }
 }

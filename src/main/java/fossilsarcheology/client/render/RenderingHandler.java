@@ -38,7 +38,6 @@ public class RenderingHandler {
         RenderingRegistry.registerEntityRenderingHandler(JavelinEntity.class, JavelinRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(AncientJavelinEntity.class, JavelinRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(StoneTabletEntity.class, StoneTabletRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityAnuStatue.class,new RenderAnuStatue(MINECRAFT.getRenderManager()));
         RenderingRegistry.registerEntityRenderingHandler(EntityAnubite.class, RenderAnubite::new);
         RenderingRegistry.registerEntityRenderingHandler(EntitySentryPigman.class, RenderSentryPigman::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityTarSlime.class, RenderTarSlime::new);
@@ -50,6 +49,7 @@ public class RenderingHandler {
     }
 
     public void onInit() {
+        RenderingRegistry.registerEntityRenderingHandler(EntityAnuStatue.class,new RenderAnuStatue(MINECRAFT.getRenderManager()));
         RenderingRegistry.registerEntityRenderingHandler(EntityNautilus.class, new RenderFish(new ModelNautilus(), MINECRAFT.getRenderManager()));
         RenderingRegistry.registerEntityRenderingHandler(EntityCoelacanth.class, new RenderFish(new ModelCoelacanth(), MINECRAFT.getRenderManager()));
         RenderingRegistry.registerEntityRenderingHandler(EntityAlligatorGar.class, new RenderFish(new ModelAlligatorGar(), MINECRAFT.getRenderManager()));

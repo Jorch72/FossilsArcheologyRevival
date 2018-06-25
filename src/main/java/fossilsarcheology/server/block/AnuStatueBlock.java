@@ -50,14 +50,18 @@ public class AnuStatueBlock extends BlockContainer implements DefaultRenderedIte
         return false;
     }
 
-    @Override
     public boolean canProvidePower(IBlockState state) {
         return true;
+    }
+
+    public int getWeakPower(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+        return 15;
     }
 
     public int getRedstonePower(BlockPos pos, EnumFacing facing) {
         return 15;
     }
+
     @Override
     public boolean shouldCheckWeakPower(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
         return true;
@@ -65,31 +69,13 @@ public class AnuStatueBlock extends BlockContainer implements DefaultRenderedIte
 
     @Override
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-        return super.getStateForPlacement(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+        return super.getStateForPlacement(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(FACING, placer.getHorizontalFacing());
     }
 
     @Override
     public IBlockState getStateFromMeta(int meta) {
         return this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta));
     }
-
-    @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-        world.newExplosion(null, pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5, 5F, true, true);
-        EntityAnubite newMob = new EntityAnubite(world);
-        if (!world.isRemote) {
-            newMob.setLocationAndAngles(pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5, 0, 0);
-            world.spawnEntity(newMob);
-            world.removeTileEntity(pos);
-            world.setBlockState(pos, Blocks.AIR.getDefaultState());
-        }
-        return true;
-    }
-
-    public int getWeakPower(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side){
-        return 15;
-    }
-
 
     @Override
     public int getMetaFromState(IBlockState state) {
