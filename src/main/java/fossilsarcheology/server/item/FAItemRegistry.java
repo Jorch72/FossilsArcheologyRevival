@@ -3,6 +3,7 @@ package fossilsarcheology.server.item;
 import fossilsarcheology.Revival;
 import fossilsarcheology.client.sound.FASoundRegistry;
 import fossilsarcheology.server.block.FABlockRegistry;
+import fossilsarcheology.server.compat.ThaumcraftCompatBridge;
 import fossilsarcheology.server.tab.FATabRegistry;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
@@ -13,6 +14,7 @@ import net.minecraft.item.ItemBucket;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Loader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,6 +94,9 @@ public class FAItemRegistry {
 	public static final DinosaurBoneItem VERTEBRAE = new DinosaurBoneItem("vertebrae");
 
 	public static Item registerItem(RegistryEvent.Register<Item> event, Item item) {
+		if (Loader.isModLoaded("thaumcraft")) {
+			ThaumcraftCompatBridge.registerAspects();
+		}
 		String name = item.getUnlocalizedName().substring("item.".length());
 		item.setRegistryName(new ResourceLocation(Revival.MODID, name));
 		event.getRegistry().register(item);
@@ -100,6 +105,9 @@ public class FAItemRegistry {
 	}
 
 	public static Item registerItem(RegistryEvent.Register<Item> event, Item item, String registryName) {
+		if (Loader.isModLoaded("thaumcraft")) {
+			ThaumcraftCompatBridge.registerAspects();
+		}
 		item.setRegistryName(new ResourceLocation(Revival.MODID, registryName));
 		event.getRegistry().register(item);
 		ITEMS.add(item);

@@ -1,12 +1,14 @@
 package fossilsarcheology.server.entity.utility;
 
 import fossilsarcheology.server.block.FABlockRegistry;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+<<<<<<< HEAD
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.player.EntityPlayer;
+=======
+>>>>>>> 3c1b6c87503883d6d15dab31a413e855c8a3d46d
 import net.minecraft.init.Blocks;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;

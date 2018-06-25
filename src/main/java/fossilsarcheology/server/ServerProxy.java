@@ -66,7 +66,6 @@ public class ServerProxy implements IGuiHandler {
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
-        FAOreDictRegistry.initBlocks();
 
         GameRegistry.registerTileEntity(TileEntityCultivate.class, "fossil.cultivate");
         GameRegistry.registerTileEntity(TileEntityFeeder.class, "fossil.feeder");
@@ -100,7 +99,6 @@ public class ServerProxy implements IGuiHandler {
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
-        FAOreDictRegistry.initItems();
 
         try {
             for (Field f : FABlockRegistry.class.getDeclaredFields()) {
@@ -167,6 +165,8 @@ public class ServerProxy implements IGuiHandler {
     }
 
     public void onInit() {
+        FAOreDictRegistry.register();
+
         MinecraftForge.EVENT_BUS.register(new FossilCraftingEvent());
         MinecraftForge.EVENT_BUS.register(new FossilPickupItemEvent());
         MinecraftForge.EVENT_BUS.register(new FossilBonemealEvent());

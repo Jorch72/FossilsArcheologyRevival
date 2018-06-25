@@ -17,6 +17,7 @@ public class SarraceniaFlowerBlock extends Block implements DefaultRenderedItem 
 		setSoundType(SoundType.PLANT);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
     public boolean isFullCube(IBlockState state) {
 		return false;

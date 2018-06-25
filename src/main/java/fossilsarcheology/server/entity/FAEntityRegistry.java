@@ -1,6 +1,7 @@
 package fossilsarcheology.server.entity;
 
 import fossilsarcheology.Revival;
+import fossilsarcheology.server.compat.ThaumcraftCompatBridge;
 import fossilsarcheology.server.entity.monster.*;
 import fossilsarcheology.server.entity.prehistoric.*;
 import fossilsarcheology.server.entity.projectile.AncientJavelinEntity;
@@ -13,6 +14,7 @@ import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 import java.util.Set;
@@ -78,10 +80,16 @@ public class FAEntityRegistry {
 	}
 
 	public static void registerEntity(Class<? extends Entity> entityClass, String name, int id) {
+		if (Loader.isModLoaded("thaumcraft")) {
+			ThaumcraftCompatBridge.registerAspects();
+		}
 		EntityRegistry.registerModEntity(new ResourceLocation(Revival.MODID, "" + name), entityClass, name, id, Revival.INSTANCE, 64, 1, true);
 	}
 
 	public static void registerSpawnable(Class<? extends Entity> entityClass, String name, int id, int mainColor, int subColor) {
+		if (Loader.isModLoaded("thaumcraft")) {
+			ThaumcraftCompatBridge.registerAspects();
+		}
 		EntityRegistry.registerModEntity(new ResourceLocation(Revival.MODID, "" + name), entityClass, name, id, Revival.INSTANCE, 64, 1, true, mainColor, subColor);
 	}
 }

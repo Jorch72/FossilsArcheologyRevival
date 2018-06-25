@@ -33,6 +33,7 @@ public class SarcophagusBlock extends BlockContainer implements DefaultRenderedI
 
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
     public boolean isFullCube(IBlockState state) {
 		return false;
@@ -66,6 +67,7 @@ public class SarcophagusBlock extends BlockContainer implements DefaultRenderedI
 		return true;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		return super.getStateForPlacement(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(FACING, placer.getHorizontalFacing().getOpposite());
@@ -76,6 +78,7 @@ public class SarcophagusBlock extends BlockContainer implements DefaultRenderedI
 		return BlockRenderLayer.TRANSLUCENT;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
     public boolean isOpaqueCube(IBlockState state) {
 		return false;
@@ -86,6 +89,7 @@ public class SarcophagusBlock extends BlockContainer implements DefaultRenderedI
 		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta));

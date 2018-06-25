@@ -1,7 +1,6 @@
 package fossilsarcheology.server.block.entity;
 
 import fossilsarcheology.server.block.FABlockRegistry;
-import fossilsarcheology.server.entity.monster.EntityAnu;
 import fossilsarcheology.server.entity.utility.EntityAnuStatue;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;

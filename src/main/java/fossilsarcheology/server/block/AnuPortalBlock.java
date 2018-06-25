@@ -33,11 +33,13 @@ public class AnuPortalBlock extends Block implements DefaultRenderedItem {
 		this.setLightLevel(0.5F);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
     public boolean isOpaqueCube(IBlockState state) {
 		return false;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
     public boolean isFullCube(IBlockState state) {
 		return false;

@@ -10,7 +10,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class FAOreDictRegistry {
 
-    public static void initBlocks() {
+    public static void register() {
         OreDictionary.registerOre("blockWool", new ItemStack(Blocks.WOOL, 1, OreDictionary.WILDCARD_VALUE));
 
         OreDictionary.registerOre("plankWood", new ItemStack(FABlockRegistry.PALM_PLANKS));
@@ -21,10 +21,6 @@ public class FAOreDictRegistry {
         OreDictionary.registerOre("stairWood", new ItemStack(FABlockRegistry.PALM_PLANKS_STAIRS));
         OreDictionary.registerOre("stairWood", new ItemStack(FABlockRegistry.ANCIENT_WOOD_STAIRS));
         OreDictionary.registerOre("treeSapling", new ItemStack(FABlockRegistry.PALM_SAPLING));
-        OreDictionary.registerOre("record", new ItemStack(FAItemRegistry.FOSSIL_RECORD_BONES));
-        OreDictionary.registerOre("record", new ItemStack(FAItemRegistry.FOSSIL_RECORD_NANO_ANU));
-        OreDictionary.registerOre("record", new ItemStack(FAItemRegistry.FOSSIL_RECORD_NANO_DISCOVERING));
-        OreDictionary.registerOre("record", new ItemStack(FAItemRegistry.FOSSIL_RECORD_NANO_SCARAB));
 
         OreDictionary.registerOre("oreFossil", new ItemStack(FABlockRegistry.FOSSIL));
         OreDictionary.registerOre("oreAmber", new ItemStack(FABlockRegistry.AMBER_ORE));
@@ -45,9 +41,7 @@ public class FAOreDictRegistry {
         OreDictionary.registerOre("stoneAncientBrick", new ItemStack(FABlockRegistry.ANCIENT_STONE_BRICK));
         OreDictionary.registerOre("stone", new ItemStack(FABlockRegistry.ANCIENT_STONE));
         OreDictionary.registerOre("stoneBrick", new ItemStack(FABlockRegistry.ANCIENT_STONE_BRICK));
-    }
 
-    public static void initItems() {
         OreDictionary.registerOre("artifact", new ItemStack(FAItemRegistry.RELIC_SCRAP));
         OreDictionary.registerOre("fossil", new ItemStack(FAItemRegistry.BIOFOSSIL));
         OreDictionary.registerOre("gemScarab", new ItemStack(FAItemRegistry.SCARAB_GEM));
@@ -75,6 +69,11 @@ public class FAOreDictRegistry {
         OreDictionary.registerOre("dinosaurVertebrae", new ItemStack(FAItemRegistry.VERTEBRAE, 1, OreDictionary.WILDCARD_VALUE));
         OreDictionary.registerOre("dinosaurRibCage", new ItemStack(FAItemRegistry.RIBCAGE, 1, OreDictionary.WILDCARD_VALUE));
 
+        OreDictionary.registerOre("record", new ItemStack(FAItemRegistry.FOSSIL_RECORD_BONES));
+        OreDictionary.registerOre("record", new ItemStack(FAItemRegistry.FOSSIL_RECORD_NANO_ANU));
+        OreDictionary.registerOre("record", new ItemStack(FAItemRegistry.FOSSIL_RECORD_NANO_DISCOVERING));
+        OreDictionary.registerOre("record", new ItemStack(FAItemRegistry.FOSSIL_RECORD_NANO_SCARAB));
+
         for (PrehistoricEntityType prehistoric : PrehistoricEntityType.values()) {
             if (prehistoric.eggItem != null) {
                 OreDictionary.registerOre("listAllEgg", prehistoric.eggItem);
@@ -95,7 +94,7 @@ public class FAOreDictRegistry {
                 OreDictionary.registerOre("listAllMeatCooked", prehistoric.cookedFoodItem);
             }
         }
-        OreDictionary.registerOre("foodCalamariRaw", PrehistoricEntityType.NAUTILUS.foodItem);
+        OreDictionary.registerOre("foodCalamariRaw", PrehistoricEntityType.NAUTILUS.fishItem);
         OreDictionary.registerOre("foodCalamariCooked", FAItemRegistry.SJL);
     }
 }

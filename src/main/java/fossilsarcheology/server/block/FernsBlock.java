@@ -156,6 +156,7 @@ public class FernsBlock extends BlockBush implements DefaultRenderedItem {
         return (meta == 4) || (meta == 11);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public IBlockState getStateFromMeta(int meta) {
         return this.getDefaultState().withProperty(TYPE, meta / 8).withProperty(GROWTH, (meta < 8 ? meta : meta - 8));

@@ -42,6 +42,7 @@ public class DrumBlock extends Block implements DefaultRenderedItem {
         return true;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public IBlockState getStateFromMeta(int meta) {
         return this.getDefaultState().withProperty(DRUMS, meta);

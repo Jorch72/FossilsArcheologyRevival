@@ -14,6 +14,7 @@ import java.util.Random;
 public class HellBoatWorldGen extends WorldGenerator {
 //    protected static final WeightedRandomCHESTContent[] field_111019_a = new WeightedRandomCHESTContent[]{new WeightedRandomCHESTContent(Item.getItemFromBlock(FABlockRegistry.ANCIENT_GLASS), 0, 2, 5, 25), new WeightedRandomCHESTContent(FAItemRegistry.INSTANCE.relic, 0, 1, 2, 76), new WeightedRandomCHESTContent(FAItemRegistry.INSTANCE.ancientSword, 0, 1, 3, 15), new WeightedRandomCHESTContent(Item.getItemFromBlock(FABlockRegistry.INSTANCE.blockSkull), 0, 1, 2, 60), new WeightedRandomCHESTContent(Item.getItemFromBlock(FABlockRegistry.SKULL_LANTERN), 0, 1, 2, 45), new WeightedRandomCHESTContent(Item.getItemFromBlock(FABlockRegistry.INSTANCE.drum), 0, 1, 1, 28), new WeightedRandomCHESTContent(FAItemRegistry.INSTANCE.potteryShards, 0, 1, 3, 70), new WeightedRandomCHESTContent(FAItemRegistry.INSTANCE.goldjavelin, 0, 1, 1, 33), new WeightedRandomCHESTContent(FAItemRegistry.INSTANCE.ironjavelin, 0, 1, 1, 46), new WeightedRandomCHESTContent(FAItemRegistry.INSTANCE.stoneboard, 0, 1, 3, 25), new WeightedRandomCHESTContent(Items.bone, 0, 1, 3, 85), new WeightedRandomCHESTContent(Items.emerald, 0, 1, 3, 25), new WeightedRandomCHESTContent(Items.flint, 0, 1, 3, 35), new WeightedRandomCHESTContent(Items.blaze_rod, 0, 1, 3, 30), new WeightedRandomCHESTContent(Items.ghast_tear, 0, 1, 2, 25), new WeightedRandomCHESTContent(Item.getItemFromBlock(Blocks.bookshelf), 0, 1, 5, 35), new WeightedRandomCHESTContent(Item.getItemFromBlock(Blocks.glowstone), 0, 1, 4, 35), new WeightedRandomCHESTContent(Item.getItemFromBlock(Blocks.OBSIDIAN), 0, 1, 6, 25), new WeightedRandomCHESTContent(Items.netherbrick, 0, 1, 12, 65), new WeightedRandomCHESTContent(Item.getItemFromBlock(Blocks.tnt), 0, 1, 6, 25)};
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean generate(World world, Random rand, BlockPos pos) {
 		generate_r0(world, rand, pos.getX(), pos.getY(), pos.getZ());
@@ -21,6 +22,7 @@ public class HellBoatWorldGen extends WorldGenerator {
 
 	}
 
+	@SuppressWarnings("deprecation")
 	public boolean generate_r0(World world, Random rand, int x, int y, int z) {
 		BlockUtils.setBlock(world, x + 4, y + -2, z + 5, Blocks.NETHER_BRICK, 0, 3);
 		BlockUtils.setBlock(world, x + 5, y + -2, z + 5, Blocks.NETHER_BRICK, 0, 3);

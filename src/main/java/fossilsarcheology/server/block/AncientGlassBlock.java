@@ -67,6 +67,7 @@ public class AncientGlassBlock extends BlockBreakable implements DefaultRendered
 		return BlockRenderLayer.TRANSLUCENT;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
     public boolean isFullCube(IBlockState state) {
 		return false;
