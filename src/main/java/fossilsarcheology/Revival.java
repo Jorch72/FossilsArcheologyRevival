@@ -49,6 +49,11 @@ public class Revival {
 		PROXY.onPreInit();
 		if (Loader.isModLoaded("thaumcraft")) {
 			ThaumcraftCompatBridge.registerAspects();
+			LOGGER.info("Archaean horizon");
+			LOGGER.info("The first sunrise");
+			LOGGER.info("On a pristine Gaea");
+			LOGGER.info("Opus perfectum");
+			LOGGER.info("Somewhere there, us sleeping");
 		}
 	}
 
@@ -56,6 +61,11 @@ public class Revival {
 	public void onInit(FMLInitializationEvent event) {
 		PROXY.onInit();
 		FABlockRegistry.init();
+		LOGGER.info("After a billion years");
+		LOGGER.info("The show is still here");
+		LOGGER.info("Not a single one of your fathers died young");
+		LOGGER.info("The handy travelers out of Africa");
+		LOGGER.info("Little Lucy of the Afar");
 	}
 
 	@Mod.EventHandler
