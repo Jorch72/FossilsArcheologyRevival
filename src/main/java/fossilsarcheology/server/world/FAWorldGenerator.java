@@ -32,11 +32,11 @@ public class FAWorldGenerator implements IWorldGenerator {
 	private static final ResourceLocation AZTEC_TEMPLE = new ResourceLocation(Revival.MODID, "aztec_temple");
 	private static final ResourceLocation AZTEC_WEAPONS_SHOP = new ResourceLocation(Revival.MODID, "aztec_weapons_shop");
 	private static final ResourceLocation EGYPTIAN_ACADEMY = new ResourceLocation(Revival.MODID, "egyptian_academy");
-	private static final ResourceLocation ANU_CASTLE = new ResourceLocation(Revival.MODID, "anu_castle");
+	public static final ResourceLocation ANU_CASTLE = new ResourceLocation(Revival.MODID, "anu_castle");
 	private static final ResourceLocation TREASURE_ROOM = new ResourceLocation(Revival.MODID, "treasure_room");
-	private static final ResourceLocation AZTEC_TEMPLE_CHEST = LootTableList.register(new ResourceLocation(Revival.MODID, "aztec_temple"));
+	public static ResourceLocation AZTEC_TEMPLE_CHEST;
 	private static final ResourceLocation AZTEC_WEAPONS_CHEST = LootTableList.register(new ResourceLocation(Revival.MODID, "aztec_weapons_shop"));
-	private static final ResourceLocation EGYPTIAN_ACADEMY_CHEST = LootTableList.register(new ResourceLocation(Revival.MODID, "egyptian_academy"));
+	public static ResourceLocation EGYPTIAN_ACADEMY_CHEST;
 	private static final ResourceLocation ANU_CASTLE_CHEST = LootTableList.register(new ResourceLocation(Revival.MODID, "anu_castle"));
 	private static final BlockPos ANU_CASTLE_POS = new BlockPos(-70, 63, -70);
 	private static final BlockPos TREASURE_ROOM_POS = new BlockPos(0, 56, 0);

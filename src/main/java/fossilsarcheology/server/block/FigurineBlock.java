@@ -129,16 +129,19 @@ public class FigurineBlock extends BlockContainer implements IBlockItem, BlockEn
         FIGURINE_ZOMBIE_PRISTINE(2, "figurine_zombie_pristine"),
         FIGURINE_PIGZOMBIE_PRISTINE(3, "figurine_pigzombie_pristine"),
         FIGURINE_ENDERMAN_PRISTINE(4, "figurine_enderman_pristine"),
+
         FIGURINE_STEVE_DAMAGED(5, "figurine_steve_damaged"),
         FIGURINE_SKELETON_DAMAGED(6, "figurine_skeleton_damaged"),
         FIGURINE_ZOMBIE_DAMAGED(7, "figurine_zombie_damaged"),
         FIGURINE_PIGZOMBIE_DAMAGED(8, "figurine_pigzombie_damaged"),
         FIGURINE_ENDERMAN_DAMAGED(9, "figurine_enderman_damaged"),
+
         FIGURINE_STEVE_BROKEN(10, "figurine_steve_broken"),
         FIGURINE_SKELETON_BROKEN(11, "figurine_skeleton_broken"),
         FIGURINE_ZOMBIE_BROKEN(12, "figurine_zombie_broken"),
         FIGURINE_PIGZOMBIE_BROKEN(13, "figurine_pigzombie_broken"),
         FIGURINE_ENDERMAN_BROKEN(14, "figurine_enderman_broken"),
+
         FIGURINE_MYSTERIOUS(15, "figurine_mysterious");
 
         private static final FigurineBlock.EnumType[] META_LOOKUP = new FigurineBlock.EnumType[values().length];

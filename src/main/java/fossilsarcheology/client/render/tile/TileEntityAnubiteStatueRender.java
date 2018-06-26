@@ -23,7 +23,7 @@ public class TileEntityAnubiteStatueRender extends TileEntitySpecialRenderer<Til
 		GlStateManager.pushMatrix();
 		GlStateManager.translate(x + 0.5F, y + 1.5F, z + 0.5F);
 		GlStateManager.rotate(180, 0F, 0F, 1F);
-		GlStateManager.rotate(facing.getHorizontalAngle(), 0.0F, 1.0F, 0.0F);
+		GlStateManager.rotate(facing.getOpposite().getHorizontalAngle(), 0.0F, 1.0F, 0.0F);
 		this.bindTexture(TEXTURE);
 		MODEL.renderBlock(0.0625F);
 		GlStateManager.popMatrix();

@@ -1,5 +1,6 @@
 package fossilsarcheology.server.structure;
 
+import fossilsarcheology.server.world.FAWorldGenerator;
 import net.minecraft.init.Blocks;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
@@ -9,6 +10,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.gen.structure.StructureBoundingBox;
+import net.minecraft.world.gen.structure.template.BlockRotationProcessor;
 import net.minecraft.world.gen.structure.template.PlacementSettings;
 import net.minecraft.world.gen.structure.template.Template;
 import net.minecraft.world.gen.structure.template.TemplateManager;
@@ -56,30 +60,16 @@ public class StructureUtils {
         }
         Template template = templateManager.getTemplate(server, structure);
         BlockPos center = pos.add(template.getSize().getX() / 2, 0, template.getSize().getZ() / 2);
-        Map<BlockPos, String> map = template.getDataBlocks(center, settings);
         if (checkGround) {
             BlockPos corner1 = pos.down();
             BlockPos corner2 = pos.add(template.getSize().getX(), -1, 0);
             BlockPos corner3 = pos.add(template.getSize().getX(), -1, template.getSize().getZ());
             BlockPos corner4 = pos.add(0, -1, template.getSize().getZ());
             if (world.getBlockState(center).isOpaqueCube() && world.getBlockState(corner1).isOpaqueCube() && world.getBlockState(corner2).isOpaqueCube() && world.getBlockState(corner3).isOpaqueCube() && world.getBlockState(corner4).isOpaqueCube()) {
-                template.addBlocksToWorldChunk(world, center, settings);
+                template.addBlocksToWorld(world, center, new FABlockProcessorLoot(center, settings, loot), settings, 2);
             }
         } else {
-            template.addBlocksToWorldChunk(world, center, settings);
-        }
-
-
-        for (Map.Entry<BlockPos, String> entry : map.entrySet()) {
-            System.out.println(entry.getValue());
-            if ("chest".equals(entry.getValue())) {
-                BlockPos blockpos2 = entry.getKey();
-                world.setBlockState(blockpos2, Blocks.AIR.getDefaultState(), 3);
-                TileEntity tileentity = world.getTileEntity(blockpos2.down());
-                if (tileentity instanceof TileEntityChest) {
-                    ((TileEntityChest) tileentity).setLootTable(loot, random.nextLong());
-                }
-            }
+            template.addBlocksToWorld(world, center, new FABlockProcessorLoot(center, settings, loot), settings, 2);
         }
     }
 
@@ -126,12 +116,12 @@ public class StructureUtils {
             BlockPos corner3 = pos.add(template.getSize().getX(), -1, template.getSize().getZ());
             BlockPos corner4 = pos.add(0, -1, template.getSize().getZ());
             if (world.getBlockState(center).isOpaqueCube() && world.getBlockState(corner1).isOpaqueCube() && world.getBlockState(corner2).isOpaqueCube() && world.getBlockState(corner3).isOpaqueCube() && world.getBlockState(corner4).isOpaqueCube()) {
-                template.addBlocksToWorldChunk(world, center, settings);
+                template.addBlocksToWorld(world, center, structure == FAWorldGenerator.ANU_CASTLE ? new FABlockProcessorAnu(center, settings, loot) : new FABlockProcessorLoot(center, settings, loot), settings, 2);
                 return true;
             }
             return false;
         } else {
-            template.addBlocksToWorldChunk(world, center, settings);
+            template.addBlocksToWorld(world, center, structure == FAWorldGenerator.ANU_CASTLE ? new FABlockProcessorAnu(center, settings, loot) : new FABlockProcessorLoot(center, settings, loot), settings, 2);
             return true;
         }
     }
