@@ -10,6 +10,7 @@ import fossilsarcheology.server.block.entity.*;
 import fossilsarcheology.server.container.*;
 import fossilsarcheology.server.entity.EntityFishBase;
 import fossilsarcheology.server.entity.FAEntityRegistry;
+import fossilsarcheology.server.entity.FAVillagerRegistry;
 import fossilsarcheology.server.entity.prehistoric.EntityPrehistoric;
 import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityType;
 import fossilsarcheology.server.event.FossilBonemealEvent;
@@ -161,6 +162,7 @@ public class ServerProxy implements IGuiHandler {
         NetworkRegistry.INSTANCE.registerGuiHandler(Revival.INSTANCE, this);
         FAFluidRegistry.register();
         FAEntityRegistry.register();
+        FAVillagerRegistry.register();
         FAWorldRegistry.register();
     }
 
