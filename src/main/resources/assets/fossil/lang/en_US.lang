@@ -666,6 +666,7 @@ anuSpeaker.fewBeaten=Few have beaten me. Prepare to die.
 anuSpeaker.archers=Archers, fire!
 anuSpeaker.blaze=Blazes! Destroy the enemy!
 anuSpeaker.no=NO!!!
+anu.breakblock=You cannot break blocks here without defeating Anu.
 cultivate.outBreak=Cultivation has failed!
 tc.aspect.chronos=Time, Past, Present, Future
 tc.aspect.anteanus=Ruins, Archaeology
