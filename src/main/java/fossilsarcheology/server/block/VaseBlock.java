@@ -116,9 +116,10 @@ public abstract class VaseBlock extends BlockContainer implements BlockEntity, I
         return name.getResourcePath() + "_" + metadata;
     }
 
-    class VaseItemBlock extends ItemBlock {
+    public class VaseItemBlock extends ItemBlock {
         private VaseItemBlock(Block block) {
             super(block);
+            this.setHasSubtypes(true);
         }
 
         @Override

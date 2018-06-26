@@ -1,6 +1,7 @@
 package fossilsarcheology.server.block.entity;
 
 import fossilsarcheology.server.block.FABlockRegistry;
+import fossilsarcheology.server.block.VaseBlock;
 import fossilsarcheology.server.block.WorktableBlock;
 import fossilsarcheology.server.item.FAItemRegistry;
 import net.minecraft.entity.player.EntityPlayer;
@@ -369,6 +370,9 @@ public class TileEntityWorktable extends TileEntity implements IInventory, ISide
             return 0;
         } else {
             Item var2 = itemstack.getItem();
+            if(this.stacks.get(0).getItem() instanceof VaseBlock.VaseItemBlock){
+                return var2 == FAItemRegistry.POTTERY_SHARD ? 300 : 0;
+            }
             return var2 == FAItemRegistry.RELIC_SCRAP ? 300 : 0;
         }
     }
