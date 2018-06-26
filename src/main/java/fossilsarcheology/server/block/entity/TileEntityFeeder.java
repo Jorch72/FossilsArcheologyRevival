@@ -227,8 +227,8 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 					feedamount++;
 				}
 			}
-			FeederBlock.updateFeederBlockState(this.currentPlant > 0, this.currentMeat > 0, this.world, this.pos);
 		}
+		FeederBlock.updateFeederBlockState(this.currentPlant > 0, this.currentMeat > 0, this.world, this.pos);
 		mob.setHunger(mob.getHunger() + feedamount);
 		return feedamount;
 	}

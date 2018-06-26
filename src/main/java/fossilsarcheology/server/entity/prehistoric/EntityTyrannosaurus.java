@@ -22,7 +22,7 @@ public class EntityTyrannosaurus extends EntityPrehistoric {
 	public static final Animation ROAR_ANIMATION = Animation.create(100);
 
 	public EntityTyrannosaurus(World world) {
-		super(world, PrehistoricEntityType.TYRANNOSAURUS, 2, 14, 15, 82, 0.25, 0.45);
+		super(world, PrehistoricEntityType.TYRANNOSAURUS, 2, 14, 15, 82, 0.35, 0.45);
 		this.setActualSize(1.8F, 1.25F);
 		this.pediaScale = 40F;
 		this.hasFeatherToggle = true;
