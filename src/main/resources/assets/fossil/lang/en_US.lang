@@ -166,6 +166,7 @@ entity.fossil.anu.name=Anu
 entity.fossil.toyball.name=Ball
 entity.fossil.toytetheredlog.name=Tethered Log
 entity.fossil.toyscratchingpost.name=Scratching Post
+entity.Villager.archeologist=Archaeologist
 
 #PORT
 tile.skull_block.name=Skull Block

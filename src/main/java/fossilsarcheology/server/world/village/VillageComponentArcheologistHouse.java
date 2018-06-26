@@ -11,6 +11,7 @@ import java.util.Random;
 
 public class VillageComponentArcheologistHouse extends StructureVillagePieces.Village {
     private int averageGroundLevel = -1;
+    int villagerCount = 0;
 
     public VillageComponentArcheologistHouse() {
         super();
@@ -18,12 +19,13 @@ public class VillageComponentArcheologistHouse extends StructureVillagePieces.Vi
 
     public VillageComponentArcheologistHouse(StructureVillagePieces.Start startPiece, int p2, Random random, StructureBoundingBox structureBox, EnumFacing facing) {
         super();
+        this.villagerCount = 0;
         this.setCoordBaseMode(facing);
         this.boundingBox = structureBox;
     }
 
     public static VillageComponentArcheologistHouse buildComponent(StructureVillagePieces.Start startPiece, List<StructureComponent> pieces, Random random, int x, int y, int z, EnumFacing facing, int p5) {
-        StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(x, y, z, 0, 0, 0, 12, 12, 9, facing);
+        StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(x, y, z, -7, 0, -6, 7, 12, 6, facing);
         return canVillageGoDeeper(structureboundingbox) && StructureComponent.findIntersecting(pieces, structureboundingbox) == null ? new VillageComponentArcheologistHouse(startPiece, p5, random, structureboundingbox, facing) : null;
     }
     @Override
@@ -35,8 +37,8 @@ public class VillageComponentArcheologistHouse extends StructureVillagePieces.Vi
             }
             this.boundingBox.offset(0, this.averageGroundLevel - this.boundingBox.maxY + 4, 0);
         }
-        BlockPos blockpos = new BlockPos(this.getXWithOffset(2, 4), this.getYWithOffset(0), this.getZWithOffset(2, 4));
-        return new WorldGenArcheologistHouse(this.getCoordBaseMode()).generate(world, random, blockpos.up());
+        BlockPos blockpos = new BlockPos(this.getXWithOffset(0, 0), this.getYWithOffset(0), this.getZWithOffset(0, 0));
+        return new WorldGenArcheologistHouse(this,  this.getCoordBaseMode()).generate(world, random, blockpos.up());
     }
 
 }

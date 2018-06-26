@@ -38,6 +38,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.VillagerRegistry;
 
 import java.lang.reflect.Field;
 
@@ -51,6 +52,10 @@ public class ServerProxy implements IGuiHandler {
     public static final int GUI_TIME_MACHINE = 5;
     public static final int GUI_DINOPEDIA = 6;
 
+    @SubscribeEvent
+    public static void registerVillagers(RegistryEvent.Register<VillagerRegistry.VillagerProfession> event) {
+        event.getRegistry().register(FAVillagerRegistry.ARCHEOLOGIST_PROFESSION);
+    }
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
         try {
