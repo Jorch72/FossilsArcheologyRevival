@@ -10,6 +10,8 @@ import fossilsarcheology.server.api.DefaultRenderedItem;
 import fossilsarcheology.server.api.IgnoreRenderProperty;
 import fossilsarcheology.server.api.SubtypeRenderedItem;
 import fossilsarcheology.server.block.FABlockRegistry;
+import fossilsarcheology.server.block.FigurineBlock;
+import fossilsarcheology.server.block.VaseBlock;
 import fossilsarcheology.server.block.entity.*;
 import fossilsarcheology.server.container.CultivateContainer;
 import fossilsarcheology.server.entity.EntityFishBase;
@@ -57,6 +59,10 @@ public class ClientProxy extends ServerProxy {
     @SideOnly(Side.CLIENT)
     public static void registerModels(ModelRegistryEvent event) {
         ModelLoader.setCustomStateMapper(FABlockRegistry.PALM_LEAVES, (new StateMap.Builder()).ignore(BlockLeaves.CHECK_DECAY, BlockLeaves.DECAYABLE).build());
+        ModelLoader.setCustomStateMapper(FABlockRegistry.VOLUTE_VASE, (new StateMap.Builder()).ignore(VaseBlock.VARIANT).build());
+        ModelLoader.setCustomStateMapper(FABlockRegistry.AMPHORA_VASE, (new StateMap.Builder()).ignore(VaseBlock.VARIANT).build());
+        ModelLoader.setCustomStateMapper(FABlockRegistry.KYLIX_VASE, (new StateMap.Builder()).ignore(VaseBlock.VARIANT).build());
+        ModelLoader.setCustomStateMapper(FABlockRegistry.FIGURINE, (new StateMap.Builder()).ignore(FigurineBlock.VARIANT).build());
         for (Block block : FABlockRegistry.BLOCKS) {
             if (block instanceof IgnoreRenderProperty) {
                 IProperty<?>[] ignoredProperties = ((IgnoreRenderProperty) block).getIgnoredProperties();

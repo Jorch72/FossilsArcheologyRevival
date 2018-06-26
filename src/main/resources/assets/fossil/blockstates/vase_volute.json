@@ -1,7 +1,8 @@
 {
   "variants": {
     "normal": {
-      "model": "fossil:vase"
+      "model": "fossil:vase",
+      "y": -90
     },
     "inventory": {
       "model": "fossil:vase_volute_0"

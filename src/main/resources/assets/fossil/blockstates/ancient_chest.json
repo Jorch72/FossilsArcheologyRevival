@@ -1,7 +1,20 @@
 {
   "variants": {
-    "normal": {
-      "model": "fossil:anu_statue"
+    "facing=north": {
+      "model": "fossil:ancient_chest",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "fossil:ancient_chest",
+      "y": 0
+    },
+    "facing=west": {
+      "model": "fossil:ancient_chest",
+      "y": -270
+    },
+    "facing=east": {
+      "model": "fossil:ancient_chest",
+      "y": -90
     },
     "inventory": {
       "model": "fossil:ancient_chest"

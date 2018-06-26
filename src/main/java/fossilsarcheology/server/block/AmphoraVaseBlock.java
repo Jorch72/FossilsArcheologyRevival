@@ -1,6 +1,7 @@
 package fossilsarcheology.server.block;
 
 import fossilsarcheology.server.block.entity.TileEntityAmphora;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 

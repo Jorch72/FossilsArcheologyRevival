@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "fossil:items/vases/vase_icon_amphora_0"
+    "all": "fossil:items/vases/vase_icon_volute_0"
   }
 }

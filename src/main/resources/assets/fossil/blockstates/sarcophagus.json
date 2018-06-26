@@ -1,7 +1,20 @@
 {
   "variants": {
-    "normal": {
-      "model": "fossil:sarcophagus"
+    "facing=north": {
+      "model": "fossil:sarcophagus",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "fossil:sarcophagus",
+      "y": 0
+    },
+    "facing=west": {
+      "model": "fossil:sarcophagus",
+      "y": -270
+    },
+    "facing=east": {
+      "model": "fossil:sarcophagus",
+      "y": -90
     },
     "inventory": {
       "model": "fossil:sarcophagus"

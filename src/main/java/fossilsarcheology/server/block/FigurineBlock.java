@@ -1,11 +1,13 @@
 package fossilsarcheology.server.block;
 
 import fossilsarcheology.server.api.BlockEntity;
+import fossilsarcheology.server.api.IgnoreRenderProperty;
 import fossilsarcheology.server.block.entity.TileEntityFigurine;
 import fossilsarcheology.server.tab.FATabRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -28,7 +30,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 
-public class FigurineBlock extends BlockContainer implements IBlockItem, BlockEntity {
+public class FigurineBlock extends BlockContainer implements IBlockItem, BlockEntity, IgnoreRenderProperty {
     public static final PropertyEnum<FigurineBlock.EnumType> VARIANT = PropertyEnum.create("variant", FigurineBlock.EnumType.class);
     public static final AxisAlignedBB AABB = new AxisAlignedBB(0.25f, 0f, 0.25f, 0.75f, 0.5f, 0.75f);
 
@@ -37,6 +39,11 @@ public class FigurineBlock extends BlockContainer implements IBlockItem, BlockEn
         this.setCreativeTab(FATabRegistry.BLOCKS);
         this.setUnlocalizedName("figurine");
         this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumType.FIGURINE_STEVE_PRISTINE));
+    }
+
+    @Override
+    public IProperty[] getIgnoredProperties() {
+        return new IProperty[]{VARIANT};
     }
 
     @SuppressWarnings("deprecation")

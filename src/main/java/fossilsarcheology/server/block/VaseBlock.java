@@ -1,12 +1,14 @@
 package fossilsarcheology.server.block;
 
 import fossilsarcheology.server.api.BlockEntity;
+import fossilsarcheology.server.api.IgnoreRenderProperty;
 import fossilsarcheology.server.api.SubtypeRenderedItem;
 import fossilsarcheology.server.block.entity.TileEntityVase;
 import fossilsarcheology.server.tab.FATabRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -21,7 +23,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public abstract class VaseBlock extends BlockContainer implements BlockEntity, IBlockItem, SubtypeRenderedItem {
+public abstract class VaseBlock extends BlockContainer implements BlockEntity, IBlockItem, SubtypeRenderedItem, IgnoreRenderProperty {
     public static final PropertyEnum<VaseVariant> VARIANT = PropertyEnum.create("variant", VaseVariant.class);
 
     protected VaseBlock(String type) {
@@ -29,6 +31,11 @@ public abstract class VaseBlock extends BlockContainer implements BlockEntity, I
         this.setCreativeTab(FATabRegistry.BLOCKS);
         this.setUnlocalizedName("vase_" + type);
         this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, VaseVariant.DAMAGED));
+    }
+
+    @Override
+    public IProperty[] getIgnoredProperties() {
+        return new IProperty[]{VARIANT};
     }
 
     @Override
