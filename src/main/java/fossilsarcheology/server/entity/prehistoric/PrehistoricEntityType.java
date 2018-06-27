@@ -4,6 +4,7 @@ import fossilsarcheology.server.item.*;
 import fossilsarcheology.server.tab.FATabRegistry;
 import io.netty.util.internal.ThreadLocalRandom;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.monster.EntityPolarBear;
 import net.minecraft.entity.passive.*;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
@@ -19,7 +20,12 @@ public enum PrehistoricEntityType {
 	COW(EntityCow.class, MobType.VANILLA, TimePeriod.CURRENT, Diet.HERBIVORE, Parameter.NOTHING, 0, 0),
 	SHEEP(EntitySheep.class, MobType.VANILLA, TimePeriod.CURRENT, Diet.HERBIVORE, Parameter.NOTHING, 0, 0),
 	HORSE(EntityHorse.class, MobType.VANILLA, TimePeriod.CURRENT, Diet.HERBIVORE, Parameter.NOTHING, 0, 0),
+	DONKEY(EntityDonkey.class, MobType.VANILLA, TimePeriod.CURRENT, Diet.HERBIVORE, Parameter.NOTHING, 0, 0),
 	CHICKEN(EntityChicken.class, MobType.CHICKEN, TimePeriod.CURRENT, Diet.HERBIVORE, Parameter.NOTHING, 0, 0),
+	PARROT(EntityParrot.class, MobType.CHICKEN, TimePeriod.CURRENT, Diet.HERBIVORE, Parameter.NOTHING, 0, 0),
+	POLARBEAR(EntityPolarBear.class, MobType.VANILLA, TimePeriod.CURRENT, Diet.HERBIVORE, Parameter.NOTHING, 0, 0),
+	RABBIT(EntityRabbit.class, MobType.VANILLA, TimePeriod.CURRENT, Diet.HERBIVORE, Parameter.NOTHING, 0, 0),
+	LLAMA(EntityLlama.class, MobType.VANILLA, TimePeriod.CURRENT, Diet.HERBIVORE, Parameter.NOTHING, 0, 0),
 	NAUTILUS(EntityNautilus.class, MobType.FISH, TimePeriod.MESOZOIC, Diet.NONE, Parameter.NOTHING, 0XC55F47, 0XF5F5F5),
 	COELACANTH(EntityCoelacanth.class, MobType.FISH, TimePeriod.MESOZOIC, Diet.NONE, Parameter.NOTHING, 0X363941, 0X9BA1A9),
 	ALLIGATOR_GAR(EntityAlligatorGar.class, MobType.FISH, TimePeriod.MESOZOIC, Diet.NONE, Parameter.NOTHING, 0X43462A, 0XAF4231),

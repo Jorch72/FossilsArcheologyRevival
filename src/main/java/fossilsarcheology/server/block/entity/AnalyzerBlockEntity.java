@@ -176,7 +176,12 @@ public class AnalyzerBlockEntity extends TileEntity implements IInventory, ISide
 		for (int slot = 0; slot < 9; ++slot) {
 			if (!this.stacks.get(slot).isEmpty()) {
 				Item item = this.stacks.get(slot).getItem();
-				if (PrehistoricEntityType.isFoodItem(this.stacks.get(slot).getItem()) || (item instanceof DinosaurBoneItem) || (item == FAItemRegistry.BIOFOSSIL) || (item == FAItemRegistry.TAR_FOSSIL) || (item == FAItemRegistry.TARDROP) || (item == FAItemRegistry.FAILURESAURUS_FLESH) || (item == FAItemRegistry.RELIC_SCRAP) || (item == Items.PORKCHOP) || (item == Items.BEEF) || (item == Items.EGG) || (item == Items.CHICKEN) || (item == Item.getItemFromBlock(Blocks.WOOL)) || (item == FAItemRegistry.ICED_MEAT) ||  (item == Items.LEATHER) || (item == FAItemRegistry.PLANT_FOSSIL)) {
+				if (PrehistoricEntityType.isFoodItem(this.stacks.get(slot).getItem()) || (item instanceof DinosaurBoneItem) || (item == FAItemRegistry.BIOFOSSIL) || (item == FAItemRegistry.TAR_FOSSIL)
+						|| (item == FAItemRegistry.TARDROP) || (item == FAItemRegistry.FAILURESAURUS_FLESH) || (item == FAItemRegistry.RELIC_SCRAP) ||
+						(item == Items.PORKCHOP) || (item == Items.BEEF) || (item == Items.EGG) || (item == Items.CHICKEN)
+						|| (item == Item.getItemFromBlock(Blocks.WOOL)) || (item == FAItemRegistry.ICED_MEAT) ||  (item == Items.LEATHER)
+						|| (item == FAItemRegistry.PLANT_FOSSIL) || (item == Items.FISH) || (item == Items.FEATHER) || (item == Items.MUTTON)
+						|| (item == Items.RABBIT) || (item == Items.RABBIT_FOOT) || (item == Items.RABBIT_HIDE)) {
 					this.rawIndex = slot;
 					break;
 				}
@@ -264,14 +269,30 @@ public class AnalyzerBlockEntity extends TileEntity implements IInventory, ISide
 				if ((random).nextInt(50) <= 30) {
 					output = new ItemStack(Items.STRING, 4);
 				} else {
-					output = new ItemStack(PrehistoricEntityType.SHEEP.dnaItem, 1);
+					if(random.nextInt(2) == 0){
+						output = new ItemStack(PrehistoricEntityType.LLAMA.dnaItem, 1);
+					}else{
+						output = new ItemStack(PrehistoricEntityType.SHEEP.dnaItem, 1);
+					}
 				}
 			} else if (PrehistoricEntityType.getDNA(rawItem) != null) {
 				output = new ItemStack(PrehistoricEntityType.getDNA(rawItem), 1);
 			} else if (rawItem == Items.PORKCHOP) {
 				output = new ItemStack(PrehistoricEntityType.PIG.dnaItem, 2);
+			} else if (rawItem == Items.FISH) {
+				if(random.nextInt(10) == 0) {
+					output = new ItemStack(PrehistoricEntityType.POLARBEAR.dnaItem, 1);
+				}else{
+					if(random.nextInt(5) == 0) {
+						output = new ItemStack(Items.PRISMARINE_CRYSTALS, 1);
+					}else{
+						output = new ItemStack(Items.DYE, 1, 15);
+					}
+				}
 			} else if (rawItem == Items.BEEF) {
 				output = new ItemStack(PrehistoricEntityType.COW.dnaItem, 2);
+			} else if (rawItem == Items.MUTTON) {
+				output = new ItemStack(PrehistoricEntityType.SHEEP.dnaItem, 2);
 			} else if (rawItem == FAItemRegistry.FAILURESAURUS_FLESH) {
 				int randChoice = random.nextInt(3);
 				if (randChoice == 0) {
@@ -280,15 +301,27 @@ public class AnalyzerBlockEntity extends TileEntity implements IInventory, ISide
 					output = new ItemStack(PrehistoricEntityType.getRandom().dnaItem, 1);
 				}
 			} else if (rawItem == Items.LEATHER) {
-				if (random.nextInt(10) > 3) {
+				if (random.nextInt(10) > 4) {
 					output = new ItemStack(PrehistoricEntityType.COW.dnaItem, 1);
 				} else {
-					output = new ItemStack(PrehistoricEntityType.HORSE.dnaItem, 1);
+					if(random.nextInt(3) == 0){
+						output = new ItemStack(PrehistoricEntityType.DONKEY.dnaItem, 1);
+					}else{
+						output = new ItemStack(PrehistoricEntityType.HORSE.dnaItem, 1);
+					}
 				}
+			} else if (rawItem == Items.RABBIT || rawItem == Items.RABBIT_FOOT || rawItem == Items.RABBIT_HIDE) {
+				output = new ItemStack(PrehistoricEntityType.RABBIT.dnaItem, 1);
 			} else if (rawItem == Items.EGG) {
 				output = new ItemStack(PrehistoricEntityType.CHICKEN.dnaItem, 1);
 			} else if (rawItem == Items.CHICKEN) {
 				output = new ItemStack(PrehistoricEntityType.CHICKEN.dnaItem, 1);
+			} else if (rawItem == Items.FEATHER) {
+				if(random.nextInt(3) == 0){
+					output = new ItemStack(PrehistoricEntityType.PARROT.dnaItem, 1);
+				}else{
+					output = new ItemStack(PrehistoricEntityType.CHICKEN.dnaItem, 1);
+				}
 			} else if (rawItem == FAItemRegistry.ICED_MEAT) {
 				if (rand >= 15) {
 					output = new ItemStack(Items.CHICKEN, 1);
