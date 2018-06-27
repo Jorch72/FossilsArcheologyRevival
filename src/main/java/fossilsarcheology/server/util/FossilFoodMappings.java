@@ -62,6 +62,8 @@ public class FossilFoodMappings {
 		FoodMappings.INSTANCE.addMeat(new ItemStack(Items.PORKCHOP), 35);
 		FoodMappings.INSTANCE.addMeat(new ItemStack(Items.COOKED_PORKCHOP), 55);
 		FoodMappings.INSTANCE.addMeat(new ItemStack(FAItemRegistry.FAILURESAURUS_FLESH), 15);
+		FoodMappings.INSTANCE.addMeat(new ItemStack(Items.MUTTON), 30);
+		FoodMappings.INSTANCE.addMeat(new ItemStack(Items.COOKED_MUTTON), 50);
 
 		FoodMappings.INSTANCE.addEgg(new ItemStack(Items.EGG), 7);
 
