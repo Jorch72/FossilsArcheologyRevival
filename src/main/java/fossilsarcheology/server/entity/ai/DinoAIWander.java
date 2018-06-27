@@ -26,7 +26,7 @@ public class DinoAIWander extends EntityAIBase {
 		}
 		if (this.prehistoric.getAgeInTicks() <= 100) {
 			return false;
-		} else if (this.prehistoric.getRNG().nextInt(20) != 0) {
+		} else if (this.prehistoric.getRNG().nextInt(10) != 0) {
 			return false;
 		} else {
 			Vec3d vec3 = RandomPositionGenerator.findRandomTarget(

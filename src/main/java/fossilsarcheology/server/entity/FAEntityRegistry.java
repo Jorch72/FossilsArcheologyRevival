@@ -90,6 +90,6 @@ public class FAEntityRegistry {
 		if (Loader.isModLoaded("thaumcraft")) {
 			ThaumcraftCompatBridge.registerAspects();
 		}
-		EntityRegistry.registerModEntity(new ResourceLocation(Revival.MODID, "" + name), entityClass, name, id, Revival.INSTANCE, 64, 5, true, mainColor, subColor);
+		EntityRegistry.registerModEntity(new ResourceLocation(Revival.MODID, "" + name), entityClass, name, id, Revival.INSTANCE, 64, 1, true, mainColor, subColor);
 	}
 }

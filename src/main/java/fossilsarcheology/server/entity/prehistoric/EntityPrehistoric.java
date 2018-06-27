@@ -40,10 +40,7 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -121,7 +118,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
         super(world);
         this.aiSit = new EntityAISit(this);
         this.setHunger(this.getMaxHunger() / 2);
-        this.setScale(this.getAgeScale());
+        this.setScaleForAge(false);
         SPEAK_ANIMATION = Animation.create(this.getSpeakLength());
         ATTACK_ANIMATION = Animation.create(this.getAttackLength());
         this.hasBabyTexture = true;
@@ -681,7 +678,6 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
         if (this.getAgeInTicks() % 24000 == 0) {
             this.updateAbilities();
         }
-
         if (this.getAgeInTicks() % 1200 == 0 && this.getHunger() > 0 && Revival.CONFIG.starvingDinos) {
             this.setHunger(this.getHunger() - 1);
         }
@@ -844,7 +840,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
 
     @Override
     public void setScaleForAge(boolean child) {
-        this.setScale(Math.min(this.getAgeScale(), 4F));
+       this.setScale(Math.min(this.getAgeScale() * 0.85F, 4F));
     }
 
     public Entity createEgg(EntityAgeable entity) {
@@ -895,7 +891,6 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
 
     public void setAgeInDays(int days) {
         this.dataManager.set(AGETICK, days * 24000);
-        this.updateAbilities();
     }
 
     public int getAgeInTicks() {
@@ -1162,7 +1157,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
                                 player.inventory.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE, 1));
                             }
                             Revival.NETWORK_WRAPPER.sendToAll(new MessageFoodParticles(getEntityId(), Item.getIdFromItem(FAItemRegistry.CHICKEN_ESSENCE)));
-                            this.setAgeInDays(this.getAgeInDays() + 1);
+                            this.grow(1);
                             this.setHunger(1 + (new Random()).nextInt(this.getHunger()));
                             return true;
                         }
@@ -1274,6 +1269,25 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
     private void triggerTamingAcheivement(EntityPlayer player) {
         // player.triggerAchievement(FossilAchievementHandler.theKing);
 
+    }
+
+    public void grow(int ageInDays) {
+        this.setAgeInDays(this.getAgeInDays() + ageInDays);
+        this.setScaleForAge(false);
+        if (this.getAgeInDays() % 25 == 0) {
+            for (int i = 0; i < this.getAgeScale() * 4; i++) {
+                double motionX = getRNG().nextGaussian() * 0.07D;
+                double motionY = getRNG().nextGaussian() * 0.07D;
+                double motionZ = getRNG().nextGaussian() * 0.07D;
+                float f = (float) (getRNG().nextFloat() * (this.getEntityBoundingBox().maxX - this.getEntityBoundingBox().minX) + this.getEntityBoundingBox().minX);
+                float f1 = (float) (getRNG().nextFloat() * (this.getEntityBoundingBox().maxY - this.getEntityBoundingBox().minY) + this.getEntityBoundingBox().minY);
+                float f2 = (float) (getRNG().nextFloat() * (this.getEntityBoundingBox().maxZ - this.getEntityBoundingBox().minZ) + this.getEntityBoundingBox().minZ);
+                if (world.isRemote) {
+                    this.world.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, f, f1, f2, motionX, motionY, motionZ, new int[]{});
+                }
+            }
+        }
+        this.updateAbilities();
     }
 
     public boolean isWeak() {
@@ -1506,8 +1520,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
             } else {
                 if (hatchling instanceof EntityPrehistoric) {
                     ((EntityPrehistoric) hatchling).onInitialSpawn(null, null);
-                    ((EntityPrehistoric) hatchling).setAgeInDays(1);
-                    ((EntityPrehistoric) hatchling).updateAbilities();
+                    ((EntityPrehistoric) hatchling).grow(1);
                     ((EntityPrehistoric) hatchling).setHealth((float) this.baseHealth);
                 }
             }
@@ -1702,7 +1715,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
         if (entity instanceof EntityPrehistoric) {
             ((EntityPrehistoric) baby).onInitialSpawn(null, null);
             ((EntityPrehistoric) baby).setAgeInDays(0);
-            ((EntityPrehistoric) baby).updateAbilities();
+            ((EntityPrehistoric) baby).grow(0);
             ((EntityPrehistoric) baby).setHealth((float) this.baseHealth);
             return ((EntityPrehistoric) baby);
         }
