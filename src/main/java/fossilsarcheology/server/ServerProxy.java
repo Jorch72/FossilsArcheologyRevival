@@ -244,7 +244,7 @@ public class ServerProxy implements IGuiHandler {
     public void stopSound(SoundEvent sound) {
     }
 
-    public net.minecraft.client.model.ModelBiped getArmorModel(int id) {
+    public Object getArmorModel(int id) {
         return null;
     }
 }

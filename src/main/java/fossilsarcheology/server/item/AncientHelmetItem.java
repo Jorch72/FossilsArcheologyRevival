@@ -3,7 +3,6 @@ package fossilsarcheology.server.item;
 import fossilsarcheology.Revival;
 import fossilsarcheology.server.api.DefaultRenderedItem;
 import fossilsarcheology.server.tab.FATabRegistry;
-import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
@@ -20,17 +19,17 @@ public class AncientHelmetItem extends ItemArmor implements DefaultRenderedItem 
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, ModelBiped _default) {
-		ModelBiped armorModel = new ModelBiped();
+	public net.minecraft.client.model.ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot, net.minecraft.client.model.ModelBiped _default) {
+		net.minecraft.client.model.ModelBiped armorModel = new net.minecraft.client.model.ModelBiped();
 
 		if (itemStack != null) {
 			if (itemStack.getItem() instanceof AncientHelmetItem) {
 
 				EntityEquipmentSlot type = ((ItemArmor) itemStack.getItem()).armorType;
 				if (type == EntityEquipmentSlot.CHEST || type == EntityEquipmentSlot.HEAD || type == EntityEquipmentSlot.FEET) {
-					armorModel = Revival.PROXY.getArmorModel(0);
+					armorModel = (net.minecraft.client.model.ModelBiped)Revival.PROXY.getArmorModel(0);
 				} else {
-					armorModel = Revival.PROXY.getArmorModel(1);
+					armorModel = (net.minecraft.client.model.ModelBiped)Revival.PROXY.getArmorModel(1);
 				}
 			}
 			if (armorModel != null) {

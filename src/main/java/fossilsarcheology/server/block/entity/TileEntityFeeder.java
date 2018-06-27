@@ -229,7 +229,9 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 				}
 			}
 		}
-		Revival.NETWORK_WRAPPER.sendToAll(new MessageUpdateFeeder(this.pos.toLong(), currentMeat, currentPlant));
+		if(!world.isRemote) {
+			Revival.NETWORK_WRAPPER.sendToAll(new MessageUpdateFeeder(this.pos.toLong(), currentMeat, currentPlant));
+		}
 		FeederBlock.updateFeederBlockState(this.currentPlant > 0, this.currentMeat > 0, this.world, this.pos);
 		mob.setHunger(mob.getHunger() + feedamount);
 		return feedamount;
