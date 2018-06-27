@@ -1236,7 +1236,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
                             this.setMood(this.getMood() - 1);
                             Revival.NETWORK_WRAPPER.sendToAll(new MessageFoodParticles(getEntityId(), FABlockRegistry.VOLCANIC_ROCK));
                             if (getRNG().nextInt(5) == 0) {
-                                player.sendStatusMessage(new TextComponentString(I18n.format("prehistoric.autotame") + this.getDisplayName().toString() + I18n.format("prehistoric.period")), false);
+                                player.sendStatusMessage(new TextComponentString(I18n.format("prehistoric.autotame") + " " + this.getDisplayName().getFormattedText() + I18n.format("prehistoric.period")), false);
                                 this.setMood(this.getMood() - 25);
                                 this.setTamed(true);
                                 Revival.NETWORK_WRAPPER.sendToAll(new MessageFoodParticles(getEntityId(), Item.getIdFromItem(Items.GOLD_INGOT)));
