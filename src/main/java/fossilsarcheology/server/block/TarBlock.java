@@ -1,5 +1,6 @@
 package fossilsarcheology.server.block;
 
+import fossilsarcheology.server.entity.monster.EntityTarSlime;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
 import net.minecraft.block.material.Material;
@@ -16,7 +17,9 @@ import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.Random;
 
 public class TarBlock extends BlockFluidClassic {
 	public TarBlock() {
@@ -36,6 +39,19 @@ public class TarBlock extends BlockFluidClassic {
 	@Nullable
 	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 		return NULL_AABB;
+	}
+
+	@Override
+	public void updateTick(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull IBlockState state, @Nonnull Random rand) {
+		super.updateTick(world, pos, state, rand);
+		if(rand.nextInt(this.isSourceBlock(world, pos) ? 50 : 250) == 0){
+			EntityTarSlime tarSlime = new EntityTarSlime(world);
+			tarSlime.onInitialSpawn(world.getDifficultyForLocation(pos), null);
+			tarSlime.setPositionAndRotation(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, 0, 0);
+			if(!world.isRemote){
+				world.spawnEntity(tarSlime);
+			}
+		}
 	}
 
 	@Override
@@ -69,7 +85,12 @@ public class TarBlock extends BlockFluidClassic {
 
 	@Override
 	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
-		if (entity instanceof EntityLivingBase) {
+		if (entity instanceof EntityTarSlime) {
+			EntityLivingBase living = (EntityLivingBase) entity;
+			living.motionY += 0.01F;
+			living.fallDistance = 0;
+		}
+		else if (entity instanceof EntityLivingBase) {
 			EntityLivingBase living = (EntityLivingBase) entity;
 			living.motionX *= 0.1;
 			living.motionZ *= 0.1;
