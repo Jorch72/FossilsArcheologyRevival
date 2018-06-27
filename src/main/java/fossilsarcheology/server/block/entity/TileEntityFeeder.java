@@ -1,9 +1,11 @@
 package fossilsarcheology.server.block.entity;
 
+import fossilsarcheology.Revival;
 import fossilsarcheology.server.block.FeederBlock;
 import fossilsarcheology.server.entity.prehistoric.Diet;
 import fossilsarcheology.server.entity.prehistoric.EntityPrehistoric;
 import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityType;
+import fossilsarcheology.server.message.MessageUpdateFeeder;
 import fossilsarcheology.server.util.FoodMappings;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -207,7 +209,6 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 
 	public int feedDinosaur(EntityPrehistoric mob) {
 		int feedamount = 0;
-
 		if (!this.isEmpty(mob.type)) {
 			if (mob.type.diet == Diet.CARNIVORE || mob.type.diet == Diet.CARNIVORE_EGG || mob.type.diet == Diet.PISCCARNIVORE) {
 				currentMeat--;
@@ -228,6 +229,7 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 				}
 			}
 		}
+		Revival.NETWORK_WRAPPER.sendToAll(new MessageUpdateFeeder(this.pos.toLong(), currentMeat, currentPlant));
 		FeederBlock.updateFeederBlockState(this.currentPlant > 0, this.currentMeat > 0, this.world, this.pos);
 		mob.setHunger(mob.getHunger() + feedamount);
 		return feedamount;

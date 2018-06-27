@@ -25,8 +25,6 @@ import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.ISound;
-import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMap;
@@ -196,12 +194,16 @@ public class ClientProxy extends ServerProxy {
         return id == 0 ? helmetModel : null;
     }
 
+    @Override
+    @SideOnly(Side.CLIENT)
     public void playSound(SoundEvent sound) {
-        Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMusicRecord(sound));
+        Minecraft.getMinecraft().getSoundHandler().playSound(net.minecraft.client.audio.PositionedSoundRecord.getMusicRecord(sound));
     }
 
+    @Override
+    @SideOnly(Side.CLIENT)
     public void stopSound(SoundEvent sound) {
-        ISound isound = PositionedSoundRecord.getMusicRecord(sound);
+        net.minecraft.client.audio.ISound isound = net.minecraft.client.audio.PositionedSoundRecord.getMusicRecord(sound);
         if (Minecraft.getMinecraft().getSoundHandler().isSoundPlaying(isound)) {
             Minecraft.getMinecraft().getSoundHandler().stopSound(isound);
         }

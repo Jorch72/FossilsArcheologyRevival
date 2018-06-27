@@ -29,7 +29,7 @@ public class Revival {
 
 	@SidedProxy(clientSide = "fossilsarcheology.client.ClientProxy", serverSide = "fossilsarcheology.server.ServerProxy")
 	public static ServerProxy PROXY;
-	@NetworkWrapper({MessageFoodParticles.class, MessageSetDay.class, MessageHappyParticles.class, MessageUpdateEgg.class, MessageRollBall.class})
+	@NetworkWrapper({MessageFoodParticles.class, MessageSetDay.class, MessageHappyParticles.class, MessageUpdateEgg.class, MessageRollBall.class, MessageUpdateFeeder.class})
 	public static SimpleNetworkWrapper NETWORK_WRAPPER;
 	@Config
 	public static FossilConfig CONFIG;
