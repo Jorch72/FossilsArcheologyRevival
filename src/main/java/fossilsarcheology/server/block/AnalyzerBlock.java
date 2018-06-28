@@ -51,11 +51,15 @@ public class AnalyzerBlock extends BlockContainer implements DefaultRenderedItem
 
 	public static void setState(boolean isActive, World world, BlockPos pos) {
 		TileEntity tile = world.getTileEntity(pos);
+		EnumFacing facing = EnumFacing.NORTH;
+		if(world.getBlockState(pos).getBlock() instanceof AnalyzerBlock){
+			facing = world.getBlockState(pos).getValue(FACING);
+		}
 		keepInventory = true;
 		if (isActive) {
-			world.setBlockState(pos, FABlockRegistry.ANALYZER_ACTIVE.getDefaultState());
+			world.setBlockState(pos, FABlockRegistry.ANALYZER_ACTIVE.getDefaultState().withProperty(FACING, facing));
 		} else {
-			world.setBlockState(pos, FABlockRegistry.ANALYZER.getDefaultState());
+			world.setBlockState(pos, FABlockRegistry.ANALYZER.getDefaultState().withProperty(FACING, facing));
 		}
 		keepInventory = false;
 		if (tile != null) {
