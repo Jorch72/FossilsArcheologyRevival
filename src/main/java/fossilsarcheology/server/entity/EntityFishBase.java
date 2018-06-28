@@ -52,7 +52,7 @@ public abstract class EntityFishBase extends EntityTameable {
             this.chainBuffer = new ChainBuffer();
         }
     }
-    
+
     protected void initEntityAI() {
         this.tasks.addTask(0, new FishAIFindWaterTarget(this));
         this.tasks.addTask(1, new EntityAILookIdle(this));

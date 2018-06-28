@@ -19,7 +19,7 @@ public class LayerCompsognathusEyes<T extends EntityPrehistoric> implements Laye
 
 	@Override
 	public void doRenderLayer(T entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-		if (!entity.isSleeping()) {
+		if (!entity.isSleeping() && !entity.isSkeleton()) {
 			GlStateManager.disableLighting();
 			this.prehistoric.bindTexture(EYES);
 			this.prehistoric.getMainModel().render(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
