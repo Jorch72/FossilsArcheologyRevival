@@ -15,6 +15,7 @@ import net.minecraft.entity.ai.EntityMoveHelper;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
@@ -43,6 +44,7 @@ public abstract class EntityFishBase extends EntityTameable {
 
     public EntityFishBase(World world, PrehistoricEntityType selfType) {
         super(world);
+        this.spawnableBlock = Blocks.WATER;
         this.moveHelper = new EntityFishBase.SwimmingMoveHelper();
         this.navigator = new PathNavigateSwimmer(this, world);
         this.selfType = selfType;
@@ -50,7 +52,7 @@ public abstract class EntityFishBase extends EntityTameable {
             this.chainBuffer = new ChainBuffer();
         }
     }
-
+    
     protected void initEntityAI() {
         this.tasks.addTask(0, new FishAIFindWaterTarget(this));
         this.tasks.addTask(1, new EntityAILookIdle(this));
