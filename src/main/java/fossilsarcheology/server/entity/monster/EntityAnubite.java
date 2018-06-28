@@ -1,10 +1,12 @@
 package fossilsarcheology.server.entity.monster;
 
+import com.google.common.base.Predicate;
 import fossilsarcheology.server.item.FAItemRegistry;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
+import net.minecraft.entity.monster.EntityEndermite;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityVillager;
@@ -16,6 +18,8 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
 
 public class EntityAnubite extends EntityMob {
 
@@ -32,7 +36,11 @@ public class EntityAnubite extends EntityMob {
 		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityLiving.class, 6.0F));
 		this.tasks.addTask(7, new EntityAILookIdle(this));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
-		this.targetTasks.addTask(2, new AnubiteAIAttackPlayer(this));
+		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 1, true, false, new Predicate<EntityPlayer>() {
+			public boolean apply(@Nullable EntityPlayer p_apply_1_) {
+				return EntityAnubite.this.shouldAttackPlayer(p_apply_1_);
+			}
+		}));
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityAnimal.class, true));
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, true));
 
@@ -139,64 +147,5 @@ public class EntityAnubite extends EntityMob {
 		}
 		return super.attackEntityAsMob(entity);
 
-	}
-
-	static class AnubiteAIAttackPlayer extends EntityAINearestAttackableTarget<EntityPlayer> {
-		private final EntityAnubite anubite;
-		private EntityPlayer player;
-		private int teleportTime;
-
-		public AnubiteAIAttackPlayer(EntityAnubite anubite) {
-			super(anubite, EntityPlayer.class, false);
-			this.anubite = anubite;
-		}
-
-		@Override
-		public boolean shouldExecute() {
-			double range = this.getTargetDistance();
-			this.player = this.anubite.world.getNearestAttackablePlayer(this.anubite.posX, this.anubite.posY, this.anubite.posZ, range, range, null, player -> player != null && AnubiteAIAttackPlayer.this.anubite.shouldAttackPlayer(player));
-			return this.player != null;
-		}
-
-		@Override
-		public void startExecuting() {
-			this.teleportTime = 0;
-		}
-
-		@Override
-		public void resetTask() {
-			this.player = null;
-			super.resetTask();
-		}
-
-		@Override
-		public boolean shouldContinueExecuting() {
-			if (this.player != null) {
-				if (!this.anubite.shouldAttackPlayer(this.player)) {
-					return false;
-				} else {
-					this.anubite.faceEntity(this.player, 10.0F, 10.0F);
-					return true;
-				}
-			} else {
-				return this.targetEntity != null && this.targetEntity.isEntityAlive() || super.shouldContinueExecuting();
-			}
-		}
-
-		@Override
-		public void updateTask() {
-			if (this.targetEntity != null) {
-				if (this.anubite.shouldAttackPlayer(this.targetEntity)) {
-					if (this.targetEntity.getDistanceSq(this.anubite) < 16.0D) {
-						this.anubite.teleportRandomly();
-					}
-
-					this.teleportTime = 0;
-				} else if (this.targetEntity.getDistanceSq(this.anubite) > 256.0D && this.teleportTime++ >= 30 && this.anubite.teleportToEntity(this.targetEntity)) {
-					this.teleportTime = 0;
-				}
-			}
-			super.updateTask();
-		}
 	}
 }
