@@ -11,6 +11,7 @@ import fossilsarcheology.server.api.IgnoreRenderProperty;
 import fossilsarcheology.server.api.SubtypeRenderedItem;
 import fossilsarcheology.server.block.FABlockRegistry;
 import fossilsarcheology.server.block.FigurineBlock;
+import fossilsarcheology.server.block.FossilFenceGateBlock;
 import fossilsarcheology.server.block.VaseBlock;
 import fossilsarcheology.server.block.entity.*;
 import fossilsarcheology.server.container.CultivateContainer;
@@ -32,6 +33,7 @@ import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -61,6 +63,7 @@ public class ClientProxy extends ServerProxy {
         ModelLoader.setCustomStateMapper(FABlockRegistry.AMPHORA_VASE, (new StateMap.Builder()).ignore(VaseBlock.VARIANT).build());
         ModelLoader.setCustomStateMapper(FABlockRegistry.KYLIX_VASE, (new StateMap.Builder()).ignore(VaseBlock.VARIANT).build());
         ModelLoader.setCustomStateMapper(FABlockRegistry.FIGURINE, (new StateMap.Builder()).ignore(FigurineBlock.VARIANT).build());
+        ModelLoader.setCustomStateMapper(FABlockRegistry.PALM_FENCE_GATE, (new StateMap.Builder()).ignore(FossilFenceGateBlock.POWERED).build());
         for (Block block : FABlockRegistry.BLOCKS) {
             if (block instanceof IgnoreRenderProperty) {
                 IProperty<?>[] ignoredProperties = ((IgnoreRenderProperty) block).getIgnoredProperties();

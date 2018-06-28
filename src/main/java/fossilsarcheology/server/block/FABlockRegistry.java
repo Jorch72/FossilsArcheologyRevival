@@ -106,6 +106,7 @@ public class FABlockRegistry {
 	public static final TarBlock TAR = new TarBlock();
 	@GameRegistry.ObjectHolder(Revival.MODID + ":obsidian_spikes")
 	public static final ObsidianSpikesBlock OBSIDIAN_SPIKES = new ObsidianSpikesBlock();
+
 	@GameRegistry.ObjectHolder(Revival.MODID + ":palm_log")
 	public static final PalmLogBlock PALM_LOG = new PalmLogBlock();
 	@GameRegistry.ObjectHolder(Revival.MODID + ":palm_leaves")
@@ -120,6 +121,10 @@ public class FABlockRegistry {
 	public static final FossilSlabBlock PALM_PLANKS_SINGLESLAB = new PalmPlanksSlabBlock.Half("palm_planks_slab", 1.4F, 7.5F, SoundType.WOOD);
 	@GameRegistry.ObjectHolder(Revival.MODID + ":palm_planks_stairs")
 	public static final FossilStairsBlock PALM_PLANKS_STAIRS = new FossilStairsBlock(PALM_PLANKS.getDefaultState(), "palm_stairs");
+	@GameRegistry.ObjectHolder(Revival.MODID + ":palm_fence")
+	public static final FossilFenceBlock PALM_FENCE = new FossilFenceBlock(PALM_PLANKS.getDefaultState(), "palm_fence");
+	@GameRegistry.ObjectHolder(Revival.MODID + ":palm_fence_gate")
+	public static final FossilFenceGateBlock PALM_FENCE_GATE = new FossilFenceGateBlock("palm_fence_gate");
 
 	@GameRegistry.ObjectHolder(Revival.MODID + ":ancient_wood")
 	public static final AncientWoodBlock ANCIENT_WOOD = new AncientWoodBlock();
