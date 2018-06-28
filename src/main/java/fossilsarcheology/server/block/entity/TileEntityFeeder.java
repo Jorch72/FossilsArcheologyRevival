@@ -145,7 +145,9 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 	public void setInventorySlotContents(int index, @Nullable ItemStack stack) {
 		boolean flag = !stack.isEmpty() && stack.isItemEqual(this.stacks.get(index)) && ItemStack.areItemStackTagsEqual(stack, this.stacks.get(index));
 		this.stacks.set(index, stack);
-
+		if(!world.isRemote) {
+			Revival.NETWORK_WRAPPER.sendToAll(new MessageUpdateFeeder(this.pos.toLong(), currentMeat, currentPlant));
+		}
 		if (!stack.isEmpty() && stack.getCount() > this.getInventoryStackLimit()) {
 			stack.setCount(this.getInventoryStackLimit());
 		}

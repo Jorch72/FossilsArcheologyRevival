@@ -458,7 +458,7 @@ public class AnalyzerBlockEntity extends TileEntity implements IInventory, ISide
 
 	@Override
 	public int[] getSlotsForFace(EnumFacing side) {
-		return side == EnumFacing.DOWN ? SLOTS_BOTTOM : (side == EnumFacing.UP ? SLOTS_TOP : SLOTS_SIDES);
+		return side == EnumFacing.DOWN ? SLOTS_BOTTOM : SLOTS_SIDES;
 	}
 
 	@Override

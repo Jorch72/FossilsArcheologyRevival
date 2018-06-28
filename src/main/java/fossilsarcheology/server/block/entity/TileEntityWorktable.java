@@ -22,9 +22,9 @@ import net.minecraft.util.NonNullList;
 import javax.annotation.Nullable;
 
 public class TileEntityWorktable extends TileEntity implements IInventory, ISidedInventory, ITickable {
-    private static final int[] slots_top = new int[] {}; // input
-    private static final int[] slots_bottom = new int[] {}; // output
-    private static final int[] slots_sides = new int[] {};// fuel
+    private static final int[] slots_top = new int[] {1}; // input
+    private static final int[] slots_bottom = new int[] {2}; // output
+    private static final int[] slots_sides = new int[] {0};// fuel
     public int furnaceBurnTime = 0;
     public int currentItemBurnTime = 0;
     public int furnaceCookTime = 0;
@@ -94,7 +94,7 @@ public class TileEntityWorktable extends TileEntity implements IInventory, ISide
 
     @Override
     public boolean isItemValidForSlot(int index, ItemStack stack) {
-        return false;
+        return true;
     }
 
     @Override
@@ -406,7 +406,7 @@ public class TileEntityWorktable extends TileEntity implements IInventory, ISide
 
     @Override
     public int[] getSlotsForFace(EnumFacing side) {
-        return side == EnumFacing.DOWN ? slots_bottom : (side == EnumFacing.UP ? slots_top : slots_sides);
+        return side == EnumFacing.DOWN ? slots_bottom : (side == EnumFacing.UP ? slots_sides : slots_top);
     }
 
     @Override
@@ -416,7 +416,7 @@ public class TileEntityWorktable extends TileEntity implements IInventory, ISide
 
     @Override
     public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
-        return direction != EnumFacing.UP || index != 1 || stack.getItem() == Items.BUCKET;
+        return direction != EnumFacing.DOWN || index != 1 || stack.getItem() == Items.BUCKET;
     }
 
     @Override
