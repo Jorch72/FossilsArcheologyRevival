@@ -16,10 +16,9 @@ public class TileEntityAnubiteStatueRender extends TileEntitySpecialRenderer<Til
 	@Override
 	public void render(TileEntityAnubiteStatue entity, double x, double y, double z, float f, int destroy, float alpha) {
 		EnumFacing facing = EnumFacing.NORTH;
-		if (entity != null && entity.hasWorld()) {
+		if (entity != null && entity.hasWorld() &&entity.getWorld().getBlockState(entity.getPos()) instanceof AnubiteStatueBlock) {
 			facing = entity.getWorld().getBlockState(entity.getPos()).getValue(AnubiteStatueBlock.FACING);
 		}
-
 		GlStateManager.pushMatrix();
 		GlStateManager.translate(x + 0.5F, y + 1.5F, z + 0.5F);
 		GlStateManager.rotate(180, 0F, 0F, 1F);
