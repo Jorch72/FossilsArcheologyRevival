@@ -6,6 +6,7 @@ import fossilsarcheology.server.api.BlockEntity;
 import fossilsarcheology.server.api.DefaultRenderedItem;
 import fossilsarcheology.server.block.entity.TileEntityCultivate;
 import fossilsarcheology.server.entity.monster.EntityFailuresaurus;
+import fossilsarcheology.server.item.FAItemRegistry;
 import fossilsarcheology.server.tab.FATabRegistry;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
@@ -89,7 +90,12 @@ public class CultivateBlock extends BlockContainer implements DefaultRenderedIte
             if (isActive) {
                 TileEntityCultivate entity = (TileEntityCultivate) world.getTileEntity(pos);
                 if (entity != null) {
-                    if (entity.getDNAType() == 2) {
+                    IItemHandler inventory = entity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+                    if (inventory == null) {
+                        return;
+                    }
+                    ItemStack stack = inventory.getStackInSlot(0);
+                    if (stack.getItem() == FAItemRegistry.FOSSIL_SEED_FERN || stack.getItem() == FAItemRegistry.PALAE_SAPLING_FOSSIL || stack.getItem() == FAItemRegistry.FOSSIL_SEED) {
                         world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.BLOCKS, 1, 1, false);
                         world.setBlockState(pos.up(), FABlockRegistry.MUTANT_FLOWER.getDefaultState().withProperty(TallFlowerBlock.HALF, TallFlowerBlock.EnumBlockHalf.LOWER));
                         world.setBlockState(pos.up(2), FABlockRegistry.MUTANT_FLOWER.getDefaultState().withProperty(TallFlowerBlock.HALF, TallFlowerBlock.EnumBlockHalf.UPPER));

@@ -37,7 +37,7 @@ public class CultivateGUI extends GuiContainer {
 
 		if (this.container.fuelTime > 0) {
             int fuelHeight = 12;
-            int scaledProgress = this.container.fuelTime * fuelHeight / this.container.totalFuelTime;
+            int scaledProgress = this.container.fuelTime * fuelHeight / (this.container.totalFuelTime + 1);
 			this.drawTexturedModalRect(drawX + 82, drawY + 36 + fuelHeight - scaledProgress, 176, fuelHeight - scaledProgress, 14, scaledProgress + 2);
 		}
 
