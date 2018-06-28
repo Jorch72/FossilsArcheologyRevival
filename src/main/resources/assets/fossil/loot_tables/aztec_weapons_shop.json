@@ -107,7 +107,7 @@
         },
         {
           "type": "item",
-          "name": "fossil:scarab_javelin",
+          "name": "fossil:ancient_javelin",
           "functions": [
             {
               "function": "set_count",

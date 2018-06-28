@@ -57,7 +57,7 @@ public class FAWorldGenerator implements IWorldGenerator {
 					}
 				}
 				if (Revival.CONFIG.generatePermafrost) {
-					for (int i = 0; i < 8; i++) {
+					for (int i = 0; i < (BiomeDictionary.hasType(world.getBiome(new BlockPos(chunkX * 16 + 8, 0, chunkZ * 16 + 8)), BiomeDictionary.Type.SNOWY) ? 9 : 4); i++) {
 						int Xcoord = chunkX * 16 + random.nextInt(16);
 						int Ycoord = random.nextInt(30);
 						int Zcoord = chunkZ * 16 + random.nextInt(16);
