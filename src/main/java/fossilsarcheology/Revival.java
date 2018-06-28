@@ -8,6 +8,7 @@ import fossilsarcheology.server.message.*;
 import fossilsarcheology.server.util.ReleaseType;
 import net.ilexiconn.llibrary.server.config.Config;
 import net.ilexiconn.llibrary.server.network.NetworkWrapper;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -37,6 +38,10 @@ public class Revival {
 	@Mod.Instance(MODID)
 	public static Revival INSTANCE;
 	public static Object PEDIA_OBJECT;
+
+	static {
+		FluidRegistry.enableUniversalBucket();
+	}
 
 	public static void debug(String message) {
 		if (RELEASE_TYPE.enableDebugging()) {

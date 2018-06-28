@@ -531,6 +531,7 @@ item.seed_crataegus.name=Crataegus Seeds
 item.seed_florissantia.name=Florissantia Seeds
 item.seed_ephedra.name=Ephedra Seeds
 item.tar_bucket.name=Tar Bucket
+fluid.tar=Tar
 item.tardrop.name=Tar Drop
 item.record_bones.name=Fossil Record
 item.record_scarab.name=Fossil Record
