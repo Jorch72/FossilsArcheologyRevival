@@ -5,7 +5,9 @@ import fossilsarcheology.client.sound.FASoundRegistry;
 import fossilsarcheology.server.entity.ai.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -18,7 +20,7 @@ public class EntityPterosaur extends EntityPrehistoricFlying {
 
 
 	public EntityPterosaur(World world) {
-		super(world, PrehistoricEntityType.PTEROSAUR, 1, 2, 6, 30, 0.15, 0.2);
+		super(world, PrehistoricEntityType.PTEROSAUR, 2, 4, 6, 30, 0.15, 0.2);
 		this.setActualSize(1.1F, 1.1F);
 		minSize = 0.3F;
 		maxSize = 1.1F;
@@ -65,7 +67,7 @@ public class EntityPterosaur extends EntityPrehistoricFlying {
 	@Override
 	public PrehistoricEntityTypeAI.Attacking aiAttackType() {
 
-		return PrehistoricEntityTypeAI.Attacking.DROP;
+		return PrehistoricEntityTypeAI.Attacking.BASIC;
 	}
 
 	@Override
@@ -121,10 +123,39 @@ public class EntityPterosaur extends EntityPrehistoricFlying {
 
 		return PrehistoricEntityTypeAI.WaterAbility.IGNOREANDFISH;
 	}
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (this.getAnimation() == ATTACK_ANIMATION && this.getAnimationTick() == 10 && this.getAttackTarget() != null) {
+			this.attackEntityAsMob(this.getAttackTarget());
+		}
+	}
+
+	@Override
+	public boolean attackEntityAsMob(Entity entity) {
+		if (this.getAttackBounds().intersects(entity.getEntityBoundingBox())) {
+			if (this.getAnimation() == NO_ANIMATION) {
+				this.setAnimation(ATTACK_ANIMATION);
+				return false;
+			}
+			if (this.getAnimation() == ATTACK_ANIMATION && this.getAnimationTick() == 10) {
+				IAttributeInstance iattributeinstance = this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
+				boolean flag = entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) iattributeinstance.getAttributeValue());
+				if (entity.getRidingEntity() != null) {
+					if (entity.getRidingEntity() == this) {
+						entity.startRiding(null);
+					}
+				}
+				return flag;
+			}
+		}
+		return false;
+	}
+
+
 
 	@Override
 	public boolean doesFlock() {
-
 		return false;
 	}
 

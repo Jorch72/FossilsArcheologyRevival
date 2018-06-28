@@ -79,7 +79,7 @@ public abstract class EntityPrehistoricFlying extends EntityPrehistoric {
 			if (sitProgress != 0)
 				sitProgress = sleepProgress = 0F;
 		}
-		if (!this.isFlying() && !this.isMovementBlocked() && rand.nextInt(400) == 0 && !this.world.isRemote && this.isAdult() && this.getControllingPassenger() == null && this.onGround) {
+		if (!this.isFlying() && !this.isMovementBlocked() && rand.nextInt(200) == 0 && !this.world.isRemote && this.isAdult() && this.getControllingPassenger() == null && this.onGround) {
 			this.setFlying(true);
 		}
 		if (!this.world.isRemote && ticksFlying > 80 && this.onGround) {
