@@ -89,7 +89,7 @@ public class CultivateBlock extends BlockContainer implements DefaultRenderedIte
             if (isActive) {
                 TileEntityCultivate entity = (TileEntityCultivate) world.getTileEntity(pos);
                 if (entity != null) {
-                    if (entity.getDNAType() == 2 || entity.getDNAType() == 3) {
+                    if (entity.getDNAType() == 2) {
                         world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.BLOCKS, 1, 1, false);
                         world.setBlockState(pos.up(), FABlockRegistry.MUTANT_FLOWER.getDefaultState().withProperty(TallFlowerBlock.HALF, TallFlowerBlock.EnumBlockHalf.LOWER));
                         world.setBlockState(pos.up(2), FABlockRegistry.MUTANT_FLOWER.getDefaultState().withProperty(TallFlowerBlock.HALF, TallFlowerBlock.EnumBlockHalf.UPPER));
@@ -98,7 +98,6 @@ public class CultivateBlock extends BlockContainer implements DefaultRenderedIte
                         EntityLiving creature;
                         world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.BLOCKS, 1, 1, false);
                         world.setBlockState(pos, Blocks.WATER.getDefaultState());
-
                         int rand = world.rand.nextInt(100);
 
                         if (rand <= 5) {
