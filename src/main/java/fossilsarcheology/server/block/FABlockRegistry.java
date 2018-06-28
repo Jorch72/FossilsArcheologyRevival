@@ -2,6 +2,7 @@ package fossilsarcheology.server.block;
 
 import fossilsarcheology.Revival;
 import fossilsarcheology.server.compat.ThaumcraftCompatBridge;
+import fossilsarcheology.server.item.FAItemRegistry;
 import fossilsarcheology.server.recipe.FARecipeRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -125,6 +126,8 @@ public class FABlockRegistry {
 	public static final FossilFenceBlock PALM_FENCE = new FossilFenceBlock(PALM_PLANKS.getDefaultState(), "palm_fence");
 	@GameRegistry.ObjectHolder(Revival.MODID + ":palm_fence_gate")
 	public static final FossilFenceGateBlock PALM_FENCE_GATE = new FossilFenceGateBlock("palm_fence_gate");
+	@GameRegistry.ObjectHolder(Revival.MODID + ":palm_door")
+	public static final FossilDoorBlock PALM_DOOR = new FossilDoorBlock(PALM_PLANKS.getDefaultState(), "palm_door");
 
 	@GameRegistry.ObjectHolder(Revival.MODID + ":ancient_wood")
 	public static final AncientWoodBlock ANCIENT_WOOD = new AncientWoodBlock();

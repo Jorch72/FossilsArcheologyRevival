@@ -92,6 +92,7 @@ public class FAItemRegistry {
 	public static final DinosaurBoneItem ARM_BONE = new DinosaurBoneItem("arm_bone");
 	public static final DinosaurBoneItem RIBCAGE = new DinosaurBoneItem("ribcage");
 	public static final DinosaurBoneItem VERTEBRAE = new DinosaurBoneItem("vertebrae");
+	public static final ItemFossilDoor PALM_DOOR_ITEM = new ItemFossilDoor(FABlockRegistry.PALM_DOOR, "palm_door_item");
 
 	public static Item registerItem(RegistryEvent.Register<Item> event, Item item) {
 		if (Loader.isModLoaded("thaumcraft")) {
@@ -103,6 +104,8 @@ public class FAItemRegistry {
 		ITEMS.add(item);
 		return item;
 	}
+
+
 
 	public static Item registerItem(RegistryEvent.Register<Item> event, Item item, String registryName) {
 		if (Loader.isModLoaded("thaumcraft")) {

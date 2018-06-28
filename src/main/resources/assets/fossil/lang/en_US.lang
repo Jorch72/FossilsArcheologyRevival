@@ -9,20 +9,17 @@ item.biofossil.name=Biofossil
 item.tar_fossil.name=Tar Fossil
 item.plant_fossil.name=Plant Fossil
 item.failuresaurus_flesh.name=Failuresaurus Flesh
-
+item.palm_door_item.name=Palm Door
 item.amber.name=Amber
 item.dominican_amber.name=Dominican Amber
-
 item.ancient_javelin.name=Ancient Javelin
 item.diamond_javelin.name=Diamond Javelin
 item.gold_javelin.name=Golden Javelin
 item.iron_javelin.name=Iron Javelin
 item.stone_javelin.name=Stone Javelin
 item.wooden_javelin.name=Wooden Javelin
-
 item.scarab_gem.name=Scarab Gem
 item.aquatic_scarab_gem.name=Aquatic Scarab Gem
-
 item.relic_scrap.name=Relic Scrap
 item.stone_tablet.name=Stone Tablet
 item.pottery_shard.name=Pottery Shard
@@ -241,6 +238,7 @@ tile.palm_fence.name=Paleoraphe Fence
 tile.palm_fence_gate.name=Paleoraphe Fence Gate
 tile.palm_planks_slab.name=Paleoraphe Planks Slab
 tile.palm_planks_slab_double.name=Paleoraphe Planks Slab
+tile.palm_door.name=Palm Door
 tile.ancient_wood.name=Ancient Wood
 tile.ancient_wood_pillar.name=Ancient Wood Pillar
 tile.ancient_wood_plate.name=Ancient Wood Plate
