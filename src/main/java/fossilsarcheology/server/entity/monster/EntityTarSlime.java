@@ -10,13 +10,20 @@ import net.minecraft.item.Item;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraft.world.storage.loot.LootTableList;
+
+import javax.annotation.Nullable;
 
 public class EntityTarSlime extends EntitySlime {
 
-    public EntityTarSlime(World world) {
+	public static final ResourceLocation LOOT = LootTableList.register(new ResourceLocation("fossil", "tar_slime"));
+
+
+	public EntityTarSlime(World world) {
 		super(world);
 	}
 
@@ -34,6 +41,11 @@ public class EntityTarSlime extends EntitySlime {
 	@Override
 	protected float getSoundPitch() {
 		return 0.5F;
+	}
+
+	@Nullable
+	protected ResourceLocation getLootTable() {
+		return this.getSlimeSize() == 1 ? LOOT : LootTableList.EMPTY;
 	}
 
 	@Override

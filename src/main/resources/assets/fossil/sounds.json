@@ -727,7 +727,7 @@
     ]
   },
   "anu_laugh": {
-    "category": "player",
+    "category": "neutral",
     "sounds": [
       "fossil:anu_living_stage1_0",
       "fossil:anu_living_stage1_1",
@@ -736,7 +736,7 @@
     ]
   },
   "anu_cough": {
-    "category": "player",
+    "category": "neutral",
     "sounds": [
       "fossil:anu_living_stage2_0"
     ]
