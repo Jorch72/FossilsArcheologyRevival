@@ -37,12 +37,13 @@ public class ShortFlowerBlock extends BlockBush implements DefaultRenderedItem {
 		return Block.EnumOffsetType.XZ;
 	}
 
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if (this == FABlockRegistry.BENNETTITALES_SMALL_FLOWER) {
-			this.grow(FABlockRegistry.BENNETTITALES_LARGE_FLOWER, heldItem, world, pos, playerIn);
+			this.grow(FABlockRegistry.BENNETTITALES_LARGE_FLOWER, playerIn.getHeldItem(hand), worldIn, pos, playerIn);
 			return true;
 		} else if (this == FABlockRegistry.HORSETAIL_SMALL_FLOWER) {
-			this.grow(FABlockRegistry.HORSETAIL_LARGE_FLOWER, heldItem, world, pos, playerIn);
+			this.grow(FABlockRegistry.HORSETAIL_LARGE_FLOWER, playerIn.getHeldItem(hand), worldIn, pos, playerIn);
 			return true;
 		}
 		return false;
