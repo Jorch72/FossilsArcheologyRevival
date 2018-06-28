@@ -207,7 +207,7 @@ public class EntityDinosaurEgg extends EntityLiving implements IEntityAdditional
     public boolean attackEntityFrom(DamageSource source, float damage) {
         if (damage > 0 && !this.world.isRemote) {
             Item item = this.selfType.eggItem;
-            ItemStack stack = new ItemStack(item, 1, 1);
+            ItemStack stack = new ItemStack(item);
             this.world.spawnEntity(new EntityItem(this.world, this.posX, this.posY, this.posZ, stack));
             this.world.playSound(null, new BlockPos(this), SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.NEUTRAL, 0.2F, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
             this.setDead();
