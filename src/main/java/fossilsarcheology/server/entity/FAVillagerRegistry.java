@@ -17,16 +17,16 @@ public class FAVillagerRegistry {
         VillagerRegistry.VillagerCareer career = new VillagerRegistry.VillagerCareer(ARCHEOLOGIST_PROFESSION, "archeologist");
         career.addTrade(1, new EntityVillager.ListItemForEmeralds(FAItemRegistry.BIOFOSSIL, new EntityVillager.PriceInfo(1, 7)));
         career.addTrade(1, new EntityVillager.ListItemForEmeralds(FAItemRegistry.RELIC_SCRAP, new EntityVillager.PriceInfo(1, 6)));
-        career.addTrade(1, new EntityVillager.EmeraldForItems(FAItemRegistry.RELIC_SCRAP, new EntityVillager.PriceInfo(3, 1)));
+        career.addTrade(1, new EntityVillager.EmeraldForItems(FAItemRegistry.RELIC_SCRAP, new EntityVillager.PriceInfo(1, 3)));
         career.addTrade(2, new EntityVillager.EmeraldForItems(FAItemRegistry.POTTERY_SHARD, new EntityVillager.PriceInfo(1, 3)));
         career.addTrade(2, new EntityVillager.ListItemForEmeralds(FAItemRegistry.TAR_FOSSIL, new EntityVillager.PriceInfo(1, 2)));
-        career.addTrade(3, new EntityVillager.ListItemForEmeralds(new ItemStack(FABlockRegistry.ANALYZER), new EntityVillager.PriceInfo(6, 1)));
-        career.addTrade(3, new EntityVillager.ListItemForEmeralds(new ItemStack(FABlockRegistry.AMPHORA_VASE, 1, 0), new EntityVillager.PriceInfo(5, 1)));
-        career.addTrade(3, new EntityVillager.ListItemForEmeralds(new ItemStack(FABlockRegistry.KYLIX_VASE, 1, 0), new EntityVillager.PriceInfo(5, 1)));
-        career.addTrade(3, new EntityVillager.ListItemForEmeralds(new ItemStack(FABlockRegistry.VOLUTE_VASE, 1, 0), new EntityVillager.PriceInfo(5, 1)));
-        career.addTrade(4, new EntityVillager.ItemAndEmeraldToItem(FAItemRegistry.BROKEN_HELMET, new EntityVillager.PriceInfo(3, 1), FAItemRegistry.ANCIENT_HELMET, new EntityVillager.PriceInfo(1, 1)));
-        career.addTrade(4, new EntityVillager.ItemAndEmeraldToItem(FAItemRegistry.BROKEN_SWORD, new EntityVillager.PriceInfo(4, 1), FAItemRegistry.ANCIENT_SWORD, new EntityVillager.PriceInfo(1, 1)));
-        career.addTrade(5, new EntityVillager.ListItemForEmeralds(new ItemStack(FABlockRegistry.FIGURINE, 1, 15), new EntityVillager.PriceInfo(4, 1)));
+        career.addTrade(3, new EntityVillager.ListItemForEmeralds(new ItemStack(FABlockRegistry.ANALYZER), new EntityVillager.PriceInfo(1, 6)));
+        career.addTrade(3, new EntityVillager.ListItemForEmeralds(new ItemStack(FABlockRegistry.AMPHORA_VASE, 1, 0), new EntityVillager.PriceInfo(1, 5)));
+        career.addTrade(3, new EntityVillager.ListItemForEmeralds(new ItemStack(FABlockRegistry.KYLIX_VASE, 1, 0), new EntityVillager.PriceInfo(1, 5)));
+        career.addTrade(3, new EntityVillager.ListItemForEmeralds(new ItemStack(FABlockRegistry.VOLUTE_VASE, 1, 0), new EntityVillager.PriceInfo(1, 5)));
+        career.addTrade(4, new EntityVillager.ItemAndEmeraldToItem(FAItemRegistry.BROKEN_HELMET, new EntityVillager.PriceInfo(1, 3), FAItemRegistry.ANCIENT_HELMET, new EntityVillager.PriceInfo(1, 1)));
+        career.addTrade(4, new EntityVillager.ItemAndEmeraldToItem(FAItemRegistry.BROKEN_SWORD, new EntityVillager.PriceInfo(1, 4), FAItemRegistry.ANCIENT_SWORD, new EntityVillager.PriceInfo(1, 1)));
+        career.addTrade(5, new EntityVillager.ListItemForEmeralds(new ItemStack(FABlockRegistry.FIGURINE, 1, 15), new EntityVillager.PriceInfo(1, 4)));
         MapGenStructureIO.registerStructureComponent(VillageComponentArcheologistHouse.class, "archeologist_house");
         VillagerRegistry.instance().registerVillageCreationHandler(new VillageArcheologistHouseCreator());
     }
