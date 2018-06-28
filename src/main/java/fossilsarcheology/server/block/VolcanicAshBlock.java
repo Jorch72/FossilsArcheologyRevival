@@ -11,7 +11,7 @@ public class VolcanicAshBlock extends Block implements DefaultRenderedItem {
 		super(Material.CLOTH);
 		this.blockParticleGravity = -0.15F;
 		setHardness(0.2F);
-		setSoundType(SoundType.GROUND);
+		setSoundType(type == "ash" ? SoundType.GROUND : SoundType.STONE);
 		this.setUnlocalizedName("volcanic_" + type);
 		setCreativeTab(FATabRegistry.BLOCKS);
 	}
