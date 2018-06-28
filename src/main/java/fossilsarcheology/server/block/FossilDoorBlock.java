@@ -1,5 +1,6 @@
 package fossilsarcheology.server.block;
 
+import fossilsarcheology.server.api.DefaultRenderedItem;
 import fossilsarcheology.server.item.FAItemRegistry;
 import fossilsarcheology.server.tab.FATabRegistry;
 import net.minecraft.block.BlockDoor;
@@ -15,7 +16,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class FossilDoorBlock extends BlockDoor {
+public class FossilDoorBlock extends BlockDoor implements DefaultRenderedItem {
 
     protected FossilDoorBlock(IBlockState parent, String name) {
         super(parent.getMaterial());

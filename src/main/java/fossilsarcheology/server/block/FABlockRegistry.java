@@ -128,6 +128,8 @@ public class FABlockRegistry {
 	public static final FossilFenceGateBlock PALM_FENCE_GATE = new FossilFenceGateBlock("palm_fence_gate");
 	@GameRegistry.ObjectHolder(Revival.MODID + ":palm_door")
 	public static final FossilDoorBlock PALM_DOOR = new FossilDoorBlock(PALM_PLANKS.getDefaultState(), "palm_door");
+	@GameRegistry.ObjectHolder(Revival.MODID + ":palm_trapdoor")
+	public static final FossilTrapdoorBlock PALM_TRAPDOOR = new FossilTrapdoorBlock(PALM_PLANKS.getDefaultState(), "palm_trapdoor");
 
 	@GameRegistry.ObjectHolder(Revival.MODID + ":ancient_wood")
 	public static final AncientWoodBlock ANCIENT_WOOD = new AncientWoodBlock();
