@@ -37,7 +37,7 @@
         },
         {
           "type": "item",
-          "name": "fossil:wood_javelin",
+          "name": "fossil:wooden_javelin",
           "functions": [
             {
               "function": "set_count",
