@@ -63,6 +63,7 @@ public class TempskyaBlock extends BlockBush implements DefaultRenderedItem {
     }
 
 
+
     @Override
     protected void checkAndDropBlock(World worldIn, BlockPos pos, IBlockState state) {
         if (!this.canBlockStay(worldIn, pos, state)) {
@@ -95,6 +96,8 @@ public class TempskyaBlock extends BlockBush implements DefaultRenderedItem {
                     worldIn.destroyBlock(pos.up(i), false);
                 }
             }
+        }else{
+            worldIn.destroyBlock(pos, false);
         }
         super.onBlockHarvested(worldIn, pos, state, player);
     }
