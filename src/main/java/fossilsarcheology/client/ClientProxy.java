@@ -101,7 +101,7 @@ public class ClientProxy extends ServerProxy {
             }
         }
 
-        RENDER_HANDLER.registerItemRenderer(FAItemRegistry.TAR_BUCKET, "tar_bucket", "inventory");
+        //RENDER_HANDLER.registerItemRenderer(FAItemRegistry.TAR_BUCKET, "tar_bucket", "inventory");
 
         for (int i = 0; i < 16; i++) {
             RENDER_HANDLER.registerItemRenderer(FAItemRegistry.TOY_BALL, i, "toyball_" + EnumDyeColor.byDyeDamage(i).getName(), "inventory");
