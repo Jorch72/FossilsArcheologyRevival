@@ -822,7 +822,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
                         for (int c = (int) Math.round(this.getEntityBoundingBox().minZ) - 1; c <= (int) Math.round(this.getEntityBoundingBox().maxZ) + 1; c++) {
                             IBlockState state = world.getBlockState(new BlockPos(a, b, c));
                             Block block = state.getBlock();
-                            if (!(block instanceof BlockBush) && !(block instanceof BlockLiquid) && block != Blocks.BEDROCK && !(block instanceof IDinoUnbreakable) && state.getBlockHardness(world, new BlockPos(a, b, c)) < hardness) {
+                            if (!(block instanceof BlockBush) && !(block instanceof BlockLiquid) && block != FABlockRegistry.ANCIENT_GLASS && block != FABlockRegistry.STRONG_GLASS && block != Blocks.BEDROCK && !(block instanceof IDinoUnbreakable) && state.getBlockHardness(world, new BlockPos(a, b, c)) < hardness) {
                                 this.motionX *= 0.6D;
                                 this.motionZ *= 0.6D;
                                 if (block != Blocks.AIR) {
