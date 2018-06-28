@@ -361,7 +361,7 @@ public class TileEntityWorktable extends TileEntity implements IInventory, ISide
             // ItemStack var1 =
             // this.CheckSmelt(this.stacks.get(0).getItem());
             ItemStack var1 = this.checkSmelt(this.stacks.get(0));
-            return !var1.isEmpty() && (this.stacks.get(2).isEmpty() || (this.stacks.get(2).isItemEqual(var1) && (this.stacks.get(2).getCount() < this.getInventoryStackLimit() && this.stacks.get(2).getCount() < this.stacks.get(2).getMaxStackSize() || this.stacks.get(2).getCount() < var1.getMaxStackSize())));
+            return var1 != null && !var1.isEmpty() && (this.stacks.get(2).isEmpty() || (this.stacks.get(2).isItemEqual(var1) && (this.stacks.get(2).getCount() < this.getInventoryStackLimit() && this.stacks.get(2).getCount() < this.stacks.get(2).getMaxStackSize() || this.stacks.get(2).getCount() < var1.getMaxStackSize())));
         }
     }
 
