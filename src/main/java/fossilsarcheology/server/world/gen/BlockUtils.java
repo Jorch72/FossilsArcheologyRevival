@@ -36,11 +36,10 @@ public class BlockUtils {
 
     @Deprecated
     public static void setChest(World world, int x, int y, int z, Block block, int meta, int flags, ResourceLocation loot) {
-        MUTABLE_POS.setPos(x, y, z);
-        world.setBlockState(MUTABLE_POS, block.getStateFromMeta(meta), 3);
+        world.setBlockState(new BlockPos(x, y, z), block.getStateFromMeta(meta), 3);
         if (block instanceof BlockChest) {
-            TileEntity entity = world.getTileEntity(MUTABLE_POS);
-            if (entity instanceof TileEntityChest && !entity.isInvalid()) {
+            TileEntity entity = world.getTileEntity(new BlockPos(x, y, z));
+            if (entity instanceof TileEntityChest) {
                 ((TileEntityChest) entity).setLootTable(loot, new Random().nextLong());
             }
         }
