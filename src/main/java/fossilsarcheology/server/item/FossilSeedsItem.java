@@ -1,6 +1,7 @@
 package fossilsarcheology.server.item;
 
 import fossilsarcheology.server.block.FABlockRegistry;
+import fossilsarcheology.server.block.TallFlowerBlock;
 import fossilsarcheology.server.block.TempskyaBlock;
 import fossilsarcheology.server.tab.FATabRegistry;
 import net.minecraft.block.state.IBlockState;
@@ -64,7 +65,7 @@ public class FossilSeedsItem extends Item {
 				return true;
 			case 1:
 				world.setBlockState(new BlockPos(x, y + 1, z), FABlockRegistry.SARRACENIA_FLOWER.getDefaultState());
-				world.setBlockState(new BlockPos(x, y + 2, z), FABlockRegistry.SARRACENIA_FLOWER.getDefaultState());
+				world.setBlockState(new BlockPos(x, y + 2, z), FABlockRegistry.SARRACENIA_FLOWER.getDefaultState().withProperty(TallFlowerBlock.HALF, TallFlowerBlock.EnumBlockHalf.UPPER));
 				return true;
 			case 2:
 				world.setBlockState(new BlockPos(x, y + 1, z), FABlockRegistry.CEPHALOTAXUS_FLOWER.getDefaultState());
@@ -74,7 +75,7 @@ public class FossilSeedsItem extends Item {
 				return true;
 			case 4:
 				world.setBlockState(new BlockPos(x, y + 1, z), FABlockRegistry.PALEOPANAX_FLOWER.getDefaultState());
-				world.setBlockState(new BlockPos(x, y + 2, z), FABlockRegistry.PALEOPANAX_FLOWER.getDefaultState());
+				world.setBlockState(new BlockPos(x, y + 2, z), FABlockRegistry.PALEOPANAX_FLOWER.getDefaultState().withProperty(TallFlowerBlock.HALF, TallFlowerBlock.EnumBlockHalf.UPPER));
 				return true;
 			case 5:
 				world.setBlockState(new BlockPos(x, y + 1, z), FABlockRegistry.ZAMITES_FLOWER.getDefaultState());
@@ -104,7 +105,7 @@ public class FossilSeedsItem extends Item {
 				return true;
 			case 12:
 				world.setBlockState(new BlockPos(x, y + 1, z), FABlockRegistry.CRATAEGUS_FLOWER.getDefaultState());
-				world.setBlockState(new BlockPos(x, y + 2, z), FABlockRegistry.CRATAEGUS_FLOWER.getDefaultState());
+				world.setBlockState(new BlockPos(x, y + 2, z), FABlockRegistry.CRATAEGUS_FLOWER.getDefaultState().withProperty(TallFlowerBlock.HALF, TallFlowerBlock.EnumBlockHalf.UPPER));
 				return true;
 			case 13:
 				world.setBlockState(new BlockPos(x, y + 1, z), FABlockRegistry.FLORISSANTIA_FLOWER.getDefaultState());
