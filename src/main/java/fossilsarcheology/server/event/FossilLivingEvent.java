@@ -12,6 +12,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.monster.EntityPolarBear;
 import net.minecraft.entity.passive.*;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumParticleTypes;
@@ -84,26 +85,80 @@ public class FossilLivingEvent {
 			case CHICKEN:
 				birthEntity = new EntityChicken(entity.world);
 				break;
+			case RABBIT:
+				birthEntity = new EntityRabbit(entity.world);
+				break;
+			case POLARBEAR:
+				birthEntity = new EntityPolarBear(entity.world);
+				break;
+			case LLAMA:
+				if (entity instanceof AbstractHorse) {
+					if (rnd < 5) {
+						birthEntity = new EntityLlama(entity.world);
+						if (((AbstractHorse) entity).getOwnerUniqueId() != null) {
+							((EntityLlama) birthEntity).setOwnerUniqueId(((AbstractHorse) entity).getOwnerUniqueId());
+							((EntityLlama) birthEntity).setHorseTamed(true);
+						}
+						break;
+					} else if (rnd < 10) {
+						birthEntity = new EntityLlama(entity.world);
+						if (((AbstractHorse) entity).getOwnerUniqueId() != null) {
+							((EntityLlama) birthEntity).setOwnerUniqueId(((AbstractHorse) entity).getOwnerUniqueId());
+							((EntityLlama) birthEntity).setHorseTamed(true);
+						}
+						break;
+					} else {
+						birthEntity = ((EntityLlama) entity).createChild(new EntityLlama(entity.world));
+					}
+				} else {
+					EntityLlama entityHorse = new EntityLlama(entity.world);
+					birthEntity = entityHorse.createChild(new EntityLlama(entity.world));
+				}
+				break;
+			case DONKEY:
+				if (entity instanceof AbstractHorse) {
+					if (rnd < 5) {
+						birthEntity = new EntityDonkey(entity.world);
+						if (((AbstractHorse) entity).getOwnerUniqueId() != null) {
+							((EntityDonkey) birthEntity).setOwnerUniqueId(((AbstractHorse) entity).getOwnerUniqueId());
+							((EntityDonkey) birthEntity).setHorseTamed(true);
+						}
+						break;
+					} else if (rnd < 10) {
+						birthEntity = new EntityDonkey(entity.world);
+						if (((AbstractHorse) entity).getOwnerUniqueId() != null) {
+							((EntityDonkey) birthEntity).setOwnerUniqueId(((AbstractHorse) entity).getOwnerUniqueId());
+							((EntityDonkey) birthEntity).setHorseTamed(true);
+						}
+						break;
+					} else {
+						birthEntity = ((AbstractHorse) entity).createChild(new EntityDonkey(entity.world));
+					}
+				} else {
+					EntityDonkey entityHorse = new EntityDonkey(entity.world);
+					birthEntity = entityHorse.createChild(new EntityDonkey(entity.world));
+				}
+				break;
 			case HORSE:
-				if (entity instanceof EntityHorse) {
+				if (entity instanceof AbstractHorse) {
 					if (rnd < 5) {
 						birthEntity = new EntityHorse(entity.world);
 						((EntityHorse) birthEntity).setHorseVariant(3);
-						if (((EntityHorse) entity).getOwnerUniqueId() != null) {
-							((EntityHorse) birthEntity).setOwnerUniqueId(((EntityHorse) entity).getOwnerUniqueId());
+						if (((AbstractHorse) entity).getOwnerUniqueId() != null) {
+							((EntityHorse) birthEntity).setOwnerUniqueId(((AbstractHorse) entity).getOwnerUniqueId());
 							((EntityHorse) birthEntity).setHorseTamed(true);
 						}
 						break;
 					} else if (rnd < 10) {
 						birthEntity = new EntityHorse(entity.world);
 						((EntityHorse) birthEntity).setHorseVariant(4);
-						if (((EntityHorse) entity).getOwnerUniqueId() != null) {
-							((EntityHorse) birthEntity).setOwnerUniqueId(((EntityHorse) entity).getOwnerUniqueId());
+						if (((AbstractHorse) entity).getOwnerUniqueId() != null) {
+							((EntityHorse) birthEntity).setOwnerUniqueId(((AbstractHorse) entity).getOwnerUniqueId());
 							((EntityHorse) birthEntity).setHorseTamed(true);
 						}
 						break;
 					} else {
-						birthEntity = ((EntityHorse) entity).createChild(new EntityHorse(entity.world));
+						birthEntity = ((AbstractHorse) entity).createChild(new EntityHorse(entity.world));
 					}
 				} else {
 					EntityHorse entityHorse = new EntityHorse(entity.world);
