@@ -73,7 +73,7 @@ public class TallFlowerBlock extends BlockBush implements DefaultRenderedItem, I
 	@Override
 	public boolean canBlockStay(World worldIn, BlockPos pos, IBlockState state) {
 		if (state.getValue(HALF) == TallFlowerBlock.EnumBlockHalf.UPPER) {
-			worldIn.setBlockState(pos.down(), this.getDefaultState().withProperty(HALF, TallFlowerBlock.EnumBlockHalf.LOWER), 2);
+			//worldIn.setBlockState(pos.down(), this.getDefaultState().withProperty(HALF, TallFlowerBlock.EnumBlockHalf.LOWER), 2);
 			return worldIn.getBlockState(pos.down()).getBlock() == this;
 		} else {
 
