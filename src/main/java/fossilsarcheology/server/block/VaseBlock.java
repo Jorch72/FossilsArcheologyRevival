@@ -53,15 +53,6 @@ public abstract class VaseBlock extends BlockContainer implements BlockEntity, I
         }
     }
 
-    @Override
-    public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> items) {
-        if (tab == this.getCreativeTabToDisplayOn()) {
-            for (VaseVariant type : VaseVariant.values()) {
-                items.add(new ItemStack(this, 1, type.ordinal()));
-            }
-        }
-    }
-
     @SuppressWarnings("deprecation")
     @Override
     public IBlockState getStateFromMeta(int meta) {
@@ -136,7 +127,7 @@ public abstract class VaseBlock extends BlockContainer implements BlockEntity, I
 
         @Override
         public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-            if (tab == VaseBlock.this.getCreativeTabToDisplayOn()) {
+            if (this.isInCreativeTab(tab)) {
                 for (VaseVariant variant : VaseVariant.values()) {
                     items.add(new ItemStack(this, 1, variant.ordinal()));
                 }

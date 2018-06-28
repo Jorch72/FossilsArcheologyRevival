@@ -28,8 +28,8 @@ public class FossilSeedsItem extends Item {
 	}
 
 	@Override
-	public void getSubItems(CreativeTabs creativeTabs, NonNullList<ItemStack> list) {
-		if (creativeTabs == FATabRegistry.ITEMS) {
+	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> list) {
+		if (this.isInCreativeTab(tab)) {
 			for (int i = 0; i < fossilSeeds.length; ++i) {
 				list.add(new ItemStack(this, 1, i));
 			}

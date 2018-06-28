@@ -38,8 +38,8 @@ public class DinosaurBoneItem extends Item implements SubtypeRenderedItem {
 	}
 
 	@Override
-	public void getSubItems(CreativeTabs creativeTabs, NonNullList<ItemStack> list) {
-		if (creativeTabs == FATabRegistry.ITEMS) {
+	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> list) {
+		if (this.isInCreativeTab(tab)) {
 			for (int meta = 0; meta < DinosaurBoneType.values().length; meta++) {
 				list.add(new ItemStack(this, 1, meta));
 			}
