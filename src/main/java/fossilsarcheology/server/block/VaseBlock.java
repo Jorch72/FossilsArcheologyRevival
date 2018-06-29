@@ -57,7 +57,7 @@ public abstract class VaseBlock extends BlockContainer implements BlockEntity, I
 
     @Override
     public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-        EnumFacing rotation = placer.getHorizontalFacing();
+        EnumFacing rotation = placer.getHorizontalFacing().rotateY();
         TileEntity entity = world.getTileEntity(pos);
         if (entity instanceof TileEntityVase) {
             TileEntityVase vase = (TileEntityVase) entity;

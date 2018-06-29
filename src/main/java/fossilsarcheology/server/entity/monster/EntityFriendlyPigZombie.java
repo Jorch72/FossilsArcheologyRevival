@@ -82,6 +82,7 @@ public class EntityFriendlyPigZombie extends EntityTameable {
         boolean flag = entity.attackEntityFrom(DamageSource.causeMobDamage(this), 5);
 
         if (flag) {
+            this.swingArm(EnumHand.MAIN_HAND);
             int i = this.world.getDifficulty().getDifficultyId();
 
             if (this.getHeldItemMainhand().isEmpty() && this.isBurning() && this.rand.nextFloat() < (float) i * 0.3F) {
