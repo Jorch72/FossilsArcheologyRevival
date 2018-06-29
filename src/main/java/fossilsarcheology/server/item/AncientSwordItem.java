@@ -53,7 +53,6 @@ public class AncientSwordItem extends ItemSword implements DefaultRenderedItem {
     }
 
     private boolean checkHelmet(EntityPlayer player) {
-        ItemStack stack = player.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
-        return !stack.isEmpty() && stack.getItem() == FAItemRegistry.ANCIENT_HELMET;
+        return player.getItemStackFromSlot(EntityEquipmentSlot.HEAD).getItem() == FAItemRegistry.ANCIENT_HELMET;
     }
 }
