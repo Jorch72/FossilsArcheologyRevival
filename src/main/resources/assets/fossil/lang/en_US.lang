@@ -62,7 +62,7 @@ item.bone_unique_item.titanis.name=Titanis Wishbone
 item.bone_unique_item.dryosaurus.name=Dryosaurus Tooth
 item.bone_unique_item.therizinosaurus.name=Therizinosaurus Claw
 item.bone_unique_item.parasaurolophus.name=Parasaurolophus Crest
-item.bone_unique_item.icthyosaurus.name=Ichthyosaurus Eye
+item.bone_unique_item.icthyosaurus.name=Ichthyosaurus Sclerotic Ring
 item.bone_unique_item.henodus.name=Henodus Shell
 
 # Items - DNA
@@ -263,7 +263,7 @@ tile.vaccinium.name=Vaccinium
 tile.osmunda.name=Osmunda
 tile.crataegus.name=Crataegus
 tile.florissantia.name=Florissantia
-tile.ependra.name=Ependra
+tile.ependra.name=Ephedra
 tile.palm_stairs.name=Palaeoraphe Planks Stairs
 
 item.dinopedia.name=Dinopedia
