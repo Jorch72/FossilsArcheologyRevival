@@ -73,7 +73,7 @@ public class FAItemRegistry {
 	public static final BasicItem BROKEN_HELMET = new BasicItem("broken_helmet");
 	public static final AncientSwordItem ANCIENT_SWORD = new AncientSwordItem();
 	public static final AncientHelmetItem ANCIENT_HELMET = new AncientHelmetItem();
-	public static final BasicSwordItem ICED_MEAT = new BasicSwordItem(ICED_MEAT_MATERIAL, "iced_meat");
+	public static final BasicSwordItem ICED_MEAT = new ItemFrozenMeat();
 	public static final FossilSeedsItem FOSSIL_SEED = new FossilSeedsItem(true);
 	public static final BasicItem FOSSIL_SEED_FERN = new BasicItem("fossil_seed_fern");
 	public static final BasicItem PALAE_SAPLING_FOSSIL = new BasicItem("fossil_sapling_palae");

@@ -31,6 +31,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -161,6 +162,9 @@ public class ServerProxy implements IGuiHandler {
     public static void registerBiome(RegistryEvent.Register<Biome> event) {
         event.getRegistry().register(FAWorldRegistry.ANU_BIOME.setRegistryName("Lair of Darkness"));
         event.getRegistry().register(FAWorldRegistry.TREASURE_BIOME.setRegistryName("Treasure"));
+        BiomeDictionary.addTypes(FAWorldRegistry.ANU_BIOME, BiomeDictionary.Type.NETHER, BiomeDictionary.Type.VOID, BiomeDictionary.Type.SPOOKY);
+        BiomeDictionary.addTypes(FAWorldRegistry.ANU_BIOME, BiomeDictionary.Type.VOID);
+
     }
 
     public void onPreInit() {
