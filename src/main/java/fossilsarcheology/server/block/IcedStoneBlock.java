@@ -26,7 +26,8 @@ public class IcedStoneBlock extends Block implements DefaultRenderedItem {
 		this.setCreativeTab(FATabRegistry.BLOCKS);
 	}
 
-	public Item getItemDropped(int var1, Random var2, int var3) {
+	@Override
+	public Item getItemDropped(IBlockState state, Random random, int fortune) {
 		return Item.getItemFromBlock(Blocks.COBBLESTONE);
 	}
 
