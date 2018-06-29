@@ -1,0 +1,18 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "PPP",
+    "PPP"
+  ],
+  "key": {
+    "P": {
+      "item": "fossil:palm_planks",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "fossil:palm_trapdoor",
+    "data": 0,
+    "count": 2
+  }
+}

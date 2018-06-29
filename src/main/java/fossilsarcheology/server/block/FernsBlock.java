@@ -39,8 +39,8 @@ public class FernsBlock extends BlockBush implements DefaultRenderedItem {
     }
 
     public static boolean checkUnderTree(World var0, BlockPos pos) {
-        for (int var4 = pos.getY(); var4 <= 128; ++var4) {
-            if (var0.getBlockState(pos.up(var4)).getMaterial() == Material.LEAVES) {
+        for (int i = 0; i <= 128; ++i) {
+            if (var0.getBlockState(pos.up(i)).getMaterial() == Material.LEAVES) {
                 return true;
             }
         }
@@ -110,11 +110,10 @@ public class FernsBlock extends BlockBush implements DefaultRenderedItem {
         if (this.checkLevel(meta)) {
             return world.getBlockState(pos.down()).getBlock() == FABlockRegistry.FERNS;
         } else {
-            boolean var5 = world.getBlockState(pos.down()).getBlock() == Blocks.GRASS && checkUnderTree(world, pos);
+            boolean var5 = world.getBlockState(pos.down()).getBlock() == Blocks.GRASS && checkUnderTree(world, pos.up());
             if (this.hasLv2(meta)) {
                 var5 &= world.getBlockState(pos.down()).getBlock() == FABlockRegistry.FERNS;
             }
-
             return var5;
         }
     }
