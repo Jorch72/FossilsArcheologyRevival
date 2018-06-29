@@ -1,4 +1,30 @@
 {
+  "meganeura_death": {
+    "category": "neutral",
+    "sounds": [
+      "fossil:prehistoric/meganeura_death1"
+    ]
+  },
+  "meganeura_hurt": {
+    "category": "neutral",
+    "sounds": [
+      "fossil:prehistoric/meganeura_hurt1",
+      "fossil:prehistoric/meganeura_hurt2"
+    ]
+  },
+  "meganeura_living": {
+    "category": "neutral",
+    "sounds": [
+      "fossil:prehistoric/meganeura_living1",
+      "fossil:prehistoric/meganeura_living2"
+    ]
+  },
+  "meganeura_fly": {
+    "category": "neutral",
+    "sounds": [
+      "fossil:prehistoric/meganeura_fly_loop"
+    ]
+  },
   "tyrannosaurus_roar": {
     "category": "neutral",
     "sounds": [

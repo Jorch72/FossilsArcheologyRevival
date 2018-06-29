@@ -34,8 +34,8 @@ public enum PrehistoricEntityType {
 	VELOCIRAPTOR(EntityVelociraptor.class, MobType.DINOSAUR, TimePeriod.MESOZOIC, Diet.CARNIVORE_EGG, Parameter.TAME | Parameter.CARNIVORE, 0X4A0D04, 0XC9C9C9, 0.5F),
 	TYRANNOSAURUS(EntityTyrannosaurus.class, MobType.DINOSAUR, TimePeriod.MESOZOIC, Diet.CARNIVORE, Parameter.MODEL | Parameter.TAME | Parameter.RIDE | Parameter.CARNIVORE, 0X9D8A74, 0X4C3116, 0.9F),
 	PTEROSAUR(EntityPterosaur.class, MobType.DINOSAUR, TimePeriod.MESOZOIC, Diet.PISCIVORE, Parameter.MODEL | Parameter.TAME | Parameter.CARNIVORE, 0XD6D6D6, 0X3B3B3B, 0.4F),
-	PLESIOSAUR(EntityPlesiosaurus.class, MobType.DINOSAUR, TimePeriod.MESOZOIC, Diet.PISCIVORE, Parameter.MODEL | Parameter.TAME | Parameter.RIDE | Parameter.CARNIVORE, 0XE4A86E, 0XE17920),
-	MOSASAURUS(EntityMosasaurus.class, MobType.DINOSAUR, TimePeriod.MESOZOIC, Diet.PISCCARNIVORE, Parameter.MODEL | Parameter.CARNIVORE, 0X888D90, 0X3A4C52),
+	PLESIOSAUR(EntityPlesiosaurus.class, MobType.DINOSAUR_AQUATIC, TimePeriod.MESOZOIC, Diet.PISCIVORE, Parameter.MODEL | Parameter.TAME | Parameter.RIDE | Parameter.CARNIVORE, 0XE4A86E, 0XE17920),
+	MOSASAURUS(EntityMosasaurus.class, MobType.DINOSAUR_AQUATIC, TimePeriod.MESOZOIC, Diet.PISCCARNIVORE, Parameter.MODEL | Parameter.CARNIVORE, 0X888D90, 0X3A4C52),
 	STEGOSAURUS(EntityStegosaurus.class, MobType.DINOSAUR, TimePeriod.MESOZOIC, Diet.HERBIVORE, Parameter.MODEL | Parameter.TAME | Parameter.HERBIVORE, 0X9C8138, 0X651817, 0.7F),
 	DILOPHOSAURUS(EntityDilophosaurus.class, MobType.DINOSAUR, TimePeriod.MESOZOIC, Diet.CARNIVORE, Parameter.TAME | Parameter.CARNIVORE, 0X4E5931, 0XF25314, 0.5F),
 	BRACHIOSAURUS(EntityBrachiosaurus.class, MobType.DINOSAUR, TimePeriod.MESOZOIC, Diet.HERBIVORE, Parameter.MODEL | Parameter.TAME | Parameter.RIDE | Parameter.HERBIVORE, 0X52523E, 0X222114),
@@ -45,15 +45,16 @@ public enum PrehistoricEntityType {
 	PACHYCEPHALOSAURUS(EntityPachycephalosaurus.class, MobType.DINOSAUR, TimePeriod.MESOZOIC, Diet.HERBIVORE, Parameter.TAME | Parameter.HERBIVORE, 0XB6A989, 0X7D5E3A, 0.6F),
 	DEINONYCHUS(EntityDeinonychus.class, MobType.DINOSAUR, TimePeriod.MESOZOIC, Diet.CARNIVORE_EGG, Parameter.MODEL | Parameter.TAME | Parameter.CARNIVORE, 0X2B2424, 0XC8C8C8, 0.6F),
 	GALLIMIMUS(EntityGallimimus.class, MobType.DINOSAUR, TimePeriod.MESOZOIC, Diet.OMNIVORE, Parameter.MODEL | Parameter.TAME | Parameter.RIDE | Parameter.HERB_CARN, 0X66412B, 0X5E2518, 0.5F),
-	LIOPLEURODON(EntityLiopleurodon.class, MobType.DINOSAUR, TimePeriod.MESOZOIC, Diet.PISCCARNIVORE, Parameter.MODEL | Parameter.CARNIVORE, 0XBFC7C2, 0X1D211E),
+	LIOPLEURODON(EntityLiopleurodon.class, MobType.DINOSAUR_AQUATIC, TimePeriod.MESOZOIC, Diet.PISCCARNIVORE, Parameter.MODEL | Parameter.CARNIVORE, 0XBFC7C2, 0X1D211E),
 	ALLOSAURUS(EntityAllosaurus.class, MobType.DINOSAUR, TimePeriod.MESOZOIC, Diet.CARNIVORE, Parameter.MODEL | Parameter.TAME | Parameter.RIDE | Parameter.CARNIVORE, 0X907B6C, 0X5F422D, 0.8F),
-	SARCOSUCHUS(EntitySarcosuchus.class, MobType.DINOSAUR, TimePeriod.MESOZOIC, Diet.PISCCARNIVORE, Parameter.TAME | Parameter.CARNIVORE, 0X4B4929, 0X8D8C65, 0.7F),
+	SARCOSUCHUS(EntitySarcosuchus.class, MobType.DINOSAUR_AQUATIC, TimePeriod.MESOZOIC, Diet.PISCCARNIVORE, Parameter.TAME | Parameter.CARNIVORE, 0X4B4929, 0X8D8C65, 0.7F),
 	CERATOSAURUS(EntityCeratosaurus.class, MobType.DINOSAUR, TimePeriod.MESOZOIC, Diet.CARNIVORE, Parameter.MODEL | Parameter.TAME | Parameter.RIDE | Parameter.CARNIVORE, 0XB4B4A7, 0X776446, 0.6F),
 	DRYOSAURUS(EntityDryosaurus.class, MobType.DINOSAUR, TimePeriod.MESOZOIC, Diet.HERBIVORE, Parameter.MODEL | Parameter.TAME | Parameter.HERBIVORE, 0X704C26, 0XC5C09A, 0.6F),
 	THERIZINOSAURUS(EntityTherizinosaurus.class, MobType.DINOSAUR, TimePeriod.MESOZOIC, Diet.HERBIVORE, Parameter.MODEL | Parameter.TAME | Parameter.HERBIVORE, 0X322212, 0XCA9C72, 0.8F),
 	PARASAUROLOPHUS(EntityParasaurolophus.class, MobType.DINOSAUR, TimePeriod.MESOZOIC, Diet.HERBIVORE, Parameter.MODEL | Parameter.TAME | Parameter.HERBIVORE, 0X7E8E30, 0X4C5438, 1F),
-	HENODUS(EntityHenodus.class, MobType.DINOSAUR, TimePeriod.MESOZOIC, Diet.HERBIVORE, Parameter.TAME | Parameter.HERBIVORE, 0X613C27, 0X9C8060),
-	ICTHYOSAURUS(EntityIcthyosaurus.class, MobType.DINOSAUR, TimePeriod.MESOZOIC, Diet.PISCIVORE, Parameter.TAME | Parameter.CARNIVORE, 0X2A2632, 0XCEC296),
+	HENODUS(EntityHenodus.class, MobType.DINOSAUR_AQUATIC, TimePeriod.MESOZOIC, Diet.HERBIVORE, Parameter.TAME | Parameter.HERBIVORE, 0X613C27, 0X9C8060),
+	ICTHYOSAURUS(EntityIcthyosaurus.class, MobType.DINOSAUR_AQUATIC, TimePeriod.MESOZOIC, Diet.PISCIVORE, Parameter.TAME | Parameter.CARNIVORE, 0X2A2632, 0XCEC296),
+	MEGANEURA(EntityMeganeura.class, MobType.DINOSAUR_AQUATIC, TimePeriod.PALEOZOIC, Diet.PISCCARNIVORE, Parameter.TAME | Parameter.CARNIVORE | Parameter.MODEL, 0X6A4C3F, 0XE0B45A),
 	CONFUCIUSORNIS(EntityConfuciusornis.class, MobType.BIRD, TimePeriod.MESOZOIC, Diet.HERBIVORE, Parameter.TAME | Parameter.HERBIVORE, 0XDAE5E9, 0X8B8B8D),
 	DODO(EntityDodo.class, MobType.BIRD, TimePeriod.CENOZOIC, Diet.HERBIVORE, Parameter.TAME | Parameter.HERBIVORE, 0X655751, 0XBEA47B),
 	GASTORNIS(EntityGastornis.class, MobType.BIRD, TimePeriod.CENOZOIC, Diet.HERBIVORE, Parameter.TAME, 0X346C5E, 0XC8C8C8),
@@ -137,7 +138,7 @@ public enum PrehistoricEntityType {
 				type.fishItem = new FishItem(type, false);
 				FAItemRegistry.registerItem(event, type.eggItem, ((PrehistoricEntityItem) type.eggItem).resourceName);
 				FAItemRegistry.registerItem(event, type.fishItem, ((PrehistoricEntityItem) type.fishItem).resourceName);
-			} else if (mobType == MobType.DINOSAUR) {
+			} else if (mobType == MobType.DINOSAUR || mobType == MobType.DINOSAUR_AQUATIC) {
 				type.eggItem = new DinoEggItem(type);
 				FAItemRegistry.registerItem(event, type.eggItem, ((PrehistoricEntityItem) type.eggItem).resourceName);
 			}
@@ -177,7 +178,7 @@ public enum PrehistoricEntityType {
 
 	public static boolean isDinoEgg(Item item) {
 		for (PrehistoricEntityType entity : PrehistoricEntityType.values()) {
-			if (entity.mobType == MobType.DINOSAUR) {
+			if (entity.mobType == MobType.DINOSAUR || entity.mobType == MobType.DINOSAUR_AQUATIC) {
 				if (entity.eggItem == item) {
 					return true;
 				}
@@ -248,7 +249,7 @@ public enum PrehistoricEntityType {
 
 	public static Item getEgg(Item item) {
 		for (PrehistoricEntityType entity : PrehistoricEntityType.values()) {
-			if (entity.mobType == MobType.DINOSAUR) {
+			if (entity.mobType == MobType.DINOSAUR || entity.mobType == MobType.DINOSAUR_AQUATIC) {
 				if (entity.foodItem == item || entity.dnaItem == item) {
 					return entity.eggItem;
 				}
@@ -305,11 +306,13 @@ public enum PrehistoricEntityType {
 		return -1;
 	}
 
-	public static PrehistoricEntityType getRandomTimePeriod(Random random, TimePeriod period) {
+	public static PrehistoricEntityType getRandomTimePeriod(Random random, TimePeriod... periods) {
 		List<PrehistoricEntityType> mesozoic = new ArrayList<>();
 		for (PrehistoricEntityType entity : PrehistoricEntityType.values()) {
-			if (entity.timePeriod == period) {
-				mesozoic.add(entity);
+			for(TimePeriod period : periods){
+				if (entity.timePeriod == period) {
+					mesozoic.add(entity);
+				}
 			}
 		}
 		int index = mesozoic.size() < 1 ? 0 : random.nextInt(mesozoic.size());
@@ -423,8 +426,7 @@ public enum PrehistoricEntityType {
 	}
 
 	public boolean isAquatic() {
-//        return this == PLESIOSAUR || this == MOSASAURUS || this == LIOPLEURODON; TODO
-		return false;
+		return this.mobType == MobType.DINOSAUR_AQUATIC;
 	}
 
 	private void setExperience(float experience, float experienceIncrement) {

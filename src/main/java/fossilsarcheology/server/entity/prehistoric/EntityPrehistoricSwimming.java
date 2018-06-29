@@ -21,7 +21,8 @@ public abstract class EntityPrehistoricSwimming extends EntityPrehistoric {
     public Animation FISH_ANIMATION;
     public float onLandProgress;
     protected boolean isAmphibious;
-    private boolean isLandNavigator;
+    protected boolean isLandNavigator;
+    public float flyProgress;
 
     public EntityPrehistoricSwimming(World world, PrehistoricEntityType type, double baseDamage, double maxDamage, double baseHealth, double maxHealth, double baseSpeed, double maxSpeed) {
         super(world, type, baseDamage, maxDamage, baseHealth, maxHealth, baseSpeed, maxSpeed);
@@ -29,7 +30,7 @@ public abstract class EntityPrehistoricSwimming extends EntityPrehistoric {
         this.hasBabyTexture = false;
     }
 
-    private void switchNavigator(boolean onLand) {
+    protected void switchNavigator(boolean onLand) {
         if (onLand) {
             this.moveHelper = new EntityMoveHelper(this);
             this.navigator = new PathNavigateAmphibious(this, world);
@@ -72,10 +73,10 @@ public abstract class EntityPrehistoricSwimming extends EntityPrehistoric {
     @Override
     public void onLivingUpdate() {
         super.onLivingUpdate();
-        if (this.isInWater() && this.isLandNavigator && !this.world.isRemote) {
+        if (this.isInWater() && this.useSwimAI() && this.isLandNavigator && !this.world.isRemote) {
             switchNavigator(false);
         }
-        if (!this.isInWater() && !this.isLandNavigator && !this.world.isRemote) {
+        if (this.isInWater() && !this.useSwimAI() && !this.isLandNavigator && !this.world.isRemote) {
             switchNavigator(true);
         }
         this.renderYawOffset = this.rotationYaw;
@@ -83,6 +84,10 @@ public abstract class EntityPrehistoricSwimming extends EntityPrehistoric {
             this.setSitting(false);
             this.setSleeping(false);
         }
+    }
+
+    protected boolean useSwimAI() {
+        return this.isInWater();
     }
 
     @Override

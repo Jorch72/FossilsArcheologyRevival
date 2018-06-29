@@ -26,7 +26,7 @@ public class DinoAIHunt<T extends EntityLivingBase> extends EntityAINearestAttac
 		}
 		if (super.shouldExecute() && this.targetEntity != null && !this.targetEntity.getClass().equals(this.dragon.getClass())) {
 			if (this.dragon.width >= this.targetEntity.width) {
-				if (this.taskOwner instanceof EntityPrehistoric) {
+				if (this.taskOwner instanceof EntityPrehistoric && !((EntityPrehistoric) this.taskOwner).isMovementBlocked()) {
 					EntityPrehistoric prehistoric = (EntityPrehistoric) this.taskOwner;
 					if (targetEntity instanceof EntityPlayer && ((EntityPlayer) targetEntity).capabilities.isCreativeMode) {
 						return false;
@@ -43,16 +43,14 @@ public class DinoAIHunt<T extends EntityLivingBase> extends EntityAINearestAttac
 							return !prehistoric.isOwner(targetEntity) && prehistoric.canDinoHunt(targetEntity, true);
 						}
 					}
+
 					if (FoodMappings.INSTANCE.getEntityFoodAmount(this.targetEntity.getClass(), prehistoric.type.diet) > 0) {
 						return !prehistoric.isOwner(targetEntity) && prehistoric.canDinoHunt(targetEntity, true);
 					}
 					if (targetEntity instanceof EntityToyBase && prehistoric.ticksTillPlay == 0) {
 						return true;
 					}
-                    return !prehistoric.isMovementBlocked() && prehistoric.canDinoHunt(targetEntity, true);
-
 				}
-				return true;
 			}
 		}
 		return false;

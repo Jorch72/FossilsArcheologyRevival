@@ -224,7 +224,7 @@ public class AnalyzerBlockEntity extends TileEntity implements IInventory, ISide
 					output = new ItemStack(Blocks.SAND, 1 + random.nextInt(2));
 				}
 				if (rand > 85) {
-					output = new ItemStack(PrehistoricEntityType.getRandomTimePeriod(random, TimePeriod.MESOZOIC).dnaItem, 1);
+					output = new ItemStack(PrehistoricEntityType.getRandomTimePeriod(random, TimePeriod.MESOZOIC, TimePeriod.PALEOZOIC).dnaItem, 1);
 				}
 			} else if (rawItem == FAItemRegistry.TAR_FOSSIL) {
 				if (rand > -1 && rand <= 50) {

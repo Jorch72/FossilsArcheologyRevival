@@ -36,7 +36,7 @@ public class DinoEggItem extends PrehistoricEntityItem implements DefaultRendere
 		Entity egg;
 		if (!type.isAquatic()) {
 			egg = new EntityDinosaurEgg(world, type);
-			egg.setLocationAndAngles(x, y + 1.0F, z, world.rand.nextFloat() * 360.0F, 0.0F);
+			egg.setLocationAndAngles(x, y + 1.5F, z, world.rand.nextFloat() * 360.0F, 0.0F);
 			if (!world.isRemote) {
 				world.spawnEntity(egg);
 			}

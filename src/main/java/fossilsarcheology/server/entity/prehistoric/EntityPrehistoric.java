@@ -851,7 +851,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
         if (this.type.mobType == MobType.BIRD) {
             baby = new EntityItem(this.world, this.posX, this.posY, this.posZ, new ItemStack(this.type.birdEggItem));
         }
-        if (this.type.mobType == MobType.DINOSAUR) {
+        if (this.type.mobType == MobType.DINOSAUR || this.type.mobType == MobType.DINOSAUR_AQUATIC) {
             if (Revival.CONFIG.eggsLikeChickens) {
                 baby = new EntityItem(this.world, this.posX, this.posY, this.posZ, new ItemStack(this.type.eggItem));
             } else {
@@ -1172,8 +1172,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
 
                 if (FoodMappings.INSTANCE.getItemFoodAmount(itemstack, this.type.diet) != 0) {
                     if (!player.world.isRemote) {
-                        if (this.getMaxHunger() > this.getHunger() || this.getHealth() > this.getMaxHealth() && Revival.CONFIG.healingDinos) {
-
+                        if (this.getMaxHunger() > this.getHunger() || this.getHealth() > this.getMaxHealth() && Revival.CONFIG.healingDinos || !this.isTamed()) {
                             this.setHunger(this.getHunger() + FoodMappings.INSTANCE.getItemFoodAmount(itemstack, this.type.diet));
                             if (!world.isRemote) {
                                 this.eatItem(itemstack);

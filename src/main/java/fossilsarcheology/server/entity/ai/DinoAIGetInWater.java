@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 import java.util.Random;
 
 public class DinoAIGetInWater extends EntityAIBase {
-	private final EntityCreature creature;
+	protected final EntityCreature creature;
 	private final double movementSpeed;
 	private final World world;
 	private double shelterX;
