@@ -324,9 +324,9 @@ public enum PrehistoricEntityType {
 		List<PrehistoricEntityType> entities = new ArrayList<>();
 		for (int i = 0; i < values().length; i++) {
 			PrehistoricEntityType type = values()[i];
-			if (type.mobType != MobType.VANILLA && type.mobType != MobType.CHICKEN && type.mobType != MobType.FISH) {
+			if (type.mobType != MobType.VANILLA && type.mobType != MobType.CHICKEN && type.mobType != MobType.FISH && type != QUAGGA) {
 				if (tar) {
-					if (type.timePeriod == TimePeriod.CENOZOIC/* && PrehistoricEntity.class.isAssignableFrom(type.entity)*/) { //TODO
+					if (type.timePeriod == TimePeriod.CENOZOIC && EntityPrehistoric.class.isAssignableFrom(type.entity)) {
 						entities.add(type);
 					}
 				} else {
