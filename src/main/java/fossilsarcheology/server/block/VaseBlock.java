@@ -14,6 +14,8 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -31,6 +33,16 @@ public abstract class VaseBlock extends BlockContainer implements BlockEntity, I
         this.setCreativeTab(FATabRegistry.BLOCKS);
         this.setUnlocalizedName("vase_" + type);
         this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, VaseVariant.DAMAGED));
+    }
+
+    public void onBlockHarvested(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player){
+        if(!player.isCreative()){
+            int variant = 0;
+            if(state.getBlock() instanceof VaseBlock){
+                variant = state.getValue(VARIANT).ordinal();
+            }
+            spawnAsEntity(worldIn, pos, new ItemStack(Item.getItemFromBlock(this), 1, variant));
+        }
     }
 
     @Override

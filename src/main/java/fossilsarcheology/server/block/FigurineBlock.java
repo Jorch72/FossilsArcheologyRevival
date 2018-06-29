@@ -6,6 +6,7 @@ import fossilsarcheology.server.block.entity.TileEntityFigurine;
 import fossilsarcheology.server.tab.FATabRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
+import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -14,6 +15,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -29,6 +31,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
+import java.util.Random;
 
 public class FigurineBlock extends BlockContainer implements IBlockItem, BlockEntity, IgnoreRenderProperty {
     public static final PropertyEnum<FigurineBlock.EnumType> VARIANT = PropertyEnum.create("variant", FigurineBlock.EnumType.class);
@@ -39,6 +42,20 @@ public class FigurineBlock extends BlockContainer implements IBlockItem, BlockEn
         this.setCreativeTab(FATabRegistry.BLOCKS);
         this.setUnlocalizedName("figurine");
         this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumType.FIGURINE_STEVE_PRISTINE));
+    }
+
+    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+        return Item.getItemFromBlock(FABlockRegistry.FIGURINE);
+    }
+
+    public void onBlockHarvested(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player){
+        if(!player.isCreative()){
+            int variant = 0;
+            if(state.getBlock() instanceof FigurineBlock){
+                variant = state.getValue(VARIANT).getMetadata();
+            }
+            spawnAsEntity(worldIn, pos, new ItemStack(Item.getItemFromBlock(FABlockRegistry.FIGURINE), 1, variant));
+        }
     }
 
     @Override
