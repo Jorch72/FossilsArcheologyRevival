@@ -1053,7 +1053,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
                     } else {
                         this.dropItem(FAItemRegistry.BIOFOSSIL, 1);
                     }
-                    this.entityDropItem(new ItemStack(Items.BONE, Math.min(this.getAgeInDays(), this.getAdultAge()), 1), 1);
+                    this.entityDropItem(new ItemStack(Items.BONE, Math.min(this.getAgeInDays(), this.getAdultAge())), 1);
                 }
                 this.setDead();
                 return false;
