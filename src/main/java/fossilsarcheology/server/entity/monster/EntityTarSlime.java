@@ -76,7 +76,7 @@ public class EntityTarSlime extends EntitySlime {
 			this.rotationYaw = getRidingEntity().rotationYaw;
 			if (this.getRidingEntity() instanceof EntityPlayer) {
 				this.rotationYaw = ((EntityPlayer) getRidingEntity()).rotationYawHead;
-				this.setPosition(posX, posY - 1.6F, posZ);
+				this.setPosition(posX, posY, posZ);
 			}
 			if (getRidingEntity() instanceof EntityLivingBase) {
 				((EntityLivingBase) getRidingEntity()).addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 100, 1));
