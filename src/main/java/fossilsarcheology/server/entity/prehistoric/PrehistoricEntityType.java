@@ -209,7 +209,7 @@ public enum PrehistoricEntityType {
 
 	public static boolean isEmbryo(Item item) {
 		for (PrehistoricEntityType entity : PrehistoricEntityType.values()) {
-			if (entity.mobType == MobType.MAMMAL) {
+			if (entity.mobType == MobType.MAMMAL || entity.mobType == MobType.VANILLA) {
 				if (entity.embryoItem == item) {
 					return true;
 				}
@@ -267,7 +267,7 @@ public enum PrehistoricEntityType {
 
 	public static Item getEmbryo(Item item) {
 		for (PrehistoricEntityType entity : PrehistoricEntityType.values()) {
-			if (entity.mobType == MobType.MAMMAL) {
+			if (entity.mobType == MobType.MAMMAL || entity.mobType == MobType.VANILLA) {
 				if (entity.dnaItem == item || entity.foodItem == item) {
 					return entity.embryoItem;
 				}
