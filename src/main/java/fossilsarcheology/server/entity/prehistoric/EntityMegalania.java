@@ -64,7 +64,7 @@ public class EntityMegalania extends EntityPrehistoric {
         this.ticksSinceLastFight = compound.getInteger("FightTicks");
     }
     protected void collideWithEntity(Entity entityIn) {
-        if (this.canFight() && entityIn instanceof EntityMegalania && !((EntityMegalania)entityIn).canFight()) {
+        if (this.canFight() && entityIn instanceof EntityMegalania && ((EntityMegalania)entityIn).canFight()) {
             this.setAnimation(ANIMATION_FIGHT);
             EntityMegalania megalania = ((EntityMegalania)entityIn);
             this.ticksSinceLastFight = 0;
