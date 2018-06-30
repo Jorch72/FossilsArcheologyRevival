@@ -131,7 +131,7 @@ public class EntityAnu extends EntityMob implements IRangedAttackMob {
 							if (itemstack.getItem() != null) {
 								if (itemstack.getItem() == FAItemRegistry.ANCIENT_SWORD) {
 
-									if (!this.world.isRemote) {
+									if (this.world.isRemote) {
 										((EntityPlayer) targetEntity).sendStatusMessage(new TextComponentString(I18n.format("entity.fossil.PigBoss.name") + ": " + I18n.format("anuSpeaker.mySword")), false);
 									}
 
@@ -140,7 +140,7 @@ public class EntityAnu extends EntityMob implements IRangedAttackMob {
 
 								if (itemstack.getItem() != FAItemRegistry.ANCIENT_SWORD && itemstack.getItem() instanceof ItemSword) {
 
-									if (!this.world.isRemote) {
+									if (this.world.isRemote) {
 										((EntityPlayer) targetEntity).sendStatusMessage(new TextComponentString(I18n.format("entity.fossil.PigBoss.name") + ": " + I18n.format("anuSpeaker.draw")), false);
 									}
 
@@ -148,7 +148,7 @@ public class EntityAnu extends EntityMob implements IRangedAttackMob {
 								}
 
 								if (damageSource.damageType.equals("arrow")) {
-									if (!this.world.isRemote) {
+									if (this.world.isRemote) {
 										((EntityPlayer) targetEntity).sendStatusMessage(new TextComponentString(I18n.format("entity.fossil.PigBoss.name") + ": " + I18n.format("anuSpeaker.coward")), false);
 									}
 
@@ -179,7 +179,7 @@ public class EntityAnu extends EntityMob implements IRangedAttackMob {
 	protected Entity findPlayerToAttack() {
 		EntityPlayer entityplayer = this.world.getClosestPlayerToEntity(this, 16.0D);
 
-		if (entityplayer != null && this.canEntityBeSeen(entityplayer)) {
+		if (entityplayer != null && this.canEntityBeSeen(entityplayer) && world.isRemote) {
 			if (this.getRNG().nextInt(1) == 0) {
 				entityplayer.sendStatusMessage(new TextComponentString(I18n.format("entity.fossil.PigBoss.name") + ": " + I18n.format("anuSpeaker.hello")), false);
 			} else {
@@ -213,7 +213,7 @@ public class EntityAnu extends EntityMob implements IRangedAttackMob {
 		}
 		entity.setHealth(0F);
 		EntityPlayer player = this.world.getClosestPlayerToEntity(this, 50);
-		if (player != null) {
+		if (player != null && world.isRemote) {
 			player.sendStatusMessage(new TextComponentString(I18n.format("entity.fossil.PigBoss.name") + ": " + I18n.format("anuSpeaker.no")), false);
 		}
 		super.onDeath(dmg);
@@ -327,7 +327,7 @@ public class EntityAnu extends EntityMob implements IRangedAttackMob {
 			}
 			if (spawnPigmenChoice == 0) {
 				EntityPlayer player = this.world.getClosestPlayerToEntity(this, 50);
-				if (player != null) {
+				if (player != null && world.isRemote) {
 					player.sendStatusMessage(new TextComponentString(I18n.format("entity.fossil.PigBoss.name") + ": " + I18n.format("anuSpeaker.trans")), false);
 				}
 
@@ -336,14 +336,14 @@ public class EntityAnu extends EntityMob implements IRangedAttackMob {
 			if (spawnWitherChoice == 0) {
 				this.spawnMobs(new EntityWitherSkeleton(world));
 				EntityPlayer player = this.world.getClosestPlayerToEntity(this, 50);
-				if (player != null) {
+				if (player != null && world.isRemote) {
 					player.sendStatusMessage(new TextComponentString(I18n.format("entity.fossil.PigBoss.name") + ": " + I18n.format("anuSpeaker.archers")), false);
 				}
 			}
 			if (spawnBlazeChoice == 0) {
 				this.spawnMobs(new EntityBlaze(world));
 				EntityPlayer player = this.world.getClosestPlayerToEntity(this, 50);
-				if (player != null) {
+				if (player != null && world.isRemote) {
 					player.sendStatusMessage(new TextComponentString(I18n.format("entity.fossil.PigBoss.name") + ": " + I18n.format("anuSpeaker.blaze")), false);
 				}
 			}
@@ -447,7 +447,7 @@ public class EntityAnu extends EntityMob implements IRangedAttackMob {
 		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(FAItemRegistry.ANCIENT_SWORD));
 		EntityPlayer entityplayer = this.world.getClosestPlayer(posX, posY, posZ, 100F, false);
 
-		if (entityplayer != null) {
+		if (entityplayer != null && world.isRemote) {
 			if (this.getRNG().nextInt(1) == 0) {
 				entityplayer.sendStatusMessage(new TextComponentString(I18n.format("entity.fossil.PigBoss.name") + ": " + I18n.format("anuSpeaker.hello")), false);
 			} else {
