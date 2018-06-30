@@ -15,17 +15,19 @@ import net.minecraft.world.World;
 
 public class SkullBlock extends BlockHorizontal implements DefaultRenderedItem {
 
-	//Note: Temp fix for lack of light.
-	//Note 2: You might want to check around the code and suppress more warnings.
-	//Fixme: Make only skull lanterns glow, and find their old light value. It is currently at the same level for a torch.
     public SkullBlock(boolean isActive) {
 		super(Material.ROCK);
 		this.setTickRandomly(true);
+		this.setHardness(4F);
+		this.setResistance(15F);
+		this.setHarvestLevel("pickaxe", 0);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 		this.setCreativeTab(FATabRegistry.BLOCKS);
 		this.setUnlocalizedName(isActive ? "skull_lantern" : "skull_block");
 		this.setRegistryName(isActive ? "skull_lantern" : "skull_block");
-	    this.setLightLevel(0.9375F);
+		if(isActive){
+			this.setLightLevel(0.9375F);
+		}
 	}
 
 	@SuppressWarnings("deprecation")
