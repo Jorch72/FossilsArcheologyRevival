@@ -46,7 +46,9 @@ public class Flock {
 			if (member != null && flockLeader != null && this.flockPathNavigate != null && this.flockPathNavigate.getPath() != null) {
 				if (member.getNavigator().noPath() && member != this.flockLeader) {
 					Path path = this.flockLeader.getNavigator().getPath();
-					member.getNavigator().setPath(this.flockPathNavigate.getPathToXYZ(path.getFinalPathPoint().x + generateVarience(6, -6), path.getFinalPathPoint().y + generateVarience(6, -6), path.getFinalPathPoint().z + generateVarience(6, -6)), 1);
+					if(path != null && path.getFinalPathPoint() != null){
+						member.getNavigator().setPath(this.flockPathNavigate.getPathToXYZ(path.getFinalPathPoint().x + generateVarience(6, -6), path.getFinalPathPoint().y + generateVarience(6, -6), path.getFinalPathPoint().z + generateVarience(6, -6)), 1);
+					}
 				}
 			}
 		}
