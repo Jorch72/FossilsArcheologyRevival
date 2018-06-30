@@ -1,6 +1,7 @@
 {
     "pools": [
         {
+            "name": "tar_slime",
             "rolls": 1,
             "entries": [
                 {
