@@ -7,6 +7,7 @@ import fossilsarcheology.server.item.FAItemRegistry;
 import fossilsarcheology.server.item.variant.DinosaurBoneType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
@@ -36,6 +37,10 @@ public class EntityMeganeura extends EntityPrehistoricSwimming {
         maxSize = 0.3F;
         teenAge = 4;
         pediaScale = 45;
+    }
+
+    public EnumCreatureAttribute getCreatureAttribute(){
+        return EnumCreatureAttribute.ARTHROPOD;
     }
 
     @Override

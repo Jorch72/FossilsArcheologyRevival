@@ -131,6 +131,9 @@ public class FossilFoodMappings {
 		FoodMappings.INSTANCE.addFish(EntityCoelacanth.class, 20);
 		FoodMappings.INSTANCE.addFish(EntitySturgeon.class, 20);
 		FoodMappings.INSTANCE.addFish(EntityAlligatorGar.class, 20);
+		FoodMappings.INSTANCE.addMeat(EntityMeganeura.class, 15);
+		FoodMappings.INSTANCE.addMeat(EntityMegaloceros.class, 60);
+		FoodMappings.INSTANCE.addMeat(EntityMegalania.class, 70);
 		FoodMappings.INSTANCE.removeItemMapping(new ItemStack(PrehistoricEntityType.HORSE.embryoItem), Diet.CARNIVORE_EGG);
 		FoodMappings.INSTANCE.addFish("listAllfishraw", 5);
 		FoodMappings.INSTANCE.addFish("foodOctopuscooked", 30);
