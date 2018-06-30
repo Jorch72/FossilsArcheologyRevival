@@ -39,6 +39,13 @@ public class EntityMeganeura extends EntityPrehistoricSwimming {
     }
 
     @Override
+    public boolean attackEntityFrom(DamageSource dmg, float i) {
+        if (dmg == DamageSource.IN_WALL) {
+            return false;
+        }
+        return super.attackEntityFrom(dmg, i);
+    }
+    @Override
     protected void dropFewItems(boolean bool, int rand) {
         if (this.isBurning() && this.type.cookedFoodItem != null) {
             this.dropItem(this.type.cookedFoodItem, 1);
@@ -85,7 +92,7 @@ public class EntityMeganeura extends EntityPrehistoricSwimming {
         } else if(!this.isChild()){
             this.moveHelper.action = EntityMoveHelper.Action.WAIT;
         }
-        if(flying && this.ticksExisted % 20 == 0 && !world.isRemote){
+        if(flying && this.ticksExisted % 20 == 0 && !world.isRemote && !this.isChild()){
             this.playSound(FASoundRegistry.MEGANEURA_FLY, 1, 1);
         }
         if (this.getAnimation() == ATTACK_ANIMATION && this.getAttackTarget() != null) {

@@ -38,7 +38,8 @@ public enum DinosaurBoneType {
 	MAMMOTH,
 	SMILODON,
 	QUAGGA,
-	ELASMOTHERIUM;
+	ELASMOTHERIUM,
+	MEGALOCEROS;
 
 	public static DinosaurBoneType get(PrehistoricEntityType prehistoric) {
 		return DinosaurBoneType.valueOf(prehistoric.name().toUpperCase(Locale.ENGLISH));

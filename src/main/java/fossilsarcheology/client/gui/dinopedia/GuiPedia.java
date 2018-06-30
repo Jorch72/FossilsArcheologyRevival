@@ -271,12 +271,12 @@ public class GuiPedia extends GuiScreen {
                 }
                 EntityAnimal entity = (EntityAnimal) Revival.PEDIA_OBJECT;
                 String s1 = I18n.format(entity.getName());
-                String s2 = I18n.format("prehistoric.pregnant");
+                String s2 = "prehistoric.pregnant";
                 int quot = (int) Math.floor(((float) properties.embryoProgress / (float) properties.embryo.growTime * 100.0F));
                 String s3 = I18n.format("prehistoric.pregnantTime") + " " + String.valueOf(quot) + "%";
                 printStringXY(s3, (-this.fontRenderer.getStringWidth(s3) / 2) + 100, 110, 157, 126, 103);
                 GlStateManager.scale(1.5F, 1.5F, 1.5F);
-                printStringXY(s2 + I18n.format(entity.getName()), (-this.fontRenderer.getStringWidth(s2 + s1) / 2) + 65, 60, 66, 48, 36);
+                printStringXY(I18n.format(s2 + entity.getName()), (-this.fontRenderer.getStringWidth(I18n.format(s2 + entity.getName())) / 2) + 65, 60, 66, 48, 36);
             }
             if (Revival.PEDIA_OBJECT instanceof EntityLivingBase) {
                 renderFirstPage((EntityLivingBase) Revival.PEDIA_OBJECT);

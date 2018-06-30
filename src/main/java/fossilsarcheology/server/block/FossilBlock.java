@@ -105,7 +105,7 @@ public class FossilBlock extends Block implements DefaultRenderedItem {
 			return Items.BONE;
 		} else if (i < 1200) {
 			this.randomMeta = 0;
-			return FAItemRegistry.PALAE_SAPLING_FOSSIL;
+			return FAItemRegistry.PLANT_FOSSIL;
 		}
 		this.randomMeta = 0;
 		return Item.getItemFromBlock(Blocks.COBBLESTONE);

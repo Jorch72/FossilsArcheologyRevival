@@ -64,6 +64,7 @@ item.bone_unique_item.therizinosaurus.name=Therizinosaurus Claw
 item.bone_unique_item.parasaurolophus.name=Parasaurolophus Crest
 item.bone_unique_item.icthyosaurus.name=Ichthyosaurus Eye
 item.bone_unique_item.henodus.name=Henodus Shell
+item.bone_unique_item.megaloceros.name=Megaloceros Antlers
 
 # Items - DNA
 
@@ -148,6 +149,7 @@ entity.fossil.triceratops.name=Triceratops
 entity.fossil.tyrannosaurus.name=Tyrannosaurus
 entity.fossil.velociraptor.name=Velociraptor
 entity.fossil.meganeura.name=Meganeura
+entity.fossil.megaloceros.name=Megaloceros
 entity.fossil.javelin.name=Javelin
 entity.fossil.ancient_javelin.name=Ancient Javelin
 entity.fossil.stone_tablet.name=Stone Tablet
@@ -392,6 +394,7 @@ item.dnaConfuciusornis.name=Confuciusornis DNA
 item.dnaAlligator_gar.name=Alligator Gar DNA
 item.dnaSturgeon.name=Sturgeon DNA
 item.dnaMeganeura.name=Meganeura DNA
+item.dnaMegaloceros.name=Megaloceros DNA
 
 item.embryoPig.name=Pig Embryo
 item.embryoSheep.name=Sheep Embryo
@@ -473,6 +476,8 @@ item.rawGastornis.name=Gastornis Meat
 item.rawKelenken.name=Kelenken Meat
 item.rawPhorusrhacos.name=Phorusrhacos Meat
 item.rawTitanis.name=Titanis Meat
+item.rawMegaloceros.name=Megaloceros Meat
+
 item.cookedTriceratops.name=Cooked Triceratops Meat
 item.cookedVelociraptor.name=Cooked Velociraptor Meat
 item.cookedTyrannosaurus.name=Cooked Tyrannosaurus Meat
@@ -503,6 +508,7 @@ item.cookedKelenken.name=Cooked Kelenken Meat
 item.cookedPhorusrhacos.name=Cooked Phorusrhacos Meat
 item.cookedTitanis.name=Cooked Titanis Meat
 item.cookedMeganeura.name=Cooked Meganeura Meat
+item.cookedMegaloceros.name=Cooked Megaloceros Meat
 
 item.fossilseed_dillhoffia.name=Fossilized Dillhoffia Seeds
 item.fossilseed_sarracina.name=Fossilized Sarracenia Seeds
@@ -562,6 +568,7 @@ item.syringeDodo.name=Dodo Embryo
 item.syringeHorse.name=Horse Embryo
 item.syringeQuagga.name=Quagga Embryo
 item.syringeElasmotherium.name=Elasmotherium Embryo
+item.syringeMegaloceros.name=Megaloceros Embryo
 item.fishNautilus.name=Nautilus
 item.fishCoelacanth.name=Coelacanth
 item.fishAlligator_gar.name=Alligator Gar

@@ -1,4 +1,25 @@
 {
+  "megaloceros_death": {
+    "category": "neutral",
+    "sounds": [
+      "fossil:prehistoric/megaloceros_death1",
+      "fossil:prehistoric/megaloceros_death2"
+    ]
+  },
+  "megaloceros_hurt": {
+    "category": "neutral",
+    "sounds": [
+      "fossil:prehistoric/megaloceros_hurt1",
+      "fossil:prehistoric/megaloceros_hurt2"
+    ]
+  },
+  "megaloceros_living": {
+    "category": "neutral",
+    "sounds": [
+      "fossil:prehistoric/megaloceros_living1",
+      "fossil:prehistoric/megaloceros_living2"
+    ]
+  },
   "meganeura_death": {
     "category": "neutral",
     "sounds": [

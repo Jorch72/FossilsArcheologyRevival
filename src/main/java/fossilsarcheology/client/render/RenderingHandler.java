@@ -97,6 +97,7 @@ public class RenderingHandler {
         RenderingRegistry.registerEntityRenderingHandler(EntityHenodus.class, new RenderPrehistoric(new ModelHenodus()));
         RenderingRegistry.registerEntityRenderingHandler(EntityIcthyosaurus.class, new RenderPrehistoric(new ModelIcthyosaurus()));
         RenderingRegistry.registerEntityRenderingHandler(EntityMeganeura.class, new RenderPrehistoric(new ModelMeganeura()));
+        RenderingRegistry.registerEntityRenderingHandler(EntityMegaloceros.class, new RenderPrehistoric(new ModelMegaloceros()));
 
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAnuStatue.class, new TileEntityAnuStatueRender());
         ForgeHooksClient.registerTESRItemStack(Item.getItemFromBlock(FABlockRegistry.ANU_STATUE), 0, TileEntityAnuStatue.class);

@@ -146,6 +146,11 @@ public class FASoundRegistry {
 	public static final SoundEvent MEGANEURA_LIVING = create("meganeura_living");
 	public static final SoundEvent MEGANEURA_FLY = create("meganeura_fly");
 
+	public static final SoundEvent MEGALOCEROS_HURT = create("megaloceros_hurt");
+	public static final SoundEvent MEGALOCEROS_DEATH = create("megaloceros_death");
+	public static final SoundEvent MEGALOCEROS_LIVING = create("megaloceros_living");
+
+	
 	public static final SoundEvent ANU_DEATH_EFFECT = create("anu_death_effect");
 
 	public static final SoundEvent DRUM_SINGLE = create("drum_single");

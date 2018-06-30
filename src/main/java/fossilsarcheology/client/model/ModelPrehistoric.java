@@ -10,6 +10,7 @@ public abstract class ModelPrehistoric extends AdvancedModelBase {
 	public ModelPrehistoric() {
 	}
 
+	//Whoever made this doesnt realize these are passed by value
 	public void blockMovement(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
 		if (entity instanceof EntityPrehistoric && ((EntityPrehistoric) entity).isMovementBlocked()) {
 			f = 0;

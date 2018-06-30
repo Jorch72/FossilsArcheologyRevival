@@ -253,7 +253,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
     }
 
     public AxisAlignedBB getAttackBounds() {
-        return this.getEntityBoundingBox().expand(3.0F, 3.0F, 3.0F);
+        return this.getEntityBoundingBox().grow(3.0F, 3.0F, 3.0F);
     }
 
     @Override
