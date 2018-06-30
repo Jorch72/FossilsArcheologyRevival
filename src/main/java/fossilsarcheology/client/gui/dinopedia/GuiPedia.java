@@ -308,11 +308,11 @@ public class GuiPedia extends GuiScreen {
          */
         else {
             if (Revival.PEDIA_OBJECT instanceof EntityPrehistoric) {
-                showPrehistoricBio(((EntityPrehistoric) Revival.PEDIA_OBJECT).type.toString());
+                showPrehistoricBio(((EntityPrehistoric) Revival.PEDIA_OBJECT).type.toString().toLowerCase());
             } else if (Revival.PEDIA_OBJECT instanceof EntityFishBase) {
-                showPrehistoricBio(((EntityFishBase) Revival.PEDIA_OBJECT).selfType.toString());
+                showPrehistoricBio(((EntityFishBase) Revival.PEDIA_OBJECT).selfType.toString().toLowerCase());
             } else if (Revival.PEDIA_OBJECT instanceof EntityQuagga) {
-                showPrehistoricBio("Quagga");
+                showPrehistoricBio("quagga");
             }
         }
     }

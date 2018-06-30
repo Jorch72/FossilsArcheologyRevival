@@ -65,6 +65,7 @@ item.bone_unique_item.parasaurolophus.name=Parasaurolophus Crest
 item.bone_unique_item.icthyosaurus.name=Ichthyosaurus Sclerotic Ring
 item.bone_unique_item.henodus.name=Henodus Shell
 item.bone_unique_item.megaloceros.name=Megaloceros Antlers
+item.bone_unique_item.megalania.name=Megalania Claw
 
 # Items - DNA
 
@@ -150,6 +151,7 @@ entity.fossil.tyrannosaurus.name=Tyrannosaurus
 entity.fossil.velociraptor.name=Velociraptor
 entity.fossil.meganeura.name=Meganeura
 entity.fossil.megaloceros.name=Megaloceros
+entity.fossil.megalania.name=Megalania
 entity.fossil.javelin.name=Javelin
 entity.fossil.ancient_javelin.name=Ancient Javelin
 entity.fossil.stone_tablet.name=Stone Tablet
@@ -340,6 +342,7 @@ item.eggGastornis.name=Gastornis Egg
 item.eggPhorusrhacos.name=Phorusrhacos Egg
 item.eggTitanis.name=Titanis Egg
 item.eggKelenken.name=Kelenken Egg
+item.eggMegalania.name=Megalania Egg
 item.dnaGastornis.name=Gastornis DNA
 item.dnaPhorusrhacos.name=Phorusrhacos DNA
 item.dnaTitanis.name=Titanis DNA
@@ -395,6 +398,7 @@ item.dnaAlligator_gar.name=Alligator Gar DNA
 item.dnaSturgeon.name=Sturgeon DNA
 item.dnaMeganeura.name=Meganeura DNA
 item.dnaMegaloceros.name=Megaloceros DNA
+item.dnaMegalania.name=Megalania DNA
 
 item.embryoPig.name=Pig Embryo
 item.embryoSheep.name=Sheep Embryo
@@ -477,6 +481,7 @@ item.rawKelenken.name=Kelenken Meat
 item.rawPhorusrhacos.name=Phorusrhacos Meat
 item.rawTitanis.name=Titanis Meat
 item.rawMegaloceros.name=Megaloceros Meat
+item.rawMegalania.name=Megalania Meat
 
 item.cookedTriceratops.name=Cooked Triceratops Meat
 item.cookedVelociraptor.name=Cooked Velociraptor Meat
@@ -509,6 +514,7 @@ item.cookedPhorusrhacos.name=Cooked Phorusrhacos Meat
 item.cookedTitanis.name=Cooked Titanis Meat
 item.cookedMeganeura.name=Cooked Meganeura Meat
 item.cookedMegaloceros.name=Cooked Megaloceros Meat
+item.cookedMegalania.name=Cooked Megalania Meat
 
 item.fossilseed_dillhoffia.name=Fossilized Dillhoffia Seeds
 item.fossilseed_sarracina.name=Fossilized Sarracenia Seeds

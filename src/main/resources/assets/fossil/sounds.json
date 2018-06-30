@@ -1,4 +1,26 @@
 {
+  "megalania_death": {
+    "category": "neutral",
+    "sounds": [
+      "fossil:prehistoric/megalania_death1",
+      "fossil:prehistoric/megalania_death2"
+    ]
+  },
+  "megalania_hurt": {
+    "category": "neutral",
+    "sounds": [
+      "fossil:prehistoric/megalania_hurt1",
+      "fossil:prehistoric/megalania_hurt2"
+    ]
+  },
+  "megalania_living": {
+    "category": "neutral",
+    "sounds": [
+      "fossil:prehistoric/megalania_living1",
+      "fossil:prehistoric/megalania_living2",
+      "fossil:prehistoric/megalania_living3"
+    ]
+  },
   "megaloceros_death": {
     "category": "neutral",
     "sounds": [

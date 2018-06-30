@@ -1,5 +1,6 @@
 package fossilsarcheology.server.entity.ai;
 
+import fossilsarcheology.server.entity.prehistoric.EntityMegalania;
 import fossilsarcheology.server.entity.prehistoric.EntityPrehistoric;
 import net.minecraft.entity.ai.EntityAIBase;
 
@@ -16,7 +17,7 @@ public class DinoAILookIdle extends EntityAIBase {
 
 	@Override
     public boolean shouldExecute() {
-		if (this.prehistoric.isSleeping()) {
+		if (this.prehistoric.isSleeping() || this.prehistoric instanceof EntityMegalania && this.prehistoric.getAnimation() == EntityMegalania.ANIMATION_FIGHT) {
 			return false;
 		}
 		return this.prehistoric.getRNG().nextFloat() < 0.02F;

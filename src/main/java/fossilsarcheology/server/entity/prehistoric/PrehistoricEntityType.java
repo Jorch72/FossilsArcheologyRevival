@@ -65,7 +65,8 @@ public enum PrehistoricEntityType {
 	SMILODON(EntitySmilodon.class, MobType.MAMMAL, TimePeriod.CENOZOIC, Diet.CARNIVORE, Parameter.TAME | Parameter.CARNIVORE, 0XB88C64, 0XECDFCE),
 	QUAGGA(EntityQuagga.class, MobType.MAMMAL, TimePeriod.CENOZOIC, Diet.HERBIVORE, Parameter.TAME | Parameter.RIDE | Parameter.HERBIVORE, 0X763C24, 0XD3B9AB),
 	ELASMOTHERIUM(EntityElasmotherium.class, MobType.MAMMAL, TimePeriod.CENOZOIC, Diet.HERBIVORE, Parameter.TAME | Parameter.RIDE | Parameter.HERBIVORE, 0X6B321B, 0X666666),
-	MEGALOCEROS(EntityMegaloceros.class, MobType.MAMMAL, TimePeriod.CENOZOIC, Diet.HERBIVORE, Parameter.TAME | Parameter.RIDE | Parameter.HERBIVORE, 0X5C2E1A, 0X8E5A3B);
+	MEGALOCEROS(EntityMegaloceros.class, MobType.MAMMAL, TimePeriod.CENOZOIC, Diet.HERBIVORE, Parameter.TAME | Parameter.RIDE | Parameter.HERBIVORE, 0X5C2E1A, 0X8E5A3B),
+	MEGALANIA(EntityMegalania.class, MobType.DINOSAUR, TimePeriod.CENOZOIC, Diet.CARNIVORE_EGG, Parameter.TAME | Parameter.RIDE | Parameter.CARNIVORE, 0X6D543D, 0XDCAE73);
 
 	private final Class<? extends Entity> entity;
 	public final MobType mobType;
