@@ -315,6 +315,9 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 	@Override
 	public void onDataPacket(NetworkManager netManager, net.minecraft.network.play.server.SPacketUpdateTileEntity packet) {
 		readFromNBT(packet.getNbtCompound());
+		if(!world.isRemote) {
+			Revival.NETWORK_WRAPPER.sendToAll(new MessageUpdateFeeder(this.pos.toLong(), currentMeat, currentPlant));
+		}
 	}
 
 }

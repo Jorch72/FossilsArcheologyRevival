@@ -161,6 +161,7 @@ public class EntityDinosaurEgg extends EntityLiving implements IEntityAdditional
                     }
                     prehistoricEntity.onInitialSpawn(world.getDifficultyForLocation(new BlockPos(prehistoricEntity)), null);
                     prehistoricEntity.setAgeInDays(0);
+                    prehistoricEntity.grow(0);
                     prehistoricEntity.updateAbilities();
                     prehistoricEntity.setNoAI(false);
                 }

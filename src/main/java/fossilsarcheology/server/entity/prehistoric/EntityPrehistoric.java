@@ -267,6 +267,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
         ticksTillPlay = 0;
         ticksTillMate = 24000;
         this.heal(this.getMaxHealth());
+        this.grow(0);
         return livingdata;
     }
 
