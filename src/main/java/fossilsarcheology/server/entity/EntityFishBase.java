@@ -199,7 +199,11 @@ public abstract class EntityFishBase extends EntityTameable {
 
     @Override
     public boolean getCanSpawnHere() {
-        return this.world.checkNoEntityCollision(this.getEntityBoundingBox());
+        int i = MathHelper.floor(this.posX);
+        int j = MathHelper.floor(this.getEntityBoundingBox().minY);
+        int k = MathHelper.floor(this.posZ);
+        BlockPos blockpos = new BlockPos(i, j, k);
+        return this.world.checkNoEntityCollision(this.getEntityBoundingBox()) && this.world.getBlockState(blockpos.down()).getBlock() == this.spawnableBlock;
     }
 
     @Override
