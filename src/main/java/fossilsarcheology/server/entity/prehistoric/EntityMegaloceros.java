@@ -21,7 +21,7 @@ public class EntityMegaloceros extends EntityPrehistoric {
         super(world, PrehistoricEntityType.MEGALOCEROS, 1, 9, 10, 44, 0.1, 0.35);
         this.setActualSize(1.9F, 1.7F);
         this.nearByMobsAllowed = 9;
-        this.pediaScale = 54;
+        this.pediaScale = 25;
         minSize = 0.6F;
         maxSize = 1.5F;
         teenAge = 4;

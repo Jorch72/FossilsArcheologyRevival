@@ -15,6 +15,7 @@ import net.minecraft.item.Item;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
+import org.lwjgl.Sys;
 
 public class EntityStegosaurus extends EntityPrehistoric {
 

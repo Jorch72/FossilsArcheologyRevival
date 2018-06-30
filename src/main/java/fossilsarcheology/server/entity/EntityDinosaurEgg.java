@@ -7,7 +7,6 @@ import fossilsarcheology.server.entity.prehistoric.OrderType;
 import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityType;
 import fossilsarcheology.server.item.FAItemRegistry;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
@@ -150,10 +149,6 @@ public class EntityDinosaurEgg extends EntityLiving implements IEntityAdditional
             Entity entity = this.selfType.invokeClass(this.world);
             if (entity != null) {
                 if (entity instanceof EntityPrehistoric) {
-                    if (player != null) {
-                        //player.addStat(FossilAchievements.FIRST_DINO, 1);
-
-                    }
                     EntityPrehistoric prehistoricEntity = (EntityPrehistoric) entity;
                     if (prehistoricEntity.type.isTameable() && player != null) {
                         if (prehistoricEntity.type != PrehistoricEntityType.TYRANNOSAURUS && prehistoricEntity.type != PrehistoricEntityType.ALLOSAURUS && prehistoricEntity.type != PrehistoricEntityType.SARCOSUCHUS) {
@@ -167,6 +162,7 @@ public class EntityDinosaurEgg extends EntityLiving implements IEntityAdditional
                     prehistoricEntity.onInitialSpawn(world.getDifficultyForLocation(new BlockPos(prehistoricEntity)), null);
                     prehistoricEntity.setAgeInDays(0);
                     prehistoricEntity.updateAbilities();
+                    prehistoricEntity.setNoAI(false);
                 }
                 for (int i = 0; i < 4; i++) {
                     double x = this.posX + (this.rand.nextFloat() - 0.5D) * this.width;
@@ -178,12 +174,12 @@ public class EntityDinosaurEgg extends EntityLiving implements IEntityAdditional
                 }
                 entity.setLocationAndAngles(Math.floor(this.posX), Math.floor(this.posY) + 1, Math.floor(this.posZ), this.world.rand.nextFloat() * 360.0F, 0.0F);
                 if (this.world.isRemote) {
+                    if (player != null) {
+                        player.sendStatusMessage(new TextComponentString(net.minecraft.client.resources.I18n.format("dinoegg.hatched")), false);
+                    }
                     return;
                 }
                 this.world.spawnEntity(entity);
-                if (player != null) {
-                    player.sendStatusMessage(new TextComponentString(I18n.format("dinoegg.hatched")), false);
-                }
                 this.setDead();
             }
         }
