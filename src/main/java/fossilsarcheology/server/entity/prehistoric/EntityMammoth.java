@@ -248,8 +248,8 @@ public class EntityMammoth extends EntityPrehistoric implements IShearable {
 						entity.startRiding(null);
 					}
 				}
-				entity.motionY += 0.4;
-				entity.addVelocity((double) (-MathHelper.sin((this.rotationYaw - 180) * (float) Math.PI / 180.0F) * 2 * 0.5F), 0.1D, (MathHelper.cos((this.rotationYaw - 180) * (float) Math.PI / 180.0F) * 2 * 0.5F));
+				entity.motionY = 0.4;
+				entity.addVelocity((double) (-MathHelper.sin((this.rotationYaw - 180) * (float) Math.PI / 180.0F) * 2 * 0.25F), 0.1D, (MathHelper.cos((this.rotationYaw - 180) * (float) Math.PI / 180.0F) * 2 * 0.25F));
 				return flag;
 			}
 		}
