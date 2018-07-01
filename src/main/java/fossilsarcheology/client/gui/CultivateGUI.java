@@ -9,7 +9,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 
 public class CultivateGUI extends GuiContainer {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(Revival.MODID, "textures/gui/cultivate.png");
+	public static final ResourceLocation TEXTURE = new ResourceLocation(Revival.MODID, "textures/gui/cultivate.png");
 	private final TileEntityCultivate entity;
 	private final CultivateContainer container;
 

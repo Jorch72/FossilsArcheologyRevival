@@ -50,6 +50,10 @@ public class TileEntityCultivate extends TileEntity implements ITickable, IWorld
                 return 3000;
             }
 
+            if (output == Items.MUTTON) {
+                return 3000;
+            }
+
             if (output == Items.FISH) {
                 return 3000;
             }
