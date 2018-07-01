@@ -34,6 +34,7 @@ public class AncientChestBlock extends BlockContainer implements DefaultRendered
 		super(Material.WOOD);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 		this.setCreativeTab(FATabRegistry.BLOCKS);
+		this.setBlockUnbreakable();
 		this.setUnlocalizedName("ancient_chest");
 	}
 

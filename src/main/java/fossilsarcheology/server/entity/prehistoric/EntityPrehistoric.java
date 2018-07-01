@@ -205,6 +205,9 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
         compound.setInteger("TicksSinceMate", this.ticksTillMate);
         compound.setByte("currentOrder", (byte) this.currentOrder.ordinal());
         compound.setString("OwnerDisplayName", this.getOwnerDisplayName());
+        compound.setFloat("YawRotation", this.rotationYaw);
+        compound.setFloat("HeadRotation", this.rotationYawHead);
+
     }
 
     public String getOwnerDisplayName() {
@@ -243,6 +246,8 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
         this.mood_noplants = compound.getBoolean("MoodNoPlants");
         this.ticksTillPlay = compound.getInteger("TicksSincePlay");
         this.ticksTillMate = compound.getInteger("TicksSinceMate");
+        this.rotationYaw = compound.getInteger("YawRotation");
+        this.rotationYawHead = compound.getInteger("HeadRotation");
         String s = "";
         if (compound.hasKey("Owner", 8)) {
             s = compound.getString("Owner");
