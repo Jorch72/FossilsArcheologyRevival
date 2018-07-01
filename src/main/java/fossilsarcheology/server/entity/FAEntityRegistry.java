@@ -1,7 +1,7 @@
 package fossilsarcheology.server.entity;
 
 import fossilsarcheology.Revival;
-import fossilsarcheology.server.compat.ThaumcraftCompatBridge;
+import fossilsarcheology.server.compat.thaumcraft.ThaumcraftCompatBridge;
 import fossilsarcheology.server.entity.monster.*;
 import fossilsarcheology.server.entity.prehistoric.*;
 import fossilsarcheology.server.entity.projectile.AncientJavelinEntity;

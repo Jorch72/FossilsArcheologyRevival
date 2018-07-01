@@ -10,7 +10,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
 public class AnalyzerGUI extends GuiContainer {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(Revival.MODID, "textures/gui/analyzer.png");
+	public static final ResourceLocation TEXTURE = new ResourceLocation(Revival.MODID, "textures/gui/analyzer.png");
 	private final AnalyzerBlockEntity analyzer;
 
 	public AnalyzerGUI(InventoryPlayer playerInventory, AnalyzerBlockEntity analyzer) {

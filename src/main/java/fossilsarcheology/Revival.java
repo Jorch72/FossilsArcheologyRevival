@@ -2,7 +2,7 @@ package fossilsarcheology;
 
 import fossilsarcheology.server.ServerProxy;
 import fossilsarcheology.server.block.FABlockRegistry;
-import fossilsarcheology.server.compat.ThaumcraftCompatBridge;
+import fossilsarcheology.server.compat.thaumcraft.ThaumcraftCompatBridge;
 import fossilsarcheology.server.config.FossilConfig;
 import fossilsarcheology.server.message.*;
 import fossilsarcheology.server.util.ReleaseType;

@@ -1,4 +1,4 @@
-package fossilsarcheology.server.compat;
+package fossilsarcheology.server.compat.thaumcraft;
 
 import fossilsarcheology.Revival;
 import fossilsarcheology.server.block.FABlockRegistry;

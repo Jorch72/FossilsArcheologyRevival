@@ -1,8 +1,7 @@
 package fossilsarcheology.server.block;
 
 import fossilsarcheology.Revival;
-import fossilsarcheology.server.compat.ThaumcraftCompatBridge;
-import fossilsarcheology.server.item.FAItemRegistry;
+import fossilsarcheology.server.compat.thaumcraft.ThaumcraftCompatBridge;
 import fossilsarcheology.server.recipe.FARecipeRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;

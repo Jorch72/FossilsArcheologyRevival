@@ -322,6 +322,18 @@ public enum PrehistoricEntityType {
 		return mesozoic.get(index);
 	}
 
+	public static List<PrehistoricEntityType> getTimePeriodList(TimePeriod... periods) {
+		List<PrehistoricEntityType> mesozoic = new ArrayList<>();
+		for (PrehistoricEntityType entity : PrehistoricEntityType.values()) {
+			for(TimePeriod period : periods){
+				if (entity.timePeriod == period) {
+					mesozoic.add(entity);
+				}
+			}
+		}
+		return mesozoic;
+	}
+
 	public static Item getRandomDNA(Random random, TimePeriod period) {
 		return PrehistoricEntityType.getRandomTimePeriod(random, period).dnaItem;
 	}

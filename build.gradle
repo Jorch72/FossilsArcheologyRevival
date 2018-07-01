@@ -51,6 +51,16 @@ repositories {
     name = "gegy1000"
     url = "https://maven.gegy1000.net"
   }
+  maven {
+    // location of the maven that hosts JEI files
+    name = "Progwml6 maven"
+    url = "http://dvs1.progwml6.com/files/maven"
+  }
+  maven {
+    // location of a maven mirror for JEI files, as a fallback
+    name = "ModMaven"
+    url = "modmaven.k-4u.nl"
+  }
 }
 
 dependencies {
@@ -58,6 +68,10 @@ dependencies {
   compile "com.azanor:thaumcraft-api:6.1-beta16"
   deobfCompile "mcp.mobius.waila:Hwyla:1.8.25-B40_1.12"
   runtime "mezz.jei:jei_1.12.2:4.9.1.181"
+  // compile against the JEI API but do not include it at runtime
+  deobfProvided "mezz.jei:jei_${mc_version}:${jei_version}:api"
+  // at runtime, use the full JEI jar
+  runtime "mezz.jei:jei_${mc_version}:${jei_version}"
 }
 
 processResources {

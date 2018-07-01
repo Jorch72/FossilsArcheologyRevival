@@ -1,5 +1,6 @@
-package fossilsarcheology.server.compat;
+package fossilsarcheology.server.compat.thaumcraft;
 
+import fossilsarcheology.server.compat.thaumcraft.ThaumcraftCompat;
 import net.minecraftforge.fml.common.Loader;
 
 /**
