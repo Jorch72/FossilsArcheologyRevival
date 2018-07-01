@@ -1,16 +1,15 @@
-package fossilsarcheology.server.compat.jei.culture;
+package fossilsarcheology.server.compat.jei.worktable;
 
-import fossilsarcheology.client.gui.AnalyzerGUI;
 import fossilsarcheology.client.gui.CultivateGUI;
+import fossilsarcheology.client.gui.WorktableGUI;
 import mezz.jei.api.gui.IDrawable;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.client.resources.I18n;
 
-public class CultivateDrawable implements IDrawable {
+public class WorktableDrawable implements IDrawable {
 
     @Override
     public int getWidth() {
@@ -25,11 +24,11 @@ public class CultivateDrawable implements IDrawable {
     @Override
     public void draw(Minecraft minecraft, int xOffset, int yOffset) {
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-        minecraft.getTextureManager().bindTexture(CultivateGUI.TEXTURE);
+        minecraft.getTextureManager().bindTexture(WorktableGUI.TEXTURE);
         this.drawTexturedModalRect(xOffset, yOffset, 3, 4, 170, 79);
         int fuelHeight = 12;
         int scaledProgress = (minecraft.player.ticksExisted % 25) * fuelHeight / 25;
-        this.drawTexturedModalRect(79, 32 + fuelHeight - scaledProgress, 176, fuelHeight - scaledProgress, 14, scaledProgress + 2);
+        this.drawTexturedModalRect(79, 32 + 12 - scaledProgress, 176, 12 - scaledProgress, 14, scaledProgress + 2);
         int progressWidth = 24;
         int scaledProgress2 = (minecraft.player.ticksExisted % 100) * progressWidth / 100;
         this.drawTexturedModalRect(76, 14, 176, 14, scaledProgress2 + 1, 16);

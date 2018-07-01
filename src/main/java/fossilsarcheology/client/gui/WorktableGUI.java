@@ -10,7 +10,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
 public class WorktableGUI extends GuiContainer {
-	private static final ResourceLocation loc = new ResourceLocation(Revival.MODID, "textures/gui/workbench.png");
+	public static final ResourceLocation TEXTURE = new ResourceLocation(Revival.MODID, "textures/gui/workbench.png");
 	private final TileEntityWorktable tile;
 
 	public WorktableGUI(InventoryPlayer playerInventory, TileEntityWorktable tile) {
@@ -28,7 +28,7 @@ public class WorktableGUI extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		this.mc.getTextureManager().bindTexture(loc);
+		this.mc.getTextureManager().bindTexture(TEXTURE);
 		int centerX = (this.width - this.xSize) / 2;
 		int centerY = (this.height - this.ySize) / 2;
 		this.drawTexturedModalRect(centerX, centerY, 0, 0, this.xSize, this.ySize);
