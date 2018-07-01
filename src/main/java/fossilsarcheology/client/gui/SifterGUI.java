@@ -13,7 +13,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class SifterGUI extends GuiContainer {
-	private static final ResourceLocation SIFTER_TEXTURE = new ResourceLocation(Revival.MODID + ":" + "textures/gui/sifter.png");
+	public static final ResourceLocation TEXTURE = new ResourceLocation(Revival.MODID + ":" + "textures/gui/sifter.png");
 	private final TileEntitySifter sifterInventory;
 
 	public SifterGUI(InventoryPlayer playerInventory, TileEntitySifter sifterInventory) {
@@ -30,7 +30,7 @@ public class SifterGUI extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		this.mc.getTextureManager().bindTexture(SIFTER_TEXTURE);
+		this.mc.getTextureManager().bindTexture(TEXTURE);
 		int centerX = (this.width - this.xSize) / 2;
 		int centerY = (this.height - this.ySize) / 2;
 		this.drawTexturedModalRect(centerX, centerY, 0, 0, this.xSize, this.ySize);

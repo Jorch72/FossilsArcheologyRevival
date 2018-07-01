@@ -2,10 +2,12 @@ package fossilsarcheology.server.compat.jei;
 
 import fossilsarcheology.client.gui.AnalyzerGUI;
 import fossilsarcheology.client.gui.CultivateGUI;
+import fossilsarcheology.client.gui.SifterGUI;
 import fossilsarcheology.client.gui.WorktableGUI;
 import fossilsarcheology.server.block.FABlockRegistry;
 import fossilsarcheology.server.compat.jei.analyzer.*;
 import fossilsarcheology.server.compat.jei.culture.*;
+import fossilsarcheology.server.compat.jei.sifter.*;
 import fossilsarcheology.server.compat.jei.worktable.*;
 import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityType;
 import fossilsarcheology.server.entity.prehistoric.TimePeriod;
@@ -29,6 +31,7 @@ public class FAJEIPlugin implements IModPlugin {
     public static final String ANALYZER_UID = "fossil.analyzer";
     public static final String CULTURE_VAT_UID = "fossil.culture_vat";
     public static final String WORKTABLE_UID = "fossil.worktable";
+    public static final String SIFTER_UID = "fossil.sifter";
 
     public void register(IModRegistry registry) {
         registry.addRecipes(AnalyzerRecipes.getRecipes(), ANALYZER_UID);
@@ -48,12 +51,19 @@ public class FAJEIPlugin implements IModPlugin {
         registry.handleRecipes(RecipeWorktable.class, new WorktableFactory(), WORKTABLE_UID);
         registry.addRecipeCategoryCraftingItem(new ItemStack(FABlockRegistry.WORKTABLE_IDLE), WORKTABLE_UID);
         registry.addRecipeClickArea(WorktableGUI.class, 79, 19, 26, 16, WORKTABLE_UID);
+
+        registry.addRecipes(SifterRecipes.getRecipes(), SIFTER_UID);
+        registry.addRecipeHandlers(new SifterRecipeHandler());
+        registry.handleRecipes(RecipeSifter.class, new SifterFactory(), SIFTER_UID);
+        registry.addRecipeCategoryCraftingItem(new ItemStack(FABlockRegistry.SIFTER_IDLE), SIFTER_UID);
+        registry.addRecipeClickArea(SifterGUI.class, 75, 33, 26, 26, SIFTER_UID);
     }
 
     public void registerCategories(IRecipeCategoryRegistration registry) {
         registry.addRecipeCategories(new AnalyzerRecipeCatagory());
         registry.addRecipeCategories(new CultivateRecipeCatagory());
         registry.addRecipeCategories(new WorktableRecipeCatagory());
+        registry.addRecipeCategories(new SifterRecipeCatagory());
     }
 
     public class AnalyzerFactory implements IRecipeWrapperFactory<RecipeAnalyzer> {
@@ -74,6 +84,13 @@ public class FAJEIPlugin implements IModPlugin {
         @Override
         public IRecipeWrapper getRecipeWrapper(RecipeWorktable recipe) {
             return new WorktableRecipeWrapper(recipe);
+        }
+    }
+
+    public class SifterFactory implements IRecipeWrapperFactory<RecipeSifter> {
+        @Override
+        public IRecipeWrapper getRecipeWrapper(RecipeSifter recipe) {
+            return new SifterRecipeWrapper(recipe);
         }
     }
 }

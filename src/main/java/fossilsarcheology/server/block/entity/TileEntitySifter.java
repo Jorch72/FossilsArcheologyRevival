@@ -242,10 +242,10 @@ public class TileEntitySifter extends TileEntity implements IInventory, ISidedIn
                         result = this.stacks.get(this.spaceIndex);
                     }
                 } else {
-                    if (random < 0.4) {
+                    if (random < 1) {
                         result = new ItemStack(FAItemRegistry.DOMINICAN_AMBER, 1);
                     } else if (random < 15) {
-                        result = new ItemStack(FAItemRegistry.PALAE_SAPLING_FOSSIL, 1);
+                        result = new ItemStack(FAItemRegistry.PLANT_FOSSIL, 1);
                     } else if (random < 30) {
                         result = new ItemStack(Items.POTATO, 1);
                     } else if (random < 40) {
@@ -259,15 +259,7 @@ public class TileEntitySifter extends TileEntity implements IInventory, ISidedIn
                     } else if (random < 95) {
                         result = new ItemStack(FAItemRegistry.POTTERY_SHARD, 3);
                     } else if (random <= 100) {
-                        int i = (new Random()).nextInt(15);
-                        Item i0;
-                        if (i == 0) {
-                            i0 = FAItemRegistry.PALAE_SAPLING_FOSSIL;
-                        } else {
-                            i0 = FAItemRegistry.BIOFOSSIL;
-                        }
-
-                        result = new ItemStack(i0, 1);
+                        result = new ItemStack(FAItemRegistry.BIOFOSSIL, 1);
                     }
                 }
             }
