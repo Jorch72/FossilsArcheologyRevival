@@ -57,6 +57,24 @@ public class FAJEIPlugin implements IModPlugin {
         registry.handleRecipes(RecipeSifter.class, new SifterFactory(), SIFTER_UID);
         registry.addRecipeCategoryCraftingItem(new ItemStack(FABlockRegistry.SIFTER_IDLE), SIFTER_UID);
         registry.addRecipeClickArea(SifterGUI.class, 75, 33, 26, 26, SIFTER_UID);
+
+        addDescription(registry, new ItemStack(FAItemRegistry.BIOFOSSIL));
+        addDescription(registry, new ItemStack(FAItemRegistry.TAR_FOSSIL));
+        addDescription(registry, new ItemStack(FABlockRegistry.FEEDER));
+        addDescription(registry, new ItemStack(FAItemRegistry.CHICKEN_ESSENCE));
+        addDescription(registry, new ItemStack(FAItemRegistry.DINOPEDIA));
+        addDescription(registry, new ItemStack(FAItemRegistry.SCARAB_GEM));
+        addDescription(registry, new ItemStack(FAItemRegistry.AQUATIC_SCARAB_GEM));
+        addDescription(registry, new ItemStack(FAItemRegistry.STONE_TABLET));
+        for(int i = 0; i < 16; i++){
+            registry.addIngredientInfo(new ItemStack(FAItemRegistry.TOY_BALL, 1, i), ItemStack.class, "item.toy.jei_desc");
+        }
+        registry.addIngredientInfo(new ItemStack(FAItemRegistry.TOY_TETHERED_LOG), ItemStack.class, "item.toy.jei_desc");
+        registry.addIngredientInfo(new ItemStack(FAItemRegistry.TOY_SCRATCHING_POST), ItemStack.class, "item.toy.jei_desc");
+        addDescription(registry, new ItemStack(FAItemRegistry.WHIP));
+        addDescription(registry, new ItemStack(FAItemRegistry.ANCIENT_HELMET));
+        addDescription(registry, new ItemStack(FAItemRegistry.ANCIENT_SWORD));
+
     }
 
     public void registerCategories(IRecipeCategoryRegistration registry) {
@@ -92,5 +110,10 @@ public class FAJEIPlugin implements IModPlugin {
         public IRecipeWrapper getRecipeWrapper(RecipeSifter recipe) {
             return new SifterRecipeWrapper(recipe);
         }
+    }
+
+    private static void addDescription(IModRegistry registry, ItemStack stack){
+        registry.addIngredientInfo(stack, ItemStack.class, stack.getUnlocalizedName() + ".jei_desc");
+
     }
 }

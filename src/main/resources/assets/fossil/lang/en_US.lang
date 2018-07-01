@@ -720,7 +720,21 @@ prehistoric.pregnantRabbit=Pregnant Rabbit
 prehistoric.pregnantWolf=Pregnant Wolf
 prehistoric.pregnantOcelot=Pregnant Ocelot
 prehistoric.pregnantPolarBear=Pregnant Polar Bear
+
+#COMPAT
 tc.aspect.chronos=Time, Past, Present, Future
 tc.aspect.anteanus=Ruins, Archaeology
 tc.aspect.priscus=Fossil, Dig, Paleontology
 analyzer.chance=Chance:
+item.biofossil.jei_desc=Biofossils can be analyzed to create mesozoic or paleozoic DNA, or can be placed in the world in the form of skeleton models.
+item.tar_fossil.jei_desc=Tar fossils can be analyzed to create cenozoic DNA, or can be placed in the world in the form of skeleton models.
+tile.feeder.jei_desc=Feeders can be filled with meat or plants in order to create a food source for prehistoric enclosures.
+item.scarab_gem.jei_desc=Scarab gems can be used to tame large, hostile prehistoric creatures once weakened, including Tyrannosaurus and Allosaurus.
+item.aquatic_scarab_gem.jei_desc=Aquatic Scarab gems can be used to tame large, hostile, aquatic prehistoric creatures once weakened, including Spinosaurus, Mosasaurus and Sarcosuchus.
+item.stone_tablet.jei_desc=Stone tablets are ancient forms of art that depict valuable insights into the ancient world when placed.
+item.toy.jei_desc=Toys can be placed near prehistoric creatures to entertain them.
+item.whip.jei_desc=Whips can be used to forcefully tame prehistoric creatures or to mount rideable, tamed ones.
+item.ancient_sword.jei_desc=When used in conjunction with an Ancient Helmet, there is a chance to create lightning upon attacking. Striking a pig with this might create a worthy servant...
+item.ancient_helmet.jei_desc=When used in conjunction with an Ancient Helmet, there is a chance to create lightning upon attacking. Striking a pig might create a worthy servant...
+item.dinopedia.jei_desc=The Dinopedia can reveal important information about prehistoric creatures or their surrogate mothers.
+item.chicken_essence.jei_desc=Chicken Essence can be fed to prehistoric creatures in order to grow them quickly.
