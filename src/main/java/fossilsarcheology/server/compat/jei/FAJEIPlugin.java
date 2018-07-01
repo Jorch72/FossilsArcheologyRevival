@@ -66,7 +66,7 @@ public class FAJEIPlugin implements IModPlugin {
         addDescription(registry, new ItemStack(FAItemRegistry.SCARAB_GEM));
         addDescription(registry, new ItemStack(FAItemRegistry.AQUATIC_SCARAB_GEM));
         addDescription(registry, new ItemStack(FAItemRegistry.STONE_TABLET));
-        for(int i = 0; i < 16; i++){
+        for(int i = 0; i <= 15; i++){
             registry.addIngredientInfo(new ItemStack(FAItemRegistry.TOY_BALL, 1, i), ItemStack.class, "item.toy.jei_desc");
         }
         registry.addIngredientInfo(new ItemStack(FAItemRegistry.TOY_TETHERED_LOG), ItemStack.class, "item.toy.jei_desc");

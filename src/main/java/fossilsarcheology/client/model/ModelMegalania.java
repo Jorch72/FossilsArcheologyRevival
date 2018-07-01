@@ -63,7 +63,7 @@ public class ModelMegalania extends ModelPrehistoric {
         this.BottomJaw2.setRotationPoint(0.0F, 0.0F, -6.0F);
         this.BottomJaw2.addBox(-1.5F, 0.0F, -6.0F, 3, 2, 8, 0.0F);
         this.setRotateAngle(BottomJaw2, -0.045553093477052F, 0.0F, 0.0F);
-        this.RightShin = new AdvancedModelRenderer(this, 0, 15);
+        this.RightShin = new AdvancedModelRenderer(this, 0, 33);
         this.RightShin.setRotationPoint(-8.0F, 0.5F, -4.5F);
         this.RightShin.addBox(0.0F, 0.0F, 0.0F, 4, 9, 4, 0.0F);
         this.setRotateAngle(RightShin, 0.045553093477052F, 0.0F, 0.136659280431156F);
@@ -79,7 +79,7 @@ public class ModelMegalania extends ModelPrehistoric {
         this.RightArm.setRotationPoint(-6.0F, 3.7F, 1.5F);
         this.RightArm.addBox(-9.0F, 0.0F, 0.0F, 9, 5, 5, 0.0F);
         this.setRotateAngle(RightArm, -0.22759093446006054F, 0.7740535232594852F, -0.27314402793711257F);
-        this.LeftShin = new AdvancedModelRenderer(this, 0, 15);
+        this.LeftShin = new AdvancedModelRenderer(this, 0, 33);
         this.LeftShin.mirror = true;
         this.LeftShin.setRotationPoint(8.0F, 0.5F, -4.5F);
         this.LeftShin.addBox(-4.0F, 0.0F, 0.0F, 4, 9, 4, 0.0F);
@@ -229,8 +229,8 @@ public class ModelMegalania extends ModelPrehistoric {
         ModelUtils.rotate(animator, Tail1, 20, 0, 0);
         ModelUtils.rotate(animator, Tail2, 17, 0, 0);
         ModelUtils.rotate(animator, Tail3, 10, 0, 0);
-        ModelUtils.rotate(animator, LeftThigh, 30 - ModelUtils.getDefaultRotationX(LeftThigh), 10 - ModelUtils.getDefaultRotationY(LeftThigh), 15 - ModelUtils.getDefaultRotationX(LeftThigh));
-        ModelUtils.rotate(animator, RightThigh, 30 - ModelUtils.getDefaultRotationX(RightThigh), -10 - ModelUtils.getDefaultRotationY(RightThigh), -15 - ModelUtils.getDefaultRotationZ(RightThigh));
+        ModelUtils.rotate(animator, LeftThigh, 30, 10, 15);
+        ModelUtils.rotate(animator, RightThigh, 30, -10, -15);
         ModelUtils.rotate(animator, LeftFoot, 0, 0, 15);
         ModelUtils.rotate(animator, Rightfoot, 0, 0, -15);
         ModelUtils.rotate(animator, LHand, 90, 0, 0);
