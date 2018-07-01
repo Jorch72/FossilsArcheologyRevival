@@ -1,5 +1,6 @@
 package fossilsarcheology.server.compat.jei;
 
+import fossilsarcheology.client.gui.AnalyzerGUI;
 import fossilsarcheology.server.block.FABlockRegistry;
 import fossilsarcheology.server.compat.jei.analyzer.*;
 import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityType;
@@ -28,6 +29,7 @@ public class FAJEIPlugin implements IModPlugin {
         registry.addRecipeHandlers(new AnalyzerRecipeHandler());
         registry.handleRecipes(RecipeAnalyzer.class, new AnalyzerFactory(), ANALYZER_UID);
         registry.addRecipeCategoryCraftingItem(new ItemStack(FABlockRegistry.ANALYZER), ANALYZER_UID);
+        registry.addRecipeClickArea(AnalyzerGUI.class, 79, 21, 23, 11, ANALYZER_UID);
     }
 
     public void registerCategories(IRecipeCategoryRegistration registry) {

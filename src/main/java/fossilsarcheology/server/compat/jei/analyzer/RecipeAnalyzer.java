@@ -1,7 +1,5 @@
 package fossilsarcheology.server.compat.jei.analyzer;
 
-import mezz.jei.api.recipe.IRecipeWrapper;
-import mezz.jei.api.recipe.IRecipeWrapperFactory;
 import net.minecraft.item.ItemStack;
 
 import java.util.HashMap;
@@ -29,12 +27,5 @@ public class RecipeAnalyzer {
 
     public int getOutputChance() {
         return chance;
-    }
-
-    public class AnalyzerFactory implements IRecipeWrapperFactory<RecipeAnalyzer> {
-        @Override
-        public IRecipeWrapper getRecipeWrapper(RecipeAnalyzer recipe) {
-            return new AnalyzerRecipeWrapper(recipe);
-        }
     }
 }

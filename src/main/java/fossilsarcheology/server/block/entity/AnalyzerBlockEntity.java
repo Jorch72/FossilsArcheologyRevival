@@ -263,7 +263,13 @@ public class AnalyzerBlockEntity extends TileEntity implements IInventory, ISide
 					output = new ItemStack(Items.DYE, 1, 2);
 				}
 				if (rand > 85) {
-					output = new ItemStack(FAItemRegistry.FOSSIL_SEED, 1, random.nextInt(14));
+					int meta = random.nextInt(15);
+					if(meta != 15){
+						output = new ItemStack(FAItemRegistry.FOSSIL_SEED, 1, meta);
+					}else{
+						output = new ItemStack(FAItemRegistry.FOSSIL_SEED_FERN, 1);
+
+					}
 				}
 			} else if (rawItem == Item.getItemFromBlock(Blocks.WOOL)) {
 				if ((random).nextInt(50) <= 30) {
@@ -280,7 +286,7 @@ public class AnalyzerBlockEntity extends TileEntity implements IInventory, ISide
 			} else if (rawItem == Items.PORKCHOP) {
 				output = new ItemStack(PrehistoricEntityType.PIG.dnaItem, 2);
 			} else if (rawItem == Items.FISH) {
-				if(random.nextInt(10) == 0) {
+				if(random.nextInt(9) == 0) {
 					output = new ItemStack(PrehistoricEntityType.POLARBEAR.dnaItem, 1);
 				}else{
 					if(random.nextInt(5) == 0) {
@@ -327,7 +333,7 @@ public class AnalyzerBlockEntity extends TileEntity implements IInventory, ISide
 					output = new ItemStack(Items.CHICKEN, 1);
 				}
 				if (rand >= 15 && rand < 30) {
-					output = new ItemStack(Items.CHICKEN, 1);
+					output = new ItemStack(Items.MUTTON, 1);
 				}
 				if (rand >= 30 && rand < 45) {
 					output = new ItemStack(Items.PORKCHOP, 1);
