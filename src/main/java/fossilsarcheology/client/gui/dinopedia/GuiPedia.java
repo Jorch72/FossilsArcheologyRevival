@@ -486,7 +486,7 @@ public class GuiPedia extends GuiScreen {
         if (entity instanceof EntityDinosaurEgg) {
             EntityDinosaurEgg egg = (EntityDinosaurEgg) entity;
             GlStateManager.pushMatrix();
-            String s = I18n.format(egg.selfType.toString() + " " + I18n.format("pedia.egg"));
+            String s = I18n.format(egg.selfType.friendlyName + " " + I18n.format("pedia.egg"));
             GlStateManager.scale(1.5F, 1.5F, 1.5F);
             printStringXY(s, (-this.fontRenderer.getStringWidth(s) / 2) + 65, 60, 66, 48, 36);
             GlStateManager.popMatrix();
