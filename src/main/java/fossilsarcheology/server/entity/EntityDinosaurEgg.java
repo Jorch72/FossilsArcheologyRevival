@@ -1,12 +1,15 @@
 package fossilsarcheology.server.entity;
 
 import fossilsarcheology.Revival;
+import fossilsarcheology.client.sound.FASoundRegistry;
 import fossilsarcheology.server.ServerProxy;
 import fossilsarcheology.server.entity.prehistoric.EntityPrehistoric;
 import fossilsarcheology.server.entity.prehistoric.OrderType;
 import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityType;
+import fossilsarcheology.server.entity.utility.FossilsPlayerProperties;
 import fossilsarcheology.server.item.FAItemRegistry;
 import io.netty.buffer.ByteBuf;
+import net.ilexiconn.llibrary.server.entity.EntityPropertiesHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
@@ -154,6 +157,11 @@ public class EntityDinosaurEgg extends EntityLiving implements IEntityAdditional
                         if (prehistoricEntity.type != PrehistoricEntityType.TYRANNOSAURUS && prehistoricEntity.type != PrehistoricEntityType.ALLOSAURUS && prehistoricEntity.type != PrehistoricEntityType.SARCOSUCHUS) {
                             prehistoricEntity.setTamed(true);
                             prehistoricEntity.setOwnerId(player.getUniqueID());
+                            FossilsPlayerProperties properties = EntityPropertiesHandler.INSTANCE.getProperties(player, FossilsPlayerProperties.class);
+                            if(properties != null && !properties.hasHatchedDinosaur){
+                                properties.hasHatchedDinosaur = true;
+                                Revival.PROXY.playSound(FASoundRegistry.MUSIC_FIRST_DINOSAUR);
+                            }
                             prehistoricEntity.setOwnerDisplayName(player.getName());
                             prehistoricEntity.currentOrder = OrderType.WANDER;
                             prehistoricEntity.setHealth((float) prehistoricEntity.baseHealth);

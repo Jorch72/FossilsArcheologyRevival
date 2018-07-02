@@ -68,7 +68,6 @@ public class FASoundRegistry {
 
 	public static final SoundEvent MOSASAURUS_DEATH = create("mosasaurus_death");
 	public static final SoundEvent MOSASAURUS_HURT = create("mosasaurus_hurt");
-
 	public static final SoundEvent MOSASAURUS_LIVING = create("mosasaurus_living");
 	public static final SoundEvent MOSASAURUS_ATTACK = create("mosasaurus_attack");
 
@@ -153,7 +152,11 @@ public class FASoundRegistry {
 	public static final SoundEvent MEGALANIA_HURT = create("megalania_hurt");
 	public static final SoundEvent MEGALANIA_DEATH = create("megalania_death");
 	public static final SoundEvent MEGALANIA_LIVING = create("megalania_living");
-	
+
+	public static final SoundEvent MEGALOGRAPTUS_HURT = create("megalograptus_hurt");
+	public static final SoundEvent MEGALOGRAPTUS_DEATH = create("megalograptus_death");
+	public static final SoundEvent MEGALOGRAPTUS_LIVING = create("megalograptus_living");
+
 	public static final SoundEvent ANU_DEATH_EFFECT = create("anu_death_effect");
 
 	public static final SoundEvent DRUM_SINGLE = create("drum_single");

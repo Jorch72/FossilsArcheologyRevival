@@ -1,6 +1,7 @@
 package fossilsarcheology.server.entity.prehistoric;
 
 import fossilsarcheology.Revival;
+import fossilsarcheology.client.sound.FASoundRegistry;
 import fossilsarcheology.server.block.FABlockRegistry;
 import fossilsarcheology.server.block.IDinoUnbreakable;
 import fossilsarcheology.server.block.entity.TileEntityFeeder;
@@ -1488,6 +1489,9 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
                 double distance = (double) (this.width * 8.0F * this.width * 8.0F + prehistoric.width);
                 if (this.getDistanceSq(prehistoric.posX, prehistoric.getEntityBoundingBox().minY, prehistoric.posZ) <= distance && prehistoric.onGround && this.onGround && this.isAdult() && prehistoric.isAdult()) {
                     prehistoric.procreate(this);
+                    if(this.getRNG().nextInt(10) == 0){
+                        Revival.PROXY.playSound(FASoundRegistry.MUSIC_MATING);
+                    }
                     this.ticksTillMate = this.rand.nextInt(6000) + 6000;
                     prehistoric.ticksTillMate = this.rand.nextInt(12000) + 24000;
                 }

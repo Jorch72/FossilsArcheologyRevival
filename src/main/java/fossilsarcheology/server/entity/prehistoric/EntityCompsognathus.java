@@ -2,6 +2,7 @@ package fossilsarcheology.server.entity.prehistoric;
 
 import com.google.common.base.Predicate;
 import fossilsarcheology.Revival;
+import fossilsarcheology.client.sound.FASoundRegistry;
 import fossilsarcheology.server.entity.ai.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -12,6 +13,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
@@ -177,6 +179,21 @@ public class EntityCompsognathus extends EntityPrehistoric {
 				this.getAttackTarget().attackEntityFrom(DamageSource.causeMobDamage(this), (float) iattributeinstance.getAttributeValue());
 			}
 		}
+	}
+
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return FASoundRegistry.COMPSOGNATHUS_LIVNIG;
+	}
+
+	@Override
+	protected SoundEvent getHurtSound(DamageSource source) {
+		return FASoundRegistry.COMPSOGNATHUS_HURT;
+	}
+
+	@Override
+	protected SoundEvent getDeathSound() {
+		return FASoundRegistry.COMPSOGNATHUS_DEATH;
 	}
 
 	@Override

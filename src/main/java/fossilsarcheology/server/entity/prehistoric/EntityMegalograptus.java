@@ -235,17 +235,17 @@ public class EntityMegalograptus extends EntityPrehistoricSwimming {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return FASoundRegistry.MEGANEURA_LIVING;
+        return FASoundRegistry.MEGALOGRAPTUS_LIVING;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
-        return FASoundRegistry.MEGANEURA_HURT;
+        return FASoundRegistry.MEGALOGRAPTUS_HURT;
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return FASoundRegistry.MEGANEURA_DEATH;
+        return FASoundRegistry.MEGALOGRAPTUS_DEATH;
     }
 
     @Override

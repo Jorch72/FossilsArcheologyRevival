@@ -1,4 +1,24 @@
 {
+  "megalograptus_death": {
+    "category": "neutral",
+    "sounds": [
+      "fossil:prehistoric/megalograptus_death1"
+    ]
+  },
+  "megalograptus_hurt": {
+    "category": "neutral",
+    "sounds": [
+      "fossil:prehistoric/megalograptus_hurt1",
+      "fossil:prehistoric/megalograptus_hurt2"
+    ]
+  },
+  "megalograptus_living": {
+    "category": "neutral",
+    "sounds": [
+      "fossil:prehistoric/megalograptus_living1",
+      "fossil:prehistoric/megalograptus_living2"
+    ]
+  },
   "megalania_death": {
     "category": "neutral",
     "sounds": [
@@ -856,7 +876,7 @@
     ]
   },
   "music.mating": {
-    "category": "neutral",
+    "category": "record",
     "sounds": [
       {
         "name": "fossil:music_mating_0",

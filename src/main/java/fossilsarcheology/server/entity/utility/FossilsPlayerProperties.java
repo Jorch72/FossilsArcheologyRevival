@@ -7,15 +7,18 @@ import net.minecraft.nbt.NBTTagCompound;
 public class FossilsPlayerProperties extends EntityProperties<EntityPlayer> {
 
 	public boolean killedAnu;
+	public boolean hasHatchedDinosaur;
 
 	@Override
 	public void saveNBTData(NBTTagCompound compound) {
 		compound.setBoolean("KilledAnu", killedAnu);
+		compound.setBoolean("RaisedDinosaur", hasHatchedDinosaur);
 	}
 
 	@Override
 	public void loadNBTData(NBTTagCompound compound) {
 		this.killedAnu = compound.getBoolean("KilledAnu");
+		this.hasHatchedDinosaur = compound.getBoolean("RaisedDinosaur");
 	}
 
 	@Override

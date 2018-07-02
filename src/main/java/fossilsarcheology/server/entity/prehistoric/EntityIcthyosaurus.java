@@ -1,6 +1,7 @@
 package fossilsarcheology.server.entity.prehistoric;
 
 import com.google.common.base.Predicate;
+import fossilsarcheology.client.sound.FASoundRegistry;
 import fossilsarcheology.server.entity.ai.*;
 import fossilsarcheology.server.item.FAItemRegistry;
 import net.ilexiconn.llibrary.server.animation.Animation;
@@ -11,6 +12,8 @@ import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
 import net.minecraft.entity.ai.EntityAISit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
 public class EntityIcthyosaurus extends EntityPrehistoricSwimming {
@@ -137,6 +140,22 @@ public class EntityIcthyosaurus extends EntityPrehistoricSwimming {
 	@Override
 	public Animation[] getAnimations() {
 		return new Animation[]{SPEAK_ANIMATION, ATTACK_ANIMATION, FISH_ANIMATION};
+	}
+
+
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return this.isInWater() ? FASoundRegistry.ICTHYOSAURUS_LIVING : FASoundRegistry.ICTHYOSAURUS_OUTSIDE;
+	}
+
+	@Override
+	protected SoundEvent getHurtSound(DamageSource source) {
+		return FASoundRegistry.ICTHYOSAURUS_HURT;
+	}
+
+	@Override
+	protected SoundEvent getDeathSound() {
+		return FASoundRegistry.ICTHYOSAURUS_DEATH;
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package fossilsarcheology.server.entity.prehistoric;
 
 import com.google.common.base.Predicate;
+import fossilsarcheology.client.sound.FASoundRegistry;
 import fossilsarcheology.server.entity.ai.*;
 import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityTypeAI.*;
 import net.minecraft.entity.Entity;
@@ -12,6 +13,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
 public class EntityElasmotherium extends EntityPrehistoric {
@@ -184,5 +186,20 @@ public class EntityElasmotherium extends EntityPrehistoric {
 	@Override
 	public boolean canBeRidden() {
 		return true;
+	}
+
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return FASoundRegistry.ELASMOTHERIUM_LIVING;
+	}
+
+	@Override
+	protected SoundEvent getHurtSound(DamageSource source) {
+		return FASoundRegistry.ELASMOTHERIUM_HURT;
+	}
+
+	@Override
+	protected SoundEvent getDeathSound() {
+		return FASoundRegistry.ELASMOTHERIUM_DEATH;
 	}
 }
