@@ -300,8 +300,9 @@ public class ModelSarcosuchus extends ModelPrehistoric {
 		AdvancedModelRenderer[] tailParts = {this.tail1, this.tail2, this.tail3};
 		AdvancedModelRenderer[] neckParts = {this.neck, this.head};
 		float speed = 0.1F;
-		float speed2 = entity.isInWater() ? 0.35F : 0.7F;
+		float speed2 = entity.isInWater() ? 0.35F : 1.2F;
 		float degree = 0.5F;
+		float degree2 = 1.0F;
 		if (((EntityPrehistoric) entity).isSkeleton()) {
 			return;
 		}
@@ -435,18 +436,18 @@ public class ModelSarcosuchus extends ModelPrehistoric {
 			sitAnimationPos(rightHindThigh, sitProgress, 1, 1, -2);
 			sitAnimationPos(leftHindThigh, sitProgress, -1, 1, -2);
 			if (sitProgress < 10) {
-				this.walk(leftFrontThigh, speed2, degree * 0.6F, false, 0F, 0.4F, f, f1);
-				this.walk(leftFrontLeg, speed2, degree * 0.2F, false, 0F, -0.6F, f, f1);
-				this.walk(leftFrontFoot, speed2, degree * -0.6F, true, 2.5F, -0.4F, f, f1);
-				this.walk(rightFrontThigh, speed2, degree * 0.6F, true, 0F, -0.4F, f, f1);
-				this.walk(rightFrontLeg, speed2, degree * 0.2F, true, 0F, 0.6F, f, f1);
-				this.walk(rightFrontFoot, speed2, degree * -0.6F, false, 2.5F, 0.4F, f, f1);
-				this.walk(leftHindThigh, speed2, degree * 0.6F, true, 0F, 0.4F, f, f1);
-				this.walk(leftHindLeg, speed2, degree * 0.2F, true, 0F, -0.6F, f, f1);
-				this.walk(leftHindFoot, speed2, degree * -0.6F, false, 2.5F, -0.4F, f, f1);
-				this.walk(rightHindThigh, speed2, degree * 0.6F, false, 0F, -0.4F, f, f1);
-				this.walk(rightHindLeg, speed2, degree * 0.2F, false, 0F, 0.6F, f, f1);
-				this.walk(rightHindFoot, speed2, degree * -0.6F, true, 2.5F, 0.4F, f, f1);
+				this.walk(leftFrontThigh, speed2, degree2 * 0.6F, false, 0F, 0.4F, f, f1);
+				this.walk(leftFrontLeg, speed2, degree2 * 0.2F, false, 0F, -0.6F, f, f1);
+				this.walk(leftFrontFoot, speed2, degree2 * -0.6F, true, 2.5F, -0.4F, f, f1);
+				this.walk(rightFrontThigh, speed2, degree2 * 0.6F, true, 0F, -0.4F, f, f1);
+				this.walk(rightFrontLeg, speed2, degree2 * 0.2F, true, 0F, 0.6F, f, f1);
+				this.walk(rightFrontFoot, speed2, degree2 * -0.6F, false, 2.5F, 0.4F, f, f1);
+				this.walk(leftHindThigh, speed2, degree2 * 0.6F, true, 0F, 0.4F, f, f1);
+				this.walk(leftHindLeg, speed2, degree2 * 0.2F, true, 0F, -0.6F, f, f1);
+				this.walk(leftHindFoot, speed2, degree2 * -0.6F, false, 2.5F, -0.4F, f, f1);
+				this.walk(rightHindThigh, speed2, degree2 * 0.6F, false, 0F, -0.4F, f, f1);
+				this.walk(rightHindLeg, speed2, degree2 * 0.2F, false, 0F, 0.6F, f, f1);
+				this.walk(rightHindFoot, speed2, degree2 * -0.6F, true, 2.5F, 0.4F, f, f1);
 			}
 		}
 	}

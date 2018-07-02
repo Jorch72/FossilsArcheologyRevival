@@ -152,6 +152,7 @@ entity.fossil.velociraptor.name=Velociraptor
 entity.fossil.meganeura.name=Meganeura
 entity.fossil.megaloceros.name=Megaloceros
 entity.fossil.megalania.name=Megalania
+entity.fossil.megalograptus.name=Megalograptus
 entity.fossil.javelin.name=Javelin
 entity.fossil.ancient_javelin.name=Ancient Javelin
 entity.fossil.stone_tablet.name=Stone Tablet
@@ -399,6 +400,7 @@ item.dnaSturgeon.name=Sturgeon DNA
 item.dnaMeganeura.name=Meganeura DNA
 item.dnaMegaloceros.name=Megaloceros DNA
 item.dnaMegalania.name=Megalania DNA
+item.dnaMegalograptus.name=Megalograptus DNA
 
 item.embryoPig.name=Pig Embryo
 item.embryoSheep.name=Sheep Embryo
@@ -482,6 +484,7 @@ item.rawPhorusrhacos.name=Phorusrhacos Meat
 item.rawTitanis.name=Titanis Meat
 item.rawMegaloceros.name=Megaloceros Meat
 item.rawMegalania.name=Megalania Meat
+item.rawMegalograptus.name=Megalograptus Meat
 
 item.cookedTriceratops.name=Cooked Triceratops Meat
 item.cookedVelociraptor.name=Cooked Velociraptor Meat
@@ -515,6 +518,7 @@ item.cookedTitanis.name=Cooked Titanis Meat
 item.cookedMeganeura.name=Cooked Meganeura Meat
 item.cookedMegaloceros.name=Cooked Megaloceros Meat
 item.cookedMegalania.name=Cooked Megalania Meat
+item.cookedMegalograptus.name=Cooked Megalograptus Meat
 
 item.fossilseed_dillhoffia.name=Fossilized Dillhoffia Seeds
 item.fossilseed_sarracina.name=Fossilized Sarracenia Seeds
@@ -584,6 +588,7 @@ item.eggCoelacanth.name=Coelacanth Eggs
 item.eggAlligator_gar.name=Alligator Eggs
 item.eggSturgeon.name=Sturgeon Eggs
 item.eggMeganeura.name=Meganeura Eggs
+item.eggMegalograptus.name=Megalograptus Eggs
 
 item.cookedCoelacanth.name=Cooked Coelacanth
 item.cookedAlligator_gar.name=Cooked Alligator Gar

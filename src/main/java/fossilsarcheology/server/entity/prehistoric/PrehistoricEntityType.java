@@ -55,6 +55,7 @@ public enum PrehistoricEntityType {
 	HENODUS(EntityHenodus.class, MobType.DINOSAUR_AQUATIC, TimePeriod.MESOZOIC, Diet.HERBIVORE, Parameter.TAME | Parameter.HERBIVORE, 0X613C27, 0X9C8060),
 	ICTHYOSAURUS(EntityIcthyosaurus.class, MobType.DINOSAUR_AQUATIC, TimePeriod.MESOZOIC, Diet.PISCIVORE, Parameter.TAME | Parameter.CARNIVORE, 0X2A2632, 0XCEC296),
 	MEGANEURA(EntityMeganeura.class, MobType.DINOSAUR_AQUATIC, TimePeriod.PALEOZOIC, Diet.PISCCARNIVORE, Parameter.TAME | Parameter.CARNIVORE | Parameter.MODEL, 0X6A4C3F, 0XE0B45A),
+	MEGALOGRAPTUS(EntityMegalograptus.class, MobType.DINOSAUR_AQUATIC, TimePeriod.PALEOZOIC, Diet.PISCIVORE, Parameter.TAME | Parameter.CARNIVORE | Parameter.MODEL, 0XB26F45, 0X713719),
 	CONFUCIUSORNIS(EntityConfuciusornis.class, MobType.BIRD, TimePeriod.MESOZOIC, Diet.HERBIVORE, Parameter.TAME | Parameter.HERBIVORE, 0XDAE5E9, 0X8B8B8D),
 	DODO(EntityDodo.class, MobType.BIRD, TimePeriod.CENOZOIC, Diet.HERBIVORE, Parameter.TAME | Parameter.HERBIVORE, 0X655751, 0XBEA47B),
 	GASTORNIS(EntityGastornis.class, MobType.BIRD, TimePeriod.CENOZOIC, Diet.HERBIVORE, Parameter.TAME, 0X346C5E, 0XC8C8C8),

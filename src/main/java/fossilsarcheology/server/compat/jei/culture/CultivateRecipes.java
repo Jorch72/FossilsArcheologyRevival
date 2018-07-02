@@ -18,6 +18,10 @@ public class CultivateRecipes {
         for(PrehistoricEntityType type : PrehistoricEntityType.values()){
             addRecipe(list, new ItemStack(type.dnaItem), TileEntityCultivate.getCultivationOutput(new ItemStack(type.dnaItem)));
         }
+        for(int i = 0; i < 14; i++){
+            addRecipe(list, new ItemStack(FAItemRegistry.FOSSIL_SEED, 1, i), new ItemStack(FAItemRegistry.SEED, 1, i));
+        }
+        addRecipe(list, new ItemStack(FAItemRegistry.FOSSIL_SEED_FERN), new ItemStack(FAItemRegistry.FERN_SEED));
         return list;
     }
 

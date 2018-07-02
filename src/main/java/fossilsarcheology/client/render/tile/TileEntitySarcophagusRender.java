@@ -25,7 +25,7 @@ public class TileEntitySarcophagusRender extends TileEntitySpecialRenderer<TileE
 	@Override
 	public void render(TileEntitySarcophagus chest, double x, double y, double z, float f, int destroy, float alpha) {
 		EnumFacing facing = EnumFacing.NORTH;
-		if (chest != null && chest.hasWorld()) {
+		if (chest != null && chest.hasWorld() && chest.getWorld().getBlockState(chest.getPos()).getBlock() instanceof SarcophagusBlock) {
 			facing = chest.getWorld().getBlockState(chest.getPos()).getValue(SarcophagusBlock.FACING);
 		}
 		this.bindTexture(TEXTURE);
