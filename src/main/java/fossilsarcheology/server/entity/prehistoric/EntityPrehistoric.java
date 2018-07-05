@@ -45,7 +45,9 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.IFluidBlock;
@@ -1313,9 +1315,10 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
     }
 
     private void sendOrderMessage(OrderType var1) {
-        String s = I18n.format("order.head") + I18n.format("order." + var1.toString().toLowerCase());
+        String s = "dino.order." + var1.name().toLowerCase();
+        ITextComponent itextcomponent = new TextComponentString(this.getName());
         if (this.getOwner() instanceof EntityPlayer) {
-            ((EntityPlayer) this.getOwner()).sendStatusMessage(new TextComponentString(s), false);
+            ((EntityPlayer) this.getOwner()).sendStatusMessage(new TextComponentTranslation(s,  new Object[] {itextcomponent}), false);
         }
     }
 
