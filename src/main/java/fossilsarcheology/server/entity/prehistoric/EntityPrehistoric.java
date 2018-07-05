@@ -687,14 +687,15 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
         if(world.isRemote){
             this.setScaleForAge(true);
         }
-        this.setAgeinTicks(this.getAgeInTicks() + 1);
-        if (this.getAgeInTicks() % 24000 == 0) {
-            this.updateAbilities();
+        if(!this.isSkeleton()){
+            this.setAgeinTicks(this.getAgeInTicks() + 1);
+            if (this.getAgeInTicks() % 24000 == 0) {
+                this.updateAbilities();
+            }
+            if (this.getAgeInTicks() % 1200 == 0 && this.getHunger() > 0 && Revival.CONFIG.starvingDinos) {
+                this.setHunger(this.getHunger() - 1);
+            }
         }
-        if (this.getAgeInTicks() % 1200 == 0 && this.getHunger() > 0 && Revival.CONFIG.starvingDinos) {
-            this.setHunger(this.getHunger() - 1);
-        }
-
         boolean sitting = isSitting();
         if (sitting && sitProgress < 20.0F) {
             sitProgress += 0.5F;

@@ -188,6 +188,9 @@ public class ModelMegalograptus extends ModelPrehistoric {
         AdvancedModelRenderer[] tailParts = {body, tail, tailPincer};
         AdvancedModelRenderer[] leftLegs = {leftLeg1, leftLeg2, leftLeg3_1, leftLeg3_2};
         AdvancedModelRenderer[] rightLegs = {rightLeg1, rightLeg2, rightLeg3_1, rightLeg3_2};
+        if (((EntityPrehistoric) entity).isSkeleton()) {
+            return;
+        }
         EntityMegalograptus prehistoric = (EntityMegalograptus)entity;
         float speed_swim = 0.9F;
         float speed_walk = 1.7F;
