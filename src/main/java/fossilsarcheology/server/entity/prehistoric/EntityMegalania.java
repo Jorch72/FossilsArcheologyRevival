@@ -183,7 +183,6 @@ public class EntityMegalania extends EntityPrehistoric {
             this.motionZ = 0;
             this.renderYawOffset = this.rotationYaw;
         }
-        this.setAnimation(ANIMATION_FIGHT);
         ticksSinceLastFight++;
         if (this.getAnimation() == ATTACK_ANIMATION && this.getAnimationTick() == 12 && this.getAttackTarget() != null) {
             this.attackEntityAsMob(this.getAttackTarget());

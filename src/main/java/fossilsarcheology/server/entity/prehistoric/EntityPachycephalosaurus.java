@@ -135,7 +135,6 @@ public class EntityPachycephalosaurus extends EntityPrehistoric {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		System.out.println(this.collidedVertically);
 		if (this.getAnimation() == ATTACK_ANIMATION && this.getAnimationTick() == 12 && this.getAttackTarget() != null) {
 			this.attackEntityAsMob(this.getAttackTarget());
 		}

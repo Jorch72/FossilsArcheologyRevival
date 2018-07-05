@@ -24,7 +24,7 @@ public class EntityToyScratchingPost extends EntityToyBase {
 
 	@Override
 	protected SoundEvent getAttackNoise() {
-		return SoundEvents.BLOCK_WOOD_HIT;
+		return SoundEvents.BLOCK_CLOTH_BREAK;
 	}
 
 	@Override
