@@ -12,6 +12,7 @@ import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
@@ -134,6 +135,7 @@ public class EntityPachycephalosaurus extends EntityPrehistoric {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
+		System.out.println(this.collidedVertically);
 		if (this.getAnimation() == ATTACK_ANIMATION && this.getAnimationTick() == 12 && this.getAttackTarget() != null) {
 			this.attackEntityAsMob(this.getAttackTarget());
 		}

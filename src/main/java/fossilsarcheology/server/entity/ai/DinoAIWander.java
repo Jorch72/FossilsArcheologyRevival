@@ -5,6 +5,7 @@ import fossilsarcheology.server.entity.prehistoric.EntityPrehistoric;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.RandomPositionGenerator;
 import net.minecraft.util.math.Vec3d;
+import org.lwjgl.Sys;
 
 public class DinoAIWander extends EntityAIBase {
 	private final EntityPrehistoric prehistoric;
@@ -24,9 +25,7 @@ public class DinoAIWander extends EntityAIBase {
 		if (this.prehistoric.isMovementBlocked()) {
 			return false;
 		}
-		if (this.prehistoric.getAgeInTicks() <= 100) {
-			return false;
-		} else if (this.prehistoric.getRNG().nextInt(10) != 0) {
+		if (this.prehistoric.getRNG().nextInt(10) != 0) {
 			return false;
 		} else {
 			Vec3d vec3 = RandomPositionGenerator.findRandomTarget(
@@ -45,6 +44,7 @@ public class DinoAIWander extends EntityAIBase {
 
 	@Override
 	public boolean shouldContinueExecuting() {
+		System.out.println(this.prehistoric.getNavigator().noPath());
 		return !this.prehistoric.getNavigator().noPath();
 	}
 

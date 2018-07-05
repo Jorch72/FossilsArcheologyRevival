@@ -67,6 +67,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
     private static final DataParameter<Integer> SUBSPECIES = EntityDataManager.createKey(EntityPrehistoric.class, DataSerializers.VARINT);
     private static final DataParameter<Integer> GENDER = EntityDataManager.createKey(EntityPrehistoric.class, DataSerializers.VARINT);
     private static final DataParameter<Boolean> SLEEPING = EntityDataManager.createKey(EntityPrehistoric.class, DataSerializers.BOOLEAN);
+    private static final DataParameter<Boolean> SITTING = EntityDataManager.createKey(EntityPrehistoric.class, DataSerializers.BOOLEAN);
     private static final DataParameter<Integer> MOOD = EntityDataManager.createKey(EntityPrehistoric.class, DataSerializers.VARINT);
     private static final DataParameter<String> OWNERDISPLAYNAME = EntityDataManager.createKey(EntityPrehistoric.class, DataSerializers.STRING);
     private static final DataParameter<Byte> CLIMBING = EntityDataManager.createKey(EntityPrehistoric.class, DataSerializers.BYTE);
@@ -183,6 +184,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
         this.dataManager.register(SUBSPECIES, 0);
         this.dataManager.register(GENDER, 0);
         this.dataManager.register(SLEEPING, false);
+        this.dataManager.register(SITTING, false);
         this.dataManager.register(CLIMBING, (byte) 0);
         this.dataManager.register(MOOD, 0);
         this.dataManager.register(OWNERDISPLAYNAME, "");
@@ -680,7 +682,9 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
     @Override
     public void onUpdate() {
         super.onUpdate();
-        this.setScaleForAge(false);
+        if(world.isRemote){
+            this.setScaleForAge(true);
+        }
         this.setAgeinTicks(this.getAgeInTicks() + 1);
         if (this.getAgeInTicks() % 24000 == 0) {
             this.updateAbilities();
@@ -1026,16 +1030,20 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
     @Override
     public boolean isSitting() {
         if (world.isRemote) {
-            boolean isSitting = (this.dataManager.get(TAMED) & 1) != 0;
+            boolean isSitting = this.dataManager.get(SITTING);
+            if ((isSitting != this.isSitting)) {
+                ticksSitted = 0;
+            }
             this.isSitting = isSitting;
             return isSitting;
         }
+
         return isSitting;
     }
 
     @Override
     public void setSitting(boolean sitting) {
-        super.setSitting(sitting);
+        this.dataManager.set(SITTING, sitting);
         if (!world.isRemote) {
             this.isSitting = sitting;
         }
