@@ -38,7 +38,7 @@ public class EntityParasaurolophus extends EntityPrehistoric {
 		developsResistance = true;
 		breaksBlocks = true;
 		this.pediaScale = 30F;
-		this.ridingY = 2;
+		this.ridingY = 2.5F;
 	}
 
 	public void initEntityAI() {
@@ -224,7 +224,6 @@ public class EntityParasaurolophus extends EntityPrehistoric {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-
 		boolean standing = this.isStanding();
 		if (standing && standProgress < 20.0F) {
 			standProgress += 0.5F;
