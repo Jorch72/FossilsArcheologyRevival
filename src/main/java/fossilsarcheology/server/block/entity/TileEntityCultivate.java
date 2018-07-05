@@ -36,7 +36,7 @@ public class TileEntityCultivate extends TileEntity implements ITickable, IWorld
     private final IItemHandlerModifiable fuelInventory = new ItemStackHandler(1);
     private final IItemHandlerModifiable outputInventory = new ItemStackHandler(1);
     private final IItemHandlerModifiable wrappedOutputInventory = new DirectionalInvWrapper(this.outputInventory, DirectionalInvWrapper.Mode.OUTPUT);
-    private final IItemHandlerModifiable globalInventory = new CombinedInvWrapper(this.inputInventory, this.fuelInventory, this.wrappedOutputInventory);
+    private final IItemHandlerModifiable globalInventory = new CombinedInvWrapper(this.inputInventory, this.fuelInventory, this.outputInventory);
 
     public static int getItemFuelTime(ItemStack stack) {
         if (!stack.isEmpty()) {
@@ -172,9 +172,9 @@ public class TileEntityCultivate extends TileEntity implements ITickable, IWorld
             }
 
             if (this.fuelTime > 0 && this.canCultivate()) {
-                ++this.cultivationTime;
+                this.cultivationTime++;
 
-                if (this.cultivationTime == 6000) {
+                if (this.cultivationTime >= 6000) {
                     this.cultivationTime = 0;
                     this.cultivate();
                     dirty = true;
