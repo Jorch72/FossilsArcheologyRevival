@@ -67,6 +67,7 @@ public class FAOreDictRegistry {
        //OreDictionary.registerOre("bucketTar", new ItemStack(FAItemRegistry.TAR_BUCKET));
         OreDictionary.registerOre("dinosaurSkull", new ItemStack(FAItemRegistry.SKULL, 1, OreDictionary.WILDCARD_VALUE));
         OreDictionary.registerOre("dinosaurLegBone", new ItemStack(FAItemRegistry.LEG_BONE, 1, OreDictionary.WILDCARD_VALUE));
+        OreDictionary.registerOre("dinosaurFoot", new ItemStack(FAItemRegistry.FOOT, 1, OreDictionary.WILDCARD_VALUE));
         OreDictionary.registerOre("dinosaurArmBone", new ItemStack(FAItemRegistry.ARM_BONE, 1, OreDictionary.WILDCARD_VALUE));
         OreDictionary.registerOre("dinosaurVertebrae", new ItemStack(FAItemRegistry.VERTEBRAE, 1, OreDictionary.WILDCARD_VALUE));
         OreDictionary.registerOre("dinosaurRibCage", new ItemStack(FAItemRegistry.RIBCAGE, 1, OreDictionary.WILDCARD_VALUE));

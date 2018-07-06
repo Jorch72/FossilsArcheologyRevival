@@ -1,14 +1,18 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "G G",
+    "S S",
     "G G"
   ],
   "key": {
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "dinosaurLegBone"
+    },
     "G": {
       "type": "forge:ore_dict",
-      "ore": "dinosaurClaw"
-    }		
+      "ore": "dinosaurFoot"
+    }
   },
   "result": {
     "item": "fossil:feet_boots",
