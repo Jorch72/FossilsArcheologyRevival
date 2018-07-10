@@ -27,8 +27,8 @@ public class EntityMegalania extends EntityPrehistoric {
         this.setActualSize(2.1F, 1.2F);
         this.pediaScale = 35F;
         this.nearByMobsAllowed = 5;
-        minSize = 0.25F;
-        maxSize = 1.9F;
+        minSize = 0.2F;
+        maxSize = 1.3F;
         developsResistance = true;
         breaksBlocks = true;
         this.teenAge = 5;
