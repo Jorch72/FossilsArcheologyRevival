@@ -3,6 +3,7 @@ package fossilsarcheology.server.world.village;
 import fossilsarcheology.Revival;
 import fossilsarcheology.server.entity.FAVillagerRegistry;
 import fossilsarcheology.server.structure.FABlockProcessorLoot;
+import fossilsarcheology.server.structure.FABlockProcessorVillage;
 import fossilsarcheology.server.structure.StructureUtils;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Blocks;
@@ -53,7 +54,7 @@ public class WorldGenArcheologistHouse extends WorldGenerator {
         TemplateManager templateManager = worldIn.getSaveHandler().getStructureTemplateManager();
         PlacementSettings settings = new PlacementSettings().setRotation(rotation).setMirror(Mirror.NONE);
         Template template = templateManager.getTemplate(server, HOUSE);
-        template.addBlocksToWorld(worldIn, position.up(3), new FABlockProcessorLoot(position.up(3), settings, CHEST), settings, 2);
+        template.addBlocksToWorld(worldIn, position.up(3), new FABlockProcessorVillage(position.up(3), settings, CHEST), settings, 2);
         if(component.villagerCount < 1) {
             EntityVillager villager = new EntityVillager(worldIn);
             villager.setProfession(FAVillagerRegistry.ARCHEOLOGIST_PROFESSION);

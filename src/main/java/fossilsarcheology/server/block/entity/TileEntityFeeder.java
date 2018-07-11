@@ -72,6 +72,9 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 	@Nullable
 	@Override
 	public ItemStack decrStackSize(int index, int count) {
+		if(!world.isRemote) {
+			Revival.NETWORK_WRAPPER.sendToAll(new MessageUpdateFeeder(this.pos.toLong(), currentMeat, currentPlant));
+		}
 		if (!this.stacks.get(index).isEmpty()) {
 			ItemStack itemstack;
 
@@ -151,7 +154,7 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 		if (!stack.isEmpty() && stack.getCount() > this.getInventoryStackLimit()) {
 			stack.setCount(this.getInventoryStackLimit());
 		}
-		if (index == 0 && !flag) {
+		if ((index == 0 || index == 1) && !flag) {
 			this.markDirty();
 		}
 	}
@@ -171,7 +174,7 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 
 	@Override
 	public boolean isUsableByPlayer(EntityPlayer player) {
-		return this.world.getTileEntity(this.pos) == this && player.getDistanceSq((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D, (double) this.pos.getZ() + 0.5D) <= 64.0D;
+		return true;
 	}
 
 	@Override
@@ -270,6 +273,7 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 			if (!this.stacks.get(0).isEmpty()) {
 				if (this.currentMeat < this.maxMeat) {
 					int carnivoreValue = FoodMappings.INSTANCE.getItemFoodAmount(this.stacks.get(0), Diet.CARNIVORE_EGG);
+					System.out.println(carnivoreValue);
 					if (carnivoreValue != 0) {
 						int foodLeft = this.maxMeat - this.currentMeat;
 						if (carnivoreValue > foodLeft) {
@@ -280,6 +284,9 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 						} else {
 							this.currentMeat += carnivoreValue;
 							this.decrStackSize(0, 1);
+							if(!world.isRemote) {
+								Revival.NETWORK_WRAPPER.sendToAll(new MessageUpdateFeeder(this.pos.toLong(), currentMeat, currentPlant));
+							}
 							FeederBlock.updateFeederBlockState(this.currentPlant > 0, this.currentMeat > 0, this.world, this.pos);
 						}
 					}

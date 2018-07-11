@@ -54,6 +54,11 @@ public class MessageUpdateFeeder extends AbstractMessage<MessageUpdateFeeder> {
 
 	@Override
 	public void onServerReceived(MinecraftServer server, MessageUpdateFeeder message, EntityPlayer player, MessageContext messageContext) {
-
+		BlockPos pos = BlockPos.fromLong(message.blockPos);
+		if (player.world.getTileEntity(pos) != null && player.world.getTileEntity(pos) instanceof TileEntityFeeder) {
+			TileEntityFeeder feeder = (TileEntityFeeder) player.world.getTileEntity(pos);
+			feeder.currentMeat = message.meat;
+			feeder.currentPlant = message.plant;
+		}
 	}
 }
