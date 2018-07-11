@@ -52,10 +52,14 @@ public class WorktableBlock extends BlockContainer implements DefaultRenderedIte
 	public static void setState(boolean isActive, World world, BlockPos pos) {
 		TileEntity tile = world.getTileEntity(pos);
 		keepInventory = true;
+		EnumFacing facing = EnumFacing.NORTH;
+		if(world.getBlockState(pos).getBlock() instanceof WorktableBlock){
+			facing = world.getBlockState(pos).getValue(WorktableBlock.FACING);
+		}
 		if (isActive) {
-			world.setBlockState(pos, FABlockRegistry.WORKTABLE_ACTIVE.getDefaultState());
+			world.setBlockState(pos, FABlockRegistry.WORKTABLE_ACTIVE.getDefaultState().withProperty(WorktableBlock.FACING, facing));
 		} else {
-			world.setBlockState(pos, FABlockRegistry.WORKTABLE_IDLE.getDefaultState());
+			world.setBlockState(pos, FABlockRegistry.WORKTABLE_IDLE.getDefaultState().withProperty(WorktableBlock.FACING, facing));
 		}
 		keepInventory = false;
 		if (tile != null) {
