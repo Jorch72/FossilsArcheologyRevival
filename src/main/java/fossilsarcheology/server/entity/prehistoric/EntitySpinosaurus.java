@@ -143,7 +143,6 @@ public class EntitySpinosaurus extends EntityPrehistoricSwimming {
 
 	@Override
 	public boolean doesFlock() {
-
 		return false;
 	}
 
