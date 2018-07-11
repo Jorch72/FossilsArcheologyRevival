@@ -5,6 +5,7 @@ import fossilsarcheology.server.block.FAFluidRegistry;
 import fossilsarcheology.server.entity.prehistoric.MobType;
 import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityType;
 import fossilsarcheology.server.item.FAItemRegistry;
+import fossilsarcheology.server.item.variant.DinosaurBoneType;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.dispenser.BehaviorProjectileDispense;
 import net.minecraft.dispenser.IPosition;
@@ -42,6 +43,15 @@ public class FARecipeRegistry {
         FAItemRegistry.SCARAB_MATERIAL.setRepairItem(new ItemStack(FAItemRegistry.SCARAB_GEM));
         FAItemRegistry.BONE.setRepairItem(new ItemStack(Items.BONE));
 
+        for(DinosaurBoneType bone : DinosaurBoneType.values()){
+            GameRegistry.addShapelessRecipe(new ResourceLocation("fossil:bonemeal_from_" + bone.getResourceName() + "_leg_bone"), new ResourceLocation("fossil"), new ItemStack(Items.DYE, 3, 15), Ingredient.fromStacks(new ItemStack(FAItemRegistry.LEG_BONE, 1, bone.ordinal())));
+            GameRegistry.addShapelessRecipe(new ResourceLocation("fossil:bonemeal_from_" + bone.getResourceName() + "_unique_item"), new ResourceLocation("fossil"), new ItemStack(Items.DYE, 3, 15), Ingredient.fromStacks(new ItemStack(FAItemRegistry.UNIQUE_ITEM, 1, bone.ordinal())));
+            GameRegistry.addShapelessRecipe(new ResourceLocation("fossil:bonemeal_from_" + bone.getResourceName() + "_foot"), new ResourceLocation("fossil"), new ItemStack(Items.DYE, 3, 15), Ingredient.fromStacks(new ItemStack(FAItemRegistry.FOOT, 1, bone.ordinal())));
+            GameRegistry.addShapelessRecipe(new ResourceLocation("fossil:bonemeal_from_" + bone.getResourceName() + "_skull"), new ResourceLocation("fossil"), new ItemStack(Items.DYE, 3, 15), Ingredient.fromStacks(new ItemStack(FAItemRegistry.SKULL, 1, bone.ordinal())));
+            GameRegistry.addShapelessRecipe(new ResourceLocation("fossil:bonemeal_from_" + bone.getResourceName() + "_arm_bone"), new ResourceLocation("fossil"), new ItemStack(Items.DYE, 3, 15), Ingredient.fromStacks(new ItemStack(FAItemRegistry.ARM_BONE, 1, bone.ordinal())));
+            GameRegistry.addShapelessRecipe(new ResourceLocation("fossil:bonemeal_from_" + bone.getResourceName() + "_ribcage"), new ResourceLocation("fossil"), new ItemStack(Items.DYE, 3, 15), Ingredient.fromStacks(new ItemStack(FAItemRegistry.RIBCAGE, 1, bone.ordinal())));
+            GameRegistry.addShapelessRecipe(new ResourceLocation("fossil:bonemeal_from_" + bone.getResourceName() + "_vertabrae"), new ResourceLocation("fossil"), new ItemStack(Items.DYE, 3, 15), Ingredient.fromStacks(new ItemStack(FAItemRegistry.VERTEBRAE, 1, bone.ordinal())));
+        }
         GameRegistry.addSmelting(FABlockRegistry.DENSE_SAND, new ItemStack(FABlockRegistry.STRONG_GLASS), 3.0F);
         GameRegistry.addSmelting(FAItemRegistry.RAW_CHICKEN_SOUP, new ItemStack(FAItemRegistry.COOKED_CHICKEN_SOUP), 1.0F);
         GameRegistry.addSmelting(Items.EGG, new ItemStack(FAItemRegistry.COOKED_EGG), 1.0F);
