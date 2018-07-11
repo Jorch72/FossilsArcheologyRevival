@@ -147,6 +147,10 @@ public class EntitySpinosaurus extends EntityPrehistoricSwimming {
 		return false;
 	}
 
+	public boolean breaksBoats() {
+		return true;
+	}
+
 	@Override
 	public Item getOrderItem() {
 		return FAItemRegistry.SKULL_STICK;
@@ -169,13 +173,13 @@ public class EntitySpinosaurus extends EntityPrehistoricSwimming {
 
 	@Override
 	public double swimSpeed() {
-		return 1;
+		return 4;
 	}
 
 	@Override
 	public void updatePassenger(Entity passenger) {
 		super.updatePassenger(passenger);
-		if (passenger instanceof EntityLivingBase) {
+		if (passenger instanceof EntityLivingBase && this.getRidingPlayer() == null || this.getRidingPlayer() != null && passenger != this.getRidingPlayer()) {
 			Entity riddenByEntity = passenger;
 			if ((this.getAnimationTick() > 55 || this.getAnimation() == NO_ANIMATION)) {
 				if (riddenByEntity instanceof EntityToyBase) {

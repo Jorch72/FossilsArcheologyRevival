@@ -29,7 +29,6 @@ public class FossilLivingEvent {
 	@SubscribeEvent
 	public void onBreakBlock(BlockEvent.BreakEvent event) {
 		FossilsPlayerProperties properties = EntityPropertiesHandler.INSTANCE.getProperties(event.getPlayer(), FossilsPlayerProperties.class);
-		System.out.println(properties.killedAnu);
 		if (event.getWorld().provider.getDimension() == Revival.CONFIG.dimensionIDDarknessLair && event.getState().getBlock() != Blocks.OBSIDIAN && (properties != null && !properties.killedAnu)) {
 			event.getPlayer().sendStatusMessage(new TextComponentString(I18n.format("anu.breakblock")), false);
 			event.setCanceled(true);

@@ -9,6 +9,11 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityMoveHelper;
+import net.minecraft.entity.item.EntityBoat;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathFinder;
 import net.minecraft.pathfinding.PathNavigateSwimmer;
 import net.minecraft.util.math.MathHelper;
@@ -60,6 +65,10 @@ public abstract class EntityPrehistoricSwimming extends EntityPrehistoric {
 
     public abstract double swimSpeed();
 
+    public boolean breaksBoats() {
+        return false;
+    }
+
     @Override
     protected boolean canTriggerWalking() {
         return false;
@@ -83,6 +92,27 @@ public abstract class EntityPrehistoricSwimming extends EntityPrehistoric {
         if ((this.isSitting() || this.isSleeping()) && this.isInWater()) {
             this.setSitting(false);
             this.setSleeping(false);
+        }
+        if (this.getRidingPlayer() != null && this.isInWater()) {
+            if (this.getRidingPlayer().rotationPitch > 45) {
+                this.motionY -= 0.03D;
+            }
+            if (this.getRidingPlayer().rotationPitch < -45) {
+                this.motionY += 0.03D;
+            }
+        }
+        if (this.getAttackTarget() != null && this.breaksBoats() && this.getAttackTarget().getRidingEntity() != null && this.getAttackTarget().getRidingEntity() instanceof EntityBoat) {
+            if (getAttackBounds().intersects(this.getAttackTarget().getRidingEntity().getEntityBoundingBox())) {
+                EntityBoat boat = (EntityBoat) this.getAttackTarget().getRidingEntity();
+                this.setAnimation(this.ATTACK_ANIMATION);
+                for (int i = 0; i < 3; ++i) {
+                    this.entityDropItem(new ItemStack(Item.getItemFromBlock(Blocks.PLANKS), 1, boat.getBoatType().getMetadata()), 0.0F);
+                }
+                for (int j = 0; j < 2; ++j) {
+                    this.dropItemWithOffset(Items.STICK, 1, 0.0F);
+                }
+                boat.onKillCommand();
+            }
         }
     }
 
@@ -230,20 +260,28 @@ public abstract class EntityPrehistoricSwimming extends EntityPrehistoric {
         @Override
         public void onUpdateMoveHelper() {
             if (this.action == EntityMoveHelper.Action.MOVE_TO && !this.dinosaur.getNavigator().noPath() && !this.dinosaur.isBeingRidden()) {
-                if (this.action == EntityMoveHelper.Action.MOVE_TO && !this.dinosaur.getNavigator().noPath()) {
-                    double distanceX = this.posX - this.dinosaur.posX;
-                    double distanceY = this.posY - this.dinosaur.posY;
-                    double distanceZ = this.posZ - this.dinosaur.posZ;
-                    double distance = Math.abs(distanceX * distanceX + distanceY * distanceY + distanceZ * distanceZ);
-                    distance = (double) MathHelper.sqrt(distance);
-                    distanceY /= distance;
-                    float angle = (float) (Math.atan2(distanceZ, distanceX) * 180.0D / Math.PI) - 90.0F;
-                    this.dinosaur.rotationYaw = this.limitAngle(this.dinosaur.rotationYaw, angle, 30.0F);
-                    this.dinosaur.setAIMoveSpeed((float) this.dinosaur.swimSpeed() * 7.0F);
-                    this.dinosaur.motionY += (double) this.dinosaur.getAIMoveSpeed() * distanceY * 0.1D;
-                } else {
-                    this.dinosaur.setAIMoveSpeed(0.0F);
+                double distanceX = this.posX - this.dinosaur.posX;
+                double distanceY = this.posY - this.dinosaur.posY;
+                double distanceZ = this.posZ - this.dinosaur.posZ;
+                double distance = Math.abs(distanceX * distanceX + distanceZ * distanceZ);
+                double distanceWithY = (double) MathHelper.sqrt(distanceX * distanceX + distanceY * distanceY + distanceZ * distanceZ);
+                distanceY = distanceY / distanceWithY;
+                float angle = (float) (Math.atan2(distanceZ, distanceX) * 180.0D / Math.PI) - 90.0F;
+                this.dinosaur.rotationYaw = this.limitAngle(this.dinosaur.rotationYaw, angle, 30.0F);
+                this.dinosaur.setAIMoveSpeed((float) 1F);
+                this.dinosaur.motionY += (double) this.dinosaur.getAIMoveSpeed() * distanceY * 0.1D;
+                if (distance < (double) Math.max(1.0F, this.entity.width)) {
+                    float f = this.dinosaur.rotationYaw * 0.017453292F;
+                    this.dinosaur.motionX -= (double) (MathHelper.sin(f) * 0.35F);
+                    this.dinosaur.motionZ += (double) (MathHelper.cos(f) * 0.35F);
                 }
+            } else if (this.action == EntityMoveHelper.Action.JUMPING) {
+                this.entity.setAIMoveSpeed((float) (this.speed * this.entity.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue()));
+                if (this.entity.onGround) {
+                    this.action = EntityMoveHelper.Action.WAIT;
+                }
+            } else {
+                this.dinosaur.setAIMoveSpeed(0.0F);
             }
         }
     }

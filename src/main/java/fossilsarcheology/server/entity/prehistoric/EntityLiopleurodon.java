@@ -138,12 +138,16 @@ public class EntityLiopleurodon extends EntityPrehistoricSwimming {
 
 	@Override
 	public double swimSpeed() {
-		return 2.5D;
+		return 6D;
 	}
 
 	@Override
 	public int getMaxHunger() {
 		return 125;
+	}
+
+	public boolean breaksBoats() {
+		return true;
 	}
 
 	@Override

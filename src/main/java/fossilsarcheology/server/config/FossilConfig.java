@@ -58,7 +58,7 @@ public class FossilConfig {
     public boolean customMainMenu = true;
 
     @ConfigEntry(category = "dinosaurs")
-    public boolean featheredTRex = true;
+    public boolean featheredTyrannosaurus = true;
     @ConfigEntry(category = "dinosaurs")
     public boolean featheredDeinonychus = true;
     @ConfigEntry(category = "dinosaurs")
@@ -66,7 +66,7 @@ public class FossilConfig {
     @ConfigEntry(category = "dinosaurs")
     public boolean featheredCompsognathus = true;
     @ConfigEntry(category = "dinosaurs")
-    public boolean quilledTriceratops = true;
+    public boolean quilledTriceratops = false;
     @ConfigEntry(category = "dinosaurs")
     public boolean featheredVelociraptor = true;
     @ConfigEntry(category = "dinosaurs")

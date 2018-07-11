@@ -138,7 +138,11 @@ public class EntityMosasaurus extends EntityPrehistoricSwimming {
 
 	@Override
 	public double swimSpeed() {
-		return 2.5D;
+		return 5D;
+	}
+
+	public boolean breaksBoats() {
+		return true;
 	}
 
 	@Override
@@ -168,7 +172,7 @@ public class EntityMosasaurus extends EntityPrehistoricSwimming {
 	@Override
 	public void updatePassenger(Entity passenger) {
 		super.updatePassenger(passenger);
-		if (passenger instanceof EntityLivingBase) {
+		if (passenger instanceof EntityLivingBase && this.getRidingPlayer() == null || this.getRidingPlayer() != null && passenger != this.getRidingPlayer()) {
 			Entity riddenByEntity = passenger;
 			if ((this.getAnimationTick() > 55 || this.getAnimation() == NO_ANIMATION)) {
 				if (riddenByEntity instanceof EntityToyBase) {

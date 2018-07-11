@@ -1158,10 +1158,11 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
                         this.heal(200);
                         this.setMood(100);
                         this.increaseHunger(500);
-                        this.setTamed(true);
                         this.getNavigator().clearPath();
                         setAttackTarget(null);
+                        this.setTamed(true);
                         this.setOwnerId(player.getUniqueID());
+                        this.world.setEntityState(this, (byte) 35);
                         itemstack.shrink(1);
                         return true;
                     }

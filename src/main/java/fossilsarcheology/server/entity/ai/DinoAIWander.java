@@ -44,7 +44,6 @@ public class DinoAIWander extends EntityAIBase {
 
 	@Override
 	public boolean shouldContinueExecuting() {
-		System.out.println(this.prehistoric.getNavigator().noPath());
 		return !this.prehistoric.getNavigator().noPath();
 	}
 

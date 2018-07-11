@@ -26,7 +26,7 @@ public class EntityTyrannosaurus extends EntityPrehistoric {
 		this.setActualSize(1.8F, 1.25F);
 		this.pediaScale = 40F;
 		this.hasFeatherToggle = true;
-		this.featherToggle = Revival.CONFIG.featheredTRex;
+		this.featherToggle = Revival.CONFIG.featheredTyrannosaurus;
 		minSize = 0.2F;
 		maxSize = 2.8F;
 		teenAge = 5;

@@ -134,6 +134,10 @@ public class EntitySarcosuchus extends EntityPrehistoricSwimming {
 		return PrehistoricEntityTypeAI.WaterAbility.ATTACK;
 	}
 
+	public boolean breaksBoats() {
+		return true;
+	}
+
 	@Override
 	public boolean doesFlock() {
 		return false;
@@ -156,7 +160,7 @@ public class EntitySarcosuchus extends EntityPrehistoricSwimming {
 
 	@Override
 	public double swimSpeed() {
-		return 2;
+		return 5;
 	}
 
 	@Override
@@ -165,7 +169,7 @@ public class EntitySarcosuchus extends EntityPrehistoricSwimming {
 			super.updateRidden();
 			return;
 		}
-		if (this.getPassengers().get(0) != null && this.getPassengers().get(0) instanceof EntityLivingBase) {
+		if (this.getPassengers().get(0) instanceof EntityLivingBase && this.getRidingPlayer() == null || this.getRidingPlayer() != null && this.getPassengers().get(0) != this.getRidingPlayer()) {
 			Entity riddenByEntity = this.getPassengers().get(0);
 			if (this.getAnimationTick() % 20 == 0 && riddenByEntity != null) {
 				riddenByEntity.attackEntityFrom(DamageSource.DROWN, 10);
