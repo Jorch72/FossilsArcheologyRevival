@@ -35,7 +35,7 @@ public class EntityMegalograptus extends EntityPrehistoricSwimming {
         this.setActualSize(0.9F, 0.5F);
         isAmphibious = true;
         minSize = 0.2F;
-        maxSize = 1.2F;
+        maxSize = 0.8F;
         teenAge = 3;
         this.hasBabyTexture = true;
         this.pediaScale = 30;
