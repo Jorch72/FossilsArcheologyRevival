@@ -5,9 +5,9 @@
     "down": "fossil:blocks/ancient_glass/ancient_glass_left",
     "up": "fossil:blocks/ancient_glass/ancient_glass_left",
     "north": "fossil:blocks/ancient_glass/ancient_glass_right",
-    "east": "fossil:blocks/ancient_glass/ancient_glass",
+    "east": "fossil:blocks/ancient_glass/ancient_glass_blank",
     "south": "fossil:blocks/ancient_glass/ancient_glass_left",
-    "west": "fossil:blocks/ancient_glass/ancient_glass"
+    "west": "fossil:blocks/ancient_glass/ancient_glass_blank"
   }
 }
 

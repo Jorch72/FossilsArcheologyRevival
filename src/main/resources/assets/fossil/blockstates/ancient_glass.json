@@ -22,29 +22,29 @@
         },
 
         {   "when": { "east": "false", "up": "false", "north": "false" },
-            "apply": { "model": "fossil:ancient_glass_top_right", "y" : 0, "uvlock": false }
+            "apply": { "model": "fossil:ancient_glass_corner_north_east_up", "y" : 0, "uvlock": false }
         },
         {   "when": { "east": "false", "up": "false", "south": "false" },
-            "apply": { "model": "fossil:ancient_glass_top_left", "y" : 180, "uvlock": false }
+            "apply": { "model": "fossil:ancient_glass_corner_north_east_up", "y" : 90, "uvlock": false }
         },
-        {   "when": { "east": "false", "down": "false", "north": "false"},
-            "apply": { "model": "fossil:ancient_glass_bottom_right", "y" : 0, "uvlock": false }
+        {   "when": { "west": "false", "up": "false", "south": "false" },
+            "apply": { "model": "fossil:ancient_glass_corner_north_east_up", "y" : 180, "uvlock": false }
         },
-        {   "when": { "east": "false", "down": "false", "south": "false" },
-            "apply": { "model": "fossil:ancient_glass_bottom_left", "y" : 180, "uvlock": false }
+        {   "when": { "west": "false", "up": "false", "north": "false" },
+            "apply": { "model": "fossil:ancient_glass_corner_north_east_up", "y" : 270, "uvlock": false }
         },
 
-        {   "when": { "north": "false", "up": "false", "west": "false" },
-            "apply": { "model": "fossil:ancient_glass_top_right_ns", "y" : -90, "uvlock": false }
+        {   "when": { "east": "false", "down": "false", "north": "false" },
+            "apply": { "model": "fossil:ancient_glass_corner_north_east_down", "y" : 0, "uvlock": false }
         },
-        {   "when": { "south": "false", "up": "false", "west": "false" },
-            "apply": { "model": "fossil:ancient_glass_top_left_ns", "y" : -90, "uvlock": false }
+        {   "when": { "east": "false", "down": "false", "south": "false" },
+            "apply": { "model": "fossil:ancient_glass_corner_north_east_down", "y" : 90, "uvlock": false }
         },
-        {   "when": { "north": "false", "down": "false", "west": "false" },
-            "apply": { "model": "fossil:ancient_glass_bottom_right_ns", "y" : -90, "uvlock": false }
+        {   "when": { "west": "false", "down": "false", "south": "false" },
+            "apply": { "model": "fossil:ancient_glass_corner_north_east_down", "y" : 180, "uvlock": false }
         },
-        {   "when": { "south": "false", "down": "false", "west": "false" },
-            "apply": { "model": "fossil:ancient_glass_bottom_left_ns", "y" : -90, "uvlock": false }
+        {   "when": { "west": "false", "down": "false", "north": "false" },
+            "apply": { "model": "fossil:ancient_glass_corner_north_east_down", "y" : 270, "uvlock": false }
         }
     ]
 }
