@@ -320,7 +320,7 @@ public class GuiPedia extends GuiScreen {
     public void showPrehistoricBio(String mobName) {
         this.reset();
         this.addStringLR("", 150, false);
-        String translatePath = "assets/fossil/dinopedia/" + Minecraft.getMinecraft().gameSettings.language + "/";
+        String translatePath = "assets/fossil/dinopedia/" + Minecraft.getMinecraft().gameSettings.language.toLowerCase() + "/";
         String bioFile = String.valueOf(mobName) + ".txt";
         if (getClass().getClassLoader().getResourceAsStream(translatePath) == null) {
             translatePath = "assets/fossil/dinopedia/" + "en_us" + "/";

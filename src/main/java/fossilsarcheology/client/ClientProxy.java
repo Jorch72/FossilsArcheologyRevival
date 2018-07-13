@@ -1,5 +1,6 @@
 package fossilsarcheology.client;
 
+import fossilsarcheology.Revival;
 import fossilsarcheology.client.gui.*;
 import fossilsarcheology.client.gui.dinopedia.GuiPedia;
 import fossilsarcheology.client.model.ModelAncientHelmet;
@@ -36,6 +37,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -128,6 +130,7 @@ public class ClientProxy extends ServerProxy {
     @Override
     public void onPreInit() {
         super.onPreInit();
+        OBJLoader.INSTANCE.addDomain(Revival.MODID);
         RENDER_HANDLER.onPreInit();
     }
 

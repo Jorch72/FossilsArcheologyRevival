@@ -32,7 +32,11 @@ public class FossilDoorBlock extends BlockDoor implements DefaultRenderedItem {
     }
 
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-        return getDoorItem();
+        if(state.getValue(HALF) == EnumDoorHalf.UPPER){
+            return null;
+        }else{
+            return getDoorItem();
+        }
     }
 
     public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {

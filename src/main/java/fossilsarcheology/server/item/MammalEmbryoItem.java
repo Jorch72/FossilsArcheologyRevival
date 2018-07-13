@@ -5,7 +5,7 @@ import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityType;
 import fossilsarcheology.server.entity.utility.FossilsMammalProperties;
 import net.ilexiconn.llibrary.server.entity.EntityPropertiesHandler;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
@@ -20,7 +20,7 @@ public class MammalEmbryoItem extends PrehistoricEntityItem implements DefaultRe
 
 	@Override
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase entity, EnumHand hand) {
-		if (entity instanceof EntityAnimal && !entity.isChild()) {
+		if ((entity instanceof EntityHorse || entity instanceof EntityCow || entity instanceof EntityPig || entity instanceof EntitySheep || entity instanceof EntityRabbit) && !entity.isChild() && !entity.world.isRemote) {
 			FossilsMammalProperties properties = EntityPropertiesHandler.INSTANCE.getProperties(entity, FossilsMammalProperties.class);
 			if (properties != null) {
 				if (properties.embryo != null || properties.isPregnant) {

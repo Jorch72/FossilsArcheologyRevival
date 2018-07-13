@@ -7,6 +7,7 @@ import fossilsarcheology.server.tab.FATabRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockFence;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -38,24 +39,15 @@ public class FigurineBlock extends BlockContainer implements IBlockItem, BlockEn
     public static final AxisAlignedBB AABB = new AxisAlignedBB(0.25f, 0f, 0.25f, 0.75f, 0.5f, 0.75f);
 
     protected FigurineBlock() {
-        super(Material.ROCK);
+        super(Material.CIRCUITS);
         this.setCreativeTab(FATabRegistry.BLOCKS);
         this.setUnlocalizedName("figurine");
+        this.setSoundType(SoundType.STONE);
         this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumType.FIGURINE_STEVE_PRISTINE));
     }
 
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
         return Item.getItemFromBlock(FABlockRegistry.FIGURINE);
-    }
-
-    public void onBlockHarvested(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player){
-        if(!player.isCreative()){
-            int variant = 0;
-            if(state.getBlock() instanceof FigurineBlock){
-                variant = state.getValue(VARIANT).getMetadata();
-            }
-            spawnAsEntity(worldIn, pos, new ItemStack(Item.getItemFromBlock(FABlockRegistry.FIGURINE), 1, variant));
-        }
     }
 
     @Override
@@ -83,9 +75,11 @@ public class FigurineBlock extends BlockContainer implements IBlockItem, BlockEn
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
         int l = MathHelper.floor((double) (placer.rotationYaw * 4.0F / 360.0F) + 1.5D) & 3;
+        worldIn.setBlockState(pos, state.withProperty(VARIANT, EnumType.byMetadata(stack.getMetadata())));
         TileEntity tileentity = worldIn.getTileEntity(pos);
         ((TileEntityFigurine) tileentity).setFigurineType(stack.getItemDamage());
         ((TileEntityFigurine) tileentity).setFigurineRotation(l);
+        super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
     }
 
     @Override
@@ -171,8 +165,8 @@ public class FigurineBlock extends BlockContainer implements IBlockItem, BlockEn
         private static final FigurineBlock.EnumType[] META_LOOKUP = new FigurineBlock.EnumType[values().length];
 
         static {
-            for (FigurineBlock.EnumType blockplanks$enumtype : values()) {
-                META_LOOKUP[blockplanks$enumtype.getMetadata()] = blockplanks$enumtype;
+            for (FigurineBlock.EnumType type : values()) {
+                META_LOOKUP[type.getMetadata()] = type;
             }
         }
 
