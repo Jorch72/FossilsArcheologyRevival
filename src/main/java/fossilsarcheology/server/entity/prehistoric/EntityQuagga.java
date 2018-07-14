@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 
 import javax.annotation.Nullable;
 
-public class EntityQuagga extends AbstractHorse {
+public class EntityQuagga extends AbstractChestHorse {
 
     public static final ResourceLocation LOOT = LootTableList.register(new ResourceLocation("fossil", "quagga"));
 
@@ -118,7 +118,7 @@ public class EntityQuagga extends AbstractHorse {
                 return super.processInteract(player, hand);
             } else {
                 this.mountTo(player);
-                return true;
+                return super.processInteract(player, hand);
             }
         }
     }
