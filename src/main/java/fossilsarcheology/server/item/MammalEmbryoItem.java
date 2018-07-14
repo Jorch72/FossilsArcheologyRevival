@@ -20,16 +20,16 @@ public class MammalEmbryoItem extends PrehistoricEntityItem implements DefaultRe
 
 	@Override
 	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase entity, EnumHand hand) {
-		if ((entity instanceof EntityHorse || entity instanceof EntityCow || entity instanceof EntityPig || entity instanceof EntitySheep || entity instanceof EntityRabbit) && !entity.isChild() && !entity.world.isRemote) {
+		if ((entity instanceof EntityHorse || entity instanceof EntityCow || entity instanceof EntityPig || entity instanceof EntitySheep || entity instanceof EntityRabbit) && !entity.isChild()) {
 			FossilsMammalProperties properties = EntityPropertiesHandler.INSTANCE.getProperties(entity, FossilsMammalProperties.class);
 			if (properties != null) {
-				if (properties.embryo != null || properties.isPregnant) {
+				if (properties.isPregnant) {
 					return false;
 				}
 				if (this.type != null) {
 					properties.embryo = this.type;
 					properties.isPregnant = true;
-					if (!player.capabilities.isCreativeMode) {
+					if (!player.isCreative()) {
 						stack.shrink(1);
 					}
 				} else {
