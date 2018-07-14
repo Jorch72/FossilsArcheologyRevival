@@ -616,8 +616,8 @@ public class GuiPedia extends GuiScreen {
                 if (Revival.PEDIA_OBJECT instanceof EntityPrehistoric) {
                     renderDinosaur(k + 100, l + 80, Math.round(2 * ((EntityPrehistoric) Revival.PEDIA_OBJECT).pediaScale), 0, (EntityLivingBase) Revival.PEDIA_OBJECT);
                 } else {
-                    if (Revival.PEDIA_OBJECT instanceof EntityQuagga) {
-                        renderDinosaur(k + 100, l + 80, 50, 0, (EntityLivingBase) Revival.PEDIA_OBJECT);
+                    if (Revival.PEDIA_OBJECT instanceof AbstractHorse) {
+                        renderDinosaur(k + 100, l + 80, 60, 0, (EntityLivingBase) Revival.PEDIA_OBJECT);
                     } else {
                         renderDinosaur(k + 100, l + 80, 80, 0, (EntityLivingBase) Revival.PEDIA_OBJECT);
                     }

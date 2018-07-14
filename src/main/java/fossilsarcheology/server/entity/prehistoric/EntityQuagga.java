@@ -1,6 +1,8 @@
 package fossilsarcheology.server.entity.prehistoric;
 
 
+import fossilsarcheology.Revival;
+import fossilsarcheology.server.item.FAItemRegistry;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.*;
@@ -14,6 +16,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTableList;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 
 import javax.annotation.Nullable;
 
@@ -65,7 +68,11 @@ public class EntityQuagga extends AbstractHorse {
     public boolean processInteract(EntityPlayer player, EnumHand hand) {
         ItemStack itemstack = player.getHeldItem(hand);
         boolean flag = !itemstack.isEmpty();
-
+        if (itemstack != null && FMLCommonHandler.instance().getSide().isClient() && itemstack.getItem() == FAItemRegistry.DINOPEDIA) {
+            Revival.PEDIA_OBJECT = this;
+            player.openGui(Revival.INSTANCE, 6, this.world, (int) this.posX, (int) this.posY, (int) this.posZ);
+            return true;
+        }
         if (flag && itemstack.getItem() == Items.SPAWN_EGG) {
             return super.processInteract(player, hand);
         } else {

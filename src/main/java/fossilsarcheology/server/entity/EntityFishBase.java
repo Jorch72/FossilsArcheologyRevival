@@ -161,7 +161,7 @@ public abstract class EntityFishBase extends EntityTameable {
 
     @Override
     public boolean processInteract(EntityPlayer player, EnumHand hand) {
-        ItemStack stack = player.inventory.getCurrentItem();
+       ItemStack stack = player.inventory.getCurrentItem();
         if (stack != null && FMLCommonHandler.instance().getSide().isClient() && stack.getItem() == FAItemRegistry.DINOPEDIA) {
             this.setPedia();
             player.openGui(Revival.INSTANCE, 6, this.world, (int) this.posX, (int) this.posY, (int) this.posZ);
