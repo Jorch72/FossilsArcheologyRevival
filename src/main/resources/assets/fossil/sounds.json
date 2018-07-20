@@ -488,13 +488,53 @@
   "pterosaur_hurt": {
     "category": "neutral",
     "sounds": [
-      "fossil:prehistoric/pterosaurus_hurt"
+      "fossil:prehistoric/pteranodon_hurt1",
+      "fossil:prehistoric/pteranodon_hurt2",
+      "fossil:prehistoric/pteranodon_hurt3",
     ]
   },
   "pterosaur_death": {
     "category": "neutral",
     "sounds": [
-      "fossil:prehistoric/pterosaurus_hurt"
+      "fossil:prehistoric/pteranodon_death"
+    ]
+  },
+  "pterosaur_living": {
+    "category": "neutral",
+    "sounds": [
+      "fossil:prehistoric/pteranodon_living1",
+      "fossil:prehistoric/pteranodon_living2",
+      "fossil:prehistoric/pteranodon_living3",
+      "fossil:prehistoric/pteranodon_living4"
+    ]
+  },
+  "quagga_living": {
+    "category": "neutral",
+    "sounds": [
+      "fossil:prehistoric/quagga_living1",
+      "fossil:prehistoric/quagga_living2",
+      "fossil:prehistoric/quagga_living3",
+      "fossil:prehistoric/quagga_living4",
+      "fossil:prehistoric/quagga_living5",
+      "fossil:prehistoric/quagga_living6",
+      "fossil:prehistoric/quagga_living7",
+      "fossil:prehistoric/quagga_living8",
+      "fossil:prehistoric/quagga_living9",
+      "fossil:prehistoric/quagga_living10"
+    ]
+  },
+  "quagga_hurt": {
+    "category": "neutral",
+    "sounds": [
+      "fossil:prehistoric/quagga_hurt1",
+      "fossil:prehistoric/quagga_hurt2",
+      "fossil:prehistoric/quagga_hurt3"
+    ]
+  },
+  "quagga_death": {
+    "category": "neutral",
+    "sounds": [
+      "fossil:prehistoric/quagga_death"
     ]
   },
   "sarcosuchus_living": {
@@ -529,13 +569,6 @@
       "fossil:prehistoric/sarcosuchus_baby_living4"
     ]
   },
-  "pterosaur_living": {
-    "category": "neutral",
-    "sounds": [
-      "fossil:prehistoric/pterosaurus_living1",
-      "fossil:prehistoric/pterosaurus_living2"
-    ]
-  },
   "smilodon_hurt": {
     "category": "neutral",
     "sounds": [
@@ -565,14 +598,20 @@
   "spinosaurus_hurt": {
     "category": "neutral",
     "sounds": [
-      "fossil:prehistoric/spinosaurus_hurt"
+      "fossil:prehistoric/spinosaurus_hurt1",
+      "fossil:prehistoric/spinosaurus_hurt2",
+      "fossil:prehistoric/spinosaurus_hurt3"
     ]
   },
   "spinosaurus_living": {
     "category": "neutral",
     "sounds": [
       "fossil:prehistoric/spinosaurus_living1",
-      "fossil:prehistoric/spinosaurus_living2"
+      "fossil:prehistoric/spinosaurus_living2",
+      "fossil:prehistoric/spinosaurus_living3",
+      "fossil:prehistoric/spinosaurus_living4",
+      "fossil:prehistoric/spinosaurus_living5",
+      "fossil:prehistoric/spinosaurus_living6"
     ]
   },
   "spinosaurus_scream": {
