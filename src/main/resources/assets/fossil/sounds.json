@@ -1,4 +1,36 @@
 {
+  "megalodon_death": {
+    "category": "neutral",
+    "sounds": [
+      "fossil:prehistoric/megalodon_hurt0_outside"
+    ]
+  },
+  "megalodon_hurt_outside": {
+    "category": "neutral",
+    "sounds": [
+      "fossil:prehistoric/megalodon_hurt0_outside",
+      "fossil:prehistoric/megalodon_hurt1_outside"
+    ]
+  },
+  "megalodon_hurt": {
+    "category": "neutral",
+    "sounds": [
+      "fossil:prehistoric/megalodon_hurt0",
+      "fossil:prehistoric/megalodon_hurt1"
+    ]
+  },
+  "megalodon_living": {
+    "category": "neutral",
+    "sounds": [
+      "fossil:prehistoric/megalodon_living1",
+      "fossil:prehistoric/megalodon_living2",
+      "fossil:prehistoric/megalodon_living3",
+      "fossil:prehistoric/megalodon_living4",
+      "fossil:prehistoric/megalodon_living5"
+
+
+    ]
+  },
   "megalograptus_death": {
     "category": "neutral",
     "sounds": [

@@ -71,6 +71,11 @@ public class FASoundRegistry {
 	public static final SoundEvent MOSASAURUS_LIVING = create("mosasaurus_living");
 	public static final SoundEvent MOSASAURUS_ATTACK = create("mosasaurus_attack");
 
+	public static final SoundEvent MEGALODON_DEATH = create("megalodon_death");
+	public static final SoundEvent MEGALODON_HURT = create("megalodon_hurt");
+	public static final SoundEvent MEGALODON_HURT_OUTSIDE = create("megalodon_hurt_outside");
+	public static final SoundEvent MEGALODON_LIVING = create("megalodon_living");
+
 	public static final SoundEvent MOSASAURUS_LIVING_INSIDE = create("mosasaurus_living_inside");
 	public static final SoundEvent MOSASAURUS_LIVING_OUTSIDE = create("mosasaurus_living_outside");
 

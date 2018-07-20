@@ -244,16 +244,16 @@ public class EntityMegalodon extends EntityPrehistoricSwimming {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return this.isInWater() ? FASoundRegistry.MOSASAURUS_LIVING_INSIDE : FASoundRegistry.MOSASAURUS_LIVING_OUTSIDE;
+        return this.isInWater() ? FASoundRegistry.MEGALODON_LIVING : FASoundRegistry.MOSASAURUS_LIVING_OUTSIDE;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
-        return FASoundRegistry.MOSASAURUS_HURT;
+        return this.isInWater() ? FASoundRegistry.MEGALODON_HURT : FASoundRegistry.MEGALODON_HURT_OUTSIDE;
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return FASoundRegistry.MOSASAURUS_DEATH;
+        return FASoundRegistry.MEGALODON_DEATH;
     }
 }
