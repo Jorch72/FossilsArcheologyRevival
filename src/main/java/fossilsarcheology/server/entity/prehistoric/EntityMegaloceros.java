@@ -27,7 +27,6 @@ public class EntityMegaloceros extends EntityPrehistoric {
         teenAge = 4;
         developsResistance = true;
         breaksBlocks = false;
-        hasBabyTexture = false;
         this.ridingY = 2.45F;
     }
 
