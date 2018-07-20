@@ -124,10 +124,10 @@ public class FAWorldGenerator implements IWorldGenerator {
 		if (Revival.CONFIG.generateAztecWeaponShops && random.nextInt(65) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && BiomeDictionary.hasType(biome, BiomeDictionary.Type.JUNGLE)) {
 			StructureUtils.generateStructureAtWithRandomRotationWithLoot(AZTEC_WEAPONS_SHOP, AZTEC_WEAPONS_CHEST, world, height.down(2), random, true, false);
 		}
-		if (Revival.CONFIG.generateTemple && random.nextInt(65) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && BiomeDictionary.hasType(biome, BiomeDictionary.Type.JUNGLE)) {
+		if (Revival.CONFIG.generateTemple && random.nextInt(120) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && BiomeDictionary.hasType(biome, BiomeDictionary.Type.JUNGLE)) {
 			StructureUtils.generateStructureAtWithRandomRotationWithLoot(AZTEC_TEMPLE, AZTEC_TEMPLE_CHEST, world, height, random, true, false);
 		}
-		if (Revival.CONFIG.generateAcademy && random.nextInt(65) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY) && BiomeDictionary.hasType(biome, BiomeDictionary.Type.DRY) && BiomeDictionary.hasType(biome, BiomeDictionary.Type.HOT)) {
+		if (Revival.CONFIG.generateAcademy && random.nextInt(200) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY) && BiomeDictionary.hasType(biome, BiomeDictionary.Type.DRY) && BiomeDictionary.hasType(biome, BiomeDictionary.Type.HOT)) {
 			StructureUtils.generateStructureAtWithRandomRotationWithLoot(EGYPTIAN_ACADEMY, EGYPTIAN_ACADEMY_CHEST, world, height.down(), random, true, false);
 		}
 		if (world.getChunkFromChunkCoords(chunkX, chunkZ) == world.getChunkFromBlockCoords(ANU_CASTLE_POS) && world.provider.getDimension() == Revival.CONFIG.dimensionIDDarknessLair) {
