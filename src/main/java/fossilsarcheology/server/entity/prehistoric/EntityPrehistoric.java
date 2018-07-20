@@ -1200,7 +1200,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
 
                 if (FoodMappings.INSTANCE.getItemFoodAmount(itemstack, this.type.diet) != 0) {
                     if (!player.world.isRemote) {
-                        if (this.getMaxHunger() > this.getHunger() || this.getHealth() > this.getMaxHealth() && Revival.CONFIG.healingDinos || !this.isTamed()) {
+                        if (this.getHunger() < this.getMaxHunger() || this.getHealth() < this.getMaxHealth() && Revival.CONFIG.healingDinos || !this.isTamed() && this.aiTameType() == PrehistoricEntityTypeAI.Taming.FEEDING) {
                             this.setHunger(this.getHunger() + FoodMappings.INSTANCE.getItemFoodAmount(itemstack, this.type.diet));
                             if (!world.isRemote) {
                                 this.eatItem(itemstack);
@@ -1213,7 +1213,6 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
                                     this.sendStatusMessage(SituationType.Full);
                                 }
                             }
-
                             itemstack.shrink(1);
                             if (this.aiTameType() == PrehistoricEntityTypeAI.Taming.FEEDING) {
                                 if (!this.isTamed() && this.type.isTameable() && (new Random()).nextInt(10) == 1) {
