@@ -98,7 +98,7 @@ public class EntityMeganeura extends EntityPrehistoricSwimming {
             this.moveHelper.action = EntityMoveHelper.Action.WAIT;
         }
         if(flying && this.ticksExisted % 20 == 0 && !world.isRemote && !this.isChild()){
-            this.playSound(FASoundRegistry.MEGANEURA_FLY, 1, 1);
+            this.playSound(FASoundRegistry.MEGANEURA_FLY, this.getSoundVolume(), 1);
         }
         if (this.getAnimation() == ATTACK_ANIMATION && this.getAttackTarget() != null) {
             this.attackEntityAsMob(this.getAttackTarget());
@@ -282,6 +282,10 @@ public class EntityMeganeura extends EntityPrehistoricSwimming {
     @Override
     protected SoundEvent getDeathSound() {
         return FASoundRegistry.MEGANEURA_DEATH;
+    }
+
+    protected float getSoundVolume(){
+        return 0.5F;
     }
 
     public static BlockPos getPositionRelativetoGround(Entity entity, World world, double x, double z, Random rand) {
