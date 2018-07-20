@@ -1737,6 +1737,10 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
             }
             this.getRidingPlayer().setPosition(this.posX + extraX, this.posY + extraY + spinosaurusAddition - 1.75F, this.posZ + extraZ);
         }
+        if(passenger instanceof EntityVelociraptor || passenger instanceof EntityDeinonychus){
+            double extraY = ridingY * (getAgeScale()) - 1F;
+            passenger.setPosition(this.posX, this.posY + extraY, this.posZ);
+        }
     }
 
     @Override
