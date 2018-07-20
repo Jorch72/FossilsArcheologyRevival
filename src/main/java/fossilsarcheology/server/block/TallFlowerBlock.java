@@ -124,7 +124,7 @@ public class TallFlowerBlock extends BlockBush implements DefaultRenderedItem, I
 	@SuppressWarnings("deprecation")
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		return this.getDefaultState().withProperty(HALF, TallFlowerBlock.EnumBlockHalf.UPPER);
+		return this.getDefaultState().withProperty(HALF, meta == 1 ? EnumBlockHalf.UPPER : EnumBlockHalf.LOWER);
 	}
 
 	@Override
