@@ -254,8 +254,11 @@ public class ModelMegalania extends ModelPrehistoric {
         float speed = 0.05F;
         float speed2 = 0.3F;
         float degree = 0.5F;
-        ModelUtils.faceTargetMod(Neck, f3, f4, 0.5F);
-        ModelUtils.faceTargetMod(Head, f3, f4, 0.5F);
+        if (!((EntityPrehistoric) entity).isSleeping()) {
+            ModelUtils.faceTargetMod(Neck, f3, f4, 0.5F);
+            ModelUtils.faceTargetMod(Head, f3, f4, 0.5F);
+        }
+
         this.chainWave(tailParts, speed, degree * 0.075F, -3, entity.ticksExisted, 1);
         this.chainSwing(tailParts, speed, degree * 0.25F, -2, entity.ticksExisted, 1);
         this.chainWave(neckParts, speed, degree * 0.075F, 3, entity.ticksExisted, 1);

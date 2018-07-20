@@ -22,12 +22,12 @@ public class EntityMegaloceros extends EntityPrehistoric {
         this.setActualSize(1.9F, 1.7F);
         this.nearByMobsAllowed = 9;
         this.pediaScale = 25;
-        minSize = 0.6F;
-        maxSize = 1.5F;
+        minSize = 0.5F;
+        maxSize = 1.25F;
         teenAge = 4;
         developsResistance = true;
         breaksBlocks = false;
-        this.ridingY = 2.45F;
+        this.ridingY = 2.35F;
     }
 
     public void initEntityAI() {
