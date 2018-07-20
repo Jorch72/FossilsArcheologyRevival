@@ -27,8 +27,8 @@ public abstract class FossilSlabBlock extends BlockSlab implements DefaultRender
 
 	private final Block baseBlock;
 
-	public FossilSlabBlock(String name, float hardness, float resistance, SoundType soundType, Block baseBlock) {
-		super(Material.ROCK);
+	public FossilSlabBlock(String name, float hardness, float resistance, SoundType soundType, Material material, Block baseBlock) {
+		super(material);
 		IBlockState iblockstate = this.blockState.getBaseState();
 		this.baseBlock = baseBlock;
 		this.setLightOpacity(0);
@@ -55,12 +55,12 @@ public abstract class FossilSlabBlock extends BlockSlab implements DefaultRender
 	@Override
     @Nullable
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return Item.getItemFromBlock(baseBlock);
+		return getSlabItem();
 	}
 
 	@Override
     public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
-		return new ItemStack(baseBlock);
+		return new ItemStack(getSlabItem());
 	}
 
 	@SuppressWarnings("deprecation")
@@ -116,8 +116,8 @@ public abstract class FossilSlabBlock extends BlockSlab implements DefaultRender
 	}
 
 	public abstract static class Double extends FossilSlabBlock {
-		public Double(String name, float hardness, float resistance, SoundType soundType, Block baseBlock) {
-			super(name, hardness, resistance, soundType, baseBlock);
+		public Double(String name, float hardness, float resistance, SoundType soundType, Material material, Block baseBlock) {
+			super(name, hardness, resistance, soundType, material, baseBlock);
 		}
 
 		@Override
@@ -127,8 +127,8 @@ public abstract class FossilSlabBlock extends BlockSlab implements DefaultRender
 	}
 
 	public abstract static class Half extends FossilSlabBlock {
-		public Half(String name, float hardness, float resistance, SoundType soundType, Block baseBlock) {
-			super(name, hardness, resistance, soundType, baseBlock);
+		public Half(String name, float hardness, float resistance, SoundType soundType, Material material, Block baseBlock) {
+			super(name, hardness, resistance, soundType, material, baseBlock);
 		}
 
 		@Override

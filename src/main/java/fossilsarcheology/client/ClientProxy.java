@@ -51,7 +51,7 @@ public class ClientProxy extends ServerProxy {
     @SideOnly(Side.CLIENT)
     public static final RenderingHandler RENDER_HANDLER = new RenderingHandler();
     @SideOnly(Side.CLIENT)
-    private static final ModelAncientHelmet helmetModel = new ModelAncientHelmet(1.2f);
+    private static final ModelAncientHelmet helmetModel = new ModelAncientHelmet(1.03f);
     private static final ModelResourceLocation BLOCK_TAR_MODEL = new ModelResourceLocation("fossil:tar", "fluid");
 
     @SubscribeEvent
