@@ -201,7 +201,7 @@ public class EntityMegalania extends EntityPrehistoric {
                 boolean flag = entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) iattributeinstance.getAttributeValue());
                 if (entity.getRidingEntity() != null) {
                     if (entity.getRidingEntity() == this) {
-                        entity.startRiding(null);
+                        entity.dismountRidingEntity();
                     }
                 }
                 entity.motionY += 0.1000000059604645D;
