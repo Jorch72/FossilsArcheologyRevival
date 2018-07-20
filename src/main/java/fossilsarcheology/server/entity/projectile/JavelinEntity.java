@@ -23,6 +23,7 @@ public class JavelinEntity extends EntityArrow implements IEntityAdditionalSpawn
 		this(world);
 		this.damage = damage;
 		this.material = material;
+		this.setDamage(getDamageFromMaterial(material));
 		this.setPosition(x, y, z);
 	}
 
@@ -32,8 +33,24 @@ public class JavelinEntity extends EntityArrow implements IEntityAdditionalSpawn
 		if (shooter instanceof EntityPlayer) {
 			this.pickupStatus = EntityArrow.PickupStatus.ALLOWED;
 		}
+		this.setDamage(getDamageFromMaterial(material));
 	}
 
+	private double getDamageFromMaterial(Item.ToolMaterial material){
+		switch(material){
+			case WOOD:
+				return 2D;
+			case STONE:
+				return 3D;
+			case IRON:
+				return 4D;
+			case GOLD:
+				return 5D;
+			case DIAMOND:
+				return 7D;
+		}
+		return 2D;
+	}
 	@Override
 	public void onUpdate() {
 		super.onUpdate();

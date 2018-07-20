@@ -17,10 +17,12 @@ public class AncientJavelinEntity extends JavelinEntity {
 
 	public AncientJavelinEntity(World world, int damage, double x, double y, double z) {
 		super(world, Item.ToolMaterial.WOOD, damage, x, y, z);
+		this.setDamage(10D);
 	}
 
 	public AncientJavelinEntity(World world, int damage, EntityLivingBase shooter) {
 		super(world, Item.ToolMaterial.WOOD, damage, shooter);
+		this.setDamage(10D);
 	}
 
 	@Override
