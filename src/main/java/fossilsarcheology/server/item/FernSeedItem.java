@@ -50,7 +50,7 @@ public class FernSeedItem extends Item implements DefaultRenderedItem {
 	}
 
 	public boolean canPlant(IBlockState state) {
-		return state.getBlock() == net.minecraft.init.Blocks.GRASS || state.getBlock() == net.minecraft.init.Blocks.DIRT || state.getBlock() == net.minecraft.init.Blocks.FARMLAND;
+		return FernsBlock.canGrowOn(state);
 	}
 
 }

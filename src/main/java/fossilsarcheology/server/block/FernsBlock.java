@@ -106,16 +106,12 @@ public class FernsBlock extends BlockBush implements DefaultRenderedItem {
     public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
         IBlockState currentState = world.getBlockState(pos);
         int meta = currentState.getBlock().getMetaFromState(currentState);
+        return (canGrowOn(world.getBlockState(pos.down())) || world.getBlockState(pos.down()).getBlock() == this) && checkUnderTree(world, pos.up());
 
-        if (this.checkLevel(meta)) {
-            return world.getBlockState(pos.down()).getBlock() == FABlockRegistry.FERNS;
-        } else {
-            boolean var5 = world.getBlockState(pos.down()).getBlock() == Blocks.GRASS && checkUnderTree(world, pos.up());
-            if (this.hasLv2(meta)) {
-                var5 &= world.getBlockState(pos.down()).getBlock() == FABlockRegistry.FERNS;
-            }
-            return var5;
-        }
+    }
+
+    public static boolean canGrowOn(IBlockState state){
+        return state.getMaterial() == Material.GRASS || state.getBlock().getUnlocalizedName().contains("dirt");
     }
 
     public boolean checkLevel(int meta) {
@@ -158,7 +154,7 @@ public class FernsBlock extends BlockBush implements DefaultRenderedItem {
     @SuppressWarnings("deprecation")
     @Override
     public IBlockState getStateFromMeta(int meta) {
-        return this.getDefaultState().withProperty(TYPE, meta / 8).withProperty(GROWTH, (meta < 8 ? meta : meta - 8));
+        return this.getDefaultState().withProperty(TYPE, meta / 8).withProperty(GROWTH, (meta < 7 ? meta : meta - 7));
     }
 
     @Override
