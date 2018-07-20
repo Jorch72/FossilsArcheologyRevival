@@ -104,9 +104,9 @@ public class EntityNautilus extends EntityFishBase {
 		if (entity instanceof EntityPlayer) {
 			return true;
 		}
-		/*if (entity instanceof EntityPrehistoric) {
+		if (entity instanceof EntityPrehistoric) {
 		    return ((EntityPrehistoric) entity).type.diet.getFearIndex() >= 2;
-        }*/
+        }
 		return entity.width >= 1.2;
 	}
 
@@ -133,6 +133,6 @@ public class EntityNautilus extends EntityFishBase {
 
 	@Override
 	protected double getSwimSpeed() {
-		return 0.25;
+		return 0.15;
 	}
 }

@@ -24,7 +24,7 @@ public class FishAIFindWaterTarget extends EntityAIBase {
 		}
 		if (this.mob.getRNG().nextFloat() < 0.5F) {
 			Path path = this.mob.getNavigator().getPath();
-			if (!this.mob.getNavigator().noPath() && !this.mob.isDirectPathBetweenPoints(this.mob.getPositionVector(), new Vec3d(path.getFinalPathPoint().x, path.getFinalPathPoint().y, path.getFinalPathPoint().z))) {
+			if (!this.mob.getNavigator().noPath() && !this.mob.isDirectPathBetweenPoints(this.mob.getPositionVector(), new Vec3d(path.getFinalPathPoint().x, path.getFinalPathPoint().y, path.getFinalPathPoint().z)) || path != null && path.getFinalPathPoint() != null &&  this.mob.getDistanceSq(path.getFinalPathPoint().x, path.getFinalPathPoint().y, path.getFinalPathPoint().z) < 3) {
 				this.mob.getNavigator().clearPath();
 			}
 			if (this.mob.getNavigator().noPath()) {
