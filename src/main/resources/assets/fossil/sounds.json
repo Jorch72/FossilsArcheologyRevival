@@ -1,4 +1,28 @@
 {
+  "confusciusornis_death": {
+    "category": "neutral",
+    "sounds": [
+      "fossil:prehistoric/confuciusornis_death1",
+      "fossil:prehistoric/confuciusornis_death2"
+    ]
+  },
+  "confusciusornis_hurt": {
+    "category": "neutral",
+    "sounds": [
+      "fossil:prehistoric/confuciusornis_hurt1",
+      "fossil:prehistoric/confuciusornis_hurt2"
+    ]
+  },
+  "confusciusornis_living": {
+    "category": "neutral",
+    "sounds": [
+      "fossil:prehistoric/confuciusornis_living1",
+      "fossil:prehistoric/confuciusornis_living2",
+      "fossil:prehistoric/confuciusornis_living3",
+      "fossil:prehistoric/confuciusornis_living4",
+      "fossil:prehistoric/confuciusornis_living5"
+    ]
+  },
   "megalodon_death": {
     "category": "neutral",
     "sounds": [
