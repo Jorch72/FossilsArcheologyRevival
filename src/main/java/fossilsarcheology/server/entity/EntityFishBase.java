@@ -176,7 +176,7 @@ public abstract class EntityFishBase extends EntityTameable {
                 return false;
             }
         }
-        if (stack == null && this.getGrowingAge() > 0) {
+        if (stack.isEmpty() && this.getGrowingAge() > 0) {
             ItemStack var3 = new ItemStack(this.selfType.fishItem, 1);
 
             if (player.inventory.addItemStackToInventory(var3)) {
