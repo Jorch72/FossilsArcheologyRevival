@@ -727,13 +727,7 @@ prehistoric.period=.
 dinoegg.hatched=A prehistoric egg has hatched!
 prehistoric.autotame=You have tamed this
 prehistoric.pregnantTime=Embryo Progress:
-prehistoric.pregnantPig=Pregnant Pig
-prehistoric.pregnantCow=Pregnant Cow
-prehistoric.pregnantSheep=Pregnant Sheep
-prehistoric.pregnantRabbit=Pregnant Rabbit
-prehistoric.pregnantWolf=Pregnant Wolf
-prehistoric.pregnantOcelot=Pregnant Ocelot
-prehistoric.pregnantPolarBear=Pregnant Polar Bear
+prehistoric.pregnant=Pregnant
 
 #COMPAT
 tc.aspect.chronos=Time, Past, Present, Future

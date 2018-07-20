@@ -273,7 +273,7 @@ public class GuiPedia extends GuiScreen {
                     String s3 = I18n.format("prehistoric.pregnantTime") + " " + String.valueOf(quot) + "%";
                     printStringXY(s3, (-this.fontRenderer.getStringWidth(s3) / 2) + 100, 110, 157, 126, 103);
                     GlStateManager.scale(1.5F, 1.5F, 1.5F);
-                    printStringXY(I18n.format(s2 + entity.getName()), (-this.fontRenderer.getStringWidth(I18n.format(s2 + entity.getName())) / 2) + 65, 60, 66, 48, 36);
+                    printStringXY(I18n.format(s2) + " " + entity.getName(), (-this.fontRenderer.getStringWidth(I18n.format(s2 + entity.getName())) / 2) + 65, 60, 66, 48, 36);
 
                 }
             }

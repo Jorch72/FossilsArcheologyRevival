@@ -71,21 +71,23 @@ public class FernsBlock extends BlockBush implements DefaultRenderedItem {
 
         if (checkUnderTree(world, pos) && this.canGrow(var6)) {
             if (rand.nextInt(10) > 1) {
-                ++var6;
-                if (this.getLv2(var6)) {
-                    if (!world.isAirBlock(pos.up())) {
-                        --var6;
-                    } else {
-                        world.setBlockState(pos.up(), FABlockRegistry.FERNS.getStateFromMeta(this.checkSubType(var6) == 0 ? var6 + 2 : var6 + 1));
+                if (world.getBlockState(pos.down()).getBlock() != this || var6 < 2) {
+                    ++var6;
+                    if (this.getLv2(var6)) {
+                        if (!world.isAirBlock(pos.up())) {
+                            --var6;
+                        } else {
+                            world.setBlockState(pos.up(), FABlockRegistry.FERNS.getStateFromMeta(this.checkSubType(var6) == 0 ? var6 + 2 : var6 + 1));
+                        }
+                    } else if (this.hasLv2(var6)) {
+                        if (world.getBlockState(pos.up()).getBlock() == FABlockRegistry.FERNS) {
+                            world.setBlockState(pos.up(), FABlockRegistry.FERNS.getStateFromMeta(this.checkSubType(var6) == 0 ? var6 + 2 : var6 + 1));
+                        } else {
+                            var6 = this.checkSubType(var6) == 0 ? 3 : 10;
+                        }
                     }
-                } else if (this.hasLv2(var6)) {
-                    if (world.getBlockState(pos.up()).getBlock() == FABlockRegistry.FERNS) {
-                        world.setBlockState(pos.up(), FABlockRegistry.FERNS.getStateFromMeta(this.checkSubType(var6) == 0 ? var6 + 2 : var6 + 1));
-                    } else {
-                        var6 = this.checkSubType(var6) == 0 ? 3 : 10;
-                    }
+                    world.setBlockState(pos, currentState.getBlock().getStateFromMeta(var6));
                 }
-                world.setBlockState(pos, currentState.getBlock().getStateFromMeta(var6));
             }
         }
 
@@ -154,7 +156,7 @@ public class FernsBlock extends BlockBush implements DefaultRenderedItem {
     @SuppressWarnings("deprecation")
     @Override
     public IBlockState getStateFromMeta(int meta) {
-        return this.getDefaultState().withProperty(TYPE, meta / 8).withProperty(GROWTH, (meta < 7 ? meta : meta - 7));
+        return this.getDefaultState().withProperty(TYPE, meta / 8).withProperty(GROWTH, (meta < 8 ? meta : meta - 8));
     }
 
     @Override
