@@ -307,9 +307,9 @@ public class GuiPedia extends GuiScreen {
          */
         else {
             if (Revival.PEDIA_OBJECT instanceof EntityPrehistoric) {
-                showPrehistoricBio(((EntityPrehistoric) Revival.PEDIA_OBJECT).type.toString().toLowerCase());
+                showPrehistoricBio(((EntityPrehistoric) Revival.PEDIA_OBJECT).type.resourceName);
             } else if (Revival.PEDIA_OBJECT instanceof EntityFishBase) {
-                showPrehistoricBio(((EntityFishBase) Revival.PEDIA_OBJECT).selfType.toString().toLowerCase());
+                showPrehistoricBio(((EntityFishBase) Revival.PEDIA_OBJECT).selfType.resourceName);
             } else if (Revival.PEDIA_OBJECT instanceof EntityQuagga) {
                 showPrehistoricBio("quagga");
             }
@@ -320,39 +320,34 @@ public class GuiPedia extends GuiScreen {
         this.reset();
         this.addStringLR("", 150, false);
         String translatePath = "assets/fossil/dinopedia/" + Minecraft.getMinecraft().gameSettings.language.toLowerCase() + "/";
-        String bioFile = String.valueOf(mobName) + ".txt";
+        String bioFile = mobName + ".txt";
         if (getClass().getClassLoader().getResourceAsStream(translatePath) == null) {
-            translatePath = "assets/fossil/dinopedia/" + "en_us" + "/";
+            translatePath = "assets/fossil/dinopedia/en_us/";
         }
-
-        if (getClass().getClassLoader().getResourceAsStream(translatePath + bioFile) != null) {
-            InputStream fileReader = getClass().getClassLoader().getResourceAsStream(translatePath + bioFile);
-            try {
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileReader));
-                StringBuilder stringBuffer = new StringBuilder();
-                String line;
-                int linenumber = 0;
-                this.addStringLR("", 250, true);
-                while ((line = bufferedReader.readLine()) != null) {
-                    GlStateManager.pushMatrix();
-                    GlStateManager.scale(0.75F, 0.75F, 0.75F);
-                    if (linenumber <= 20) {
-                        this.addStringLR(line, -125, false);
-                    } else {
-                        this.addStringLR(line, 250, true);
-                    }
-                    linenumber++;
-                    GlStateManager.popMatrix();
+        InputStream fileReader = getClass().getClassLoader().getResourceAsStream(translatePath + bioFile);
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileReader));
+            String line;
+            int linenumber = 0;
+            this.addStringLR("", 250, true);
+            while ((line = bufferedReader.readLine()) != null) {
+                GlStateManager.pushMatrix();
+                GlStateManager.scale(0.75F, 0.75F, 0.75F);
+                if (linenumber <= 20) {
+                    this.addStringLR(line, -125, false);
+                } else {
+                    this.addStringLR(line, 250, true);
                 }
-                fileReader.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+                linenumber++;
+                GlStateManager.popMatrix();
             }
-        } else {
-            this.addStringLR("File not found.", false);
+            fileReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            this.addStringLR("File not found.", -125, false);
             GlStateManager.pushMatrix();
             GlStateManager.scale(0.5F, 0.5F, 0.5F);
-            this.addStringLR(translatePath + bioFile, 150, false);
+            this.addStringLR(translatePath + bioFile, 0, false);
             GlStateManager.popMatrix();
         }
     }
