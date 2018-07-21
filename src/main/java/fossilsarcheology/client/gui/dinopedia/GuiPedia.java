@@ -6,6 +6,7 @@ import fossilsarcheology.server.entity.EntityDinosaurEgg;
 import fossilsarcheology.server.entity.EntityFishBase;
 import fossilsarcheology.server.entity.prehistoric.EntityPrehistoric;
 import fossilsarcheology.server.entity.prehistoric.EntityQuagga;
+import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityType;
 import fossilsarcheology.server.entity.utility.FossilsMammalProperties;
 import fossilsarcheology.server.util.FoodMappings;
 import net.ilexiconn.llibrary.LLibrary;
@@ -263,9 +264,9 @@ public class GuiPedia extends GuiScreen {
             this.buttonNextPage.enabled = true;
         }
         if (bookPages == 0) {
-            if (Revival.PEDIA_OBJECT instanceof EntityHorse || Revival.PEDIA_OBJECT instanceof EntityCow || Revival.PEDIA_OBJECT instanceof EntityPig || Revival.PEDIA_OBJECT instanceof EntitySheep || Revival.PEDIA_OBJECT instanceof EntityRabbit) {
+            if (Revival.PEDIA_OBJECT instanceof EntityAnimal) {
                 FossilsMammalProperties properties = EntityPropertiesHandler.INSTANCE.getProperties((EntityAnimal) Revival.PEDIA_OBJECT, FossilsMammalProperties.class);
-                if (properties != null && properties.embryoProgress < 9999 && properties.embryo != null) {
+                if (PrehistoricEntityType.isMammal((Entity)Revival.PEDIA_OBJECT) && properties != null && properties.embryoProgress < 9999 && properties.embryo != null && properties.isPregnant) {
                     EntityAnimal entity = (EntityAnimal) Revival.PEDIA_OBJECT;
                     String s1 = I18n.format(entity.getName());
                     String s2 = "prehistoric.pregnant";
@@ -273,8 +274,8 @@ public class GuiPedia extends GuiScreen {
                     String s3 = I18n.format("prehistoric.pregnantTime") + " " + String.valueOf(quot) + "%";
                     printStringXY(s3, (-this.fontRenderer.getStringWidth(s3) / 2) + 100, 110, 157, 126, 103);
                     GlStateManager.scale(1.5F, 1.5F, 1.5F);
-                    printStringXY(I18n.format(s2) + " " + entity.getName(), (-this.fontRenderer.getStringWidth(I18n.format(s2 + entity.getName())) / 2) + 65, 60, 66, 48, 36);
-
+                    printStringXY(I18n.format(s2) + " " + entity.getName(), (-this.fontRenderer.getStringWidth(I18n.format(s2) + entity.getName()) / 2) + 65, 60, 66, 48, 36);
+                    return;
                 }
             }
             if (Revival.PEDIA_OBJECT instanceof EntityLivingBase) {

@@ -491,6 +491,15 @@ public enum PrehistoricEntityType {
 		return this.friendlyName;
 	}
 
+	public static boolean isMammal(Entity entity) {
+		String className = entity.getClass().getSimpleName();
+		return entity instanceof AbstractHorse || entity instanceof EntityCow || entity instanceof EntityPig || entity instanceof EntitySheep
+				|| entity instanceof EntityRabbit || entity instanceof EntityPrehistoric && ((EntityPrehistoric) entity).type.mobType == MobType.MAMMAL
+				|| entity instanceof EntityPolarBear || entity instanceof EntityWolf || entity instanceof EntityOcelot || entity instanceof EntityBat
+				|| className.contains("Cow") || className.contains("Sheep") || className.contains("Pig") || className.contains("Rabbit")
+				|| className.contains("Goat") || className.contains("Ferret") || className.contains("Hedgehog") || className.contains("Sow")
+				|| className.contains("Hog");
+	}
 	interface Parameter {
 		int NOTHING = 0;
 

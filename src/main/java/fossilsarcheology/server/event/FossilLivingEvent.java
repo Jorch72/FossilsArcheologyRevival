@@ -48,10 +48,9 @@ public class FossilLivingEvent {
 
     @SubscribeEvent
     public void onEntityLiving(LivingEvent.LivingUpdateEvent event) {
-        if ((event.getEntityLiving() instanceof EntityHorse || event.getEntityLiving() instanceof EntityCow || event.getEntityLiving() instanceof EntityPig || event.getEntityLiving() instanceof EntitySheep || event.getEntityLiving() instanceof EntityRabbit)) {
+        if (PrehistoricEntityType.isMammal(event.getEntityLiving()) && !event.getEntityLiving().isChild()) {
             FossilsMammalProperties properties = EntityPropertiesHandler.INSTANCE.getProperties(event.getEntityLiving(), FossilsMammalProperties.class);
-
-            if (properties.embryo != null && properties.isPregnant) {
+            if (properties != null && properties.embryo != null && properties.isPregnant) {
 
                 ++properties.embryoProgress;
                 this.getClass();
