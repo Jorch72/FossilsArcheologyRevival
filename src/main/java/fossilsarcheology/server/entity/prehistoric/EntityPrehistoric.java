@@ -698,6 +698,9 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
             if (this.getAgeInTicks() % 1200 == 0 && this.getHunger() > 0 && Revival.CONFIG.starvingDinos) {
                 this.setHunger(this.getHunger() - 1);
             }
+            if(this.getHealth() > this.getMaxHealth() / 2 && this.getHealth() == 0 && this.getAgeInTicks() % 40 == 0){
+                    this.attackEntityFrom(DamageSource.STARVE, 1);
+            }
         }
         boolean sitting = isSitting();
         if (sitting && sitProgress < 20.0F) {
