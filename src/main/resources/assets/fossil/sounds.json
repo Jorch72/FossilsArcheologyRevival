@@ -490,7 +490,7 @@
     "sounds": [
       "fossil:prehistoric/pteranodon_hurt1",
       "fossil:prehistoric/pteranodon_hurt2",
-      "fossil:prehistoric/pteranodon_hurt3",
+      "fossil:prehistoric/pteranodon_hurt3"
     ]
   },
   "pterosaur_death": {
