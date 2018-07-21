@@ -6,6 +6,7 @@ import fossilsarcheology.server.block.FABlockRegistry;
 import fossilsarcheology.server.block.IDinoUnbreakable;
 import fossilsarcheology.server.block.entity.TileEntityFeeder;
 import fossilsarcheology.server.entity.EntityDinosaurEgg;
+import fossilsarcheology.server.entity.FoodHelper;
 import fossilsarcheology.server.entity.utility.EntityToyBase;
 import fossilsarcheology.server.item.FAItemRegistry;
 import fossilsarcheology.server.item.variant.DinosaurBoneType;
@@ -944,8 +945,8 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
     @Override
     public void onKillEntity(EntityLivingBase var1) {
         super.onKillEntity(var1);
-        this.increaseHunger(FoodMappings.INSTANCE.getEntityFoodAmount(var1.getClass(), this.type.diet));
-        this.heal(FoodMappings.INSTANCE.getEntityFoodAmount(var1.getClass(), this.type.diet) / 3);
+        this.increaseHunger(FoodHelper.getMobFoodPoints(var1, this.type.diet));
+        this.heal(FoodHelper.getMobFoodPoints(var1, this.type.diet) / 3);
         this.setMood(this.getMood() + 25);
     }
 

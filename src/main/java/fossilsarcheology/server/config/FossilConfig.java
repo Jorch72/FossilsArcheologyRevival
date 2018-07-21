@@ -45,15 +45,7 @@ public class FossilConfig {
     @ConfigEntry
     public boolean dinoBlockBreaking = true;
     @ConfigEntry
-    public boolean skullOverlay = true;
-    @ConfigEntry
-    public boolean loginMessage = true;
-    @ConfigEntry
-    public boolean allowTableEnchantments = true;
-    @ConfigEntry
-    public boolean allowBookEnchantments = true;
-    @ConfigEntry
-    public boolean allowBreeding = true;
+    public boolean dinoEatModdedMobs = true;
     @ConfigEntry(category = "client")
     public boolean customMainMenu = true;
 

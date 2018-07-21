@@ -1,5 +1,6 @@
 package fossilsarcheology.server.entity.ai;
 
+import fossilsarcheology.server.entity.FoodHelper;
 import fossilsarcheology.server.entity.prehistoric.EntityPrehistoric;
 import fossilsarcheology.server.entity.prehistoric.PrehistoricMoodType;
 import fossilsarcheology.server.entity.utility.EntityToyBase;
@@ -44,7 +45,7 @@ public class DinoAIHunt<T extends EntityLivingBase> extends EntityAINearestAttac
 						}
 					}
 
-					if (FoodMappings.INSTANCE.getEntityFoodAmount(this.targetEntity.getClass(), prehistoric.type.diet) > 0) {
+					if (FoodHelper.getMobFoodPoints(targetEntity, dragon.type.diet) > 0) {
 						return !prehistoric.isOwner(targetEntity) && prehistoric.canDinoHunt(targetEntity, true);
 					}
 					if (targetEntity instanceof EntityToyBase && prehistoric.ticksTillPlay == 0) {
