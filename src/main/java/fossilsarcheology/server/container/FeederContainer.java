@@ -33,6 +33,31 @@ public class FeederContainer extends SyncedFieldContainer {
 		}
 	}
 
+
+	@Override
+	public ItemStack transferStackInSlot(EntityPlayer player, int slotIndex) {
+		ItemStack transferred = ItemStack.EMPTY;
+		Slot slot = this.inventorySlots.get(slotIndex);
+		int otherSlots = this.inventorySlots.size() - 36;
+		if (slot != null && slot.getHasStack()) {
+			ItemStack current = slot.getStack();
+			transferred = current.copy();
+			if (slotIndex < otherSlots) {
+				if (!this.mergeItemStack(current, otherSlots, this.inventorySlots.size(), true)) {
+					return ItemStack.EMPTY;
+				}
+			} else if (!this.mergeItemStack(current, 0, otherSlots, false)) {
+				return ItemStack.EMPTY;
+			}
+			if (current.getCount() == 0) {
+				slot.putStack(ItemStack.EMPTY);
+			} else {
+				slot.onSlotChanged();
+			}
+		}
+		return transferred;
+	}
+
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
 		return this.feeder.isUsableByPlayer(player);

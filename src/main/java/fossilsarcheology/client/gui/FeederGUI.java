@@ -60,8 +60,8 @@ public class FeederGUI extends GuiContainer {
             itemRender.zLevel = 0.0F;
         }
 
-        this.fontRenderer.drawString("" + this.feederEntity.getCurrentMeat(), 23, 32, 16711680);
-        this.fontRenderer.drawString("" + this.feederEntity.getCurrentPlant(), 120, 32, 243459);
+        this.fontRenderer.drawString("" + this.feederEntity.getField(0), 23, 32, 16711680);
+        this.fontRenderer.drawString("" + this.feederEntity.getField(1), 120, 32, 243459);
         GlStateManager.popMatrix();
         GlStateManager.enableLighting();
         GlStateManager.enableDepth();

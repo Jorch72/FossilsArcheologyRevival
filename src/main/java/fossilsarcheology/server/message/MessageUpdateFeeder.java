@@ -47,8 +47,8 @@ public class MessageUpdateFeeder extends AbstractMessage<MessageUpdateFeeder> {
 		BlockPos pos = BlockPos.fromLong(message.blockPos);
 		if (client.world.getTileEntity(pos) != null && client.world.getTileEntity(pos) instanceof TileEntityFeeder) {
 			TileEntityFeeder feeder = (TileEntityFeeder) client.world.getTileEntity(pos);
-			feeder.currentMeat = message.meat;
-			feeder.currentPlant = message.plant;
+			feeder.setField(0, message.meat);
+			feeder.setField(1, message.plant);
 		}
 	}
 
@@ -57,8 +57,8 @@ public class MessageUpdateFeeder extends AbstractMessage<MessageUpdateFeeder> {
 		BlockPos pos = BlockPos.fromLong(message.blockPos);
 		if (player.world.getTileEntity(pos) != null && player.world.getTileEntity(pos) instanceof TileEntityFeeder) {
 			TileEntityFeeder feeder = (TileEntityFeeder) player.world.getTileEntity(pos);
-			feeder.currentMeat = message.meat;
-			feeder.currentPlant = message.plant;
+			feeder.setField(0, message.meat);
+			feeder.setField(1, message.plant);
 		}
 	}
 }
