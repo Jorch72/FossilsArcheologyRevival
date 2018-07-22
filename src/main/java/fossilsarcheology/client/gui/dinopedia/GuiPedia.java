@@ -21,6 +21,7 @@ import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.client.resources.IResource;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.*;
@@ -266,7 +267,7 @@ public class GuiPedia extends GuiScreen {
         if (bookPages == 0) {
             if (Revival.PEDIA_OBJECT instanceof EntityAnimal) {
                 FossilsMammalProperties properties = EntityPropertiesHandler.INSTANCE.getProperties((EntityAnimal) Revival.PEDIA_OBJECT, FossilsMammalProperties.class);
-                if (PrehistoricEntityType.isMammal((Entity)Revival.PEDIA_OBJECT) && properties != null && properties.embryoProgress < 9999 && properties.embryo != null && properties.isPregnant) {
+                if (PrehistoricEntityType.isMammal((Entity) Revival.PEDIA_OBJECT) && properties != null && properties.embryoProgress < 9999 && properties.embryo != null && properties.isPregnant) {
                     EntityAnimal entity = (EntityAnimal) Revival.PEDIA_OBJECT;
                     String s1 = I18n.format(entity.getName());
                     String s2 = "prehistoric.pregnant";
@@ -320,13 +321,14 @@ public class GuiPedia extends GuiScreen {
     public void showPrehistoricBio(String mobName) {
         this.reset();
         this.addStringLR("", 150, false);
-        String translatePath = "assets/fossil/dinopedia/" + Minecraft.getMinecraft().gameSettings.language.toLowerCase() + "/";
+        String translatePath = "dinopedia/" + Minecraft.getMinecraft().gameSettings.language.toLowerCase() + "/";
         String bioFile = mobName + ".txt";
-        if (getClass().getClassLoader().getResourceAsStream(translatePath) == null) {
-            translatePath = "assets/fossil/dinopedia/en_us/";
-        }
-        InputStream fileReader = getClass().getClassLoader().getResourceAsStream(translatePath + bioFile);
         try {
+            IResource resource = this.mc.getResourceManager().getResource(new ResourceLocation("fossil",translatePath + bioFile));
+            InputStream fileReader = resource.getInputStream();
+            if (getClass().getClassLoader().getResourceAsStream(translatePath) == null) {
+                translatePath = "assets/fossil/dinopedia/en_us/";
+            }
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileReader));
             String line;
             int linenumber = 0;
@@ -351,6 +353,7 @@ public class GuiPedia extends GuiScreen {
             this.addStringLR(translatePath + bioFile, 0, false);
             GlStateManager.popMatrix();
         }
+
     }
 
     public void renderFirstPage(Entity entity) {
