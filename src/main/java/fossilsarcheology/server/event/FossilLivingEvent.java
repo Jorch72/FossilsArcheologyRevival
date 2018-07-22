@@ -150,7 +150,6 @@ public class FossilLivingEvent {
                 break;
             case MAMMOTH:
                 birthEntity = (new EntityMammoth(entity.world));
-                ((EntityPrehistoric) birthEntity).setOwnerId(entity.world.getClosestPlayerToEntity(entity, 15).getUniqueID());
                 if (entity.world.getClosestPlayerToEntity(entity, 15) != null) {
                     ((EntityPrehistoric) birthEntity).setTamed(true);
                     ((EntityPrehistoric) birthEntity).setOwnerId(entity.world.getClosestPlayerToEntity(entity, 15).getUniqueID());
