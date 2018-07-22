@@ -162,6 +162,13 @@ public class FossilLivingEvent {
                     ((EntityPrehistoric) birthEntity).setOwnerId(entity.world.getClosestPlayerToEntity(entity, 15).getUniqueID());
                 }
                 break;
+            case MEGALOCEROS:
+                birthEntity = (new EntityMegaloceros(entity.world));
+                if (entity.world.getClosestPlayerToEntity(entity, 15) != null) {
+                    ((EntityPrehistoric) birthEntity).setTamed(true);
+                    ((EntityPrehistoric) birthEntity).setOwnerId(entity.world.getClosestPlayerToEntity(entity, 15).getUniqueID());
+                }
+                break;
             case QUAGGA:
                 birthEntity = new EntityQuagga(entity.world);
                 int d0 = (int) (entity.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).getBaseValue() + ((EntityQuagga) birthEntity).getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).getBaseValue() + (int) ((EntityQuagga) birthEntity).getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getBaseValue());
