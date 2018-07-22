@@ -108,8 +108,8 @@ public class FossilLivingEvent {
                         birthEntity = ((EntityLlama) entity).createChild(new EntityLlama(entity.world));
                     }
                 } else {
-                    EntityLlama entityHorse = new EntityLlama(entity.world);
-                    birthEntity = entityHorse.createChild(new EntityLlama(entity.world));
+                    EntityLlama lama = new EntityLlama(entity.world);
+                    birthEntity = lama.createChild(lama);
                 }
                 break;
             case DONKEY:
