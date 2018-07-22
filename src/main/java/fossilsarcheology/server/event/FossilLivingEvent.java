@@ -89,28 +89,7 @@ public class FossilLivingEvent {
                 birthEntity = new EntityPolarBear(entity.world);
                 break;
             case LLAMA:
-                if (entity instanceof AbstractHorse) {
-                    if (rnd < 5) {
-                        birthEntity = new EntityLlama(entity.world);
-                        if (((AbstractHorse) entity).getOwnerUniqueId() != null) {
-                            ((EntityLlama) birthEntity).setOwnerUniqueId(((AbstractHorse) entity).getOwnerUniqueId());
-                            ((EntityLlama) birthEntity).setHorseTamed(true);
-                        }
-                        break;
-                    } else if (rnd < 10) {
-                        birthEntity = new EntityLlama(entity.world);
-                        if (((AbstractHorse) entity).getOwnerUniqueId() != null) {
-                            ((EntityLlama) birthEntity).setOwnerUniqueId(((AbstractHorse) entity).getOwnerUniqueId());
-                            ((EntityLlama) birthEntity).setHorseTamed(true);
-                        }
-                        break;
-                    } else {
-                        birthEntity = ((EntityLlama) entity).createChild(new EntityLlama(entity.world));
-                    }
-                } else {
-                    EntityLlama lama = new EntityLlama(entity.world);
-                    birthEntity = lama.createChild(lama);
-                }
+                birthEntity = new EntityLlama(entity.world);
                 break;
             case DONKEY:
                 if (entity instanceof AbstractHorse) {
