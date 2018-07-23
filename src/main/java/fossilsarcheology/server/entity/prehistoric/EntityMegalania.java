@@ -11,8 +11,10 @@ import net.minecraft.entity.ai.*;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
@@ -203,6 +205,10 @@ public class EntityMegalania extends EntityPrehistoric {
                     if (entity.getRidingEntity() == this) {
                         entity.dismountRidingEntity();
                     }
+                }
+                if(entity instanceof EntityLivingBase){
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.POISON, 100));
+                    ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 200));
                 }
                 entity.motionY += 0.1000000059604645D;
                 entity.isAirBorne = false;

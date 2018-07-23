@@ -1113,13 +1113,6 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
         return (this.dataManager.get(CLIMBING) & 1) != 0;
     }
 
-    public boolean attackEntityAsMob(Entity entityIn){
-        if(entityIn instanceof EntityLivingBase){
-            ((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.POISON, 100));
-            ((EntityLivingBase) entityIn).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 200));
-        }
-        return super.attackEntityAsMob(entityIn);
-    }
     public void setBesideClimbableBlock(boolean climbing) {
         byte b0 = this.dataManager.get(CLIMBING);
 

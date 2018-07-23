@@ -163,7 +163,7 @@ public class EntityMegalograptus extends EntityPrehistoricSwimming {
 
     @Override
     public double swimSpeed() {
-        return 1;
+        return 0.5D;
     }
 
     @Override
