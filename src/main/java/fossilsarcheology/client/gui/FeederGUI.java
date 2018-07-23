@@ -9,14 +9,13 @@ import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
 public class FeederGUI extends GuiContainer {
     private static final ResourceLocation loc = new ResourceLocation(Revival.MODID, "textures/gui/feeder.png");
     private final TileEntityFeeder feederEntity;
 
-    public FeederGUI(InventoryPlayer inventoryPlayer, TileEntity entity) {
+    public FeederGUI(InventoryPlayer inventoryPlayer, TileEntityFeeder entity) {
         super(new FeederContainer(inventoryPlayer, entity));
         this.feederEntity = (TileEntityFeeder) entity;
     }

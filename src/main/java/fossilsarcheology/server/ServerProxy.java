@@ -6,8 +6,26 @@ import fossilsarcheology.server.block.FABlockRegistry;
 import fossilsarcheology.server.block.FAFluidRegistry;
 import fossilsarcheology.server.block.IBlockItem;
 import fossilsarcheology.server.block.ISlabItem;
-import fossilsarcheology.server.block.entity.*;
-import fossilsarcheology.server.container.*;
+import fossilsarcheology.server.block.entity.AnalyzerBlockEntity;
+import fossilsarcheology.server.block.entity.TileEntityAmphora;
+import fossilsarcheology.server.block.entity.TileEntityAncientChest;
+import fossilsarcheology.server.block.entity.TileEntityAnuStatue;
+import fossilsarcheology.server.block.entity.TileEntityAnubiteStatue;
+import fossilsarcheology.server.block.entity.TileEntityCultivate;
+import fossilsarcheology.server.block.entity.TileEntityFeeder;
+import fossilsarcheology.server.block.entity.TileEntityFigurine;
+import fossilsarcheology.server.block.entity.TileEntityKylix;
+import fossilsarcheology.server.block.entity.TileEntitySarcophagus;
+import fossilsarcheology.server.block.entity.TileEntitySifter;
+import fossilsarcheology.server.block.entity.TileEntityTimeMachine;
+import fossilsarcheology.server.block.entity.TileEntityVolute;
+import fossilsarcheology.server.block.entity.TileEntityWorktable;
+import fossilsarcheology.server.container.AnalyzerContainer;
+import fossilsarcheology.server.container.CultivateContainer;
+import fossilsarcheology.server.container.FeederContainer;
+import fossilsarcheology.server.container.SifterContainer;
+import fossilsarcheology.server.container.TimeMachineContainer;
+import fossilsarcheology.server.container.WorktableContainer;
 import fossilsarcheology.server.entity.EntityFishBase;
 import fossilsarcheology.server.entity.FAEntityRegistry;
 import fossilsarcheology.server.entity.FAVillagerRegistry;
@@ -26,6 +44,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
@@ -200,23 +219,24 @@ public class ServerProxy implements IGuiHandler {
     @Override
     public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
         BlockPos pos = new BlockPos(x, y, z);
-        if (id == GUI_ANALYZER) {
-            return new AnalyzerContainer(player.inventory, (AnalyzerBlockEntity) world.getTileEntity(pos));
+        TileEntity entity = world.getTileEntity(pos);
+        if (id == GUI_ANALYZER && entity instanceof AnalyzerBlockEntity) {
+            return new AnalyzerContainer(player.inventory, (AnalyzerBlockEntity) entity);
         }
-        if (id == GUI_CULTIVATE) {
-            return new CultivateContainer(player.inventory, (TileEntityCultivate) world.getTileEntity(pos));
+        if (id == GUI_CULTIVATE && entity instanceof TileEntityCultivate) {
+            return new CultivateContainer(player.inventory, (TileEntityCultivate) entity);
         }
-        if (id == GUI_FEEDER) {
-            return new FeederContainer(player.inventory, world.getTileEntity(pos));
+        if (id == GUI_FEEDER && entity instanceof TileEntityFeeder) {
+            return new FeederContainer(player.inventory, (TileEntityFeeder) entity);
         }
-        if (id == GUI_WORKTABLE) {
-            return new WorktableContainer(player.inventory, (TileEntityWorktable) world.getTileEntity(pos));
+        if (id == GUI_WORKTABLE && entity instanceof TileEntityWorktable) {
+            return new WorktableContainer(player.inventory, (TileEntityWorktable) entity);
         }
-        if (id == GUI_SIFTER) {
-            return new SifterContainer(player.inventory, (TileEntitySifter) world.getTileEntity(pos));
+        if (id == GUI_SIFTER && entity instanceof TileEntitySifter) {
+            return new SifterContainer(player.inventory, (TileEntitySifter) entity);
         }
-        if (id == GUI_TIME_MACHINE) {
-            return new TimeMachineContainer(player.inventory, (TileEntityTimeMachine) world.getTileEntity(pos));
+        if (id == GUI_TIME_MACHINE && entity instanceof TileEntityTimeMachine) {
+            return new TimeMachineContainer(player.inventory, (TileEntityTimeMachine) entity);
         }
         return null;
     }
