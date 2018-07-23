@@ -1,7 +1,12 @@
 package fossilsarcheology.client;
 
 import fossilsarcheology.Revival;
-import fossilsarcheology.client.gui.*;
+import fossilsarcheology.client.gui.AnalyzerGUI;
+import fossilsarcheology.client.gui.CultivateGUI;
+import fossilsarcheology.client.gui.FeederGUI;
+import fossilsarcheology.client.gui.SifterGUI;
+import fossilsarcheology.client.gui.TimeMachineGUI;
+import fossilsarcheology.client.gui.WorktableGUI;
 import fossilsarcheology.client.gui.dinopedia.GuiPedia;
 import fossilsarcheology.client.model.ModelAncientHelmet;
 import fossilsarcheology.client.particle.BubbleFX;
@@ -10,8 +15,17 @@ import fossilsarcheology.server.ServerProxy;
 import fossilsarcheology.server.api.DefaultRenderedItem;
 import fossilsarcheology.server.api.IgnoreRenderProperty;
 import fossilsarcheology.server.api.SubtypeRenderedItem;
-import fossilsarcheology.server.block.*;
-import fossilsarcheology.server.block.entity.*;
+import fossilsarcheology.server.block.FABlockRegistry;
+import fossilsarcheology.server.block.FigurineBlock;
+import fossilsarcheology.server.block.FossilDoorBlock;
+import fossilsarcheology.server.block.FossilFenceGateBlock;
+import fossilsarcheology.server.block.VaseBlock;
+import fossilsarcheology.server.block.entity.AnalyzerBlockEntity;
+import fossilsarcheology.server.block.entity.TileEntityCultivate;
+import fossilsarcheology.server.block.entity.TileEntityFeeder;
+import fossilsarcheology.server.block.entity.TileEntitySifter;
+import fossilsarcheology.server.block.entity.TileEntityTimeMachine;
+import fossilsarcheology.server.block.entity.TileEntityWorktable;
 import fossilsarcheology.server.container.CultivateContainer;
 import fossilsarcheology.server.entity.EntityFishBase;
 import fossilsarcheology.server.event.FossilHelmetOverlayEvent;
@@ -31,7 +45,7 @@ import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -161,24 +175,24 @@ public class ClientProxy extends ServerProxy {
     @SideOnly(Side.CLIENT)
     public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
         BlockPos pos = new BlockPos(x, y, z);
-        if (id == GUI_ANALYZER) {
-            return new AnalyzerGUI(player.inventory, (AnalyzerBlockEntity) world.getTileEntity(pos));
+        TileEntity entity = world.getTileEntity(pos);
+        if (id == GUI_ANALYZER && entity instanceof AnalyzerBlockEntity) {
+            return new AnalyzerGUI(player.inventory, (AnalyzerBlockEntity) entity);
         }
-        if (id == GUI_CULTIVATE) {
-            TileEntityCultivate entity = (TileEntityCultivate) world.getTileEntity(pos);
-            return new CultivateGUI(entity, new CultivateContainer(player.inventory, entity));
+        if (id == GUI_CULTIVATE && entity instanceof TileEntityCultivate) {
+            return new CultivateGUI((TileEntityCultivate) entity, new CultivateContainer(player.inventory, (TileEntityCultivate) entity));
         }
-        if (id == GUI_FEEDER) {
-            return new FeederGUI(player.inventory, world.getTileEntity(pos));
+        if (id == GUI_FEEDER && entity instanceof TileEntityFeeder) {
+            return new FeederGUI(player.inventory, (TileEntityFeeder) entity);
         }
-        if (id == GUI_WORKTABLE) {
-            return new WorktableGUI(player.inventory, (TileEntityWorktable) world.getTileEntity(pos));
+        if (id == GUI_WORKTABLE && entity instanceof TileEntityWorktable) {
+            return new WorktableGUI(player.inventory, (TileEntityWorktable) entity);
         }
-        if (id == GUI_SIFTER) {
-            return new SifterGUI(player.inventory, (TileEntitySifter) world.getTileEntity(pos));
+        if (id == GUI_SIFTER && entity instanceof TileEntitySifter) {
+            return new SifterGUI(player.inventory, (TileEntitySifter) entity);
         }
-        if (id == GUI_TIME_MACHINE) {
-            return new TimeMachineGUI(player.inventory, (TileEntityTimeMachine) world.getTileEntity(pos));
+        if (id == GUI_TIME_MACHINE && entity instanceof TileEntityTimeMachine) {
+            return new TimeMachineGUI(player.inventory, (TileEntityTimeMachine) entity);
         }
         if (id == GUI_DINOPEDIA) {
             return new GuiPedia();

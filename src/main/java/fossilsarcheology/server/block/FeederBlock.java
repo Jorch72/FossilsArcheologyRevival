@@ -37,7 +37,11 @@ public class FeederBlock extends BlockContainer implements DefaultRenderedItem {
 
     public static void updateFeederBlockState(boolean herb, boolean carn, World world, BlockPos pos) {
         IBlockState state = world.getBlockState(pos);
-        world.setBlockState(pos, state.withProperty(HERB, herb).withProperty(CARN, carn));
+        if (state.getValue(HERB) != herb || state.getValue(CARN) != carn) {
+            TileEntity entity = world.getTileEntity(pos);
+            world.setBlockState(pos, state.withProperty(HERB, herb).withProperty(CARN, carn));
+            world.setTileEntity(pos, entity);
+        }
     }
 
     @Override
