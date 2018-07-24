@@ -28,6 +28,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -184,7 +185,7 @@ public class EntityDinosaurEgg extends EntityLiving implements IEntityAdditional
                 entity.setLocationAndAngles(Math.floor(this.posX), Math.floor(this.posY) + 1, Math.floor(this.posZ), this.world.rand.nextFloat() * 360.0F, 0.0F);
                 if (this.world.isRemote) {
                     if (player != null) {
-                        player.sendStatusMessage(new TextComponentString(net.minecraft.client.resources.I18n.format("dinoegg.hatched")), false);
+                        player.sendStatusMessage(new TextComponentTranslation("dinoegg.hatched"), false);
                     }
                     return;
                 }

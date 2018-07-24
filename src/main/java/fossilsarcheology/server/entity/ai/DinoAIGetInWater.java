@@ -69,7 +69,7 @@ public class DinoAIGetInWater extends EntityAIBase {
 			BlockPos blockpos1 = blockpos.add(random.nextInt(20) - 10, random.nextInt(6) - 3, random.nextInt(20) - 10);
 
 			if (this.world.getBlockState(blockpos1).getMaterial() == Material.WATER) {
-				return new Vec3d((double) blockpos1.getX(), (double) blockpos1.getY(), (double) blockpos1.getZ());
+				return new Vec3d((double) blockpos1.getX() + 0.5D, (double) blockpos1.getY(), (double) blockpos1.getZ() + 0.5D);
 			}
 		}
 
