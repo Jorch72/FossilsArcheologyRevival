@@ -90,16 +90,11 @@ public class CultivateBlock extends BlockContainer implements DefaultRenderedIte
             if (isActive) {
                 TileEntityCultivate entity = (TileEntityCultivate) world.getTileEntity(pos);
                 if (entity != null) {
-                    IItemHandler inventory = entity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-                    if (inventory == null) {
-                        return;
-                    }
-                    ItemStack stack = inventory.getStackInSlot(0);
-                    if (stack.getItem() == FAItemRegistry.FOSSIL_SEED_FERN || stack.getItem() == FAItemRegistry.PALAE_SAPLING_FOSSIL || stack.getItem() == FAItemRegistry.FOSSIL_SEED) {
+                    if (entity.isPlant) {
                         world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.BLOCKS, 1, 1, false);
+                        world.setBlockState(pos, Blocks.DIRT.getDefaultState());
                         world.setBlockState(pos.up(), FABlockRegistry.MUTANT_FLOWER.getDefaultState().withProperty(TallFlowerBlock.HALF, TallFlowerBlock.EnumBlockHalf.LOWER));
                         world.setBlockState(pos.up(2), FABlockRegistry.MUTANT_FLOWER.getDefaultState().withProperty(TallFlowerBlock.HALF, TallFlowerBlock.EnumBlockHalf.UPPER));
-                        world.setBlockState(pos, Blocks.DIRT.getDefaultState());
                     } else {
                         EntityLiving creature;
                         world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.BLOCKS, 1, 1, false);

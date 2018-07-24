@@ -24,6 +24,7 @@ import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.wrapper.CombinedInvWrapper;
 
 import javax.annotation.Nullable;
+import java.util.Random;
 
 public class TileEntityCultivate extends TileEntity implements ITickable, IWorldNameable {
     public int fuelTime = 0;
@@ -31,8 +32,8 @@ public class TileEntityCultivate extends TileEntity implements ITickable, IWorld
     public int cultivationTime = 0;
     public boolean isActive;
     private String customName;
-
-    private final IItemHandlerModifiable inputInventory = new ItemStackHandler(1);
+    public boolean isPlant;
+    public final IItemHandlerModifiable inputInventory = new ItemStackHandler(1);
     private final IItemHandlerModifiable fuelInventory = new ItemStackHandler(1);
     private final IItemHandlerModifiable outputInventory = new ItemStackHandler(1);
     private final IItemHandlerModifiable wrappedOutputInventory = new DirectionalInvWrapper(this.outputInventory, DirectionalInvWrapper.Mode.OUTPUT);
@@ -123,6 +124,7 @@ public class TileEntityCultivate extends TileEntity implements ITickable, IWorld
 
         this.fuelTime = nbt.getShort("fuel_time");
         this.cultivationTime = nbt.getShort("cultivation_time");
+        this.isPlant = nbt.getBoolean("is_plant");
         this.totalFuelTime = getItemFuelTime(this.fuelInventory.getStackInSlot(0));
 
         if (nbt.hasKey("CustomName")) {
@@ -135,6 +137,7 @@ public class TileEntityCultivate extends TileEntity implements ITickable, IWorld
         super.writeToNBT(nbt);
         nbt.setTag("inventory", CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.writeNBT(this.globalInventory, null));
         nbt.setShort("fuel_time", (short) this.fuelTime);
+        nbt.setBoolean("is_plant", this.isPlant);
         nbt.setShort("cultivation_time", (short) this.cultivationTime);
         if (customName != null) {
             nbt.setString("CustomName", this.customName);
@@ -142,12 +145,18 @@ public class TileEntityCultivate extends TileEntity implements ITickable, IWorld
         return nbt;
     }
 
+    private boolean isSeed(ItemStack stack){
+      return stack.getItem() == FAItemRegistry.FOSSIL_SEED_FERN || stack.getItem() == FAItemRegistry.PALAE_SAPLING_FOSSIL || stack.getItem() == FAItemRegistry.FOSSIL_SEED;
+    }
+
     @Override
     public void update() {
         boolean wasActive = this.cultivationTime > 0;
         boolean dirty = false;
         isActive = this.cultivationTime > 0;
-
+        if(this.inputInventory.getStackInSlot(0).isEmpty()){
+            isPlant = isSeed((this.inputInventory.getStackInSlot(0)));
+        }
         if (this.fuelTime > 0) {
             --this.fuelTime;
         }
@@ -185,6 +194,7 @@ public class TileEntityCultivate extends TileEntity implements ITickable, IWorld
 
             if (wasActive != this.cultivationTime > 0) {
                 dirty = true;
+                isPlant = isSeed((this.inputInventory.getStackInSlot(0)));
                 CultivateBlock.setState(this.cultivationTime > 0, this.world, this.pos);
             }
         }
@@ -193,7 +203,7 @@ public class TileEntityCultivate extends TileEntity implements ITickable, IWorld
             this.markDirty();
         }
 
-        if (this.cultivationTime == 3001 && world.rand.nextInt(100) < 20) {
+        if (this.cultivationTime == 3001 && new Random().nextInt(100) < 20) {
             FABlockRegistry.CULTIVATE_IDLE.onBlockRemovalLost(world, pos, true);
         }
     }
