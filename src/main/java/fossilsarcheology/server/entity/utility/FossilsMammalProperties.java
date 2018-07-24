@@ -12,6 +12,11 @@ public class FossilsMammalProperties extends EntityProperties<EntityAnimal> {
 	public PrehistoricEntityType embryo;
 
 	@Override
+	public int getTrackingTime() {
+		return 20;
+	}
+
+	@Override
 	public void saveNBTData(NBTTagCompound compound) {
 		compound.setBoolean("Pregnant", isPregnant);
 		compound.setInteger("Embryo", embryo == null ? 0 : embryo.ordinal());
@@ -29,7 +34,6 @@ public class FossilsMammalProperties extends EntityProperties<EntityAnimal> {
 
 	@Override
 	public void init() {
-		isPregnant = false;
 	}
 
 	@Override

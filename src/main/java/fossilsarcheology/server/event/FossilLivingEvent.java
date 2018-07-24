@@ -39,7 +39,7 @@ public class FossilLivingEvent {
     public void entityInteractEvent(PlayerInteractEvent.EntityInteract event) {
         if (event.getItemStack() != null && event.getItemStack().getItem() != null && event.getItemStack().getItem() == FAItemRegistry.DINOPEDIA && event.getTarget() instanceof EntityAnimal) {
             FossilsMammalProperties properties = EntityPropertiesHandler.INSTANCE.getProperties(event.getTarget(), FossilsMammalProperties.class);
-            if ((event.getTarget() instanceof EntityHorse || event.getTarget() instanceof EntityCow || event.getTarget() instanceof EntityPig || event.getTarget() instanceof EntitySheep || event.getTarget() instanceof EntityRabbit) && properties != null && properties.isPregnant) {
+            if (PrehistoricEntityType.isMammal(event.getTarget()) && properties != null && properties.isPregnant) {
                 Revival.PEDIA_OBJECT = event.getTarget();
                 event.getEntityPlayer().openGui(Revival.INSTANCE, ServerProxy.GUI_DINOPEDIA, event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ());
             }
@@ -51,10 +51,7 @@ public class FossilLivingEvent {
         if (PrehistoricEntityType.isMammal(event.getEntityLiving()) && !event.getEntityLiving().isChild()) {
             FossilsMammalProperties properties = EntityPropertiesHandler.INSTANCE.getProperties(event.getEntityLiving(), FossilsMammalProperties.class);
             if (properties != null && properties.embryo != null && properties.isPregnant) {
-
                 ++properties.embryoProgress;
-                this.getClass();
-
                 if (properties.embryoProgress >= properties.embryo.growTime) {
                     growEntity(properties.embryo, event);
                     properties.embryoProgress = 0;
