@@ -7,6 +7,7 @@ import fossilsarcheology.server.entity.prehistoric.EntityPrehistoric;
 import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityType;
 import fossilsarcheology.server.message.MessageUpdateFeeder;
 import fossilsarcheology.server.util.FoodMappings;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
@@ -19,7 +20,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.translation.I18n;
+import net.minecraft.world.World;
 
 public class TileEntityFeeder extends TileEntity implements IInventory, ISidedInventory, ITickable {
     private static final int[] SLOTS_TOP = new int[] { 0, 1 };
@@ -185,86 +188,91 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
     public SPacketUpdateTileEntity getUpdatePacket() {
         NBTTagCompound tag = new NBTTagCompound();
         this.writeToNBT(tag);
-        return new SPacketUpdateTileEntity(pos, 1, tag);
+        return new SPacketUpdateTileEntity(this.pos, 1, tag);
     }
 
     @Override
     public void onDataPacket(NetworkManager netManager, net.minecraft.network.play.server.SPacketUpdateTileEntity packet) {
-        readFromNBT(packet.getNbtCompound());
+        this.readFromNBT(packet.getNbtCompound());
     }
 
     public boolean isEmpty(PrehistoricEntityType type) {
         if (type.diet == Diet.CARNIVORE || type.diet == Diet.CARNIVORE_EGG || type.diet == Diet.PISCCARNIVORE || type.diet == Diet.PISCIVORE || type.diet == Diet.INSECTIVORE) {
-            return meat == 0;
+            return this.meat == 0;
         }
         if (type.diet == Diet.HERBIVORE) {
-            return meat == 0;
+            return this.meat == 0;
         }
-        return type.diet == Diet.OMNIVORE && meat == 0 && meat == 0;
+        return type.diet == Diet.OMNIVORE && this.meat == 0 && this.meat == 0;
     }
 
     public int feedDinosaur(EntityPrehistoric mob) {
         int feedamount = 0;
         if (!this.isEmpty(mob.type)) {
             if (mob.type.diet == Diet.CARNIVORE || mob.type.diet == Diet.CARNIVORE_EGG || mob.type.diet == Diet.PISCCARNIVORE || mob.type.diet == Diet.PISCIVORE || mob.type.diet == Diet.INSECTIVORE) {
-                meat--;
+                this.meat--;
                 feedamount++;
             }
             if (mob.type.diet == Diet.HERBIVORE) {
-                plant--;
+                this.plant--;
                 feedamount++;
             }
             if (mob.type.diet == Diet.OMNIVORE) {
-                if (meat == 0 && plant != 0) {
-                    meat--;
+                if (this.meat == 0 && this.plant != 0) {
+                    this.meat--;
                     feedamount++;
-                } else if (meat != 0 && plant == 0) {
-                    meat--;
+                } else if (this.meat != 0 && this.plant == 0) {
+                    this.meat--;
                     feedamount++;
-                } else if (meat != 0) {
-                    meat--;
+                } else if (this.meat != 0) {
+                    this.meat--;
                     feedamount++;
                 }
             }
         }
-        if (!world.isRemote) {
-            Revival.NETWORK_WRAPPER.sendToAll(new MessageUpdateFeeder(this.pos.toLong(), meat, plant));
+        if (!this.world.isRemote) {
+            Revival.NETWORK_WRAPPER.sendToAll(new MessageUpdateFeeder(this.pos.toLong(), this.meat, this.plant));
         }
-        FeederBlock.updateFeederBlockState(plant > 0, meat > 0, world, getPos());
+        FeederBlock.updateFeederBlockState(this.plant > 0, this.meat > 0, this.world, this.getPos());
         mob.setHunger(mob.getHunger() + feedamount);
         return feedamount;
     }
 
     @Override
     public void update() {
-        ticksExisted++;
-        prevMeat = meat;
-        prevPlant = plant;
-        meat = Math.max(meat, 0);
-        plant = Math.max(plant, 0);
-        if (!world.isRemote) {
-            if (!getStackInSlot(0).isEmpty() && isItemValidForSlot(0, getStackInSlot(0))) {
-                if (ticksExisted % 5 == 0) {
-                    int foodPoints = FoodMappings.INSTANCE.getItemFoodAmount(getStackInSlot(0), Diet.CARNIVORE_EGG);
+        this.ticksExisted++;
+        this.prevMeat = this.meat;
+        this.prevPlant = this.plant;
+        this.meat = Math.max(this.meat, 0);
+        this.plant = Math.max(this.plant, 0);
+        if (!this.world.isRemote) {
+            if (!this.getStackInSlot(0).isEmpty() && this.isItemValidForSlot(0, this.getStackInSlot(0))) {
+                if (this.ticksExisted % 5 == 0) {
+                    int foodPoints = FoodMappings.INSTANCE.getItemFoodAmount(this.getStackInSlot(0), Diet.CARNIVORE_EGG);
                     if (foodPoints > 0) {
-                        meat += foodPoints;
-                        decrStackSize(0, 1);
+                        this.meat += foodPoints;
+                        this.decrStackSize(0, 1);
                     }
                 }
             }
-            if (!getStackInSlot(1).isEmpty() && isItemValidForSlot(1, getStackInSlot(1))) {
-                if (ticksExisted % 5 == 0) {
-                    int foodPoints = FoodMappings.INSTANCE.getItemFoodAmount(getStackInSlot(1), Diet.HERBIVORE);
+            if (!this.getStackInSlot(1).isEmpty() && this.isItemValidForSlot(1, this.getStackInSlot(1))) {
+                if (this.ticksExisted % 5 == 0) {
+                    int foodPoints = FoodMappings.INSTANCE.getItemFoodAmount(this.getStackInSlot(1), Diet.HERBIVORE);
                     if (foodPoints > 0) {
-                        plant += foodPoints;
-                        decrStackSize(1, 1);
+                        this.plant += foodPoints;
+                        this.decrStackSize(1, 1);
                     }
                 }
             }
-            if (prevMeat != meat || prevPlant != plant) {
-                FeederBlock.updateFeederBlockState(plant > 0, meat > 0, world, getPos());
+            if (this.prevMeat != this.meat || this.prevPlant != this.plant) {
+                FeederBlock.updateFeederBlockState(this.plant > 0, this.meat > 0, this.world, this.getPos());
             }
         }
+    }
+
+    @Override
+    public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate) {
+        return oldState.getBlock() != newSate.getBlock();
     }
 
     public int getMeatBarScaled(int i) {
