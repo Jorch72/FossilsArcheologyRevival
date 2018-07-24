@@ -240,6 +240,8 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
         ticksExisted++;
         prevMeat = meat;
         prevPlant = plant;
+        meat = Math.max(meat, 0);
+        plant = Math.max(plant, 0);
         if (!world.isRemote) {
             if (!getStackInSlot(0).isEmpty() && isItemValidForSlot(0, getStackInSlot(0))) {
                 if (ticksExisted % 5 == 0) {
