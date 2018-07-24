@@ -34,17 +34,6 @@ public abstract class VaseBlock extends BlockContainer implements BlockEntity, I
         this.setUnlocalizedName("vase_" + type);
         this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, VaseVariant.DAMAGED));
     }
-
-    public void onBlockHarvested(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player){
-        if(!player.isCreative()){
-            int variant = 0;
-            if(state.getBlock() instanceof VaseBlock){
-                variant = state.getValue(VARIANT).ordinal();
-            }
-            spawnAsEntity(worldIn, pos, new ItemStack(Item.getItemFromBlock(this), 1, variant));
-        }
-    }
-
     @Override
     public IProperty[] getIgnoredProperties() {
         return new IProperty[]{VARIANT};
