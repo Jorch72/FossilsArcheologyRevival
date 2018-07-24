@@ -37,9 +37,7 @@ public class AncientSwordItem extends ItemSword implements DefaultRenderedItem {
                     if (!targetEntity.world.isRemote) {
                         targetEntity.world.spawnEntity(fpz);
                     }
-                    fpz.setTamed(true);
-                    EntityPlayer playerUUID = (EntityPlayer) player;
-                    fpz.setOwnerId(playerUUID.getUniqueID());
+                    fpz.setTamedBy((EntityPlayer) player);
                     fpz.sendMessageToOwner("pigman.summon");
                     targetEntity.setDead();
                     targetEntity.world.spawnEntity(new EntityLightningBolt(targetEntity.world, targetEntity.posX, targetEntity.posY, targetEntity.posZ, true));

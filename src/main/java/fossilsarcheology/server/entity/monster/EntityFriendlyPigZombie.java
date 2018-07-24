@@ -1,7 +1,6 @@
 package fossilsarcheology.server.entity.monster;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
@@ -24,6 +23,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
@@ -115,7 +115,7 @@ public class EntityFriendlyPigZombie extends EntityTameable {
 
     public void sendMessageToOwner(String words) {
         if (this.getOwner() instanceof EntityPlayer) {
-            ((EntityPlayer) this.getOwner()).sendStatusMessage(new TextComponentString(I18n.format(words)), false);
+            ((EntityPlayer) this.getOwner()).sendStatusMessage(new TextComponentTranslation(words), false);
         }
     }
 
