@@ -230,7 +230,7 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
         if (!world.isRemote) {
             Revival.NETWORK_WRAPPER.sendToAll(new MessageUpdateFeeder(this.pos.toLong(), meat, plant));
         }
-        FeederBlock.updateFeederBlockState(meat > 0, plant > 0, world, getPos());
+        FeederBlock.updateFeederBlockState(plant > 0, meat > 0, world, getPos());
         mob.setHunger(mob.getHunger() + feedamount);
         return feedamount;
     }
@@ -260,7 +260,7 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
                 }
             }
             if (prevMeat != meat || prevPlant != plant) {
-                FeederBlock.updateFeederBlockState(meat > 0, plant > 0, world, getPos());
+                FeederBlock.updateFeederBlockState(plant > 0, meat > 0, world, getPos());
             }
         }
     }
