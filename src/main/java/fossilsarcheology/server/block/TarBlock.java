@@ -1,5 +1,6 @@
 package fossilsarcheology.server.block;
 
+import fossilsarcheology.client.sound.FASoundRegistry;
 import fossilsarcheology.server.entity.monster.EntityTarSlime;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
@@ -8,7 +9,9 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -54,6 +57,12 @@ public class TarBlock extends BlockFluidClassic {
 		}
 	}
 
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+		if (rand.nextInt(100) == 0) {
+			worldIn.playSound((double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D, FASoundRegistry.TAR, SoundCategory.BLOCKS, 0.5F, rand.nextFloat() * 0.4F + 0.8F, false);
+		}
+	}
 	@Override
 	public boolean displaceIfPossible(World world, BlockPos pos) {
 		if (world.isAirBlock(pos)) {

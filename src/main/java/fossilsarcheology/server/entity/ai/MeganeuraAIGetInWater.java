@@ -7,6 +7,7 @@ public class MeganeuraAIGetInWater extends DinoAIGetInWater {
 
 	public MeganeuraAIGetInWater(EntityCreature theCreatureIn, double movementSpeedIn) {
 		super(theCreatureIn, movementSpeedIn);
+		this.setMutexBits(1);
 	}
 
 	@Override

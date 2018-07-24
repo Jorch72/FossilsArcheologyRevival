@@ -32,7 +32,7 @@ public class EntityMeganeura extends EntityPrehistoricSwimming {
 
     public EntityMeganeura(World world) {
         super(world, PrehistoricEntityType.MEGANEURA, 2, 4, 4, 18, 0.15, 0.2);
-        this.setActualSize(1.9F, 0.95F);
+        this.setActualSize(2.2F, 1.95F);
         minSize = 0.15F;
         maxSize = 0.3F;
         teenAge = 4;
