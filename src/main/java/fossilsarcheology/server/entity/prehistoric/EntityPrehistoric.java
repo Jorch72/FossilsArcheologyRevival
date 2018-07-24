@@ -963,10 +963,8 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
 
     public void sendStatusMessage(SituationType var1) {
         if (this.getOwner() != null && this.getDistance(this.getOwner()) < 50.0F) {
-            String Status1 = I18n.format(("status." + var1.toString() + ".head"));
-            String Dino = this.type.toString();
-            String Status2 = I18n.format("status." + var1.toString());
-            ((EntityPlayer) this.getOwner()).sendStatusMessage(new TextComponentString(Status1 + Dino + Status2), false);
+            ITextComponent itextcomponent = new TextComponentString(this.getName());
+            ((EntityPlayer) this.getOwner()).sendStatusMessage(new TextComponentTranslation(var1 == SituationType.Betrayed ? "dino.betrayed" : "dino.full", new Object[]{itextcomponent}), true);
         }
     }
 
@@ -1189,7 +1187,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
                     }
 
                     if (!this.world.isRemote) {
-                        player.sendStatusMessage(new TextComponentString(I18n.format(Localizations.STATUS_ESSENCE_FAIL)), false);
+                        player.sendStatusMessage(new TextComponentTranslation(Localizations.STATUS_ESSENCE_FAIL), true);
                     }
 
                     return false;
@@ -1243,6 +1241,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
                     }
 
                     if (itemstack.getItem() == FAItemRegistry.WHIP && this.aiTameType() != PrehistoricEntityTypeAI.Taming.NONE && this.isAdult() && !this.world.isRemote) {
+                       System.out.println(this.isTamed());
                         if (this.isTamed() && isOwner(player) && this.canBeRidden()) {
                             if (this.getRidingPlayer() == null) {
                                 Revival.NETWORK_WRAPPER.sendToAll(new MessageFoodParticles(getEntityId(), FABlockRegistry.VOLCANIC_ROCK));
@@ -1259,7 +1258,8 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
                             this.setMood(this.getMood() - 1);
                             Revival.NETWORK_WRAPPER.sendToAll(new MessageFoodParticles(getEntityId(), FABlockRegistry.VOLCANIC_ROCK));
                             if (getRNG().nextInt(5) == 0) {
-                                player.sendStatusMessage(new TextComponentString(I18n.format("prehistoric.autotame") + " " + this.getDisplayName().getFormattedText() + I18n.format("prehistoric.period")), false);
+                                ITextComponent itextcomponent = new TextComponentString(this.getName());
+                                player.sendStatusMessage(new TextComponentTranslation("prehistoric.autotame", new Object[] {itextcomponent}), true);
                                 this.setMood(this.getMood() - 25);
                                 this.setTamed(true);
                                 Revival.NETWORK_WRAPPER.sendToAll(new MessageFoodParticles(getEntityId(), Item.getIdFromItem(Items.GOLD_INGOT)));
@@ -1325,7 +1325,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
         String s = "dino.order." + var1.name().toLowerCase();
         ITextComponent itextcomponent = new TextComponentString(this.getName());
         if (this.getOwner() instanceof EntityPlayer) {
-            ((EntityPlayer) this.getOwner()).sendStatusMessage(new TextComponentTranslation(s,  new Object[] {itextcomponent}), false);
+            ((EntityPlayer) this.getOwner()).sendStatusMessage(new TextComponentTranslation(s,  new Object[] {itextcomponent}), true);
         }
     }
 

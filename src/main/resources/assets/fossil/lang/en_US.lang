@@ -725,7 +725,9 @@ anu.breakblock=You cannot break blocks here without defeating Anu.
 cultivate.outBreak=Cultivation has failed!
 prehistoric.period=.
 dinoegg.hatched=A prehistoric egg has hatched!
-prehistoric.autotame=You have tamed this
+prehistoric.autotame=You have tamed this %.
+prehistoric.betrayed=This % has been betrayed!.
+prehistoric.full=This % is full.
 prehistoric.pregnantTime=Embryo Progress:
 prehistoric.pregnant=Pregnant
 
