@@ -5,6 +5,7 @@ import fossilsarcheology.server.block.FABlockRegistry;
 import fossilsarcheology.server.structure.StructureUtils;
 import fossilsarcheology.server.world.gen.HellBoatWorldGen;
 import fossilsarcheology.server.world.gen.WorldGenPalm;
+import fossilsarcheology.server.world.gen.WorldGenPermafrost;
 import fossilsarcheology.server.world.gen.WorldGenTarPit;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
@@ -61,8 +62,7 @@ public class FAWorldGenerator implements IWorldGenerator {
 						int Xcoord = chunkX * 16 + random.nextInt(16);
 						int Ycoord = random.nextInt(30);
 						int Zcoord = chunkZ * 16 + random.nextInt(16);
-						(new WorldGenMinable(FABlockRegistry.ICED_STONE.getDefaultState(), 4 + random.nextInt(4))).generate(world, random, new BlockPos(Xcoord, Ycoord, Zcoord));
-						(new WorldGenMinable(FABlockRegistry.PERMAFROST.getDefaultState(), 2 + random.nextInt(4))).generate(world, random, new BlockPos(Xcoord, Ycoord, Zcoord));
+						(new WorldGenPermafrost(FABlockRegistry.PERMAFROST.getDefaultState(), 4 + random.nextInt(4))).generate(world, random, new BlockPos(Xcoord, Ycoord, Zcoord));
 					}
 				}
 			}
@@ -89,7 +89,7 @@ public class FAWorldGenerator implements IWorldGenerator {
 			if (Revival.CONFIG.generateVolcanicRock) {
 				for (int i = 0; i < 10; i++) {
 					int y = random.nextInt(16);
-					(new WorldGenMinable(FABlockRegistry.VOLCANIC_ROCK.getDefaultState(), 6)).generate(world, random, new BlockPos(x, y, z));
+					(new WorldGenPermafrost(FABlockRegistry.VOLCANIC_ROCK.getDefaultState(), 6)).generate(world, random, new BlockPos(x, y, z));
 				}
 			}
 		}
