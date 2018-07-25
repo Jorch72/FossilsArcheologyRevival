@@ -3,7 +3,7 @@
     "textures": {
         "particle": "fossil:blocks/sifter_top_active",
         "down": "fossil:blocks/sifter_bottom",
-        "up": "fossil:blocks/sifter_top",
+        "up": "fossil:blocks/sifter_top_active",
         "north": "fossil:blocks/sifter_side",
         "east": "fossil:blocks/sifter_side",
         "south": "fossil:blocks/sifter_side",
