@@ -82,6 +82,12 @@ public abstract class EntityPrehistoricFlying extends EntityPrehistoric {
 		if (!this.isFlying() && !this.isMovementBlocked() && rand.nextInt(200) == 0 && !this.world.isRemote && this.isAdult() && this.getControllingPassenger() == null && this.onGround) {
 			this.setFlying(true);
 		}
+		if(!this.world.isRemote && isFlying()){
+			ticksFlying++;
+		}
+		if(!this.world.isRemote && !isFlying()){
+			ticksFlying = 0;
+		}
 		if (!this.world.isRemote && ticksFlying > 80 && this.onGround) {
 			this.setFlying(false);
 		}

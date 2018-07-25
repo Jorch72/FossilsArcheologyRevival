@@ -19,7 +19,7 @@ public class DinoAIFindAirTarget extends EntityAIBase {
 	}
 
 	public static BlockPos getBlockInView(EntityPrehistoricFlying dinosaur) {
-		float radius = 0.75F * (0.7F * 8) * -3 - dinosaur.getRNG().nextInt(8 * 6);
+		float radius = 0.75F * (0.7F * 4) * -3 - dinosaur.getRNG().nextInt(20);
 		float neg = dinosaur.getRNG().nextBoolean() ? 1 : -1;
 		float angle = (0.01745329251F * dinosaur.renderYawOffset) + 3.15F + (dinosaur.getRNG().nextFloat() * neg);
 		double extraX = (double) (radius * MathHelper.sin((float) (Math.PI + angle)));
@@ -38,8 +38,11 @@ public class DinoAIFindAirTarget extends EntityAIBase {
 		if (target != null) {
 			RayTraceResult rayTrace = entity.world.rayTraceBlocks(new Vec3d(entity.getPosition()), target, false);
 			if (rayTrace != null && rayTrace.hitVec != null) {
+				BlockPos sidePos = rayTrace.getBlockPos();
 				BlockPos pos = new BlockPos(rayTrace.hitVec);
-				return !entity.world.isAirBlock(pos);
+				if (!entity.world.isAirBlock(pos) || !entity.world.isAirBlock(sidePos) ) {
+					return true;
+				}
 			}
 		}
 		return false;
@@ -60,7 +63,7 @@ public class DinoAIFindAirTarget extends EntityAIBase {
 			if (prehistoric.getOwner() != null && prehistoric.getPassengers().contains(prehistoric.getOwner())) {
 				return false;
 			}
-			if (prehistoric.airTarget != null && prehistoric.getDistanceSquared(new Vec3d(prehistoric.airTarget.getX(), prehistoric.posY, prehistoric.airTarget.getZ())) > 3) {
+			if (prehistoric.airTarget != null && (prehistoric.getDistanceSquared(new Vec3d(prehistoric.airTarget.getX(), prehistoric.posY, prehistoric.airTarget.getZ())) > 3  || isTargetBlocked(prehistoric, new Vec3d(prehistoric.airTarget)))) {
 				prehistoric.airTarget = null;
 			}
 
@@ -82,14 +85,14 @@ public class DinoAIFindAirTarget extends EntityAIBase {
 
 	@Override
 	public boolean shouldContinueExecuting() {
-		return prehistoric.airTarget != null;
+		return prehistoric.airTarget != null && !isTargetBlocked(prehistoric, new Vec3d(prehistoric.airTarget));
 	}
 
 	public BlockPos findAirTarget() {
 		if (prehistoric.getAttackTarget() == null) {
 			for (int i = 0; i < 10; i++) {
 				BlockPos pos = getBlockInView(prehistoric);
-				if (pos != null && prehistoric.world.getBlockState(pos).getMaterial() == Material.AIR) {
+				if (pos != null && prehistoric.world.getBlockState(pos).getMaterial() == Material.AIR && !isTargetBlocked(prehistoric, new Vec3d(pos))) {
 					return pos;
 				}
 			}
