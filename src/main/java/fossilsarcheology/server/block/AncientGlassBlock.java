@@ -31,6 +31,7 @@ public class AncientGlassBlock extends BlockBreakable implements DefaultRendered
         super(Material.GLASS, true);
         this.setLightOpacity(1);
         this.setUnlocalizedName("ancient_glass");
+        this.setHarvestLevel("pickaxe", 1);
         this.setSoundType(SoundType.GLASS);
         this.setHardness(1F);
         this.setCreativeTab(FATabRegistry.BLOCKS);

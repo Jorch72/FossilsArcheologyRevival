@@ -30,6 +30,7 @@ public class StrongGlassBlock extends BlockBreakable implements DefaultRenderedI
 		this.setLightOpacity(1);
 		this.setUnlocalizedName("strong_glass");
 		this.setHardness(3F);
+		this.setHarvestLevel("pickaxe", 1);
 		this.setResistance(25F);
 		this.setCreativeTab(FATabRegistry.BLOCKS);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(UP, Boolean.valueOf(false))
