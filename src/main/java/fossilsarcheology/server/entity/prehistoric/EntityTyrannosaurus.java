@@ -74,7 +74,7 @@ public class EntityTyrannosaurus extends EntityPrehistoric {
 
 	@Override
 	public boolean attackEntityAsMob(Entity entity) {
-		if (getAttackBounds().intersects(entity.getEntityBoundingBox())) {
+		if (canReachPrey()) {
 			if (this.getAnimation() == NO_ANIMATION) {
 				this.setAnimation(ATTACK_ANIMATION);
 				return false;

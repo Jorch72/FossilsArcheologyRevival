@@ -181,7 +181,7 @@ public class EntityMegalograptus extends EntityPrehistoricSwimming {
             this.setSleeping(false);
         }
         if (this.getAttackTarget() != null) {
-            if (getAttackBounds().intersects(this.getAttackTarget().getEntityBoundingBox())) {
+            if (canReachPrey()) {
                 if (this.getAnimation() != ATTACK_ANIMATION) {
                     this.setAnimation(ATTACK_ANIMATION);
                 }

@@ -240,7 +240,7 @@ public class EntitySpinosaurus extends EntityPrehistoricSwimming {
 			this.setSleeping(false);
 		}
 		if (this.getAttackTarget() != null) {
-			if (getAttackBounds().intersects(this.getAttackTarget().getEntityBoundingBox())) {
+			if (canReachPrey()) {
 				this.attackEntityAsMob(this.getAttackTarget());
 				if (!isEntitySmallerThan(this.getAttackTarget(), 2F * (this.getAgeScale() / this.maxSize))) {
 					if (this.getAnimation() != ATTACK_ANIMATION) {

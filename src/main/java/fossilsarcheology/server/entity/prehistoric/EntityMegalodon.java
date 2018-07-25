@@ -158,7 +158,7 @@ public class EntityMegalodon extends EntityPrehistoricSwimming {
     public void onLivingUpdate() {
         super.onLivingUpdate();
         if (this.getAttackTarget() != null) {
-            if (getAttackBounds().intersects(this.getAttackTarget().getEntityBoundingBox())) {
+            if (canReachPrey()) {
                 if (!isEntitySmallerThan(this.getAttackTarget(), 2F * (this.getAgeScale() / this.maxSize)) && this.getRNG().nextInt(3) != 0) {
                     if (this.getAnimation() != ATTACK_ANIMATION) {
                         this.setAnimation(ATTACK_ANIMATION);

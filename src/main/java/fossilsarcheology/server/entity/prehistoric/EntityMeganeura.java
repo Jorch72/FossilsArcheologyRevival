@@ -100,8 +100,16 @@ public class EntityMeganeura extends EntityPrehistoricSwimming {
         if(flying && this.ticksExisted % 20 == 0 && !world.isRemote && !this.isChild()){
             this.playSound(FASoundRegistry.MEGANEURA_FLY, this.getSoundVolume(), 1);
         }
-        if (this.getAnimation() == ATTACK_ANIMATION && this.getAttackTarget() != null) {
-            this.attackEntityAsMob(this.getAttackTarget());
+        if (this.getAttackTarget() != null) {
+            if (canReachPrey()) {
+                if (this.getAnimation() != ATTACK_ANIMATION) {
+                    this.setAnimation(ATTACK_ANIMATION);
+                }
+                if (this.getAnimation() == ATTACK_ANIMATION && this.getAnimationTick() > 5) {
+                    this.getAttackTarget().attackEntityFrom(DamageSource.causeMobDamage(this), (float) this.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue());
+                }
+                this.attackEntityAsMob(this.getAttackTarget());
+            }
         }
     }
 
@@ -223,7 +231,7 @@ public class EntityMeganeura extends EntityPrehistoricSwimming {
 
     @Override
     public boolean attackEntityAsMob(Entity entity) {
-        if (this.getAttackBounds().intersects(entity.getEntityBoundingBox())) {
+        if (this.canReachPrey()) {
             if (this.getAnimation() == NO_ANIMATION) {
                 this.setAnimation(ATTACK_ANIMATION);
                 return false;

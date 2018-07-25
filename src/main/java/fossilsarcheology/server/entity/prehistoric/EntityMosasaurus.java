@@ -149,7 +149,7 @@ public class EntityMosasaurus extends EntityPrehistoricSwimming {
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (this.getAttackTarget() != null) {
-			if (getAttackBounds().intersects(this.getAttackTarget().getEntityBoundingBox())) {
+			if (canReachPrey()) {
 				if (!isEntitySmallerThan(this.getAttackTarget(), 2F * (this.getAgeScale() / this.maxSize))) {
 					if (this.getAnimation() != ATTACK_ANIMATION) {
 						this.setAnimation(ATTACK_ANIMATION);

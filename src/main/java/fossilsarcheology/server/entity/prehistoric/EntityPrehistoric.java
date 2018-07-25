@@ -45,9 +45,7 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.*;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -1774,5 +1772,23 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
 
     public void onWhipRightClick() {
 
+    }
+
+    public boolean canReachPrey(){
+        return this.getAttackTarget() != null && getAttackBounds().intersects(this.getAttackTarget().getEntityBoundingBox()) && !isPreyBlocked(this.getAttackTarget());
+    }
+
+    private boolean isPreyBlocked(Entity prey) {
+        RayTraceResult rayTrace = world.rayTraceBlocks(this.getPositionVector(), prey.getPositionVector(), false);
+        if (rayTrace != null && rayTrace.hitVec != null) {
+            BlockPos sidePos = rayTrace.getBlockPos();
+            BlockPos pos = new BlockPos(rayTrace.hitVec);
+            if (!world.isAirBlock(pos) || !world.isAirBlock(sidePos) ) {
+                return true;
+            }else{
+                return rayTrace.typeOfHit != RayTraceResult.Type.MISS;
+            }
+        }
+        return false;
     }
 }

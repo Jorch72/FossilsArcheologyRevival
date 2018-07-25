@@ -152,7 +152,7 @@ public class EntityBrachiosaurus extends EntityPrehistoric {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		if (this.getAnimation() == ATTACK_ANIMATION && this.getAnimationTick() > 19 && this.getAttackTarget() != null && this.getAttackBounds().intersects(this.getAttackTarget().getEntityBoundingBox())) {
+		if (this.getAnimation() == ATTACK_ANIMATION && this.getAnimationTick() > 19 && this.getAttackTarget() != null && this.canReachPrey()) {
 			this.attackEntityAsMob(this.getAttackTarget());
 		}
 	}

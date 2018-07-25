@@ -200,7 +200,7 @@ public class EntityParasaurolophus extends EntityPrehistoric {
 
 	@Override
 	public boolean attackEntityAsMob(Entity entity) {
-		if (this.getAttackBounds().intersects(entity.getEntityBoundingBox())) {
+		if (this.canReachPrey()) {
 			if (this.getAnimation() == NO_ANIMATION) {
 				this.setAnimation(ATTACK_ANIMATION);
 				return false;
