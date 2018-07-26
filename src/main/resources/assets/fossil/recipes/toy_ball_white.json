@@ -11,8 +11,8 @@
       "data": 0
     },
     "Y": {
-      "item": "minecraft:wool",
-      "data": 0
+      "type": "forge:ore_dict",
+      "ore": "blockWool"
     },
     "Z": {
       "item": "minecraft:slime_ball",
