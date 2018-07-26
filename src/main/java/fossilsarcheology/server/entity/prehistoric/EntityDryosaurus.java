@@ -1,6 +1,7 @@
 package fossilsarcheology.server.entity.prehistoric;
 
 import com.google.common.base.Predicate;
+import fossilsarcheology.Revival;
 import fossilsarcheology.client.sound.FASoundRegistry;
 import fossilsarcheology.server.entity.ai.*;
 import net.minecraft.entity.Entity;
@@ -31,6 +32,8 @@ public class EntityDryosaurus extends EntityPrehistoric {
 		breaksBlocks = false;
 		hasTeenTexture = false;
 		pediaScale = 40;
+		hasFeatherToggle = true;
+		featherToggle = Revival.CONFIG.featheredDryosaurus;
 	}
 
 	public void initEntityAI() {
