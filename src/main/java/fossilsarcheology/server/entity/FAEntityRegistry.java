@@ -21,6 +21,9 @@ import java.util.Set;
 
 public class FAEntityRegistry {
 	public static void register() {
+		if (Loader.isModLoaded("thaumcraft")) {
+			ThaumcraftCompatBridge.registerAspects();
+		}
 		EntityPropertiesHandler.INSTANCE.registerProperties(FossilsPlayerProperties.class);
 		EntityPropertiesHandler.INSTANCE.registerProperties(FossilsMammalProperties.class);
 
