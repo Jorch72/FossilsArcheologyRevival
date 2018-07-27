@@ -289,7 +289,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
 
     @Override
     public boolean isAIDisabled() {
-        return this.isSkeleton();
+        return this.isSkeleton() || super.isAIDisabled();
     }
 
     public void doPlayBonus(int playBonus) {
