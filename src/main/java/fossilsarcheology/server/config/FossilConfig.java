@@ -64,7 +64,7 @@ public class FossilConfig {
     @ConfigEntry(category = "dinosaurs")
     public boolean featheredTherizinosaurus = true;
     @ConfigEntry(category = "dinosaurs")
-    public boolean featheredDryosaurus = true;
+    public boolean featheredDryosaurus = false;
     @ConfigEntry(category = "dinosaurs")
     public boolean eggsLikeChickens = false;
     @ConfigEntry(category = "dinosaurs")
