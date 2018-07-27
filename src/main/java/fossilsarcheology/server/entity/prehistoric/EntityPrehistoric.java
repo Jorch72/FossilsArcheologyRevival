@@ -962,7 +962,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
     public void sendStatusMessage(SituationType var1) {
         if (this.getOwner() != null && this.getDistance(this.getOwner()) < 50.0F) {
             ITextComponent itextcomponent = new TextComponentString(this.getName());
-            ((EntityPlayer) this.getOwner()).sendStatusMessage(new TextComponentTranslation(var1 == SituationType.Betrayed ? "dino.betrayed" : "dino.full", new Object[]{itextcomponent}), true);
+            ((EntityPlayer) this.getOwner()).sendStatusMessage(new TextComponentTranslation(var1 == SituationType.Betrayed ? "prehistoric.betrayed" : "prehistoric.full", new Object[]{itextcomponent}), true);
         }
     }
 
