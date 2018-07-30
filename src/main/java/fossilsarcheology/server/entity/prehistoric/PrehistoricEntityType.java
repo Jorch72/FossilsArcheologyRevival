@@ -160,7 +160,7 @@ public enum PrehistoricEntityType {
 				FAItemRegistry.registerItem(event, type.bestBirdEggItem, ((PrehistoricEntityItem) type.bestBirdEggItem).resourceName);
 			}
 			if (type.timePeriod != TimePeriod.CURRENT) {
-				if (type.mobType != MobType.FISH) {
+					if (type.mobType != MobType.FISH) {
 					type.foodItem = new ItemDinoMeat(3, 0.3F, true, "meat", type).setUnlocalizedName("raw" + type.friendlyName).setCreativeTab(FATabRegistry.ITEMS);
 					FAItemRegistry.registerItem(event, type.foodItem, resourceName + "_meat");
 				}

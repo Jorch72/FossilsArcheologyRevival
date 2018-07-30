@@ -19,6 +19,10 @@ public class FAOreDictRegistry {
         OreDictionary.registerOre("treeLeaves", new ItemStack(FABlockRegistry.PALM_LEAVES));
         OreDictionary.registerOre("slabWood", new ItemStack(FABlockRegistry.PALM_PLANKS_SINGLESLAB));
         OreDictionary.registerOre("stairWood", new ItemStack(FABlockRegistry.PALM_PLANKS_STAIRS));
+        OreDictionary.registerOre("doorWood", new ItemStack(FAItemRegistry.PALM_DOOR_ITEM));
+        OreDictionary.registerOre("trapdoorWood", new ItemStack(FABlockRegistry.PALM_TRAPDOOR));
+        OreDictionary.registerOre("fenceWood", new ItemStack(FABlockRegistry.PALM_FENCE));
+        OreDictionary.registerOre("fenceGateWood", new ItemStack(FABlockRegistry.PALM_FENCE_GATE));
         OreDictionary.registerOre("stairWood", new ItemStack(FABlockRegistry.ANCIENT_WOOD_STAIRS));
         OreDictionary.registerOre("treeSapling", new ItemStack(FABlockRegistry.PALM_SAPLING));
 
