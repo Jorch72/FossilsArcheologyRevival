@@ -29,18 +29,19 @@ public class BioFossilItem extends Item implements DefaultRenderedItem {
 
 	public void tryPlaceIntoWorld(ItemStack stack, EntityPlayer player, World world, BlockPos pos) {
 		EntityPrehistoric entity = (EntityPrehistoric) PrehistoricEntityType.getRandomBioFossil(new Random(), this.isTarFossil).invokeClass(world);
+		while(entity == null){
+			entity = (EntityPrehistoric) PrehistoricEntityType.getRandomBioFossil(new Random(), this.isTarFossil).invokeClass(world);
+		}
 		if(entity != null) {
 			entity.setLocationAndAngles((double) pos.getX() + 0.5, (double) pos.getY(), (double) pos.getZ() + 0.5D, -player.rotationYaw, player.rotationPitch);
 			entity.rotationYawHead = -player.rotationYaw;
 			entity.renderYawOffset = -player.rotationYaw;
 			entity.setSkeleton(true);
-			if (world.checkNoEntityCollision(entity.getEntityBoundingBox())) {
-				if (!world.isRemote) {
-					world.spawnEntity(entity);
-				}
-				if (!player.isCreative()) {
-					stack.shrink(1);
-				}
+			if (!world.isRemote) {
+				world.spawnEntity(entity);
+			}
+			if (!player.isCreative()) {
+				stack.shrink(1);
 			}
 		}
 	}

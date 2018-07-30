@@ -32,6 +32,7 @@ public abstract class VaseBlock extends BlockContainer implements BlockEntity, I
         super(Material.ROCK);
         this.setCreativeTab(FATabRegistry.BLOCKS);
         this.setUnlocalizedName("vase_" + type);
+        this.setHardness(2);
         this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, VaseVariant.DAMAGED));
     }
     @Override
