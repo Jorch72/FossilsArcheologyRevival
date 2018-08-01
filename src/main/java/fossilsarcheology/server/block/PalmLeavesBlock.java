@@ -9,6 +9,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
@@ -145,6 +146,10 @@ public class PalmLeavesBlock extends BlockLeaves implements DefaultRenderedItem 
 				}
 			}
 		}
+	}
+
+	public Item getItemDropped(IBlockState state, Random rand, int fortune){
+		return Item.getItemFromBlock(FABlockRegistry.PALM_SAPLING);
 	}
 
 	@Override

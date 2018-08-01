@@ -38,9 +38,19 @@ public abstract class ModelPrehistoric extends AdvancedModelBase {
 		modelRenderer.rotateAngleZ += sitProgress * (rotZ - modelRenderer.defaultRotationZ) / 20.0F;
 	}
 
+	public void sitAnimationRotationMinDistance(AdvancedModelRenderer from,  float sitProgress, float rotX, float rotY, float rotZ){
+		from.rotateAngleX += ((distance(from.rotateAngleX  - from.defaultRotationX, rotX - from.defaultRotationX)) / 20.0F) * sitProgress;
+		from.rotateAngleY += ((distance(from.rotateAngleY - from.defaultRotationX, rotY - from.defaultRotationX)) / 20.0F) * sitProgress;
+		from.rotateAngleZ += ((distance(from.rotateAngleZ - from.defaultRotationX, rotZ - from.defaultRotationX)) / 20.0F) * sitProgress;
+	}
+
 	public void sitAnimationPos(AdvancedModelRenderer modelRenderer, float sitProgress, float x, float y, float z) {
 		modelRenderer.rotationPointX += sitProgress * x / 20.0F;
 		modelRenderer.rotationPointY += sitProgress * y / 20.0F;
 		modelRenderer.rotationPointZ += sitProgress * z / 20.0F;
+	}
+
+	private float distance(float rotateAngleFrom, float rotateAngleTo) {
+		return (float)Math.atan2(Math.sin(rotateAngleTo - rotateAngleFrom), Math.cos(rotateAngleTo - rotateAngleFrom));
 	}
 }
