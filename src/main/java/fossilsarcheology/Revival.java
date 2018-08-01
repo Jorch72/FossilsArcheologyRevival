@@ -4,6 +4,7 @@ import fossilsarcheology.server.ServerProxy;
 import fossilsarcheology.server.block.FABlockRegistry;
 import fossilsarcheology.server.compat.thaumcraft.ThaumcraftCompatBridge;
 import fossilsarcheology.server.config.FossilConfig;
+import fossilsarcheology.server.lib.LibDependencies;
 import fossilsarcheology.server.message.*;
 import fossilsarcheology.server.util.ReleaseType;
 import net.ilexiconn.llibrary.server.config.Config;
@@ -19,7 +20,8 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = Revival.MODID, name = "Fossils and Archeology Revival", version = Revival.VERSION, dependencies = "required-after:llibrary@[${llibrary_version},)")
+@Mod(modid = Revival.MODID, name = "Fossils and Archeology Revival", version = Revival.VERSION, acceptedMinecraftVersions = "[1.12,1.12.2]", dependencies = LibDependencies.DEPENDENCIES)
+
 public class Revival {
 	public static final String MODID = "fossil";
 	public static final String VERSION = "8.0.0-develop";
