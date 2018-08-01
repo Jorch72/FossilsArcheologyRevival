@@ -316,7 +316,6 @@ public class FossilFoodMappings {
 		FoodMappings.INSTANCE.addMeat("foodTurtlecooked", 40);
 		FoodMappings.INSTANCE.addMeat("foodFrograw", 15);
 		FoodMappings.INSTANCE.addMeat("foodFrogcooked", 25);
-		FoodMappings.INSTANCE.addMeat("nuggetMeat", 5);
 		FoodMappings.INSTANCE.addEgg("listAllegg", 7);
 		FoodMappings.INSTANCE.addEgg("egg", 7);
 	}
