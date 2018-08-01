@@ -13,6 +13,7 @@ import fossilsarcheology.server.item.PrehistoricEntityItem;
 import fossilsarcheology.server.item.variant.DinosaurBoneType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -31,10 +32,10 @@ public class ThaumcraftCompat {
         ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.BIOFOSSIL), new AspectList().add(Aspect.EARTH, 5).add(Aspect.BEAST, 5).add(ThaumcraftCompat.TIME, 5).add(ThaumcraftCompat.FOSSIL, 5));
         ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.AMBER), new AspectList().add(Aspect.EARTH, 3).add(Aspect.CRYSTAL, 3).add(ThaumcraftCompat.TIME, 3));
         ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.ANCIENT_CLOCK), new AspectList().add(Aspect.METAL, 15).add(ThaumcraftCompat.TIME, 15).add(ThaumcraftCompat.RUIN, 35));
-        ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.ANCIENT_HELMET), new AspectList().add(Aspect.PROTECT, 10).add(ThaumcraftCompat.TIME, 10).add(ThaumcraftCompat.RUIN, 15));
-        ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.ANCIENT_JAVELIN), new AspectList().add(Aspect.AVERSION, 10).add(ThaumcraftCompat.TIME, 10).add(ThaumcraftCompat.RUIN, 15));
+        ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.ANCIENT_HELMET, 1, OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.PROTECT, 10).add(ThaumcraftCompat.TIME, 10).add(ThaumcraftCompat.RUIN, 15));
+        ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.ANCIENT_JAVELIN, 1, OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.AVERSION, 10).add(ThaumcraftCompat.TIME, 10).add(ThaumcraftCompat.RUIN, 15));
         ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.ANCIENT_KEY), new AspectList().add(Aspect.DESIRE, 10).add(Aspect.METAL, 10).add(ThaumcraftCompat.TIME, 10).add(ThaumcraftCompat.RUIN, 25));
-        ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.ANCIENT_SWORD), new AspectList().add(Aspect.AVERSION, 10).add(Aspect.METAL, 10).add(ThaumcraftCompat.TIME, 10).add(ThaumcraftCompat.RUIN, 15));
+        ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.ANCIENT_SWORD, 1, OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.AVERSION, 10).add(Aspect.METAL, 10).add(ThaumcraftCompat.TIME, 10).add(ThaumcraftCompat.RUIN, 15));
         ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.AQUATIC_SCARAB_GEM), new AspectList().add(Aspect.WATER, 5).add(Aspect.EARTH, 5).add(Aspect.CRYSTAL, 5).add(Aspect.DESIRE, 5).add(ThaumcraftCompat.TIME, 5).add(ThaumcraftCompat.RUIN, 15));
         ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.DOMINICAN_AMBER), new AspectList().add(Aspect.WATER, 3).add(Aspect.EARTH, 3).add(Aspect.CRYSTAL, 3).add(ThaumcraftCompat.TIME, 3));
         ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.BROKEN_HELMET), new AspectList().add(Aspect.ENTROPY, 10).add(ThaumcraftCompat.TIME, 10).add(ThaumcraftCompat.RUIN, 15));
@@ -43,6 +44,10 @@ public class ThaumcraftCompat {
         ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.COOKED_CHICKEN_SOUP), new AspectList().add(Aspect.CRAFT, 10).add(Aspect.BEAST, 10).add(Aspect.WATER, 10));
         ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.COOKED_EGG), new AspectList().add(Aspect.DEATH, 5).add(Aspect.BEAST, 5).add(Aspect.CRAFT, 5));
         ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.TOOTH_DAGGER), new AspectList().add(Aspect.DEATH, 10).add(Aspect.BEAST, 10).add(Aspect.CRAFT, 10).add(Aspect.AVERSION, 10).add(ThaumcraftCompat.FOSSIL, 5));
+        ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.SKULL_HELMET, 1, OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.DEATH, 5).add(Aspect.BEAST, 5).add(ThaumcraftCompat.TIME, 5).add(ThaumcraftCompat.FOSSIL, 5));
+        ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.RIBCAGE_CHESTPLATE, 1, OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.DEATH, 5).add(Aspect.BEAST, 7).add(ThaumcraftCompat.TIME, 5).add(ThaumcraftCompat.FOSSIL, 7));
+        ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.SHIN_LEGGINGS, 1, OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.DEATH, 5).add(Aspect.BEAST, 7).add(ThaumcraftCompat.TIME, 5).add(ThaumcraftCompat.FOSSIL, 7));
+        ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.FEET_BOOTS, 1, OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.DEATH, 5).add(Aspect.BEAST, 5).add(ThaumcraftCompat.TIME, 5).add(ThaumcraftCompat.FOSSIL, 5));
         for (int i = 0; i < DinosaurBoneType.values().length; i++) {
             ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.FOOT, 1, i), new AspectList().add(Aspect.DEATH, 5).add(Aspect.BEAST, 5).add(ThaumcraftCompat.TIME, 5).add(ThaumcraftCompat.FOSSIL, 5));
             ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.LEG_BONE, 1, i), new AspectList().add(Aspect.DEATH, 5).add(Aspect.BEAST, 5).add(ThaumcraftCompat.TIME, 5).add(ThaumcraftCompat.FOSSIL, 5));
@@ -57,7 +62,7 @@ public class ThaumcraftCompat {
         ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.TAR_FOSSIL), new AspectList().add(Aspect.EARTH, 5).add(Aspect.ALCHEMY, 5).add(Aspect.BEAST, 5).add(ThaumcraftCompat.TIME, 5).add(ThaumcraftCompat.FOSSIL, 10));
         ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.TARDROP), new AspectList().add(Aspect.EARTH, 3).add(Aspect.WATER, 3).add(Aspect.DARKNESS, 3).add(Aspect.ALCHEMY, 3).add(Aspect.ENTROPY, 3).add(ThaumcraftCompat.FOSSIL, 4));
         //ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.TAR_BUCKET), new AspectList().add(Aspect.EARTH, 7).add(Aspect.WATER, 7).add(Aspect.DARKNESS, 7).add(Aspect.ALCHEMY, 7).add(Aspect.ENTROPY, 7));
-        ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.TOY_BALL), new AspectList().add(Aspect.CRAFT, 8).add(Aspect.SENSES, 8));
+        ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.TOY_BALL, 1, OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.CRAFT, 8).add(Aspect.SENSES, 8));
         ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.POTTERY_SHARD), new AspectList().add(Aspect.EARTH, 2).add(Aspect.ENTROPY, 2).add(ThaumcraftCompat.TIME, 2).add(ThaumcraftCompat.RUIN, 3));
         ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.SCARAB_GEM), new AspectList().add(Aspect.CRYSTAL, 6).add(Aspect.DESIRE, 6).add(ThaumcraftCompat.TIME, 6).add(ThaumcraftCompat.RUIN, 15));
         ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.WHIP), new AspectList().add(Aspect.BEAST, 10).add(Aspect.DESIRE, 10).add(Aspect.AVERSION, 10));
@@ -76,11 +81,11 @@ public class ThaumcraftCompat {
         }
         ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.FOSSIL_SEED_FERN), new AspectList().add(Aspect.PLANT, 5).add(ThaumcraftCompat.TIME, 5).add(ThaumcraftCompat.FOSSIL, 5));
         ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.FERN_SEED), new AspectList().add(Aspect.PLANT, 5).add(ThaumcraftCompat.TIME, 5).add(ThaumcraftCompat.FOSSIL, 5));
-        ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.DIAMOND_JAVELIN), new AspectList().add(Aspect.AVERSION, 10).add(ThaumcraftCompat.TIME, 10).add(ThaumcraftCompat.RUIN, 5));
-        ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.GOLD_JAVELIN), new AspectList().add(Aspect.AVERSION, 10).add(ThaumcraftCompat.TIME, 10).add(ThaumcraftCompat.RUIN, 5));
-        ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.IRON_JAVELIN), new AspectList().add(Aspect.AVERSION, 10).add(ThaumcraftCompat.TIME, 10).add(ThaumcraftCompat.RUIN, 5));
-        ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.STONE_JAVELIN), new AspectList().add(Aspect.AVERSION, 10).add(ThaumcraftCompat.TIME, 10).add(ThaumcraftCompat.RUIN, 5));
-        ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.WOODEN_JAVELIN), new AspectList().add(Aspect.AVERSION, 10).add(ThaumcraftCompat.TIME, 10).add(ThaumcraftCompat.RUIN, 5));
+        ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.DIAMOND_JAVELIN, 1, OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.AVERSION, 10).add(ThaumcraftCompat.TIME, 10).add(ThaumcraftCompat.RUIN, 5));
+        ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.GOLD_JAVELIN, 1, OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.AVERSION, 10).add(ThaumcraftCompat.TIME, 10).add(ThaumcraftCompat.RUIN, 5));
+        ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.IRON_JAVELIN, 1, OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.AVERSION, 10).add(ThaumcraftCompat.TIME, 10).add(ThaumcraftCompat.RUIN, 5));
+        ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.STONE_JAVELIN, 1, OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.AVERSION, 10).add(ThaumcraftCompat.TIME, 10).add(ThaumcraftCompat.RUIN, 5));
+        ThaumcraftApi.registerObjectTag(new ItemStack(FAItemRegistry.WOODEN_JAVELIN, 1, OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.AVERSION, 10).add(ThaumcraftCompat.TIME, 10).add(ThaumcraftCompat.RUIN, 5));
         //Blocks
         ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.FOSSIL), new AspectList().add(Aspect.EARTH, 5).add(ThaumcraftCompat.TIME, 5).add(ThaumcraftCompat.FOSSIL, 5));
         ThaumcraftApi.registerObjectTag(new ItemStack(FABlockRegistry.AMPHORA_VASE), new AspectList().add(Aspect.CRAFT, 15).add(Aspect.SENSES, 15).add(Aspect.DESIRE, 15).add(ThaumcraftCompat.TIME, 8).add(ThaumcraftCompat.RUIN, 10));
@@ -239,5 +244,23 @@ public class ThaumcraftCompat {
             }
             ThaumcraftApi.registerObjectTag(new ItemStack(type.dnaItem), new AspectList().add(Aspect.BEAST, 15).add(Aspect.LIFE, 5).add(Aspect.DESIRE, 10));
         }
+
+        //Other Thaumcraft stuff
+        ThaumcraftApi.registerSeed(FABlockRegistry.FERNS, new ItemStack(FAItemRegistry.FERN_SEED));
+        ThaumcraftApi.registerSeed(FABlockRegistry.DILLHOFFIA_FLOWER, new ItemStack(FAItemRegistry.SEED, 1, 0));
+        ThaumcraftApi.registerSeed(FABlockRegistry.SARRACENIA_FLOWER, new ItemStack(FAItemRegistry.SEED, 1, 1));
+        ThaumcraftApi.registerSeed(FABlockRegistry.CEPHALOTAXUS_FLOWER, new ItemStack(FAItemRegistry.SEED, 1, 2));
+        ThaumcraftApi.registerSeed(FABlockRegistry.LICOPODIOPHYTA_FLOWER, new ItemStack(FAItemRegistry.SEED, 1, 3));
+        ThaumcraftApi.registerSeed(FABlockRegistry.PALEOPANAX_FLOWER, new ItemStack(FAItemRegistry.SEED, 1, 4));
+        ThaumcraftApi.registerSeed(FABlockRegistry.ZAMITES_FLOWER, new ItemStack(FAItemRegistry.SEED, 1, 5));
+        ThaumcraftApi.registerSeed(FABlockRegistry.BENNETTITALES_SMALL_FLOWER, new ItemStack(FAItemRegistry.SEED, 1, 6));
+        ThaumcraftApi.registerSeed(FABlockRegistry.WELWITSCHIA_FLOWER, new ItemStack(FAItemRegistry.SEED, 1, 7));
+        ThaumcraftApi.registerSeed(FABlockRegistry.HORSETAIL_SMALL_FLOWER, new ItemStack(FAItemRegistry.SEED, 1, 8));
+        ThaumcraftApi.registerSeed(FABlockRegistry.TEMPSKYA_FLOWER, new ItemStack(FAItemRegistry.SEED, 1, 9));
+        ThaumcraftApi.registerSeed(FABlockRegistry.VACCINIUM_FLOWER, new ItemStack(FAItemRegistry.SEED, 1, 10));
+        ThaumcraftApi.registerSeed(FABlockRegistry.OSMUNDA_FLOWER, new ItemStack(FAItemRegistry.SEED, 1, 11));
+        ThaumcraftApi.registerSeed(FABlockRegistry.CRATAEGUS_FLOWER, new ItemStack(FAItemRegistry.SEED, 1, 12));
+        ThaumcraftApi.registerSeed(FABlockRegistry.FLORISSANTIA_FLOWER, new ItemStack(FAItemRegistry.SEED, 1, 13));
+        ThaumcraftApi.registerSeed(FABlockRegistry.EPENDRA_FLOWER, new ItemStack(FAItemRegistry.SEED, 1, 14));
     }
 }
