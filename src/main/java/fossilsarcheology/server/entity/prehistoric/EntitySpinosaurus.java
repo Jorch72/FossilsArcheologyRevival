@@ -208,7 +208,7 @@ public class EntitySpinosaurus extends EntityPrehistoricSwimming {
 			float angle = (0.01745329251F * this.renderYawOffset) + 3.15F + (modTick_1 * 1.75F) * 0.05F;
 			double extraX = (double) (radius * MathHelper.sin((float) (Math.PI + angle)));
 			double extraZ = (double) (radius * MathHelper.cos(angle));
-			double extraY = 0.8F * (getAgeScale() + (modTick_1 * 0.05) + (modTick_2 * 0.15) - 2);
+			double extraY = 0.8F * (getAgeScale() + (modTick_1 * 0.05) + (modTick_2 * 0.15) - 2.5F);
 			double waterMinus = getAgeScale() * (this.swimProgress / 20) * 0.5F;
 			super.updateRidden();
 			riddenByEntity.setPosition(this.posX + extraX, this.posY + extraY - waterMinus, this.posZ + extraZ);
@@ -242,14 +242,15 @@ public class EntitySpinosaurus extends EntityPrehistoricSwimming {
 		if (this.getAttackTarget() != null) {
 			if (canReachPrey()) {
 				this.attackEntityAsMob(this.getAttackTarget());
-				if (!isEntitySmallerThan(this.getAttackTarget(), 2F * (this.getAgeScale() / this.maxSize))) {
+				if (!isEntitySmallerThan(this.getAttackTarget(), 2F * (this.getAgeScale() / this.maxSize)) || this.getRNG().nextInt(5) != 0) {
 					if (this.getAnimation() != ATTACK_ANIMATION) {
 						this.setAnimation(ATTACK_ANIMATION);
 					}
+					this.faceEntity(this.getAttackTarget(), 30, 30);
 					if (this.getAnimation() == ATTACK_ANIMATION && this.getAnimationTick() > 10) {
 						this.getAttackTarget().attackEntityFrom(DamageSource.causeMobDamage(this), (float) this.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.MAX_HEALTH).getAttributeValue());
 					}
-				} else {
+				} else if(this.getAnimation() != ATTACK_ANIMATION){
 					this.getAttackTarget().startRiding(this);
 					if (this.getAnimation() != SHAKE_ANIMATION) {
 						this.setAnimation(SHAKE_ANIMATION);

@@ -149,15 +149,16 @@ public class EntityMosasaurus extends EntityPrehistoricSwimming {
 		super.onLivingUpdate();
 		if (this.getAttackTarget() != null) {
 			if (canReachPrey()) {
-				if (!isEntitySmallerThan(this.getAttackTarget(), 2F * (this.getAgeScale() / this.maxSize))) {
+				this.attackEntityAsMob(this.getAttackTarget());
+				if (!isEntitySmallerThan(this.getAttackTarget(), 2F * (this.getAgeScale() / this.maxSize)) || this.getRNG().nextInt(5) != 0) {
 					if (this.getAnimation() != ATTACK_ANIMATION) {
 						this.setAnimation(ATTACK_ANIMATION);
 					}
-					if (this.getAnimation() == ATTACK_ANIMATION && this.getAnimationTick() > 5) {
+					this.faceEntity(this.getAttackTarget(), 30, 30);
+					if (this.getAnimation() == ATTACK_ANIMATION && (this.getAnimationTick() == 5 || this.getAnimationTick() == 6)) {
 						this.getAttackTarget().attackEntityFrom(DamageSource.causeMobDamage(this), (float) this.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.MAX_HEALTH).getAttributeValue());
 					}
-					this.attackEntityAsMob(this.getAttackTarget());
-				} else {
+				} else if(this.getAnimation() != ATTACK_ANIMATION){
 					this.getAttackTarget().startRiding(this);
 					if (this.getAnimation() != SHAKE_ANIMATION) {
 						this.setAnimation(SHAKE_ANIMATION);
