@@ -15,7 +15,7 @@ import java.util.Random;
 
 public class WorldGenPalm extends WorldGenerator {
 	private static final IBlockState LOG = FABlockRegistry.PALM_LOG.getDefaultState().withProperty(BlockRotatedPillar.AXIS, EnumFacing.Axis.Y);
-	private static final IBlockState LEAF = FABlockRegistry.PALM_LEAVES.getDefaultState().withProperty(BlockLeaves.CHECK_DECAY, false);
+	private static final IBlockState LEAF = FABlockRegistry.PALM_LEAVES.getDefaultState().withProperty(BlockLeaves.CHECK_DECAY, true).withProperty(BlockLeaves.DECAYABLE, true);
 
 
 	@Override
