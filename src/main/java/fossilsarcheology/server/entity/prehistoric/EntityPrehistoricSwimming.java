@@ -65,6 +65,9 @@ public abstract class EntityPrehistoricSwimming extends EntityPrehistoric {
 
     public abstract double swimSpeed();
 
+    private double getScaledSwimSpeed(){
+        return Math.min(this.getAdultAge(), this.getAgeInDays()) / this.getAdultAge() * swimSpeed();
+    }
     public boolean breaksBoats() {
         return false;
     }
@@ -144,7 +147,7 @@ public abstract class EntityPrehistoricSwimming extends EntityPrehistoric {
                 if (this.isInWater()) {
                     this.moveRelative(strafe, vertical, forward, 1F);
                     f4 = 0.8F;
-                    double d0 = this.swimSpeed();
+                    double d0 = this.getScaledSwimSpeed();
                     if (!this.onGround) {
                         d0 *= 0.5F;
                     }
@@ -187,7 +190,7 @@ public abstract class EntityPrehistoricSwimming extends EntityPrehistoric {
             if (this.isInWater()) {
                 this.moveRelative(strafe, vertical, forward, 0.1F);
                 f4 = 0.8F;
-                double d0 = this.swimSpeed();
+                double d0 = this.getScaledSwimSpeed();
                 if (!this.onGround) {
                     d0 *= 0.5F;
                 }
