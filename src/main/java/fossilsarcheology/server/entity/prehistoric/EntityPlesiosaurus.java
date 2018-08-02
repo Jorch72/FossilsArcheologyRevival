@@ -7,8 +7,10 @@ import fossilsarcheology.server.item.FAItemRegistry;
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAISit;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.DamageSource;
@@ -173,4 +175,34 @@ public class EntityPlesiosaurus extends EntityPrehistoricSwimming {
 	protected SoundEvent getDeathSound() {
 		return FASoundRegistry.PLESIOSAURUS_DEATH;
 	}
+
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (this.getAnimation() == ATTACK_ANIMATION && this.getAnimationTick() == 10 && this.getAttackTarget() != null) {
+			this.attackEntityAsMob(this.getAttackTarget());
+		}
+	}
+
+	@Override
+	public boolean attackEntityAsMob(Entity entity) {
+		if (this.canReachPrey()) {
+			if (this.getAnimation() == NO_ANIMATION) {
+				this.setAnimation(ATTACK_ANIMATION);
+				return false;
+			}
+			if (this.getAnimation() == ATTACK_ANIMATION && this.getAnimationTick() == 5) {
+				IAttributeInstance iattributeinstance = this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
+				boolean flag = entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) iattributeinstance.getAttributeValue());
+				if (entity.getRidingEntity() != null) {
+					if (entity.getRidingEntity() == this) {
+						entity.startRiding(null);
+					}
+				}
+				return flag;
+			}
+		}
+		return false;
+	}
+
 }
