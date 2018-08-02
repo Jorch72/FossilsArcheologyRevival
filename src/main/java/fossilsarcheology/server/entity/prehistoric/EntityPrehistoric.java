@@ -576,7 +576,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
             this.setSitting(false);
             ticksSitted = 0;
         }
-        if (!world.isRemote && !this.isInWater() && !this.isBeingRidden() && !this.isActuallyWeak() && this.canSleep() && this.getRNG().nextInt(100) == 1 && this.getAttackTarget() == null && (this.getAnimation() == NO_ANIMATION || this.getAnimation() == SPEAK_ANIMATION) && this.getOrderType() != OrderType.FOLLOW) {
+        if (!world.isRemote && !this.isInWater() && !this.isBeingRidden() && !this.isActuallyWeak() && this.canSleep() && this.getRNG().nextInt(100) == 1 && canSleepWhileHunting() && (this.getAnimation() == NO_ANIMATION || this.getAnimation() == SPEAK_ANIMATION) && this.getOrderType() != OrderType.FOLLOW) {
             this.setSitting(false);
             this.setSleeping(true);
             ticksSlept = 0;
@@ -612,6 +612,9 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
         }
     }
 
+    private boolean canSleepWhileHunting(){
+        return this.getAttackTarget() == null || this.getAttackTarget() instanceof EntityToyBase;
+    }
     @Override
     public boolean isBreedingItem(ItemStack stack) {
         return false;
