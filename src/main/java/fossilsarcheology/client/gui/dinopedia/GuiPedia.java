@@ -584,17 +584,28 @@ public class GuiPedia extends GuiScreen {
 
                 Map<ItemStack, Integer> foodMap = FoodMappings.INSTANCE.getFoodRenderList(dino.type.diet);
                 List<ItemStack> keys = Collections.list(Collections.enumeration(foodMap.keySet()));
+                List<ItemStack> displayedKeys = new ArrayList<ItemStack>();
                 keys.sort(this.sorter);
                 ItemStack[] keyArray = keys.toArray(new ItemStack[0]);
                 for (ItemStack item : keyArray) {
-                    if (!item.isEmpty()) {
+                    if (!item.isEmpty() && shouldShowItem(item, displayedKeys)) {
                         if (items < 64) {
                             addMiniItem(item);
+                            displayedKeys.add(item);
                         }
                     }
                 }
             }
         }
+    }
+
+    private boolean shouldShowItem(ItemStack item, List<ItemStack> keys){
+        for(ItemStack stack : keys){
+            if(stack.getItem() == item.getItem() && stack.getMetadata() == item.getMetadata()){
+                return false;
+            }
+        }
+        return true;
     }
 
     public void renderSecondPage(EntityLivingBase entity) {
