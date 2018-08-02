@@ -1791,4 +1791,8 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
         }
         return false;
     }
+
+    public boolean shouldFollowFlock() {
+        return !this.isSleeping() && !this.isSitting() && this.getOrderType() != OrderType.FOLLOW;
+    }
 }

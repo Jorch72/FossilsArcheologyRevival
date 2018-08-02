@@ -43,7 +43,7 @@ public class Flock {
 			setNewLeader();
 		}
 		for (EntityPrehistoric member : flockMembers) {
-			if (member != null && flockLeader != null && this.flockPathNavigate != null && this.flockPathNavigate.getPath() != null) {
+			if (member != null && flockLeader != null && this.flockPathNavigate != null && this.flockPathNavigate.getPath() != null && member.shouldFollowFlock()) {
 				if (member.getNavigator().noPath() && member != this.flockLeader) {
 					Path path = this.flockLeader.getNavigator().getPath();
 					if(path != null && path.getFinalPathPoint() != null){
