@@ -1007,11 +1007,11 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
     }
 
     public int getMood() {
-        return this.dataManager.get(MOOD);
+        return MathHelper.clamp(this.dataManager.get(MOOD), 0, 100);
     }
 
     public void setMood(int mood) {
-        this.dataManager.set(MOOD, mood);
+        this.dataManager.set(MOOD, MathHelper.clamp(mood, 0, 100));
     }
 
     public PrehistoricMoodType getMoodFace() {

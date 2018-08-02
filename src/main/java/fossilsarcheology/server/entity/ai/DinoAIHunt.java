@@ -48,7 +48,7 @@ public class DinoAIHunt<T extends EntityLivingBase> extends EntityAINearestAttac
 					if (FoodHelper.getMobFoodPoints(targetEntity, dragon.type.diet) > 0) {
 						return !prehistoric.isOwner(targetEntity) && prehistoric.canDinoHunt(targetEntity, true);
 					}
-					if (targetEntity instanceof EntityToyBase && prehistoric.ticksTillPlay == 0) {
+					if (targetEntity instanceof EntityToyBase && prehistoric.ticksTillPlay == 0 && prehistoric.getMood() < 100) {
 						return true;
 					}
 				}
