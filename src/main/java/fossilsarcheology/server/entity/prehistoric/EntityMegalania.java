@@ -17,6 +17,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 
 public class EntityMegalania extends EntityPrehistoric {
@@ -191,6 +192,11 @@ public class EntityMegalania extends EntityPrehistoric {
         }
     }
 
+    public AxisAlignedBB getAttackBounds() {
+        return this.getEntityBoundingBox().grow(4.0F, 4.0F, 4.0F);
+    }
+
+
     @Override
     public boolean attackEntityAsMob(Entity entity) {
         if (this.canReachPrey()) {
@@ -198,7 +204,7 @@ public class EntityMegalania extends EntityPrehistoric {
                 this.setAnimation(ATTACK_ANIMATION);
                 return false;
             }
-            if (this.getAnimation() == ATTACK_ANIMATION && this.getAnimationTick() == 12) {
+            if (this.getAnimation() == ATTACK_ANIMATION && this.getAnimationTick() > 10 && this.getAnimationTick() < 13) {
                 IAttributeInstance iattributeinstance = this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
                 boolean flag = entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) iattributeinstance.getAttributeValue());
                 if (entity.getRidingEntity() != null) {
