@@ -60,7 +60,7 @@ public class ModelMegalodon extends ModelPrehistoric {
         this.setRotateAngle(upperBody, 0.08482300164692443F, 0.0F, 0.0F);
         this.body = new AdvancedModelRenderer(this, 0, 37);
         this.body.mirror = true;
-        this.body.setRotationPoint(0.0F, 10.0F, -6.0F);
+        this.body.setRotationPoint(0.0F, 14.0F, -6.0F);
         this.body.addBox(-4.0F, 0.0F, 0.0F, 8, 9, 13, 0.0F);
         this.rightPelvicFin = new AdvancedModelRenderer(this, 54, 0);
         this.rightPelvicFin.mirror = true;
