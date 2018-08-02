@@ -1185,7 +1185,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
                     }
 
                     if (!this.world.isRemote) {
-                        player.sendStatusMessage(new TextComponentTranslation(Localizations.STATUS_ESSENCE_FAIL), true);
+                        player.sendStatusMessage(new TextComponentTranslation("prehistoric.essencefail"), true);
                     }
 
                     return false;

@@ -156,7 +156,7 @@ public class EntityLiopleurodon extends EntityPrehistoricSwimming {
 			if (canReachPrey()) {
 				this.attackEntityAsMob(this.getAttackTarget());
 				if (!isEntitySmallerThan(this.getAttackTarget(), 1.5F * (this.getAgeScale() / this.maxSize)) || this.getRNG().nextInt(5) != 0) {
-					if (this.getAnimation() != ATTACK_ANIMATION) {
+					if (this.getAnimation() != ATTACK_ANIMATION && this.getAnimation() != SHAKE_ANIMATION) {
 						this.setAnimation(ATTACK_ANIMATION);
 					}
 					this.faceEntity(this.getAttackTarget(), 30, 30);

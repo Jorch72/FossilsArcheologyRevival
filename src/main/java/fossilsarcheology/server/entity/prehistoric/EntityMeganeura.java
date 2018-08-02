@@ -352,13 +352,8 @@ public class EntityMeganeura extends EntityPrehistoricSwimming {
         }
 
         public boolean shouldExecute() {
-            target = EntityMeganeura.getPositionRelativetoGround(EntityMeganeura.this, EntityMeganeura.this.world, EntityMeganeura.this.posX + EntityMeganeura.this.rand.nextInt(32) - 16, EntityMeganeura.this.posZ + EntityMeganeura.this.rand.nextInt(32) - 16, EntityMeganeura.this.rand);
-            return !EntityMeganeura.this.useSwimAI() && !EntityMeganeura.this.isSitting() && isDirectPathBetweenPoints(EntityMeganeura.this.getPosition(), target) && !EntityMeganeura.this.getMoveHelper().isUpdating() && EntityMeganeura.this.rand.nextInt(4) == 0;
-        }
-
-        protected boolean isDirectPathBetweenPoints(BlockPos posVec31, BlockPos posVec32) {
-            RayTraceResult raytraceresult = EntityMeganeura.this.world.rayTraceBlocks(new Vec3d(posVec31.getX() + 0.5D, posVec31.getY() + 0.5D, posVec31.getZ() + 0.5D), new Vec3d(posVec32.getX() + 0.5D, posVec32.getY() + (double) EntityMeganeura.this.height * 0.5D, posVec32.getZ() + 0.5D), false, true, false);
-            return raytraceresult == null || raytraceresult.typeOfHit == RayTraceResult.Type.MISS;
+            target = EntityMeganeura.getPositionRelativetoGround(EntityMeganeura.this, EntityMeganeura.this.world, EntityMeganeura.this.posX + EntityMeganeura.this.rand.nextInt(16) - 8, EntityMeganeura.this.posZ + EntityMeganeura.this.rand.nextInt(16) - 8, EntityMeganeura.this.rand);
+            return !EntityMeganeura.this.useSwimAI() && !EntityMeganeura.this.isSitting() && EntityMeganeura.this.isDirectPathBetweenPoints(new Vec3d(EntityMeganeura.this.getPosition()), new Vec3d(target).addVector(0.5D, 0.5D, 0.5D)) && !EntityMeganeura.this.getMoveHelper().isUpdating() && EntityMeganeura.this.rand.nextInt(4) == 0;
         }
 
         public boolean shouldContinueExecuting() {
@@ -366,7 +361,7 @@ public class EntityMeganeura extends EntityPrehistoricSwimming {
         }
 
         public void updateTask() {
-            if (!isDirectPathBetweenPoints(EntityMeganeura.this.getPosition(), target)) {
+            if (!EntityMeganeura.this.isDirectPathBetweenPoints(new Vec3d(EntityMeganeura.this.getPosition()), new Vec3d(target).addVector(0.5D, 0.5D, 0.5D))) {
                 target = EntityMeganeura.getPositionRelativetoGround(EntityMeganeura.this, EntityMeganeura.this.world, EntityMeganeura.this.posX + EntityMeganeura.this.rand.nextInt(15) - 7, EntityMeganeura.this.posZ + EntityMeganeura.this.rand.nextInt(15) - 7, EntityMeganeura.this.rand);
             }
             if (EntityMeganeura.this.world.isAirBlock(target)) {

@@ -215,7 +215,7 @@ public class EntitySarcosuchus extends EntityPrehistoricSwimming {
 			if (canReachPrey()) {
 				this.attackEntityAsMob(this.getAttackTarget());
 				if (!isEntitySmallerThan(this.getAttackTarget(), 2F * (this.getAgeScale() / this.maxSize)) || this.getRNG().nextInt(5) != 0) {
-					if (this.getAnimation() != ATTACK_ANIMATION) {
+					if (this.getAnimation() != ATTACK_ANIMATION && this.getAnimation() != ROLL_ANIMATION) {
 						this.setAnimation(ATTACK_ANIMATION);
 					}
 					this.faceEntity(this.getAttackTarget(), 30, 30);

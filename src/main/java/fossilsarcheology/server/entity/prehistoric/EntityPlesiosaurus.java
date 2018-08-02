@@ -25,7 +25,6 @@ public class EntityPlesiosaurus extends EntityPrehistoricSwimming {
 		maxSize = 1.05F;
 		teenAge = 3;
 		developsResistance = true;
-		breaksBlocks = true;
 		pediaScale = 40;
 	}
 
