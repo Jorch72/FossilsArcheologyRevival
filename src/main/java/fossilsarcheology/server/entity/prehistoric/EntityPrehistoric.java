@@ -610,6 +610,9 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
                 this.flockObj.onUpdate();
             }
         }
+        if(this.getAttackTarget() != null && this.getAttackTarget() instanceof EntityToyBase && isPreyBlocked(this.getAttackTarget())){
+            this.setAttackTarget(null);
+        }
     }
 
     private boolean canSleepWhileHunting(){
@@ -1781,7 +1784,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
         return this.getAttackTarget() != null && getAttackBounds().intersects(this.getAttackTarget().getEntityBoundingBox()) && !isPreyBlocked(this.getAttackTarget());
     }
 
-    private boolean isPreyBlocked(Entity prey) {
+    public boolean isPreyBlocked(Entity prey) {
         RayTraceResult rayTrace = world.rayTraceBlocks(this.getPositionVector(), prey.getPositionVector(), false);
         if (rayTrace != null && rayTrace.hitVec != null) {
             BlockPos sidePos = rayTrace.getBlockPos();
@@ -1793,6 +1796,32 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
             }
         }
         return false;
+    }
+
+    public boolean rayTraceFeeder(BlockPos position, boolean leaves) {
+        RayTraceResult rayTrace = world.rayTraceBlocks(this.getPositionVector(), new Vec3d(position.getX() + 0.5, position.getY() + 0.5, position.getZ() + 0.5), false);
+        if (rayTrace != null && rayTrace.hitVec != null) {
+            BlockPos sidePos = rayTrace.getBlockPos();
+            BlockPos pos = new BlockPos(rayTrace.hitVec);
+            if (isFeeder(pos, leaves) || isFeeder(sidePos, leaves)) {
+                return true;
+            }else{
+                return rayTrace.typeOfHit == RayTraceResult.Type.MISS;
+            }
+        }
+        return true;
+    }
+
+    private boolean isFeeder(BlockPos pos, boolean leaves){
+        if(leaves){
+            IBlockState state = world.getBlockState(pos);
+            return FoodMappings.INSTANCE.getBlockFoodAmount(state.getBlock(), this.type.diet) > 0;
+        }else{
+            IBlockState state = world.getBlockState(pos);
+            System.out.println(state);
+            TileEntity entity = this.world.getTileEntity(pos);
+            return entity instanceof TileEntityFeeder;
+        }
     }
 
     public boolean shouldFollowFlock() {

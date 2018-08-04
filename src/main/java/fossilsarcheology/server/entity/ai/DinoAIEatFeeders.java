@@ -42,8 +42,10 @@ public class DinoAIEatFeeders extends EntityAIBase {
             TileEntity entity = this.entity.world.getTileEntity(pos);
             if (entity instanceof TileEntityFeeder) {
                 TileEntityFeeder feeder = (TileEntityFeeder) entity;
-                if (!feeder.isEmpty(this.entity.type)) {
+
+                if (!feeder.isEmpty(this.entity.type) && this.entity.rayTraceFeeder(pos, false)) {
                     allBlocks.add(pos);
+
                 }
             }
         }

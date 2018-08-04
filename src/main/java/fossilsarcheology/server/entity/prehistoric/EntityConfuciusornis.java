@@ -40,7 +40,7 @@ public class EntityConfuciusornis extends EntityPrehistoricFlying {
 		this.tasks.addTask(8, new DinoAIWander(this, 1.0D));
 		this.tasks.addTask(9, new DinoAIWatchClosest(this, EntityPlayer.class, 8.0F));
 		this.tasks.addTask(9, new DinoAILookIdle(this));
-		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
+		this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, true, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
 	}
 
 		@Override

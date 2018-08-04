@@ -201,7 +201,7 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
             return this.meat == 0;
         }
         if (type.diet == Diet.HERBIVORE) {
-            return this.meat == 0;
+            return this.plant == 0;
         }
         return type.diet == Diet.OMNIVORE && this.meat == 0 && this.meat == 0;
     }

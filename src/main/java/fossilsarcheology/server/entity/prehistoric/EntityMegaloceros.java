@@ -46,7 +46,7 @@ public class EntityMegaloceros extends EntityPrehistoric {
         this.targetTasks.addTask(1, new DinoAIOwnerHurtByTarget(this));
         this.targetTasks.addTask(2, new DinoAIOwnerHurtTarget(this));
         this.targetTasks.addTask(3, new DinoAIHurtByTarget(this));
-        this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, false, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
+        this.targetTasks.addTask(4, new DinoAIHunt(this, EntityLivingBase.class, true, (Predicate<Entity>) entity -> entity instanceof EntityLivingBase));
     }
 
     @Override

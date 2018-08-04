@@ -15,7 +15,7 @@ public class DinoAIHunt<T extends EntityLivingBase> extends EntityAINearestAttac
 	private final EntityPrehistoric dino;
 
 	public DinoAIHunt(EntityPrehistoric entityIn, Class<T> classTarget, boolean checkSight, Predicate<? super T> targetSelector) {
-		super(entityIn, classTarget, 0, checkSight, false, targetSelector::test);
+		super(entityIn, classTarget, 0, checkSight, true, targetSelector::test);
 		this.dino = entityIn;
 	}
 

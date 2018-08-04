@@ -38,7 +38,7 @@ public class DinoAIEatBlocks extends EntityAIBase {
         }
         List<BlockPos> allBlocks = new ArrayList<>();
         for (BlockPos pos : BlockPos.getAllInBox(this.entity.getPosition().add(-RADIUS, -RADIUS, -RADIUS), this.entity.getPosition().add(RADIUS, RADIUS, RADIUS))) {
-            if (FoodMappings.INSTANCE.getBlockFoodAmount(this.entity.world.getBlockState(pos).getBlock(), this.entity.type.diet) > 0) {
+            if (FoodMappings.INSTANCE.getBlockFoodAmount(this.entity.world.getBlockState(pos).getBlock(), this.entity.type.diet) > 0 && this.entity.rayTraceFeeder(pos, true)) {
                 allBlocks.add(pos);
             }
         }
