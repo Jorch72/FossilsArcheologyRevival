@@ -759,6 +759,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
                 this.setBesideClimbableBlock(false);
             }
         }
+
         Revival.PROXY.calculateChainBuffer(this);
         AnimationHandler.INSTANCE.updateAnimations(this);
     }
@@ -1245,7 +1246,6 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
                     }
 
                     if (itemstack.getItem() == FAItemRegistry.WHIP && this.aiTameType() != PrehistoricEntityTypeAI.Taming.NONE && this.isAdult() && !this.world.isRemote) {
-                       System.out.println(this.isTamed());
                         if (this.isTamed() && isOwner(player) && this.canBeRidden()) {
                             if (this.getRidingPlayer() == null) {
                                 Revival.NETWORK_WRAPPER.sendToAll(new MessageFoodParticles(getEntityId(), FABlockRegistry.VOLCANIC_ROCK));
@@ -1818,7 +1818,6 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
             return FoodMappings.INSTANCE.getBlockFoodAmount(state.getBlock(), this.type.diet) > 0;
         }else{
             IBlockState state = world.getBlockState(pos);
-            System.out.println(state);
             TileEntity entity = this.world.getTileEntity(pos);
             return entity instanceof TileEntityFeeder;
         }
