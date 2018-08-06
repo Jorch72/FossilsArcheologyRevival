@@ -65,7 +65,7 @@ repositories {
 
 dependencies {
   deobfCompile "net.ilexiconn:llibrary:1.7.14-1.12.2"
-  compile "com.azanor:thaumcraft-api:6.1-beta16"
+  compile "com.azanor:thaumcraft-api:6.1-beta20"
   deobfCompile "mcp.mobius.waila:Hwyla:1.8.25-B40_1.12"
   runtime "mezz.jei:jei_1.12.2:4.9.1.181"
   // compile against the JEI API but do not include it at runtime
