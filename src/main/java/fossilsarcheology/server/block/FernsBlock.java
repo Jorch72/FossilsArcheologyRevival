@@ -95,7 +95,7 @@ public class FernsBlock extends BlockBush implements DefaultRenderedItem {
             for (int var8 = -1; var8 <= 1; ++var8) {
                 for (int var9 = -1; var9 <= 1; ++var9) {
                     for (int var10 = -1; var10 <= 1; ++var10) {
-                        if ((var8 != 0 || var10 != 0 || var9 != 0) && world.getBlockState(pos.add(var8, var9 - 1, var10)).getBlock() == Blocks.GRASS && (world.isAirBlock(pos.add(var8, var9, var10)) || world.getBlockState(pos.add(var8, var9, var10)).getBlock() == Blocks.TALLGRASS) && checkUnderTree(world, pos.add(var8, var9, var10)) && (new Random()).nextInt(10) <= 9) {
+                        if ((var8 != 0 || var10 != 0 || var9 != 0) && canPlaceBlockOn(world.getBlockState(pos.add(var8, var9 - 1, var10)).getBlock()) && (world.isAirBlock(pos.add(var8, var9, var10)) || world.getBlockState(pos.add(var8, var9, var10)).getBlock() == Blocks.TALLGRASS) && checkUnderTree(world, pos.add(var8, var9, var10)) && (new Random()).nextInt(10) <= 9) {
                             world.setBlockState(pos.add(var8, var9, var10), FABlockRegistry.FERNS.getStateFromMeta(8 * this.checkSubType(var6)));
                         }
                     }
@@ -113,7 +113,7 @@ public class FernsBlock extends BlockBush implements DefaultRenderedItem {
     }
 
     public static boolean canGrowOn(IBlockState state){
-        return state.getMaterial() == Material.GRASS || state.getBlock().getUnlocalizedName().contains("dirt");
+        return state.getMaterial() == Material.GRASS || state.getBlock() == Blocks.DIRT || state.getBlock().getUnlocalizedName().contains("dirt");
     }
 
     public boolean checkLevel(int meta) {
@@ -133,7 +133,7 @@ public class FernsBlock extends BlockBush implements DefaultRenderedItem {
     }
 
     protected boolean canPlaceBlockOn(Block block) {
-        return block == Blocks.GRASS || block == Blocks.DIRT;
+        return block == Blocks.GRASS || block == Blocks.DIRT || block.getUnlocalizedName().contains("dirt");
     }
 
     @Override
