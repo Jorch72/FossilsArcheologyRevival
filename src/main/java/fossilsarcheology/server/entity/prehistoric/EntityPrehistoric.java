@@ -95,6 +95,7 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
     @SideOnly(Side.CLIENT)
     public ChainBuffer chainBuffer;
     public float pediaScale;
+    public int pediaY = 0;
     public boolean mood_nospace;
     public boolean mood_noplants;
     public int ticksTillPlay;

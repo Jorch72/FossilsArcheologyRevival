@@ -32,7 +32,8 @@ public class EntityMegalodon extends EntityPrehistoricSwimming {
         developsResistance = true;
         breaksBlocks = true;
         hasBabyTexture = false;
-        pediaScale = 30;
+        pediaScale = 70;
+        pediaY = 10;
         this.ridingY = 0.95F;
         this.ridingXZ = -0.2F;
     }
@@ -157,6 +158,7 @@ public class EntityMegalodon extends EntityPrehistoricSwimming {
     @Override
     public void onLivingUpdate() {
         super.onLivingUpdate();
+
         if (this.getAttackTarget() != null) {
             if (canReachPrey()) {
                 this.attackEntityAsMob(this.getAttackTarget());
