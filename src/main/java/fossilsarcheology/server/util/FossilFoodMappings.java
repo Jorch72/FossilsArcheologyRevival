@@ -71,8 +71,8 @@ public class FossilFoodMappings {
 			PrehistoricEntityType entityType = PrehistoricEntityType.values()[i];
 			if (entityType.timePeriod != TimePeriod.CURRENT) {
 				if (entityType.mobType != MobType.FISH) {
-					FoodMappings.INSTANCE.addMeat(new ItemStack(entityType.foodItem), 35);
-					FoodMappings.INSTANCE.addMeat(new ItemStack(entityType.cookedFoodItem), 7);
+					FoodMappings.INSTANCE.addMeat(new ItemStack(entityType.foodItem), 25);
+					FoodMappings.INSTANCE.addMeat(new ItemStack(entityType.cookedFoodItem), 35);
 				} else {
 					FoodMappings.INSTANCE.addFish(new ItemStack(entityType.eggItem), 35);
 					FoodMappings.INSTANCE.addFish(new ItemStack(entityType.fishItem), 35);

@@ -122,7 +122,7 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 
     @Override
     public boolean isItemValidForSlot(int slot, ItemStack stack) {
-        return slot == 0 && FoodMappings.INSTANCE.getItemFoodAmount(stack, Diet.PISCCARNIVORE) > 0 || slot == 1 && FoodMappings.INSTANCE.getItemFoodAmount(stack, Diet.HERBIVORE) > 0;
+        return slot == 0 && FoodMappings.INSTANCE.getItemFoodAmount(stack, Diet.CARNIVORE) > 0 || slot == 1 && FoodMappings.INSTANCE.getItemFoodAmount(stack, Diet.HERBIVORE) > 0;
     }
 
     @Override
@@ -248,7 +248,7 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
         if (!this.world.isRemote) {
             if (!this.getStackInSlot(0).isEmpty() && this.isItemValidForSlot(0, this.getStackInSlot(0))) {
                 if (this.ticksExisted % 5 == 0) {
-                    int foodPoints = FoodMappings.INSTANCE.getItemFoodAmount(this.getStackInSlot(0), Diet.PISCCARNIVORE);
+                    int foodPoints = FoodMappings.INSTANCE.getItemFoodAmount(this.getStackInSlot(0), Diet.CARNIVORE);
                     if (foodPoints > 0) {
                         this.meat += foodPoints;
                         this.decrStackSize(0, 1);
