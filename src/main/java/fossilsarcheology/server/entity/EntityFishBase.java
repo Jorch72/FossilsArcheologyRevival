@@ -152,7 +152,7 @@ public abstract class EntityFishBase extends EntityTameable {
 
     @Override
     public boolean isInWater() {
-        return super.isInWater() || this.isInsideOfMaterial(Material.WATER);
+        return super.isInWater() || this.isInsideOfMaterial(Material.WATER) || this.isInsideOfMaterial(Material.CORAL);
     }
 
     protected boolean isTargetInWater() {
