@@ -443,7 +443,7 @@ public enum PrehistoricEntityType {
 	}
 
 	public boolean isAquatic() {
-		return this.mobType == MobType.DINOSAUR_AQUATIC && this != HENODUS && this != SARCOSUCHUS ;
+		return this.mobType == MobType.DINOSAUR_AQUATIC && this != SARCOSUCHUS ;
 	}
 
 	private void setExperience(float experience, float experienceIncrement) {
