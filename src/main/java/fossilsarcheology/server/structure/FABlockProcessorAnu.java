@@ -31,6 +31,9 @@ public class FABlockProcessorAnu extends FABlockProcessorLoot {
         if(blockInfoIn.blockState.getBlock() == Blocks.GLASS){
             return new Template.BlockInfo(pos, Blocks.STAINED_GLASS.getDefaultState().withProperty(BlockStainedGlass.COLOR, EnumDyeColor.BLACK), null);
         }
+        if(blockInfoIn.blockState.getBlock() == Blocks.WALL_SIGN){
+            return new Template.BlockInfo(pos, Blocks.AIR.getDefaultState(), null);
+        }
         if(blockInfoIn.blockState.getBlock() == Blocks.LIT_PUMPKIN){
             EnumFacing facing = blockInfoIn.blockState.getValue(BlockHorizontal.FACING);
             return new Template.BlockInfo(pos, FABlockRegistry.SKULL_LANTERN.getDefaultState().withProperty(AnubiteStatueBlock.FACING, facing), null);
