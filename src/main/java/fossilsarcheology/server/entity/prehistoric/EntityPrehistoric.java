@@ -1015,11 +1015,11 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
     }
 
     public int getMood() {
-        return MathHelper.clamp(this.dataManager.get(MOOD), 0, 100);
+        return MathHelper.clamp(this.dataManager.get(MOOD), -100, 100);
     }
 
     public void setMood(int mood) {
-        this.dataManager.set(MOOD, MathHelper.clamp(mood, 0, 100));
+        this.dataManager.set(MOOD, MathHelper.clamp(mood, -100, 100));
     }
 
     public PrehistoricMoodType getMoodFace() {
@@ -1257,10 +1257,10 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
                             } else if (this.getRidingPlayer() == player) {
                                 this.setSprinting(true);
                                 Revival.NETWORK_WRAPPER.sendToAll(new MessageFoodParticles(getEntityId(), FABlockRegistry.VOLCANIC_ROCK));
-                                this.setMood(this.getMood() - 1);
+                                this.setMood(this.getMood() - 5);
                             }
                         } else if (!this.isTamed() && this.aiTameType() != PrehistoricEntityTypeAI.Taming.BLUEGEM && this.aiTameType() != PrehistoricEntityTypeAI.Taming.GEM) {
-                            this.setMood(this.getMood() - 1);
+                            this.setMood(this.getMood() - 5);
                             Revival.NETWORK_WRAPPER.sendToAll(new MessageFoodParticles(getEntityId(), FABlockRegistry.VOLCANIC_ROCK));
                             if (getRNG().nextInt(5) == 0) {
                                 ITextComponent itextcomponent = new TextComponentString(this.getName());
