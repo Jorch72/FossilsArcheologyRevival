@@ -80,6 +80,8 @@ public class ModelNautilus extends AdvancedModelBase {
 
 		if (!entity.isInWater()) {
 			this.shell.rotateAngleZ = (float) Math.toRadians(90);
+			this.shell.rotationPointY = 21.5F;
+			this.shell.rotationPointZ = 5F;
 		} else {
 			this.bob(shell, -speed, 0.5F, true, entity.ticksExisted, 1);
 		}
