@@ -175,7 +175,7 @@ public class EntitySarcosuchus extends EntityPrehistoricSwimming {
 				riddenByEntity.attackEntityFrom(DamageSource.DROWN, 10);
 
 				if (riddenByEntity instanceof EntityToyBase) {
-					((EntityToyBase) riddenByEntity).dismountEntity(this);
+					((EntityToyBase) riddenByEntity).dismountRidingEntity();
 				}
 				if (riddenByEntity.isDead) {
 					this.onKillEntity((EntityLivingBase) riddenByEntity);

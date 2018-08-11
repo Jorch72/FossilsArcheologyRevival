@@ -108,6 +108,7 @@ public class EntityToyBall extends EntityToyBase {
 					this.rotationYaw = dmg.getTrueSource().rotationYaw;
 					this.addVelocity((double) (-MathHelper.sin(this.rotationYaw * (float) Math.PI / 180.0F) * 0.5F), 0.1D, (double) (MathHelper.cos(this.rotationYaw * (float) Math.PI / 180.0F) * 0.5F));
 				}
+				this.dismountRidingEntity();
 			}
 		}
 		return dmg != DamageSource.OUT_OF_WORLD;

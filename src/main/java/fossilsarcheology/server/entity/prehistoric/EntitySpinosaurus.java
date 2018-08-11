@@ -182,7 +182,7 @@ public class EntitySpinosaurus extends EntityPrehistoricSwimming {
 			Entity riddenByEntity = passenger;
 			if ((this.getAnimationTick() > 55 || this.getAnimation() == NO_ANIMATION)) {
 				if (riddenByEntity instanceof EntityToyBase) {
-					((EntityToyBase) riddenByEntity).dismountEntity(this);
+					((EntityToyBase) riddenByEntity).dismountRidingEntity();
 					this.setAttackTarget(null);
 					this.doPlayBonus(((EntityToyBase) riddenByEntity).toyBonus);
 					riddenByEntity.setPosition(posX, posY, posZ);
