@@ -213,7 +213,7 @@ public abstract class EntityFishBase extends EntityTameable {
 
     @Override
     protected boolean canDespawn() {
-        return true;
+        return !this.hasCustomName();
     }
 
     @Override

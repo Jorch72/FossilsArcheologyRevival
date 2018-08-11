@@ -68,8 +68,6 @@ public class FossilConfig {
     @ConfigEntry(category = "dinosaurs")
     public boolean eggsLikeChickens = false;
     @ConfigEntry(category = "dinosaurs")
-    public boolean sleepingParticles = true;
-    @ConfigEntry(category = "dinosaurs")
     public int flyingTargetMaxHeight = 128;
     @ConfigEntry(category = "ids")
     public int biomeIDDarknessLair = 128;
