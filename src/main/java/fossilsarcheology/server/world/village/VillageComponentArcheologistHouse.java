@@ -1,4 +1,5 @@
 package fossilsarcheology.server.world.village;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -39,6 +40,10 @@ public class VillageComponentArcheologistHouse extends StructureVillagePieces.Vi
         }
         BlockPos blockpos = new BlockPos(this.getXWithOffset(0, 0), this.getYWithOffset(0), this.getZWithOffset(0, 0));
         return new WorldGenArcheologistHouse(this,  this.getCoordBaseMode()).generate(world, random, blockpos.up());
+    }
+
+    public IBlockState getBiomeBlock(IBlockState state){
+        return getBiomeSpecificBlockState(state);
     }
 
 }

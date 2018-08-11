@@ -54,7 +54,7 @@ public class WorldGenArcheologistHouse extends WorldGenerator {
         TemplateManager templateManager = worldIn.getSaveHandler().getStructureTemplateManager();
         PlacementSettings settings = new PlacementSettings().setRotation(rotation).setMirror(Mirror.NONE);
         Template template = templateManager.getTemplate(server, HOUSE);
-        template.addBlocksToWorld(worldIn, position.up(3), new FABlockProcessorVillage(position.up(3), settings, CHEST), settings, 2);
+        template.addBlocksToWorld(worldIn, position.up(3), new FABlockProcessorVillage(position.up(3), settings, CHEST, component), settings, 2);
         if(component.villagerCount < 1) {
             EntityVillager villager = new EntityVillager(worldIn);
             villager.setProfession(FAVillagerRegistry.ARCHEOLOGIST_PROFESSION);

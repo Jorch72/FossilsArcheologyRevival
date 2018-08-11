@@ -2,6 +2,7 @@ package fossilsarcheology.server.structure;
 
 import fossilsarcheology.server.block.AnubiteStatueBlock;
 import fossilsarcheology.server.block.FABlockRegistry;
+import fossilsarcheology.server.world.village.VillageComponentArcheologistHouse;
 import net.minecraft.block.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -21,30 +22,20 @@ import javax.annotation.Nullable;
 
 public class FABlockProcessorVillage extends FABlockProcessorLoot {
 
-    public FABlockProcessorVillage(BlockPos pos, PlacementSettings settings, ResourceLocation loot) {
+    private VillageComponentArcheologistHouse village;
+
+    public FABlockProcessorVillage(BlockPos pos, PlacementSettings settings, ResourceLocation loot, VillageComponentArcheologistHouse village) {
         super(pos, settings, loot);
+        this.village = village;
     }
 
     @Nullable
     public Template.BlockInfo processBlock(World worldIn, BlockPos pos, Template.BlockInfo blockInfoIn) {
-        int structureType = getBiomeType(worldIn, pos);
-        if (blockInfoIn.blockState.getBlock() instanceof BlockChest || structureType == 0) {
+        if (blockInfoIn.blockState.getBlock() instanceof BlockChest) {
             return super.processBlock(worldIn, pos, blockInfoIn);
         } else {
-            return new Template.BlockInfo(pos, getBiomeSpecificBlockState(blockInfoIn.blockState, structureType, worldIn.getBiome(pos)), null);
+            return new Template.BlockInfo(pos, village.getBiomeBlock(blockInfoIn.blockState), null);
         }
-    }
-
-    private int getBiomeType(World world, BlockPos pos) {
-        Biome biome = world.getBiome(pos);
-        if (biome instanceof BiomeDesert) {
-            return 1;
-        } else if (biome instanceof BiomeSavanna) {
-            return 2;
-        } else if (biome instanceof BiomeTaiga) {
-            return 3;
-        }
-        return 0;
     }
 
     protected IBlockState getBiomeSpecificBlockState(IBlockState blockstateIn, int structureType, Biome biome) {
