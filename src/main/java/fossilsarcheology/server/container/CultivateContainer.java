@@ -31,7 +31,7 @@ public class CultivateContainer extends BlockEntityContainer {
 
         this.addSlotToContainer(new SlotItemHandlerPredicate(itemHandler, 0, 49, 20, stack -> !TileEntityCultivate.getCultivationOutput(stack).isEmpty()));
         this.addSlotToContainer(new SlotItemHandlerPredicate(itemHandler, 1, 81, 54, stack -> TileEntityCultivate.getItemFuelTime(stack) > 0));
-        this.addSlotToContainer(new SlotItemHandler(itemHandler, 2, 116, 21));
+        this.addSlotToContainer(new SlotItemHandlerPredicate(itemHandler, 2, 116, 21, stack -> false));
 
         for (int column = 0; column < 3; ++column) {
             for (int row = 0; row < 9; ++row) {
