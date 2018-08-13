@@ -53,34 +53,6 @@ public class FAEntityRegistry {
 		registerEntity(EntityToyBall.class, "fossil.toyball", 103);
 		registerEntity(EntityToyTetheredLog.class, "fossil.toytetheredlog", 104);
 		registerEntity(EntityToyScratchingPost.class, "fossil.toyscratchingpost", 105);
-
-		Set<Biome> swamps = BiomeDictionary.getBiomes(BiomeDictionary.Type.SWAMP);
-		Set<Biome> rivers = BiomeDictionary.getBiomes(BiomeDictionary.Type.RIVER);
-		Set<Biome> oceans = BiomeDictionary.getBiomes(BiomeDictionary.Type.OCEAN);
-		Biome.SpawnListEntry sturgeon = new Biome.SpawnListEntry(EntitySturgeon.class, 20, 1, 1);
-		Biome.SpawnListEntry alligatorgar = new Biome.SpawnListEntry(EntityAlligatorGar.class, 40, 1, 1);
-		Biome.SpawnListEntry coelacanth = new Biome.SpawnListEntry(EntityCoelacanth.class, 20, 1, 1);
-		Biome.SpawnListEntry nautilus = new Biome.SpawnListEntry(EntityNautilus.class, 4, 1, 1);
-		if (Revival.CONFIG.spawnSturgeon) {
-			for (Biome river : rivers) {
-				river.getSpawnableList(EnumCreatureType.WATER_CREATURE).add(sturgeon);
-			}
-		}
-		if (Revival.CONFIG.spawnAlligatorGar) {
-			for (Biome swamp : swamps) {
-				swamp.getSpawnableList(EnumCreatureType.WATER_CREATURE).add(alligatorgar);
-			}
-		}
-		if (Revival.CONFIG.spawnCoelacanth) {
-			for (Biome ocean : oceans) {
-				ocean.getSpawnableList(EnumCreatureType.WATER_CREATURE).add(coelacanth);
-			}
-		}
-		if (Revival.CONFIG.spawnNautilus) {
-			for (Biome ocean : oceans) {
-				ocean.getSpawnableList(EnumCreatureType.WATER_CREATURE).add(nautilus);
-			}
-		}
 	}
 
 	public static void registerEntity(Class<? extends Entity> entityClass, String name, int id) {

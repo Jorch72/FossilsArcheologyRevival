@@ -2,6 +2,10 @@ package fossilsarcheology.server.world;
 
 import fossilsarcheology.Revival;
 import fossilsarcheology.server.block.FABlockRegistry;
+import fossilsarcheology.server.entity.prehistoric.EntityAlligatorGar;
+import fossilsarcheology.server.entity.prehistoric.EntityCoelacanth;
+import fossilsarcheology.server.entity.prehistoric.EntityNautilus;
+import fossilsarcheology.server.entity.prehistoric.EntitySturgeon;
 import fossilsarcheology.server.structure.StructureUtils;
 import fossilsarcheology.server.world.gen.HellBoatWorldGen;
 import fossilsarcheology.server.world.gen.WorldGenPalm;
@@ -121,13 +125,13 @@ public class FAWorldGenerator implements IWorldGenerator {
 		if (Revival.CONFIG.generateMoai && random.nextInt(100) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && BiomeDictionary.hasType(biome, BiomeDictionary.Type.BEACH) && world.getBlockState(height.down()).isOpaqueCube()) {
 			StructureUtils.generateStructureAtWithRandomRotation(random.nextInt(3) == 0 ? MOAI_WITH_HAT : MOAI, world, height.down(random.nextInt(5)), random, false, true);
 		}
-		if (Revival.CONFIG.generateAztecWeaponShops && random.nextInt(65) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && BiomeDictionary.hasType(biome, BiomeDictionary.Type.JUNGLE)) {
+		if (Revival.CONFIG.generateAztecWeaponShops && random.nextInt(120) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && BiomeDictionary.hasType(biome, BiomeDictionary.Type.JUNGLE)) {
 			StructureUtils.generateStructureAtWithRandomRotationWithLoot(AZTEC_WEAPONS_SHOP, AZTEC_WEAPONS_CHEST, world, height.down(2), random, true, false);
 		}
-		if (Revival.CONFIG.generateTemple && random.nextInt(120) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && BiomeDictionary.hasType(biome, BiomeDictionary.Type.JUNGLE)) {
+		if (Revival.CONFIG.generateTemple && random.nextInt(200) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && BiomeDictionary.hasType(biome, BiomeDictionary.Type.JUNGLE)) {
 			StructureUtils.generateStructureAtWithRandomRotationWithLoot(AZTEC_TEMPLE, AZTEC_TEMPLE_CHEST, world, height, random, true, false);
 		}
-		if (Revival.CONFIG.generateAcademy && random.nextInt(200) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY) && BiomeDictionary.hasType(biome, BiomeDictionary.Type.DRY) && BiomeDictionary.hasType(biome, BiomeDictionary.Type.HOT)) {
+		if (Revival.CONFIG.generateAcademy && random.nextInt(300) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY) && BiomeDictionary.hasType(biome, BiomeDictionary.Type.DRY) && BiomeDictionary.hasType(biome, BiomeDictionary.Type.HOT)) {
 			StructureUtils.generateStructureAtWithRandomRotationWithLoot(EGYPTIAN_ACADEMY, EGYPTIAN_ACADEMY_CHEST, world, height.down(), random, true, false);
 		}
 		if (world.getChunkFromChunkCoords(chunkX, chunkZ) == world.getChunkFromBlockCoords(ANU_CASTLE_POS) && world.provider.getDimension() == Revival.CONFIG.dimensionIDDarknessLair) {
@@ -153,6 +157,55 @@ public class FAWorldGenerator implements IWorldGenerator {
 			counter++;
 			if (counter == 1) {
 				StructureUtils.generateStructureAtWithRotation(TREASURE_ROOM, world, TREASURE_ROOM_POS, random, Rotation.NONE, false, false);
+			}
+		}
+
+		if(Revival.CONFIG.spawnNautilus && BiomeDictionary.hasType(biome, BiomeDictionary.Type.OCEAN) &&  random.nextInt(3) == 0){
+			for(int i = 0; i < 1 + random.nextInt(3); i++){
+				int ex = chunkX * 16 + random.nextInt(16);
+				int zee = chunkZ * 16 + random.nextInt(16);
+				int why = 30 + random.nextInt(world.getSeaLevel() - 30);
+				if(world.getBlockState(new BlockPos(ex, why, zee)).getMaterial() == Material.WATER){
+					EntityNautilus fish = new EntityNautilus(world);
+					fish.setPosition(ex + 0.5F, why + 0.5F, zee + 0.5F);
+					world.spawnEntity(fish);
+				}
+			}
+		}
+		if(Revival.CONFIG.spawnCoelacanth && BiomeDictionary.hasType(biome, BiomeDictionary.Type.OCEAN) &&  random.nextInt(6) == 0){
+			for(int i = 0; i < 1 + random.nextInt(3); i++){
+				int ex = chunkX * 16 + random.nextInt(16);
+				int zee = chunkZ * 16 + random.nextInt(16);
+				int why = 10 + random.nextInt(25);
+				if(world.getBlockState(new BlockPos(ex, why, zee)).getMaterial() == Material.WATER){
+					EntityCoelacanth fish = new EntityCoelacanth(world);
+					fish.setPosition(ex + 0.5F, why + 0.5F, zee + 0.5F);
+					world.spawnEntity(fish);
+				}
+			}
+		}
+		if(Revival.CONFIG.spawnAlligatorGar && BiomeDictionary.hasType(biome, BiomeDictionary.Type.SWAMP) &&  random.nextInt(3) == 0){
+			for(int i = 0; i < 1 + random.nextInt(3); i++){
+				int ex = chunkX * 16 + random.nextInt(16);
+				int zee = chunkZ * 16 + random.nextInt(16);
+				int why = 40 + random.nextInt(world.getSeaLevel() - 40);
+				if(world.getBlockState(new BlockPos(ex, why, zee)).getMaterial() == Material.WATER){
+					EntityAlligatorGar fish = new EntityAlligatorGar(world);
+					fish.setPosition(ex + 0.5F, why + 0.5F, zee + 0.5F);
+					world.spawnEntity(fish);
+				}
+			}
+		}
+		if(Revival.CONFIG.spawnSturgeon && BiomeDictionary.hasType(biome, BiomeDictionary.Type.RIVER) &&  random.nextInt(3) == 0){
+			for(int i = 0; i < 1 + random.nextInt(3); i++){
+				int ex = chunkX * 16 + random.nextInt(16);
+				int zee = chunkZ * 16 + random.nextInt(16);
+				int why = 40 + random.nextInt(world.getSeaLevel() - 40);
+				if(world.getBlockState(new BlockPos(ex, why, zee)).getMaterial() == Material.WATER){
+					EntitySturgeon fish = new EntitySturgeon(world);
+					fish.setPosition(ex + 0.5F, why + 0.5F, zee + 0.5F);
+					world.spawnEntity(fish);
+				}
 			}
 		}
 		if(!Revival.CONFIG.logCascadingWorldGen) {

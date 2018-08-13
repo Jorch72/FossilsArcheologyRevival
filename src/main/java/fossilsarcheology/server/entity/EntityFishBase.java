@@ -199,21 +199,17 @@ public abstract class EntityFishBase extends EntityTameable {
 
     @Override
     public boolean getCanSpawnHere() {
-        int i = MathHelper.floor(this.posX);
-        int j = MathHelper.floor(this.getEntityBoundingBox().minY);
-        int k = MathHelper.floor(this.posZ);
-        BlockPos blockpos = new BlockPos(i, j, k);
-        return this.world.checkNoEntityCollision(this.getEntityBoundingBox()) && this.world.getBlockState(blockpos.down()).getBlock() == this.spawnableBlock;
+        System.out.println(this.getPositionVector().toString());
+       return this.posY < (double)this.world.getSeaLevel() && this.isInWater();
+    }
+
+    public boolean isNotColliding() {
+        return this.world.checkNoEntityCollision(this.getEntityBoundingBox(), this);
     }
 
     @Override
     public int getTalkInterval() {
         return 120;
-    }
-
-    @Override
-    protected boolean canDespawn() {
-        return !this.hasCustomName();
     }
 
     @Override
