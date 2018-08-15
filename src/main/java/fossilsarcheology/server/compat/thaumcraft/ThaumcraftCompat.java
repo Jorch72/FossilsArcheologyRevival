@@ -25,7 +25,7 @@ public class ThaumcraftCompat {
 
 	//We define the aspects here
 	static final Aspect TIME = new Aspect("chronos", 0Xb5a642, new Aspect[]{Aspect.EXCHANGE, Aspect.MOTION}, new ResourceLocation(Revival.MODID, "textures/thaumcraft/chronos.png"), 1);
-	static final Aspect RUIN = new Aspect("anteanus", 0XF2F0E6, new Aspect[]{Aspect.MAN, ThaumcraftCompat.TIME}, new ResourceLocation(Revival.MODID, "textures/thaumcraft/anteanus.png"), 1);
+	static final Aspect RUIN = new Aspect("anteanus", 0XA9A9A9, new Aspect[]{Aspect.MAN, ThaumcraftCompat.TIME}, new ResourceLocation(Revival.MODID, "textures/thaumcraft/anteanus.png"), 1);
 	static final Aspect FOSSIL = new Aspect("priscus", 0X9f8170, new Aspect[]{Aspect.BEAST, ThaumcraftCompat.TIME}, new ResourceLocation(Revival.MODID, "textures/thaumcraft/priscus.png"), 1);
 	private static final ThaumcraftCompat INSTANCE = new ThaumcraftCompat();
 	private static boolean registered = false;
