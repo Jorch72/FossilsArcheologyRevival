@@ -457,9 +457,9 @@ public class ModelSpinosaurus extends ModelPrehistoric {
 			sitAnimationRotationPrev(Sail8, sitProgress, (float) Math.toRadians(1.0D), 0, 0);
 			sitAnimationRotationPrev(Sail5, sitProgress, (float) Math.toRadians(2.0D), 0, 0);
 			sitAnimationRotationPrev(leftLeg, sitProgress, -((float) Math.toRadians(15.0D)), 0, 0);
-			sitAnimationRotationPrev(leftFoot, sitProgress, (float) Math.toRadians(83.0D), -((float) Math.toRadians(83.0D)), 0);
+			sitAnimationRotationPrev(leftFoot, sitProgress, (float) Math.toRadians(83.0D), 0, 0);
 			sitAnimationRotationPrev(tail1, sitProgress, (float) Math.toRadians(1.0D), 0, 0);
-			sitAnimationRotationPrev(rightFoot, sitProgress, (float) Math.toRadians(83.0D), (float) Math.toRadians(83.0D), 0);
+			sitAnimationRotationPrev(rightFoot, sitProgress, (float) Math.toRadians(83.0D), 0, 0);
 			sitAnimationRotationPrev(lowerBody, sitProgress, -((float) Math.toRadians(2.0D)), 0, 0);
 			sitAnimationRotationPrev(rightLowerArm, sitProgress, -((float) Math.toRadians(3.0D)), 0, 0);
 			sitAnimationRotationPrev(tail3, sitProgress, -((float) Math.toRadians(6.13D)), 0, 0);
@@ -474,8 +474,8 @@ public class ModelSpinosaurus extends ModelPrehistoric {
 			sitAnimationPos(lowerBody, sitProgress, 0, 5, 0);
 			sitAnimationPos(rightThigh, sitProgress, 0, 5, 0);
 			sitAnimationPos(leftThigh, sitProgress, 0, 5, 0);
-			sitAnimationPos(leftFoot, sitProgress, 0, -2, -1.5F);
-			sitAnimationPos(rightFoot, sitProgress, 0, -2, -1.5F);
+			sitAnimationPos(leftFoot, sitProgress, 0, -0.5F, -2F);
+			sitAnimationPos(rightFoot, sitProgress, 0, -0.5F, -2F);
 		}
 	}
 }
