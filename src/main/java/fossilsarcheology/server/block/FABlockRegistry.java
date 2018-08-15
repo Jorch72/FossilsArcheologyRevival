@@ -188,9 +188,6 @@ public class FABlockRegistry {
 
 
 	public static void registerBlock(RegistryEvent.Register<Block> event, Block block) {
-		if (Loader.isModLoaded("thaumcraft")) {
-			ThaumcraftCompatBridge.registerAspects();
-		}
 		String name = block.getUnlocalizedName().substring("tile.".length());
 		if (block.getRegistryName() == null) {
 			ResourceLocation identifier = new ResourceLocation(Revival.MODID, name);

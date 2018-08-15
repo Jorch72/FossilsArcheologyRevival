@@ -54,15 +54,13 @@ public class Revival {
 	@Mod.EventHandler
 	public void onPreInit(FMLPreInitializationEvent event) {
 		PROXY.onPreInit();
-		if (Loader.isModLoaded("thaumcraft")) {
-			ThaumcraftCompatBridge.registerAspects();
+			ThaumcraftCompatBridge.loadThaumcraftCompat();
 			LOGGER.info("Archaean horizon");
 			LOGGER.info("The first sunrise");
 			LOGGER.info("On a pristine Gaea");
 			LOGGER.info("Opus perfectum");
 			LOGGER.info("Somewhere there, us sleeping");
 		}
-	}
 
 	@Mod.EventHandler
 	public void onInit(FMLInitializationEvent event) {

@@ -21,9 +21,6 @@ import java.util.Set;
 
 public class FAEntityRegistry {
 	public static void register() {
-		if (Loader.isModLoaded("thaumcraft")) {
-			ThaumcraftCompatBridge.registerAspects();
-		}
 		EntityPropertiesHandler.INSTANCE.registerProperties(FossilsPlayerProperties.class);
 		EntityPropertiesHandler.INSTANCE.registerProperties(FossilsMammalProperties.class);
 
@@ -56,16 +53,10 @@ public class FAEntityRegistry {
 	}
 
 	public static void registerEntity(Class<? extends Entity> entityClass, String name, int id) {
-		if (Loader.isModLoaded("thaumcraft")) {
-			ThaumcraftCompatBridge.registerAspects();
-		}
 		EntityRegistry.registerModEntity(new ResourceLocation(Revival.MODID, "" + name), entityClass, name, id, Revival.INSTANCE, 64, 1, true);
 	}
 
 	public static void registerSpawnable(Class<? extends Entity> entityClass, String name, int id, int mainColor, int subColor) {
-		if (Loader.isModLoaded("thaumcraft")) {
-			ThaumcraftCompatBridge.registerAspects();
-		}
 		EntityRegistry.registerModEntity(new ResourceLocation(Revival.MODID, "" + name), entityClass, name, id, Revival.INSTANCE, 64, 1, false, mainColor, subColor);
 	}
 }

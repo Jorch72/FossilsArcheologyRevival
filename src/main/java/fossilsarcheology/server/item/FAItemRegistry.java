@@ -92,9 +92,6 @@ public class FAItemRegistry {
 	public static final ItemFossilDoor PALM_DOOR_ITEM = new ItemFossilDoor(FABlockRegistry.PALM_DOOR, "palm_door_item");
 
 	public static Item registerItem(RegistryEvent.Register<Item> event, Item item) {
-		if (Loader.isModLoaded("thaumcraft")) {
-			ThaumcraftCompatBridge.registerAspects();
-		}
 		String name = item.getUnlocalizedName().substring("item.".length());
 		item.setRegistryName(new ResourceLocation(Revival.MODID, name));
 		event.getRegistry().register(item);
@@ -105,9 +102,6 @@ public class FAItemRegistry {
 
 
 	public static Item registerItem(RegistryEvent.Register<Item> event, Item item, String registryName) {
-		if (Loader.isModLoaded("thaumcraft")) {
-			ThaumcraftCompatBridge.registerAspects();
-		}
 		item.setRegistryName(new ResourceLocation(Revival.MODID, registryName));
 		event.getRegistry().register(item);
 		ITEMS.add(item);
