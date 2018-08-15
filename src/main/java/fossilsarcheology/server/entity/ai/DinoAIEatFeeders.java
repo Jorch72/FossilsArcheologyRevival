@@ -2,6 +2,7 @@ package fossilsarcheology.server.entity.ai;
 
 import fossilsarcheology.server.block.entity.TileEntityFeeder;
 import fossilsarcheology.server.entity.prehistoric.EntityPrehistoric;
+import fossilsarcheology.server.util.FoodMappings;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.tileentity.TileEntity;
@@ -82,6 +83,12 @@ public class DinoAIEatFeeders extends EntityAIBase {
     public void updateTask() {
         if (this.targetBlock != null) {
             TileEntity entity = this.entity.world.getTileEntity(this.targetBlock);
+            this.entity.getNavigator().tryMoveToXYZ(this.targetBlock.getX() + 0.5D, this.targetBlock.getY(), this.targetBlock.getZ() + 0.5D, 1D);
+            if(!this.entity.rayTraceFeeder(targetBlock, false) || this.entity.getNavigator().noPath()){
+                this.targetBlock = null;
+                this.resetTask();
+                return;
+            }
             if (entity instanceof TileEntityFeeder) {
                 TileEntityFeeder feeder = (TileEntityFeeder) entity;
                 double distanceSq = this.entity.getDistanceSq(this.targetBlock.getX(), this.targetBlock.getY(), this.targetBlock.getZ());
@@ -96,8 +103,10 @@ public class DinoAIEatFeeders extends EntityAIBase {
                         this.targetBlock = null;
                         this.resetTask();
                     }
-                } else if (this.entity.getNavigator().noPath()) {
-                    this.entity.getNavigator().tryMoveToXYZ(this.targetBlock.getX() + 0.5D, this.targetBlock.getY(), this.targetBlock.getZ() + 0.5D, 1D);
+                } else {
+                    this.feedingTicks = 0;
+                    this.targetBlock = null;
+                    this.resetTask();
                 }
             }
         }

@@ -55,6 +55,9 @@ public class DinoAIEatItems extends EntityAIBase {
                     this.targetItem.setDead();
                 }
             }
+            if(this.prehistoric.getNavigator().noPath()){
+                resetTask();
+            }
         }
     }
 

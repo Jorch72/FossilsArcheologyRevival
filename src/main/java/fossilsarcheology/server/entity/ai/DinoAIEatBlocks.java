@@ -64,9 +64,15 @@ public class DinoAIEatBlocks extends EntityAIBase {
     @Override
     public void updateTask() {
         if (this.targetBlock != null) {
+            this.entity.getNavigator().tryMoveToXYZ(this.targetBlock.getX() + 0.5D, this.targetBlock.getY(), this.targetBlock.getZ() + 0.5D, 1D);
             Block block = this.entity.world.getBlockState(this.targetBlock).getBlock();
             if (FoodMappings.INSTANCE.getBlockFoodAmount(block, this.entity.type.diet) > 0) {
                 double distance = this.getDistance(this.targetBlock);
+                if(!this.entity.rayTraceFeeder(targetBlock, true) || this.entity.getNavigator().noPath() || FoodMappings.INSTANCE.getBlockFoodAmount(this.entity.world.getBlockState(targetBlock).getBlock(), this.entity.type.diet) == 0){
+                    this.targetBlock = null;
+                    this.resetTask();
+                    return;
+                }
                 if (distance * distance < 6) {
                     this.entity.setHunger(Math.min(this.entity.getMaxHunger(), this.entity.getHunger() + FoodMappings.INSTANCE.getBlockFoodAmount(block, this.entity.type.diet)));
                     this.entity.setHealth(Math.min(this.entity.getMaxHealth(), (int) (this.entity.getHealth() + FoodMappings.INSTANCE.getBlockFoodAmount(block, this.entity.type.diet) / 10)));
@@ -75,10 +81,6 @@ public class DinoAIEatBlocks extends EntityAIBase {
                     this.entity.world.destroyBlock(this.targetBlock, false);
                     this.targetBlock = null;
                     this.resetTask();
-                } else {
-                    if (this.entity.getNavigator().noPath()) {
-                        this.entity.getNavigator().tryMoveToXYZ(this.targetBlock.getX() + 0.5D, this.targetBlock.getY(), this.targetBlock.getZ() + 0.5D, 1D);
-                    }
                 }
             }
         }
