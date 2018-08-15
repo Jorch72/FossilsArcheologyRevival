@@ -5,6 +5,7 @@ import fossilsarcheology.server.entity.prehistoric.EntityPrehistoric;
 import fossilsarcheology.server.entity.projectile.JavelinEntity;
 import fossilsarcheology.server.item.FAItemRegistry;
 import fossilsarcheology.server.message.MessageRollBall;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.item.EntityItem;
@@ -71,13 +72,21 @@ public class EntityToyBall extends EntityToyBase {
 		}
 	}
 
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if(this.isInsideOfMaterial(Material.WATER)){
+			this.addVelocity(0, 0.1D, 0);
+		}
+	}
 	@Override
     public void onUpdate() {
 		super.onUpdate();
+
 		if (Math.abs(this.motionX) > 0.01 || Math.abs(this.motionZ) > 0.01) {
 			rollValue++;
 			Revival.NETWORK_WRAPPER.sendToAll(new MessageRollBall(this.getEntityId(), this.rollValue));
 		}
+
 	}
 
 	@Override

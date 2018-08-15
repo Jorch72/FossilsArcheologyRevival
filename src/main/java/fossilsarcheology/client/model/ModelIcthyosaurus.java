@@ -125,6 +125,11 @@ public class ModelIcthyosaurus extends ModelPrehistoric {
 		ModelUtils.rotate(animator, lowerJaw, 29, 0, 0);
 		animator.endKeyframe();
 		animator.resetKeyframe(10);
+		animator.setAnimation(prehistoric.ATTACK_ANIMATION);
+		animator.startKeyframe(5);
+		ModelUtils.rotate(animator, lowerJaw, 29, 0, 0);
+		animator.endKeyframe();
+		animator.resetKeyframe(5);
 		animator.setAnimation(prehistoric.FISH_ANIMATION);
 		animator.startKeyframe(10);
 		ModelUtils.rotate(animator, head, 0, 15F, 0);

@@ -22,7 +22,7 @@ public abstract class EntityToyBase extends EntityLiving {
 
 	@Override
     public boolean isAIDisabled() {
-		return true;
+		return false;
 	}
 
 	@Override

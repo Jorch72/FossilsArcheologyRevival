@@ -3,12 +3,15 @@ package fossilsarcheology.server.entity.prehistoric;
 import com.google.common.base.Predicate;
 import fossilsarcheology.client.sound.FASoundRegistry;
 import fossilsarcheology.server.entity.ai.*;
+import fossilsarcheology.server.entity.utility.EntityToyBase;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
 import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
 import net.minecraft.entity.ai.EntityAISit;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -158,5 +161,37 @@ public class EntityHenodus extends EntityPrehistoricSwimming {
 	@Override
 	protected SoundEvent getDeathSound() {
 		return FASoundRegistry.HENODUS_DEATH;
+	}
+
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (this.getAttackTarget() != null) {
+			this.attackEntityAsMob(this.getAttackTarget());
+		}
+	}
+
+	@Override
+	public boolean attackEntityAsMob(Entity entity) {
+		if (this.canReachPrey()) {
+			if (this.getAnimation() == NO_ANIMATION) {
+				this.setAnimation(ATTACK_ANIMATION);
+				return false;
+			}
+			if (this.getAnimation() == ATTACK_ANIMATION && this.getAnimationTick() >= 8 && this.getAnimationTick() <= 12) {
+				IAttributeInstance iattributeinstance = this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
+				boolean flag = entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) iattributeinstance.getAttributeValue());
+				if (entity.getRidingEntity() != null) {
+					if (entity.getRidingEntity() == this) {
+						entity.startRiding(null);
+					}
+				}
+				if(entity instanceof EntityToyBase){
+					knockBackMob(entity, 0.1F, 0.1F, 0.1F);
+				}
+				return flag;
+			}
+		}
+		return false;
 	}
 }

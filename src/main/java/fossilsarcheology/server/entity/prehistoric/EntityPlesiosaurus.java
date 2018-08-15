@@ -3,6 +3,7 @@ package fossilsarcheology.server.entity.prehistoric;
 import com.google.common.base.Predicate;
 import fossilsarcheology.client.sound.FASoundRegistry;
 import fossilsarcheology.server.entity.ai.*;
+import fossilsarcheology.server.entity.utility.EntityToyBase;
 import fossilsarcheology.server.item.FAItemRegistry;
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.minecraft.entity.Entity;
@@ -179,9 +180,13 @@ public class EntityPlesiosaurus extends EntityPrehistoricSwimming {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		if (this.getAnimation() == ATTACK_ANIMATION && this.getAnimationTick() == 10 && this.getAttackTarget() != null) {
+		if (this.getAttackTarget() != null) {
 			this.attackEntityAsMob(this.getAttackTarget());
 		}
+	}
+
+	public int getAttackLength() {
+		return 10;
 	}
 
 	@Override
@@ -191,13 +196,16 @@ public class EntityPlesiosaurus extends EntityPrehistoricSwimming {
 				this.setAnimation(ATTACK_ANIMATION);
 				return false;
 			}
-			if (this.getAnimation() == ATTACK_ANIMATION && this.getAnimationTick() == 5) {
+			if (this.getAnimation() == ATTACK_ANIMATION && this.getAnimationTick() >= 4 && this.getAnimationTick() <= 7) {
 				IAttributeInstance iattributeinstance = this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
 				boolean flag = entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) iattributeinstance.getAttributeValue());
 				if (entity.getRidingEntity() != null) {
 					if (entity.getRidingEntity() == this) {
 						entity.startRiding(null);
 					}
+				}
+				if(entity instanceof EntityToyBase){
+					knockBackMob(entity, 0.1F, 0.1F, 0.1F);
 				}
 				return flag;
 			}

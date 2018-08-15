@@ -181,11 +181,9 @@ public class EntityLiopleurodon extends EntityPrehistoricSwimming {
 			Entity riddenByEntity = passenger;
 			if ((this.getAnimationTick() > 55 || this.getAnimation() == NO_ANIMATION)) {
 				if (riddenByEntity instanceof EntityToyBase) {
-					((EntityToyBase) riddenByEntity).dismountRidingEntity();
+					riddenByEntity.dismountRidingEntity();
 					this.setAttackTarget(null);
 					this.doPlayBonus(((EntityToyBase) riddenByEntity).toyBonus);
-					riddenByEntity.setPosition(posX, posY, posZ);
-					riddenByEntity = null;
 					return;
 				} else {
 					if (passenger instanceof EntityLivingBase) {

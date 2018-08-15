@@ -3,13 +3,16 @@ package fossilsarcheology.server.entity.prehistoric;
 import com.google.common.base.Predicate;
 import fossilsarcheology.client.sound.FASoundRegistry;
 import fossilsarcheology.server.entity.ai.*;
+import fossilsarcheology.server.entity.utility.EntityToyBase;
 import fossilsarcheology.server.item.FAItemRegistry;
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
 import net.minecraft.entity.ai.EntityAISit;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.DamageSource;
@@ -159,6 +162,42 @@ public class EntityIcthyosaurus extends EntityPrehistoricSwimming {
 
 	@Override
 	public boolean canBeRidden() {
+		return false;
+	}
+
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (this.getAttackTarget() != null) {
+			this.attackEntityAsMob(this.getAttackTarget());
+		}
+	}
+
+	public int getAttackLength() {
+		return 10;
+	}
+
+	@Override
+	public boolean attackEntityAsMob(Entity entity) {
+		if (this.canReachPrey()) {
+			if (this.getAnimation() == NO_ANIMATION) {
+				this.setAnimation(ATTACK_ANIMATION);
+				return false;
+			}
+			if (this.getAnimation() == ATTACK_ANIMATION && this.getAnimationTick() >= 4 && this.getAnimationTick() <= 7) {
+				IAttributeInstance iattributeinstance = this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
+				boolean flag = entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float) iattributeinstance.getAttributeValue());
+				if (entity.getRidingEntity() != null) {
+					if (entity.getRidingEntity() == this) {
+						entity.startRiding(null);
+					}
+				}
+				if(entity instanceof EntityToyBase){
+					knockBackMob(entity, 0.1F, 0.1F, 0.1F);
+				}
+				return flag;
+			}
+		}
 		return false;
 	}
 }
