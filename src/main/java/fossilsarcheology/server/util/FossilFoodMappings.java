@@ -94,6 +94,7 @@ public class FossilFoodMappings {
 		FoodMappings.INSTANCE.addMeat(EntityVillager.class, 27);
 		FoodMappings.INSTANCE.addMeat(EntityZombie.class, 23);
 		FoodMappings.INSTANCE.addMeat(EntityChicken.class, 5);
+		FoodMappings.INSTANCE.addMeat(EntityRabbit.class, 7);
 		FoodMappings.INSTANCE.addMeat(EntityParrot.class, 1);
 		FoodMappings.INSTANCE.addMeat(EntityLlama.class, 35);
 		FoodMappings.INSTANCE.addMeat(EntityPolarBear.class, 60);
