@@ -12,8 +12,11 @@ import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Optional;
+import thaumcraft.api.crafting.IInfusionStabiliser;
 
-public class SkullBlock extends BlockHorizontal implements DefaultRenderedItem {
+@Optional.Interface(iface = "thaumcraft.api.crafting.IInfusionStabiliser", modid = "thaumcraft")
+public class SkullBlock extends BlockHorizontal implements DefaultRenderedItem, IInfusionStabiliser {
 
     public SkullBlock(boolean isActive) {
 		super(Material.ROCK);
@@ -62,6 +65,12 @@ public class SkullBlock extends BlockHorizontal implements DefaultRenderedItem {
 	@Override
     protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, FACING);
+	}
+
+	@Override
+	@Optional.Method(modid = "thaumcraft")
+	public boolean canStabaliseInfusion(World world, BlockPos pos) {
+		return true;
 	}
 
 }

@@ -208,7 +208,7 @@ public class TileEntitySifter extends TileEntity implements IInventory, ISidedIn
         for (int var1 = 0; var1 < 1; ++var1) {
             if (!this.stacks.get(var1).isEmpty()) {
                 Item input = this.stacks.get(var1).getItem();
-                if ((input == Item.getItemFromBlock(Blocks.SAND)) || (input == Item.getItemFromBlock(Blocks.DIRT)) || (input == Item.getItemFromBlock(Blocks.GRAVEL)) || (input == Item.getItemFromBlock(Blocks.CLAY)) || (input == Item.getItemFromBlock(FABlockRegistry.VOLCANIC_ASH))) {
+                if ((input == Item.getItemFromBlock(Blocks.SAND)) || (input == Item.getItemFromBlock(Blocks.DIRT)) || (input == Item.getItemFromBlock(Blocks.GRAVEL)) || (input == Item.getItemFromBlock(Blocks.CLAY)) || (input == Item.getItemFromBlock(FABlockRegistry.VOLCANIC_ASH)) || (input == Item.getItemFromBlock(Blocks.SOUL_SAND))) {
                     this.rawIndex = var1;
                     break;
                 }
@@ -234,7 +234,7 @@ public class TileEntitySifter extends TileEntity implements IInventory, ISidedIn
             double random = (new Random()).nextInt(100);
             int var3;
 
-            if (this.stacks.get(this.rawIndex).getItem() == Item.getItemFromBlock(Blocks.SAND) || this.stacks.get(this.rawIndex).getItem() == Item.getItemFromBlock(Blocks.DIRT) || this.stacks.get(this.rawIndex).getItem() == Item.getItemFromBlock(Blocks.GRAVEL) || this.stacks.get(this.rawIndex).getItem() == Item.getItemFromBlock(Blocks.CLAY) || this.stacks.get(this.rawIndex).getItem() == Item.getItemFromBlock(FABlockRegistry.VOLCANIC_ASH)) {
+            if (this.stacks.get(this.rawIndex).getItem() == Item.getItemFromBlock(Blocks.SAND) || this.stacks.get(this.rawIndex).getItem() == Item.getItemFromBlock(Blocks.DIRT) || this.stacks.get(this.rawIndex).getItem() == Item.getItemFromBlock(Blocks.GRAVEL) || this.stacks.get(this.rawIndex).getItem() == Item.getItemFromBlock(Blocks.CLAY) || this.stacks.get(this.rawIndex).getItem() == Item.getItemFromBlock(Blocks.SOUL_SAND) || this.stacks.get(this.rawIndex).getItem() == Item.getItemFromBlock(FABlockRegistry.VOLCANIC_ASH)) {
                 if (randomloot < 80) {
                     if (random < 75) {
                         result = ItemStack.EMPTY;

@@ -17,7 +17,7 @@ import java.util.List;
 
 public class SifterRecipes {
 
-    private static Block[] SEDIMENT = new Block[]{Blocks.SAND, Blocks.DIRT, Blocks.GRAVEL, Blocks.CLAY, FABlockRegistry.VOLCANIC_ASH};
+    private static Block[] SEDIMENT = new Block[]{Blocks.SAND, Blocks.DIRT, Blocks.GRAVEL, Blocks.CLAY, FABlockRegistry.VOLCANIC_ASH, Blocks.SOUL_SAND};
 
     public static List<RecipeSifter> getRecipes(){
         List<RecipeSifter> list = new ArrayList<>();

@@ -22,10 +22,13 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import thaumcraft.api.crafting.IInfusionStabiliser;
 
-public abstract class VaseBlock extends BlockContainer implements BlockEntity, IBlockItem, SubtypeRenderedItem, IgnoreRenderProperty {
+@Optional.Interface(iface = "thaumcraft.api.crafting.IInfusionStabiliser", modid = "thaumcraft")
+public abstract class VaseBlock extends BlockContainer implements BlockEntity, IBlockItem, SubtypeRenderedItem, IgnoreRenderProperty, IInfusionStabiliser {
     public static final PropertyEnum<VaseVariant> VARIANT = PropertyEnum.create("variant", VaseVariant.class);
 
     protected VaseBlock(String type) {
@@ -140,5 +143,11 @@ public abstract class VaseBlock extends BlockContainer implements BlockEntity, I
         public int getMetadata(int damage) {
             return damage;
         }
+    }
+
+    @Override
+    @Optional.Method(modid = "thaumcraft")
+    public boolean canStabaliseInfusion(World world, BlockPos pos) {
+        return true;
     }
 }
