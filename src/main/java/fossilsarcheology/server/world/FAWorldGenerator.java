@@ -122,7 +122,7 @@ public class FAWorldGenerator implements IWorldGenerator {
 				StructureUtils.generateStructureAtWithRandomRotation(FOSSIL_SITE_TENT, world, world.getHeight(tentPos), random, false, false);
 			}
 		}
-		if (Revival.CONFIG.generateMoai && random.nextInt(100) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && BiomeDictionary.hasType(biome, BiomeDictionary.Type.BEACH) && world.getBlockState(height.down()).isOpaqueCube()) {
+		if (Revival.CONFIG.generateMoai && random.nextInt(100) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && BiomeDictionary.hasType(biome, BiomeDictionary.Type.BEACH) && !BiomeDictionary.hasType(biome, BiomeDictionary.Type.COLD) && !BiomeDictionary.hasType(biome, BiomeDictionary.Type.SNOWY) && world.getBlockState(height.down()).isOpaqueCube()) {
 			StructureUtils.generateStructureAtWithRandomRotation(random.nextInt(3) == 0 ? MOAI_WITH_HAT : MOAI, world, height.down(random.nextInt(5)), random, false, true);
 		}
 		if (Revival.CONFIG.generateAztecWeaponShops && random.nextInt(120) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && BiomeDictionary.hasType(biome, BiomeDictionary.Type.JUNGLE)) {
