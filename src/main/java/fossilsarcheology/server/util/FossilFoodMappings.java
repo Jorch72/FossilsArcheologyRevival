@@ -310,6 +310,7 @@ public class FossilFoodMappings {
 		FoodMappings.INSTANCE.addPlant("foodBerry", 7);
 		FoodMappings.INSTANCE.addPlant("cropRice", 13);
 		FoodMappings.INSTANCE.addPlant("cropQuinoa", 13);
+		FoodMappings.INSTANCE.addPlant("cropSaltwort", 12);
 		FoodMappings.INSTANCE.addMeat("listAllmeatcooked", 60);
 		FoodMappings.INSTANCE.addMeat("listAllmeatraw", 40);
 		FoodMappings.INSTANCE.addMeat("foodOffal", 10);
