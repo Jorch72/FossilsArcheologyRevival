@@ -172,7 +172,7 @@ public class FASoundRegistry {
 	public static final SoundEvent ANU_LAUGH = create("anu_laugh");
 	public static final SoundEvent ANU_COUGH = create("anu_cough");
 
-	public static final SoundEvent RECORD_BONES = create("record_bones_disc");
+	public static final SoundEvent RECORD_BONES = create("music.bones");
 	public static final SoundEvent MUSIC_DISCOVERY = create("music.discovery");
 	public static final SoundEvent MUSIC_SCARAB = create("music.scarab");
 	public static final SoundEvent MUSIC_FIRST_DINOSAUR = create("music.first_dinosaur");

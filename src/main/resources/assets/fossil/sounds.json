@@ -925,11 +925,11 @@
       "fossil:anu_living_stage2_0"
     ]
   },
-  "record_bones_disc": {
+  "music.bones": {
     "category": "record",
     "sounds": [
       {
-        "name": "fossil:record_bones",
+        "name": "fossil:music_bones",
         "stream": true
       }
     ]
