@@ -34,6 +34,7 @@ public class FossilFoodMappings {
 		FoodMappings.INSTANCE.addPlant(Blocks.CAKE, 35);
 		FoodMappings.INSTANCE.addPlant(Blocks.CARROTS, 20);
 		FoodMappings.INSTANCE.addPlant(Blocks.WHEAT, 10);
+		FoodMappings.INSTANCE.addPlant(Blocks.HAY_BLOCK, 90);
 		FoodMappings.INSTANCE.addPlant(Blocks.LEAVES, 20);
 		FoodMappings.INSTANCE.addPlant(Blocks.MELON_BLOCK, 65);
 		FoodMappings.INSTANCE.addPlant(Blocks.BROWN_MUSHROOM, 15);
