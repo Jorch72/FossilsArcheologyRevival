@@ -26,7 +26,6 @@ public class EntityCeratosaurus extends EntityPrehistoric {
 		maxSize = 1.25F;
 		teenAge = 5;
 		developsResistance = true;
-		breaksBlocks = true;
 		this.ridingY = 1.8F;
 	}
 
