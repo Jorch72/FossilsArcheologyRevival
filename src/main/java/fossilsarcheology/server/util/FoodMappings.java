@@ -178,11 +178,11 @@ public enum FoodMappings {
 				}
 				break;
 			case PISCCARNIVORE:
-				if (this.piscivoreItemDiet != null) {
-					for (Map.Entry<ItemStack, Integer> entry : this.piscivoreItemDiet.entrySet()) {
+				if (this.pisccarnivoreItemDiet != null) {
+					for (Map.Entry<ItemStack, Integer> entry : this.pisccarnivoreItemDiet.entrySet()) {
 						ItemStack compareStack = entry.getKey();
 						if (item.isItemEqual(compareStack)) {
-							return this.piscivoreItemDiet.get(compareStack);
+							return this.pisccarnivoreItemDiet.get(compareStack);
 						}
 					}
 				}
