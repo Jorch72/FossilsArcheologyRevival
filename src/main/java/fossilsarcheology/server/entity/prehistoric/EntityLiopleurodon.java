@@ -4,6 +4,7 @@ import com.google.common.base.Predicate;
 import fossilsarcheology.client.sound.FASoundRegistry;
 import fossilsarcheology.server.entity.ai.*;
 import fossilsarcheology.server.entity.utility.EntityToyBase;
+import fossilsarcheology.server.item.FAItemRegistry;
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -126,8 +127,7 @@ public class EntityLiopleurodon extends EntityPrehistoricSwimming {
 
 	@Override
 	public Item getOrderItem() {
-
-		return Items.STICK;
+		return FAItemRegistry.SKULL_STICK;
 	}
 
 	@Override
