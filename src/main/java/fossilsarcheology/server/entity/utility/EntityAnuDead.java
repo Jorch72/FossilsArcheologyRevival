@@ -2,7 +2,6 @@ package fossilsarcheology.server.entity.utility;
 
 import fossilsarcheology.Revival;
 import fossilsarcheology.client.sound.FASoundRegistry;
-import fossilsarcheology.server.dimension.AnuTeleporter;
 import fossilsarcheology.server.dimension.TreasureTeleporter;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -10,6 +9,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 
 public class EntityAnuDead extends EntityLiving {
@@ -79,8 +79,8 @@ public class EntityAnuDead extends EntityLiving {
 		}
 		for (int i = 0; i < 2; ++i) {
 			if (world.isRemote) {
-				Revival.PROXY.spawnAnuParticle(world, posX, posY, posZ);
-
+				//Revival.PROXY.spawnAnuParticle(world, posX, posY, posZ);
+				world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, posX, posY, posZ, 0, 0.1D, 0);
 			}
 		}
 	}
