@@ -15,6 +15,7 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityLargeFireball;
 import net.minecraft.init.Blocks;
@@ -35,7 +36,11 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.BossInfo;
+import net.minecraft.world.BossInfoServer;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
@@ -50,6 +55,7 @@ public class EntityAnu extends EntityMob implements IRangedAttackMob {
     public int songCounter = 0;
     public boolean isFlying;
     private BlockPos currentTarget;
+    private final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(new TextComponentString(TextFormatting.DARK_RED + this.getDisplayName().getFormattedText()) , BossInfo.Color.RED, BossInfo.Overlay.PROGRESS)).setDarkenSky(true);
 
     public EntityAnu(World world) {
         super(world);
@@ -93,8 +99,7 @@ public class EntityAnu extends EntityMob implements IRangedAttackMob {
         return false;
     }
 
-    public void addPotionEffect(PotionEffect potioneffectIn)
-    {
+    public void addPotionEffect(PotionEffect potioneffectIn) {
     }
 
     @Override
@@ -256,6 +261,7 @@ public class EntityAnu extends EntityMob implements IRangedAttackMob {
 
     @Override
     public void onLivingUpdate() {
+        this.bossInfo.setPercent(this.getHealth() / this.getMaxHealth());
         if (songCounter < songLength) {
             songCounter++;
         }
@@ -477,12 +483,21 @@ public class EntityAnu extends EntityMob implements IRangedAttackMob {
     public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
         super.writeEntityToNBT(par1NBTTagCompound);
         par1NBTTagCompound.setInteger("AttackMode", this.getAttackMode());
+
     }
 
     @Override
     public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
         super.readEntityFromNBT(par1NBTTagCompound);
         this.setAttackMode(par1NBTTagCompound.getInteger("AttackMode"));
+        if (this.hasCustomName()) {
+            this.bossInfo.setName(this.getDisplayName());
+        }
+    }
+
+    public void setCustomNameTag(String name) {
+        super.setCustomNameTag(name);
+        this.bossInfo.setName(this.getDisplayName());
     }
 
     @Override
@@ -531,6 +546,16 @@ public class EntityAnu extends EntityMob implements IRangedAttackMob {
             FossilsPlayerProperties properties = EntityPropertiesHandler.INSTANCE.getProperties(player, FossilsPlayerProperties.class);
             properties.killedAnu = true;
         }
+    }
+
+    public void addTrackingPlayer(EntityPlayerMP player) {
+        super.addTrackingPlayer(player);
+        this.bossInfo.addPlayer(player);
+    }
+
+    public void removeTrackingPlayer(EntityPlayerMP player) {
+        super.removeTrackingPlayer(player);
+        this.bossInfo.removePlayer(player);
     }
 
 }
