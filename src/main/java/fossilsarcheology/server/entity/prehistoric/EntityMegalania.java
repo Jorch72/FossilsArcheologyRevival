@@ -135,7 +135,7 @@ public class EntityMegalania extends EntityPrehistoric {
 
     @Override
     public PrehistoricEntityTypeAI.Taming aiTameType() {
-        return PrehistoricEntityTypeAI.Taming.IMPRINTING;
+        return PrehistoricEntityTypeAI.Taming.GEM;
     }
 
     @Override

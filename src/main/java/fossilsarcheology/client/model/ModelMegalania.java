@@ -1,12 +1,10 @@
 package fossilsarcheology.client.model;
 
-import fossilsarcheology.server.entity.prehistoric.EntityAllosaurus;
 import fossilsarcheology.server.entity.prehistoric.EntityMegalania;
 import fossilsarcheology.server.entity.prehistoric.EntityPrehistoric;
 import net.ilexiconn.llibrary.client.model.ModelAnimator;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
 import net.ilexiconn.llibrary.server.animation.IAnimatedEntity;
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.entity.Entity;
 
 public class ModelMegalania extends ModelPrehistoric {
@@ -310,6 +308,28 @@ public class ModelMegalania extends ModelPrehistoric {
         }
         {
             float sitProgress = prehistoric.sleepProgress;
+            sitAnimationRotationPrev(RightArm, sitProgress, ((float) Math.toRadians(-31.0D)), ((float) Math.toRadians(8.0D)), ((float) Math.toRadians(-15.0D)));
+            sitAnimationRotationPrev(LeftArm, sitProgress, ((float) Math.toRadians(-31.0D)), ((float) Math.toRadians(-8.0D)), ((float) Math.toRadians(15.0D)));
+            sitAnimationRotationPrev(RLowerArm, sitProgress, ((float) Math.toRadians(-50)), 0, ((float) Math.toRadians(10)));
+            sitAnimationRotationPrev(LLowerArm, sitProgress, ((float) Math.toRadians(-50)), 0, ((float) Math.toRadians(-10)));
+            sitAnimationRotationPrev(LHand, sitProgress, ((float) Math.toRadians(78)), 0, 0);
+            sitAnimationRotationPrev(RHand, sitProgress, ((float) Math.toRadians(78)), 0, 0);
+            sitAnimationRotationPrev(RightThigh, sitProgress, ((float) Math.toRadians(7.0D)), ((float) Math.toRadians(40.0D)), ((float) Math.toRadians(-13.0D)));
+            sitAnimationRotationPrev(LeftThigh, sitProgress, ((float) Math.toRadians(7.0D)), ((float) Math.toRadians(-40.0D)), ((float) Math.toRadians(13.0D)));
+            sitAnimationRotationPrev(RightShin, sitProgress, ((float) Math.toRadians(15.0D)), ((float) Math.toRadians(20.0D)), ((float) Math.toRadians(90.0D)));
+            sitAnimationRotationPrev(LeftShin, sitProgress, ((float) Math.toRadians(15.0D)), ((float) Math.toRadians(-20.0D)), ((float) Math.toRadians(-90.0D)));
+            sitAnimationRotationPrev(Rightfoot, sitProgress,0, 0,  ((float) Math.toRadians(-80)));
+            sitAnimationRotationPrev(LeftFoot, sitProgress,0, 0,  ((float) Math.toRadians(80)));
+            sitAnimationRotationPrev(Neck, sitProgress, ((float) Math.toRadians(18)), 0, 0);
+            sitAnimationRotationPrev(Head, sitProgress, ((float) Math.toRadians(-20)), 0, 0);
+
+            sitAnimationRotationPrev(Tail1, sitProgress,0, 0,  0);
+            sitAnimationPos(RightThigh, sitProgress, 2.1F, 0F, 0F);
+            sitAnimationPos(LeftThigh, sitProgress, -2.1F, 0F, 0F);
+            sitAnimationPos(Shoulders, sitProgress, 0F, 6F, 0F);
+        }
+        {
+            float sitProgress = prehistoric.weakProgress;
             sitAnimationRotationPrev(RightArm, sitProgress, ((float) Math.toRadians(-31.0D)), ((float) Math.toRadians(8.0D)), ((float) Math.toRadians(-15.0D)));
             sitAnimationRotationPrev(LeftArm, sitProgress, ((float) Math.toRadians(-31.0D)), ((float) Math.toRadians(-8.0D)), ((float) Math.toRadians(15.0D)));
             sitAnimationRotationPrev(RLowerArm, sitProgress, ((float) Math.toRadians(-50)), 0, ((float) Math.toRadians(10)));
