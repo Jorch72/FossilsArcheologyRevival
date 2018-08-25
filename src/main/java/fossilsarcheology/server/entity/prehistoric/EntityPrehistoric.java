@@ -1105,7 +1105,6 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
                 }
             }
         }
-        super.attackEntityFrom(dmg, i);
         return super.attackEntityFrom(dmg, i);
     }
 
