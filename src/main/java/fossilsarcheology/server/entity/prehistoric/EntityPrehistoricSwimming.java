@@ -129,6 +129,11 @@ public abstract class EntityPrehistoricSwimming extends EntityPrehistoric {
     }
 
     @Override
+    public boolean canBeSteered() {
+        return this.type.isAquatic() ? this.isInWater() && super.canBeSteered() : super.canBeSteered();
+    }
+
+    @Override
     public void travel(float strafe, float vertical, float forward) {
         float f4;
         if (this.isSitting()) {
