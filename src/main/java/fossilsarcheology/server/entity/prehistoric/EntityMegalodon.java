@@ -26,7 +26,7 @@ public class EntityMegalodon extends EntityPrehistoricSwimming {
         super(world, PrehistoricEntityType.MEGALODON, 4, 15, 10, 80, 0.3, 0.35);
         this.hasBabyTexture = false;
         this.setActualSize(1.5F, 1.1F);
-        minSize = 0.3F;
+        minSize = 0.9F;
         maxSize = 4.4F;
         teenAge = 7;
         developsResistance = true;
