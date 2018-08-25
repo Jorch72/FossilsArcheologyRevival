@@ -37,7 +37,7 @@ public class RenderBirdEgg extends Render<EntityBirdEgg> {
 			GlStateManager.enableOutlineMode(this.getTeamColor(entity));
 		}
 
-		this.itemRenderer.renderItem(this.getStackToRender(entity), ItemCameraTransforms.TransformType.GROUND);
+		this.itemRenderer.renderItem(new ItemStack(entity.getEnumType().birdEggItem), ItemCameraTransforms.TransformType.GROUND);
 
 		if (this.renderOutlines)
 		{
@@ -48,10 +48,6 @@ public class RenderBirdEgg extends Render<EntityBirdEgg> {
 		GlStateManager.disableRescaleNormal();
 		GlStateManager.popMatrix();
 		super.doRender(entity, x, y, z, entityYaw, partialTicks);
-	}
-
-	public ItemStack getStackToRender(EntityBirdEgg entityIn) {
-		return new ItemStack(entityIn.item);
 	}
 
 	@Override

@@ -4,48 +4,80 @@ import fossilsarcheology.server.entity.prehistoric.EntityPrehistoric;
 import fossilsarcheology.server.entity.prehistoric.MobType;
 import fossilsarcheology.server.entity.prehistoric.PrehistoricEntityType;
 import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityParrot;
 import net.minecraft.entity.projectile.EntityThrowable;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 import java.util.Random;
 
 public class EntityBirdEgg extends EntityThrowable {
-	public Item item;
-	public PrehistoricEntityType type;
 	final boolean cultivated;
+	private static final DataParameter<Integer> TYPE = EntityDataManager.createKey(EntityBirdEgg.class, DataSerializers.VARINT);
 
 	public EntityBirdEgg(World par1World) {
 		super(par1World);
 		this.cultivated = false;
 	}
 
-	public EntityBirdEgg(PrehistoricEntityType type, boolean cultivated, World par1World, Item item) {
-		super(par1World);
-		this.type = type;
-		this.cultivated = cultivated;
-		this.item = item;
+	@Override
+	protected void entityInit() {
+		super.entityInit();
+		this.dataManager.register(TYPE, PrehistoricEntityType.CHICKEN.ordinal());
 	}
 
-	public EntityBirdEgg(World par1World, EntityLivingBase par2EntityLivingBase, PrehistoricEntityType type, boolean cultivated, Item item) {
-		super(par1World, par2EntityLivingBase);
-		this.type = type;
-		this.cultivated = cultivated;
-		this.item = item;
+	@Override
+	public void writeEntityToNBT(NBTTagCompound compound) {
+		super.writeEntityToNBT(compound);
+		compound.setInteger("Type", this.getType());
+	}
 
+	@Override
+	public void readEntityFromNBT(NBTTagCompound compound) {
+		super.readEntityFromNBT(compound);
+		this.setType(compound.getInteger("Type"));
+
+	}
+
+	public void setType(int ordinal) {
+		this.dataManager.set(TYPE, ordinal);
+	}
+
+	public int getType() {
+		return this.dataManager.get(TYPE);
+	}
+
+
+	public void setEnumType(PrehistoricEntityType type) {
+		this.setType(type.ordinal());
+	}
+
+	public PrehistoricEntityType getEnumType() {
+		return PrehistoricEntityType.values()[MathHelper.clamp(getType(), 0, PrehistoricEntityType.values().length - 1)];
+	}
+
+	public EntityBirdEgg(boolean cultivated, World par1World) {
+		super(par1World);
+		this.cultivated = cultivated;
+	}
+
+	public EntityBirdEgg(World par1World, EntityLivingBase par2EntityLivingBase, boolean cultivated) {
+		super(par1World, par2EntityLivingBase);
+		this.cultivated = cultivated;
 	}
 
 	public String getTexture() {
-		return cultivated ? "fossil/items/prehistoric/birdEggs/Egg_" + type.toString() + ".png" : "fossil/items/prehistoric/birdEggs/Egg_Cultivated" + type.toString() + ".png";
+		return cultivated ? "fossil/items/prehistoric/birdEggs/Egg_" + getEnumType().toString() + ".png" : "fossil/items/prehistoric/birdEggs/Egg_Cultivated" + getEnumType().toString() + ".png";
 	}
 
 	/**
@@ -84,8 +116,8 @@ public class EntityBirdEgg extends EntityThrowable {
 	}
 
 	private void spawnAnimal() {
-		if (type.mobType != MobType.CHICKEN) {
-			EntityPrehistoric mob = (EntityPrehistoric) type.invokeClass(world);
+		if (getEnumType().mobType != MobType.CHICKEN) {
+			EntityPrehistoric mob = (EntityPrehistoric) getEnumType().invokeClass(world);
 			if (!world.isRemote && mob != null) {
 				mob.setAgeInDays(0);
 				mob.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0F);
@@ -98,7 +130,7 @@ public class EntityBirdEgg extends EntityThrowable {
 			}
 		} else {
 			EntityAgeable mob = null;
-			switch(type){
+			switch(getEnumType()){
 				case PARROT:
 					mob = new EntityParrot(world);
 					mob.onInitialSpawn(world.getDifficultyForLocation(new BlockPos(this)), null);

@@ -26,14 +26,13 @@ public class BirdEggItem extends PrehistoricEntityItem implements DefaultRendere
 		if (!player.capabilities.isCreativeMode) {
 			stack.shrink(1);
 		}
-		EntityBirdEgg egg = new EntityBirdEgg(world, player, this.type, this.cultivated, this);
-		egg.type = this.type;
+		EntityBirdEgg egg = new EntityBirdEgg(world, player, this.cultivated);
 		player.playSound(SoundEvents.ENTITY_ARROW_SHOOT, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 		egg.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 1.5F, 1.0F);
-		egg.item = this;
 		if(!world.isRemote) {
 			world.spawnEntity(egg);
 		}
+		egg.setEnumType(this.type);
 		return ActionResult.newResult(EnumActionResult.SUCCESS, stack);
 	}
 }
