@@ -23,7 +23,7 @@ public class EntityDryosaurus extends EntityPrehistoric {
 	public EntityDryosaurus(World world) {
 		super(world, PrehistoricEntityType.DRYOSAURUS, 1, 1, 6, 16, 0.2, 0.35);
 		this.teenAge = 3;
-		this.setActualSize(0.8F, 0.7F);
+		this.setActualSize(1.3F, 1.2F);
 		this.nearByMobsAllowed = 10;
 		minSize = 0.2F;
 		maxSize = 1.2F;
