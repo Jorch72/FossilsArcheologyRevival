@@ -33,12 +33,7 @@ public class TempskyaBlock extends BlockBush implements DefaultRenderedItem {
         this.setCreativeTab(FATabRegistry.BLOCKS);
         this.setHardness(0.5F);
     }
-
-    @Override
-    public boolean isLadder(IBlockState state, IBlockAccess world, BlockPos pos, EntityLivingBase entity) {
-        return true;
-    }
-
+    
     @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
         return AABB;
