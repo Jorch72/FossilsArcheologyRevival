@@ -49,6 +49,8 @@ public class FossilFoodMappings {
 		FoodMappings.INSTANCE.addPlant(Blocks.WATERLILY, 15);
 		FoodMappings.INSTANCE.addPlant(FABlockRegistry.FERNS, 55);
 		FoodMappings.INSTANCE.addPlant(FABlockRegistry.PALM_LEAVES, 40);
+		FoodMappings.INSTANCE.addPlant(Blocks.CHORUS_FLOWER, 20);
+		FoodMappings.INSTANCE.addPlant(Blocks.CHORUS_PLANT, 10);
 
 		FoodMappings.INSTANCE.addFish(new ItemStack(Items.FISH), 30);
 		FoodMappings.INSTANCE.addFish(new ItemStack(Items.FISH, 1, 1), 30);
