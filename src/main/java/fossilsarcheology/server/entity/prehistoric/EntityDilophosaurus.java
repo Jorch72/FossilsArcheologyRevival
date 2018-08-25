@@ -27,7 +27,7 @@ public class EntityDilophosaurus extends EntityPrehistoric {
 		teenAge = 4;
 		developsResistance = true;
 		breaksBlocks = false;
-		this.ridingY = 1.5F;
+		this.ridingY = 1.75F;
 		this.ridingXZ = -0.05F;
 	}
 

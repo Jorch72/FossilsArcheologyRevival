@@ -26,7 +26,7 @@ public class EntityCeratosaurus extends EntityPrehistoric {
 		maxSize = 1.25F;
 		teenAge = 5;
 		developsResistance = true;
-		this.ridingY = 1.8F;
+		this.ridingY = 2.2F;
 	}
 
 	public void initEntityAI() {

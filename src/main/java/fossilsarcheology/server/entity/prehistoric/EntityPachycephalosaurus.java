@@ -12,7 +12,6 @@ import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
@@ -29,7 +28,6 @@ public class EntityPachycephalosaurus extends EntityPrehistoric {
 		developsResistance = true;
 		breaksBlocks = false;
 		hasBabyTexture = false;
-		this.ridingY = 1.55F;
 		this.pediaScale = 40F;
 	}
 
@@ -166,8 +164,8 @@ public class EntityPachycephalosaurus extends EntityPrehistoric {
 						entity.dismountRidingEntity();
 					}
 				}
-				entity.motionY += 0.4000000059604645D;
-				knockbackEntity(entity, 2F, 0.1F);
+				entity.motionY += 0.1000000059604645D;
+				knockbackEntity(entity, 1F, 0.1F);
 				return flag;
 			}
 		}
@@ -181,7 +179,7 @@ public class EntityPachycephalosaurus extends EntityPrehistoric {
 
 	@Override
 	public boolean canBeRidden() {
-		return true;
+		return false;
 	}
 
 	@Override
