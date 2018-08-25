@@ -11,7 +11,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderAnubite extends RenderBiped {
-	private static final ResourceLocation skeletonTextures = new ResourceLocation(Revival.MODID, "textures/model/anubite_ancient.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(Revival.MODID, "textures/model/anubite.png");
 
 	public RenderAnubite(RenderManager render) {
 		super(render, new ModelAnubite(), 0.3F);
@@ -19,7 +19,7 @@ public class RenderAnubite extends RenderBiped {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityLiving entity) {
-		return skeletonTextures;
+		return TEXTURE;
 	}
 
 }

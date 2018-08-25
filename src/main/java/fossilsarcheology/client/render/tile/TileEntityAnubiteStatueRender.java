@@ -10,7 +10,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 
 public class TileEntityAnubiteStatueRender extends TileEntitySpecialRenderer<TileEntityAnubiteStatue> {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(Revival.MODID, "textures/model/anubite_ancient_statue.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(Revival.MODID, "textures/model/anubite_statue.png");
 	private static final ModelAnubite MODEL = new ModelAnubite();
 
 	@Override
