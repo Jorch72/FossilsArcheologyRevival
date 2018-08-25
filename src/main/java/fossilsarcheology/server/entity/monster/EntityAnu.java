@@ -11,7 +11,6 @@ import fossilsarcheology.server.entity.utility.FossilsPlayerProperties;
 import fossilsarcheology.server.item.FAItemRegistry;
 import fossilsarcheology.server.world.gen.SpikesBlockWorldGen;
 import net.ilexiconn.llibrary.server.entity.EntityPropertiesHandler;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.*;
@@ -28,6 +27,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundEvent;
@@ -35,8 +35,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
@@ -93,6 +91,10 @@ public class EntityAnu extends EntityMob implements IRangedAttackMob {
     @Override
     public boolean isNonBoss() {
         return false;
+    }
+
+    public void addPotionEffect(PotionEffect potioneffectIn)
+    {
     }
 
     @Override
