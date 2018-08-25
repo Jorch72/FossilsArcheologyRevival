@@ -30,6 +30,7 @@ item.bone_leg_bone.name=%s Leg Bone
 item.bone_foot.name=%s Foot
 item.bone_vertebrae.name=%s Vertebrae
 item.bone_ribcage.name=%s Ribcage
+item.bone_unique_item.dodo.name=Dodo Wishbone
 item.bone_unique_item.triceratops.name=Triceratops Horn
 item.bone_unique_item.velociraptor.name=Velociraptor Talon
 item.bone_unique_item.tyrannosaurus.name=Tyrannosaurus Tooth
