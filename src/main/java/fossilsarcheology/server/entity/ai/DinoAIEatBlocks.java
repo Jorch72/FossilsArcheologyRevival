@@ -73,10 +73,9 @@ public class DinoAIEatBlocks extends EntityAIBase {
                     this.resetTask();
                     return;
                 }
-                if (distance * distance < 6) {
+                if (distance < this.entity.getEntityBoundingBox().getAverageEdgeLength() * 2) {
                     this.entity.setHunger(Math.min(this.entity.getMaxHunger(), this.entity.getHunger() + FoodMappings.INSTANCE.getBlockFoodAmount(block, this.entity.type.diet)));
                     this.entity.setHealth(Math.min(this.entity.getMaxHealth(), (int) (this.entity.getHealth() + FoodMappings.INSTANCE.getBlockFoodAmount(block, this.entity.type.diet) / 10)));
-                    // prehistoric.doFoodEffect(Item.getItemFromBlock(block));
                     this.entity.playSound(SoundEvents.ENTITY_GENERIC_EAT, 1, 1);
                     this.entity.world.destroyBlock(this.targetBlock, false);
                     this.targetBlock = null;

@@ -2,7 +2,6 @@ package fossilsarcheology.server.entity.ai;
 
 import fossilsarcheology.server.block.entity.TileEntityFeeder;
 import fossilsarcheology.server.entity.prehistoric.EntityPrehistoric;
-import fossilsarcheology.server.util.FoodMappings;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.tileentity.TileEntity;
@@ -91,8 +90,8 @@ public class DinoAIEatFeeders extends EntityAIBase {
             }
             if (entity instanceof TileEntityFeeder) {
                 TileEntityFeeder feeder = (TileEntityFeeder) entity;
-                double distanceSq = this.entity.getDistanceSq(this.targetBlock.getX(), this.targetBlock.getY(), this.targetBlock.getZ());
-                if (distanceSq < 6) {
+                double distance = this.entity.getDistance(this.targetBlock.getX(), this.targetBlock.getY(), this.targetBlock.getZ());
+                if (distance < this.entity.getEntityBoundingBox().getAverageEdgeLength() * 2) {
                     if (this.feedingTicks < 30 && !feeder.isEmpty(this.entity.type)) {
                         this.feedingTicks++;
                         feeder.feedDinosaur(this.entity);
