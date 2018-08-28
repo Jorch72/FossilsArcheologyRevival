@@ -151,6 +151,13 @@ public class ModelDodo extends ModelPrehistoric {
 		this.chainSwing(tailParts, speed2, 0.15F, -3, entity.ticksExisted, 1);
 		this.chainWave(neckParts, speed2, 0.1F, -3, entity.ticksExisted, 1);
 		this.chainWave(neckParts, speed, 0.4F, -3, f, f1);
+		if(!dodo.onGround){
+			this.flap(rightWing, 1.25F, 0.9F, true, 0F, 0F, entity.ticksExisted, 1);
+			this.rightWing.rotateAngleZ += Math.PI / 2;
+			this.flap(leftWing, 1.25F, 0.9F, false, 0F, 0F, entity.ticksExisted, 1);
+			this.leftWing.rotateAngleZ -= Math.PI / 2;
+		}
+
 		{
 			float sitProgress = ((EntityPrehistoric) (entity)).sitProgress;
 			sitAnimationRotation(neck, sitProgress, -((float) Math.toRadians(16.0D)), 0, 0);

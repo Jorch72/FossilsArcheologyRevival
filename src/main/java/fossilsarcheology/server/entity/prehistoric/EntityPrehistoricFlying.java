@@ -1,6 +1,7 @@
 package fossilsarcheology.server.entity.prehistoric;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.passive.EntityFlying;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -11,7 +12,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-public abstract class EntityPrehistoricFlying extends EntityPrehistoric {
+public abstract class EntityPrehistoricFlying extends EntityPrehistoric implements EntityFlying {
 
 	public static final int FLYING_INDEX = 29;
 	private static final DataParameter<Boolean> FLYING = EntityDataManager.createKey(EntityPrehistoricFlying.class, DataSerializers.BOOLEAN);
@@ -66,9 +67,13 @@ public abstract class EntityPrehistoricFlying extends EntityPrehistoric {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		boolean flying = isFlying();
+		boolean flying = isFlying() || !this.onGround;
 		if (!this.onGround && this.motionY < 0.0D) {
 			this.motionY *= 0.6D;
+		}
+		if(!isFlying() && !this.onGround){
+			this.limbSwingAmount += 0.4F;
+			this.limbSwing += this.limbSwingAmount;
 		}
 		if (flying && flyProgress < 20.0F) {
 			flyProgress += 0.5F;

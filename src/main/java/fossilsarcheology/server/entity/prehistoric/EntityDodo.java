@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 public class EntityDodo extends EntityPrehistoric {
 
 	public EntityDodo(World world) {
-		super(world, PrehistoricEntityType.DODO, 1, 1, 4, 10, 0.2, 0.25);
+		super(world, PrehistoricEntityType.DODO, 1, 1, 4, 10, 0.15, 0.2);
 		this.teenAge = 3;
 		this.setActualSize(0.8F, 0.7F);
 		this.nearByMobsAllowed = 10;
@@ -154,6 +154,9 @@ public class EntityDodo extends EntityPrehistoric {
 		super.onLivingUpdate();
 		if (this.getAnimation() == ATTACK_ANIMATION && this.getAnimationTick() == 12 && this.getAttackTarget() != null) {
 			this.attackEntityAsMob(this.getAttackTarget());
+		}
+		if (!this.onGround && this.motionY < 0.0D) {
+			this.motionY *= 0.6D;
 		}
 	}
 
