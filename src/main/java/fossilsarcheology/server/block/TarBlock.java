@@ -8,6 +8,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.EnumFacing;
@@ -59,7 +60,7 @@ public class TarBlock extends BlockFluidClassic {
 
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-		if (rand.nextInt(100) == 0) {
+		if (rand.nextInt(200) == 0) {
 			worldIn.playSound((double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D, FASoundRegistry.TAR, SoundCategory.BLOCKS, 0.5F, rand.nextFloat() * 0.4F + 0.8F, false);
 		}
 	}
@@ -92,6 +93,7 @@ public class TarBlock extends BlockFluidClassic {
 		return this.density > density;
 	}
 
+
 	@Override
 	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
 		if (entity instanceof EntityTarSlime) {
@@ -104,6 +106,14 @@ public class TarBlock extends BlockFluidClassic {
 			living.motionX *= 0.1;
 			living.motionZ *= 0.1;
 			living.setInWeb();
+		}else if(entity instanceof EntityItem){
+			entity.motionY *= 0.1;
+			entity.motionX *= 0.1;
+			entity.motionZ *= 0.1;
+			if((int)Math.floor(entity.posY + 0.875D) == pos.getY()) {
+				entity.playSound(SoundEvents.ENTITY_GENERIC_SWIM, 0.4F, 0.6F + world.rand.nextFloat() * 0.4F);
+				entity.setDead();
+			}
 		}
 	}
 

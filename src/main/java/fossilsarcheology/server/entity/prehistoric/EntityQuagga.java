@@ -35,6 +35,10 @@ public class EntityQuagga extends AbstractChestHorse {
         this.getEntityAttribute(JUMP_STRENGTH).setBaseValue(this.getModifiedJumpStrength());
     }
 
+    protected boolean canDespawn(){
+        return false;
+    }
+
     @Nullable
     protected ResourceLocation getLootTable() {
         return LOOT;
