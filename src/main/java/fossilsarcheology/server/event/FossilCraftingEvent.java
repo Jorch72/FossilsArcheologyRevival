@@ -1,6 +1,18 @@
 package fossilsarcheology.server.event;
 
+import fossilsarcheology.server.block.FABlockRegistry;
+import net.minecraft.item.Item;
+import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
 public class FossilCraftingEvent {
+
+    @SubscribeEvent
+    public void onFurnaceFuelEvent(FurnaceFuelBurnTimeEvent event) {
+        if(event.getItemStack().getItem() == Item.getItemFromBlock(FABlockRegistry.PALM_SAPLING)){
+            event.setBurnTime(100);
+        }
+    }
 
    /* @SubscribeEvent
     public void onCraftEvent(PlayerEvent.ItemCraftedEvent event) {
