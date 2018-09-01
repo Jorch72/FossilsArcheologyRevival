@@ -45,6 +45,10 @@ public class AnuTeleporter extends Teleporter {
 					}
 				}
 			}
+		}else if(worldServerInstance.provider.getDimension() == 0){
+			BlockPos height = worldServerInstance.getHeight(entity.getPosition());
+			entity.setLocationAndAngles(height.getX() + 0.5D, height.getY() + 4.5D, height.getZ() + 0.5D, entity.rotationYaw, 0.0F);
+
 		}
 		entity.motionX = entity.motionY = entity.motionZ = 0.0D;
 	}

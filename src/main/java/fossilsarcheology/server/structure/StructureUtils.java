@@ -142,20 +142,7 @@ public class StructureUtils {
             settings.setReplacedBlock(Blocks.AIR);
         }
         Template template = templateManager.getTemplate(server, structure);
-        BlockPos center = pos;
-        switch(rotation){
-            case NONE:
-                center = pos;
-                break;
-            case CLOCKWISE_90:
-                center = pos.add(template.getSize().getZ() - 1, 0, 0);
-                break;
-            case COUNTERCLOCKWISE_90:
-                center = pos.add(0, 0, template.getSize().getX() - 1);
-                break;
-            case CLOCKWISE_180:
-                center = pos.add(template.getSize().getX() - 1, 0, template.getSize().getZ() - 1);
-        }
+        BlockPos center = pos.add(template.getSize().getX() / 2, 0, template.getSize().getZ() / 2);
         if (checkGround) {
             BlockPos corner1 = pos.down();
             BlockPos corner2 = pos.add(template.getSize().getX(), -1, 0);
