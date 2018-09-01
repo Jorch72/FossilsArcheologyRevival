@@ -14,10 +14,10 @@ import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -27,6 +27,8 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 
 import java.util.Random;
 
@@ -125,36 +127,29 @@ public class AnalyzerBlock extends BlockContainer implements DefaultRenderedItem
 
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
+		this.dropInventory(world, pos);
+		super.breakBlock(world, pos, state);
+	}
+
+	private void dropInventory(World world, BlockPos pos) {
 		if (!keepInventory) {
-			AnalyzerBlockEntity tile = (AnalyzerBlockEntity) world.getTileEntity(pos);
-			if (tile != null) {
-				for (int i = 0; i < tile.getSizeInventory(); ++i) {
-					ItemStack stack = tile.getStackInSlot(i);
-					if (stack != null) {
-						float xOffset = world.rand.nextFloat() * 0.8F + 0.1F;
-						float yOffset = world.rand.nextFloat() * 0.8F + 0.1F;
-						float zOffset = world.rand.nextFloat() * 0.8F + 0.1F;
-						while (stack.getCount() > 0) {
-							int rand = world.rand.nextInt(21) + 10;
-							if (rand > stack.getCount()) {
-								rand = stack.getCount();
-							}
-							stack.shrink(rand);
-							EntityItem entity = new EntityItem(world, pos.getX() + xOffset, pos.getY() + yOffset, pos.getZ() + zOffset, new ItemStack(stack.getItem(), rand, stack.getItemDamage()));
-							if (stack.hasTagCompound()) {
-								entity.getItem().setTagCompound(stack.getTagCompound().copy());
-							}
-							float offset = 0.05F;
-							entity.motionX = world.rand.nextGaussian() * offset;
-							entity.motionY = world.rand.nextGaussian() * offset + 0.2F;
-							entity.motionZ = world.rand.nextGaussian() * offset;
-							world.spawnEntity(entity);
-						}
-					}
+			TileEntity entity = world.getTileEntity(pos);
+			if (entity == null) {
+				return;
+			}
+
+			IItemHandler inventory = entity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+			if (inventory == null) {
+				return;
+			}
+
+			for (int i = 0; i < inventory.getSlots(); i++) {
+				ItemStack stack = inventory.getStackInSlot(i);
+				if (!stack.isEmpty()) {
+					InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack);
 				}
 			}
 		}
-		super.breakBlock(world, pos, state);
 	}
 
 	@Override

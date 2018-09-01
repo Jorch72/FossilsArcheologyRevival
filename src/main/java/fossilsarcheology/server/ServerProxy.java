@@ -93,20 +93,20 @@ public class ServerProxy implements IGuiHandler {
             throw new RuntimeException(e);
         }
 
-        GameRegistry.registerTileEntity(TileEntityCultivate.class, "fossil.cultivate");
-        GameRegistry.registerTileEntity(TileEntityFeeder.class, "fossil.feeder");
-        GameRegistry.registerTileEntity(TileEntityWorktable.class, "fossil.archeology_workbench");
-        GameRegistry.registerTileEntity(AnalyzerBlockEntity.class, "fossil.analyzer");
-        GameRegistry.registerTileEntity(TileEntityAncientChest.class, "fossil.ancient_chest");
-        GameRegistry.registerTileEntity(TileEntityAnubiteStatue.class, "fossil.anubite");
-        GameRegistry.registerTileEntity(TileEntityAnuStatue.class, "fossil.anu_statue");
-        GameRegistry.registerTileEntity(TileEntityFigurine.class, "fossil.figurine");
-        GameRegistry.registerTileEntity(TileEntityKylix.class, "fossil.kylix");
-        GameRegistry.registerTileEntity(TileEntitySarcophagus.class, "fossil.sarcophagus");
-        GameRegistry.registerTileEntity(TileEntitySifter.class, "fossil.sifter");
-        GameRegistry.registerTileEntity(TileEntityAmphora.class, "fossil.amphora");
-        GameRegistry.registerTileEntity(TileEntityTimeMachine.class, "fossil.time_machine");
-        GameRegistry.registerTileEntity(TileEntityVolute.class, "fossil.volute");
+        GameRegistry.registerTileEntity(TileEntityCultivate.class, "fossil:cultivate");
+        GameRegistry.registerTileEntity(TileEntityFeeder.class, "fossil:feeder");
+        GameRegistry.registerTileEntity(TileEntityWorktable.class, "fossil:archeology_workbench");
+        GameRegistry.registerTileEntity(AnalyzerBlockEntity.class, "fossil:analyzer");
+        GameRegistry.registerTileEntity(TileEntityAncientChest.class, "fossil:ancient_chest");
+        GameRegistry.registerTileEntity(TileEntityAnubiteStatue.class, "fossil:anubite");
+        GameRegistry.registerTileEntity(TileEntityAnuStatue.class, "fossil:anu_statue");
+        GameRegistry.registerTileEntity(TileEntityFigurine.class, "fossil:figurine");
+        GameRegistry.registerTileEntity(TileEntityKylix.class, "fossil:kylix");
+        GameRegistry.registerTileEntity(TileEntitySarcophagus.class, "fossil:sarcophagus");
+        GameRegistry.registerTileEntity(TileEntitySifter.class, "fossil:sifter");
+        GameRegistry.registerTileEntity(TileEntityAmphora.class, "fossil:amphora");
+        GameRegistry.registerTileEntity(TileEntityTimeMachine.class, "fossil:time_machine");
+        GameRegistry.registerTileEntity(TileEntityVolute.class, "fossil:volute");
     }
 
     @SubscribeEvent
