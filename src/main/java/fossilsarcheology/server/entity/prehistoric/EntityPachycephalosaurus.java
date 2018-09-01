@@ -164,8 +164,7 @@ public class EntityPachycephalosaurus extends EntityPrehistoric {
 						entity.dismountRidingEntity();
 					}
 				}
-				entity.motionY += 0.1000000059604645D;
-				knockbackEntity(entity, 1F, 0.1F);
+				knockBackMob(entity, 0.1F, 0.1F, 0.1F);
 				return flag;
 			}
 		}

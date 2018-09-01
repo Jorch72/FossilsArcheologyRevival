@@ -1443,7 +1443,6 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
         if (entity instanceof EntityPrehistoric) {
             if (this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).getAttributeValue() <= 0 && this.onGround) {
                 this.velocityChanged = false;
-                knockBackMob(entity, 1, 0.4D, 1);
             }
         } else {
             super.knockBack(entity, f, x, z);
