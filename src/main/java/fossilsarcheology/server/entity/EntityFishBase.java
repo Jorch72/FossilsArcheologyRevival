@@ -178,15 +178,10 @@ public abstract class EntityFishBase extends EntityTameable {
         }
         if (stack.isEmpty() && this.getGrowingAge() > 0) {
             ItemStack var3 = new ItemStack(this.selfType.fishItem, 1);
-
-            if (player.inventory.addItemStackToInventory(var3)) {
-                if (!this.world.isRemote) {
-                    this.playSound(SoundEvents.ENTITY_ITEM_PICKUP, 1, this.getRNG().nextFloat() + 0.8F);
-                    this.setDead();
-                }
-
-                return true;
-            }
+            player.inventory.addItemStackToInventory(var3);
+            this.playSound(SoundEvents.ENTITY_ITEM_PICKUP, 1, this.getRNG().nextFloat() + 0.8F);
+            this.setDead();
+            return true;
         }
 
         return super.processInteract(player, hand);
