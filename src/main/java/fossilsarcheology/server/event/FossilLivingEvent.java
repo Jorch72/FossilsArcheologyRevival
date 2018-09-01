@@ -39,7 +39,7 @@ public class FossilLivingEvent {
     public void entityInteractEvent(PlayerInteractEvent.EntityInteract event) {
         if (event.getItemStack() != null && event.getItemStack().getItem() != null && event.getItemStack().getItem() == FAItemRegistry.DINOPEDIA && event.getTarget() instanceof EntityAnimal) {
             FossilsMammalProperties properties = EntityPropertiesHandler.INSTANCE.getProperties(event.getTarget(), FossilsMammalProperties.class);
-            if (PrehistoricEntityType.isMammal(event.getTarget()) && properties != null && properties.isPregnant) {
+            if (PrehistoricEntityType.isMammal(event.getTarget()) && !PrehistoricEntityType.isMale(event.getTarget()) && properties != null && properties.isPregnant) {
                 Revival.PEDIA_OBJECT = event.getTarget();
                 event.getEntityPlayer().openGui(Revival.INSTANCE, ServerProxy.GUI_DINOPEDIA, event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ());
             }

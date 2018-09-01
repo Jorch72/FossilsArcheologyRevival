@@ -500,6 +500,10 @@ public enum PrehistoricEntityType {
 				|| className.contains("Goat") || className.contains("Ferret") || className.contains("Hedgehog") || className.contains("Sow")
 				|| className.contains("Hog");
 	}
+
+	public static boolean isMale(Entity entity) {
+		return entity instanceof EntityPrehistoric && ((EntityPrehistoric)entity).getGender() == 1;
+	}
 	interface Parameter {
 		int NOTHING = 0;
 
