@@ -13,6 +13,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -43,19 +44,14 @@ public class SarcophagusBlock extends BlockContainer implements DefaultRenderedI
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileEntitySarcophagus tile = (TileEntitySarcophagus) world.getTileEntity(pos);
 		if (tile.chestState == 0) {
-			if (player.getHeldItem(hand) != null) {
-				if (player.getHeldItem(hand).getItem() != null) {
-					if (player.getHeldItem(hand).getItem() == FAItemRegistry.SCARAB_GEM) {
-						tile.chestState = 1;
-						if (!player.capabilities.isCreativeMode) {
-							player.getHeldItem(hand).shrink(1);
-						}
+			if (player.getHeldItem(hand).getItem() == FAItemRegistry.SCARAB_GEM) {
+				tile.chestState = 1;
+				if (!player.capabilities.isCreativeMode) {
+					player.getHeldItem(hand).shrink(1);
+				}
 
-						if (player.getHeldItem(hand).getCount() <= 0) {
-							player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
-						}
-
-					}
+				if (player.getHeldItem(hand).getCount() <= 0) {
+					player.inventory.setInventorySlotContents(player.inventory.currentItem, ItemStack.EMPTY);
 				}
 			}
 		} else if (tile.chestState == 1) {
