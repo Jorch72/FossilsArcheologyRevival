@@ -110,13 +110,13 @@ public class FAWorldGenerator implements IWorldGenerator {
 		int z = (chunkZ * 16) + 8;
 		BlockPos height = world.getHeight(new BlockPos(x, 0, z));
 		Biome biome = world.getBiome(height);
-		if (Revival.CONFIG.generateTarSites && random.nextInt(320) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && biome.topBlock == Blocks.GRASS && world.getBlockState(height.down()).getBlock() == Blocks.GRASS) {
+		if (Revival.CONFIG.generateTarSites && random.nextInt(160) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && biome.topBlock == Blocks.GRASS && world.getBlockState(height.down()).getBlock() == Blocks.GRASS) {
 			if(StructureUtils.generateStructureAtWithRandomRotation(TAR_SITE, world, height.down(3), random, true, false)){
 				BlockPos tentPos = random.nextBoolean() ? height.add(10  + random.nextInt(6), 10 + random.nextInt(6) , 10 + random.nextInt(6)) : height.add(-10 - random.nextInt(6), -10 - random.nextInt(6), -10 - random.nextInt(6));
 				StructureUtils.generateStructureAtWithRandomRotation(FOSSIL_SITE_TENT, world, world.getHeight(tentPos), random, false, false);
 			}
 		}
-		if (Revival.CONFIG.generateFossilSites && random.nextInt(320) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && biome.topBlock == Blocks.GRASS && world.getBlockState(height.down()).getBlock() == Blocks.GRASS) {
+		if (Revival.CONFIG.generateFossilSites && random.nextInt(160) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && biome.topBlock == Blocks.GRASS && world.getBlockState(height.down()).getBlock() == Blocks.GRASS) {
 			if(StructureUtils.generateStructureAtWithRandomRotation(FOSSIL_SITE, world, height.down(3), random, true, false)){
 				BlockPos tentPos = random.nextBoolean() ? height.add(10  + random.nextInt(6), 10 + random.nextInt(6) , 10 + random.nextInt(6)) : height.add(-10 - random.nextInt(6), -10 - random.nextInt(6), -10 - random.nextInt(6));
 				StructureUtils.generateStructureAtWithRandomRotation(FOSSIL_SITE_TENT, world, world.getHeight(tentPos), random, false, false);
@@ -125,10 +125,10 @@ public class FAWorldGenerator implements IWorldGenerator {
 		if (Revival.CONFIG.generateMoai && random.nextInt(100) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && BiomeDictionary.hasType(biome, BiomeDictionary.Type.BEACH) && !BiomeDictionary.hasType(biome, BiomeDictionary.Type.COLD) && !BiomeDictionary.hasType(biome, BiomeDictionary.Type.SNOWY) && world.getBlockState(height.down()).isOpaqueCube()) {
 			StructureUtils.generateStructureAtWithRandomRotation(random.nextInt(3) == 0 ? MOAI_WITH_HAT : MOAI, world, height.down(random.nextInt(5)), random, false, true);
 		}
-		if (Revival.CONFIG.generateAztecWeaponShops && random.nextInt(120) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && BiomeDictionary.hasType(biome, BiomeDictionary.Type.JUNGLE)) {
+		if (Revival.CONFIG.generateAztecWeaponShops && random.nextInt(90) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && BiomeDictionary.hasType(biome, BiomeDictionary.Type.JUNGLE)) {
 			StructureUtils.generateStructureAtWithRandomRotationWithLoot(AZTEC_WEAPONS_SHOP, AZTEC_WEAPONS_CHEST, world, height.down(2), random, true, false);
 		}
-		if (Revival.CONFIG.generateTemple && random.nextInt(200) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && BiomeDictionary.hasType(biome, BiomeDictionary.Type.JUNGLE)) {
+		if (Revival.CONFIG.generateTemple && random.nextInt(120) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && BiomeDictionary.hasType(biome, BiomeDictionary.Type.JUNGLE)) {
 			StructureUtils.generateStructureAtWithRandomRotationWithLoot(AZTEC_TEMPLE, AZTEC_TEMPLE_CHEST, world, height, random, true, false);
 		}
 		if (Revival.CONFIG.generateAcademy && random.nextInt(300) == 0 && world.provider.hasSkyLight() && !world.provider.isNether() && BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY) && BiomeDictionary.hasType(biome, BiomeDictionary.Type.DRY) && BiomeDictionary.hasType(biome, BiomeDictionary.Type.HOT)) {

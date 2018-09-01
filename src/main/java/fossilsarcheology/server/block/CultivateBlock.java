@@ -6,7 +6,6 @@ import fossilsarcheology.server.api.BlockEntity;
 import fossilsarcheology.server.api.DefaultRenderedItem;
 import fossilsarcheology.server.block.entity.TileEntityCultivate;
 import fossilsarcheology.server.entity.monster.EntityFailuresaurus;
-import fossilsarcheology.server.item.FAItemRegistry;
 import fossilsarcheology.server.tab.FATabRegistry;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
@@ -90,6 +89,7 @@ public class CultivateBlock extends BlockContainer implements DefaultRenderedIte
             if (isActive) {
                 TileEntityCultivate entity = (TileEntityCultivate) world.getTileEntity(pos);
                 if (entity != null) {
+                    world.destroyBlock(pos, false);
                     if (entity.isPlant) {
                         world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.BLOCKS, 1, 1, false);
                         world.setBlockState(pos, Blocks.DIRT.getDefaultState());

@@ -3,21 +3,15 @@ package fossilsarcheology.server.structure;
 import fossilsarcheology.server.world.FAWorldGenerator;
 import net.minecraft.init.Blocks;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.chunk.Chunk;
-import net.minecraft.world.gen.structure.StructureBoundingBox;
-import net.minecraft.world.gen.structure.template.BlockRotationProcessor;
 import net.minecraft.world.gen.structure.template.PlacementSettings;
 import net.minecraft.world.gen.structure.template.Template;
 import net.minecraft.world.gen.structure.template.TemplateManager;
 
-import java.util.Map;
 import java.util.Random;
 
 public class StructureUtils {
@@ -32,7 +26,20 @@ public class StructureUtils {
             settings.setReplacedBlock(Blocks.AIR);
         }
         Template template = templateManager.getTemplate(server, structure);
-        BlockPos center = pos.add(template.getSize().getX() / 2, 0, template.getSize().getZ() / 2);
+        BlockPos center = pos;
+        switch(rotation){
+            case NONE:
+                center = pos;
+                break;
+            case CLOCKWISE_90:
+                center = pos.add(template.getSize().getZ() - 1, 0, 0);
+                break;
+            case COUNTERCLOCKWISE_90:
+                center = pos.add(0, 0, template.getSize().getX() - 1);
+                break;
+            case CLOCKWISE_180:
+                center = pos.add(template.getSize().getX() - 1, 0, template.getSize().getZ() - 1);
+        }
         if (checkGround) {
             BlockPos corner1 = pos.down();
             BlockPos corner2 = pos.add(template.getSize().getX(), -1, 0);
@@ -59,7 +66,20 @@ public class StructureUtils {
             settings.setReplacedBlock(Blocks.AIR);
         }
         Template template = templateManager.getTemplate(server, structure);
-        BlockPos center = pos.add(template.getSize().getX() / 2, 0, template.getSize().getZ() / 2);
+        BlockPos center = pos;
+        switch(rotation){
+            case NONE:
+                center = pos;
+                break;
+            case CLOCKWISE_90:
+                center = pos.add(template.getSize().getZ() - 1, 0, 0);
+                break;
+            case COUNTERCLOCKWISE_90:
+                center = pos.add(0, 0, template.getSize().getX() - 1);
+                break;
+            case CLOCKWISE_180:
+                center = pos.add(template.getSize().getX() - 1, 0, template.getSize().getZ() - 1);
+        }
         if (checkGround) {
             BlockPos corner1 = pos.down();
             BlockPos corner2 = pos.add(template.getSize().getX(), -1, 0);
@@ -83,7 +103,20 @@ public class StructureUtils {
             settings.setReplacedBlock(Blocks.AIR);
         }
         Template template = templateManager.getTemplate(server, structure);
-        BlockPos center = pos.add(template.getSize().getX() / 2, 0, template.getSize().getZ() / 2);
+        BlockPos center = pos;
+        switch(rotation){
+            case NONE:
+                center = pos;
+                break;
+            case CLOCKWISE_90:
+                center = pos.add(template.getSize().getZ() - 1, 0, 0);
+                break;
+            case COUNTERCLOCKWISE_90:
+                center = pos.add(0, 0, template.getSize().getX() - 1);
+                break;
+            case CLOCKWISE_180:
+                center = pos.add(template.getSize().getX() - 1, 0, template.getSize().getZ() - 1);
+        }
         if (checkGround) {
             BlockPos corner1 = pos.down();
             BlockPos corner2 = pos.add(template.getSize().getX(), -1, 0);
@@ -109,7 +142,20 @@ public class StructureUtils {
             settings.setReplacedBlock(Blocks.AIR);
         }
         Template template = templateManager.getTemplate(server, structure);
-        BlockPos center = pos.add(template.getSize().getX() / 2, 0, template.getSize().getZ() / 2);
+        BlockPos center = pos;
+        switch(rotation){
+            case NONE:
+                center = pos;
+                break;
+            case CLOCKWISE_90:
+                center = pos.add(template.getSize().getZ() - 1, 0, 0);
+                break;
+            case COUNTERCLOCKWISE_90:
+                center = pos.add(0, 0, template.getSize().getX() - 1);
+                break;
+            case CLOCKWISE_180:
+                center = pos.add(template.getSize().getX() - 1, 0, template.getSize().getZ() - 1);
+        }
         if (checkGround) {
             BlockPos corner1 = pos.down();
             BlockPos corner2 = pos.add(template.getSize().getX(), -1, 0);

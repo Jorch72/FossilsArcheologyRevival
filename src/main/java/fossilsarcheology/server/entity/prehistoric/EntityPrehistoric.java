@@ -1226,7 +1226,6 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
 
                     return false;
                 } else {
-
                     if (itemstack.getItem() == Items.LEAD && this.isTamed()) {
                         if (this.isOwner(player)) {
                             this.setLeashHolder(player, true);
@@ -1234,7 +1233,6 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
                             return true;
                         }
                     }
-
                     if (FMLCommonHandler.instance().getSide().isClient() && itemstack.getItem() == FAItemRegistry.DINOPEDIA) {
                         this.setPedia();
                         player.openGui(Revival.INSTANCE, 6, this.world, (int) this.posX, (int) this.posY, (int) this.posZ);
@@ -1744,10 +1742,10 @@ public abstract class EntityPrehistoric extends EntityTameable implements IPrehi
     public EntityAgeable createChild(EntityAgeable entity) {
         Entity baby = this.type.invokeClass(this.world);
         if (entity instanceof EntityPrehistoric) {
-            ((EntityPrehistoric) baby).onInitialSpawn(null, null);
-            ((EntityPrehistoric) baby).setAgeInDays(0);
-            ((EntityPrehistoric) baby).grow(0);
-            ((EntityPrehistoric) baby).setHealth((float) this.baseHealth);
+            EntityPrehistoric prehistoric = (EntityPrehistoric)baby;
+            prehistoric.setAgeInDays(0);
+            prehistoric.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, 0.0F);
+            prehistoric.setGender(new Random().nextInt(1));
             return ((EntityPrehistoric) baby);
         }
         return null;
