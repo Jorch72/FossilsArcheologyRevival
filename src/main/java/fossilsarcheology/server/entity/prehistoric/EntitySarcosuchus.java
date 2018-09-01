@@ -47,7 +47,8 @@ public class EntitySarcosuchus extends EntityPrehistoricSwimming {
 	}
 
 	public void initEntityAI() {
-		this.tasks.addTask(1, new DinoAIFindWaterTarget(this, 10, true));
+		this.tasks.addTask(0, new DinoAIFindWaterTarget(this, 10, true));
+		this.tasks.addTask(1, new DinoAIGetInWater(this, 1.0D));
 		this.tasks.addTask(2, this.aiSit = new EntityAISit(this));
 		this.tasks.addTask(3, new DinoAIRiding(this, 1.0F));
 		this.tasks.addTask(3, new DinoMeleeAttackAI(this, 1.5D, false));
